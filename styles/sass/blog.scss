@@ -1,0 +1,159 @@
+.blogcontent {
+	width: 68%;
+	float: left;
+	
+	@media #{$mediaphone} {
+		width: 100%;
+	}
+}
+
+.blogsumm {
+	border-bottom: 1px solid $themegrey;
+}
+
+.blogsummimg {
+	padding: 30px 25px 0px 0px;
+	width: 125px;
+	overflow: hidden;
+	float: left;
+	
+	@media #{$mediaphone} {
+		overflow: hidden;
+		padding: 0px 0px 0px 0px;
+		width: 106%;
+		margin-left: -3%;
+		margin-top: 20px;
+		height: 150px;
+	}
+	
+	img {
+		height: 150px;
+		margin-left: -25%;
+		padding: 1px 1px 1px 1px;
+		
+		@media #{$mediaphone} {
+			height: auto;
+			width: 100%;
+			margin-left: 0px;
+		}
+	}
+}
+
+.blogemptyimg {
+	padding: 30px 25px 0px 0px;
+	width: 125px;
+	overflow: hidden;
+	float: left;
+	height: 150px;
+	
+	@media #{$mediaphone} {
+		display: none;
+	}
+}
+
+.blogsummtitle {
+	float: left;
+	width: 70%;
+	padding-left: 25px;
+	padding-top: 27px;
+	font-size: 1.3em;
+	text-transform: uppercase;
+	
+	a { color: black; }
+	a:visited { color: black; }
+	a:hover { color: $themeblue; }
+	
+	@media #{$mediatablet} {
+		width: 320px;
+	}
+	
+	@media #{$mediaphone} {
+		width: 98%;
+		padding-left: 1%;
+		padding-top: 5px;
+		text-align: center;
+	}
+}
+
+.blogsummbyline {
+	padding-top: 10px;
+	float: left;
+	width: 70%;
+	padding-left: 25px;
+	font-size: 0.9em;
+	color: #aaa;
+	
+	@media #{$mediatablet} {
+		width: 320px;
+	}
+	
+	@media #{$mediaphone} {
+		width: 98%;
+		padding-left: 1%;
+		padding-top: 0px;
+		font-size: 0.7em;
+		text-align: center;
+	}
+}
+
+.blogsummtext {
+	padding-top: 10px;
+	float: left;
+	width: 420px;
+	padding-left: 25px;
+	font-size: 1.12em;
+	line-height: 1.6em;
+	
+	@media #{$mediatablet} {
+		width: 320px;
+	}
+	
+	@media #{$mediaphone} {
+		width: 98%;
+		padding-left: 1%;
+		font-size: 0.9em;
+	}
+}
+
+.blogside {
+	width: 28%;
+	float: right;
+	font-size: 0.85em;
+	padding-top: 30px;
+	
+	img {
+		height: 50px;
+		clear: both;
+		float: left;
+	}
+	
+	@media #{$mediaphone} {
+		display: none;
+	}
+}
+
+/* Individual Blog Post Page Styles */
+
+.blogmainimg {
+	width: 98%;
+	padding-left: 1%;
+	overflow: hidden;
+	height: 300px;
+	
+	img {
+		width: 100%;
+	}
+}
+
+.blogtextimg {
+	width: 98%;
+	padding-left: 1%;
+}
+
+.socialbutton {
+	width: 100px;
+	float: left;
+}
+
+
+

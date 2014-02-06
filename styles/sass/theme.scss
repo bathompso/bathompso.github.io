@@ -1,0 +1,10 @@
+$themeblue:		#20a3db;
+$themegrey:		#e7e7e7;
+$themedgrey:	#888;
+
+$mediatablet: 	"only screen and (min-width: 768px) and (max-width: 959px)";
+$mediaphone: 	"only screen and (max-width: 767px)";
+
+@import 'header';
+@import 'blog';
+@import 'research';
