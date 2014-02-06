@@ -1,0 +1,45 @@
+.royalslider {
+	padding-top: 20px;
+	
+	@media #{$mediaphone} {
+		display: none;
+	}
+}
+
+.slidertitle {
+	font-size: 2.5em;
+	line-height: 1em;
+	text-align: center;
+	padding-bottom: 20px;
+	
+	@media #{$mediatablet} {
+		font-size: 1.5em;
+	}
+}
+
+.slidertext {
+	font-size: 1.3em;
+	
+	@media #{$mediatablet} {
+		font-size: 0.98em;
+	}
+	
+	a, a:visited{ color: white; }
+	a:hover{ color: $themeblue; }
+}
+
+.contact { 
+	margin-top: -30px;
+	
+	img { 
+		padding-bottom: -20px;
+	}
+}
+
+.slidericon {
+	height: 50px;
+	padding-right: 0px;
+	border: 0px;
+}
+
+
