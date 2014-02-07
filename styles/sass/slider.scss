@@ -1,5 +1,4 @@
 .royalslider {
-	padding-top: 20px;
 	
 	@media #{$mediaphone} {
 		display: none;
@@ -13,7 +12,8 @@
 	padding-bottom: 20px;
 	
 	@media #{$mediatablet} {
-		font-size: 1.5em;
+		font-size: 1.8em;
+		padding-bottom: 5px;
 	}
 }
 
@@ -26,6 +26,8 @@
 	
 	a, a:visited{ color: white; }
 	a:hover{ color: $themeblue; }
+	
+	.button { margin-top: 20px; }
 }
 
 .contact { 
@@ -42,4 +44,21 @@
 	border: 0px;
 }
 
+.button {
+	padding: 5px 12px 6px 12px;
+	background: $themeblue;
+	border: none;
+	height: 33px;
+	width: 140px;
+	margin-left: auto;
+	margin-right: auto;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	
+	@media #{mediatablet} {
+		height: auto;
+	}
+}
+.button:hover { background: #222; }
 
