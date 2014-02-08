@@ -1,0 +1,39 @@
+.lessonlist {
+	width: 80%;
+}
+
+.lessonsummimg {
+	padding-left: 30px;
+	padding-top: 25px;
+	float: left;
+}
+
+.lessonemptyimg {
+	padding-left: 30px;
+	padding-top: 25px;
+	float: left;
+	width: 200px;
+	height: 30px;
+}
+
+.lessonsummtitle {
+	float: left;
+	width: 470px;
+	padding-left: 25px;
+	padding-top: 27px;
+	font-size: 1.3em;
+	text-transform: uppercase;
+	
+	a { color: black; }
+	a:visited { color: black; }
+	a:hover { color: $themeblue; }
+}
+
+.lessonsummtext {
+	padding-top: 10px;
+	float: left;
+	width: 470px;
+	padding-left: 25px;
+	font-size: 1.12em;
+	line-height: 1.6em;
+}
