@@ -134,15 +134,25 @@
 
 /* Individual Blog Post Page Styles */
 
+.blogentrytitle {
+	padding-top: 30px;
+	font-size: 2.1em;
+	text-transform: uppercase;
+	word-spacing: 2px;
+}
+
+.blogentrybyline {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 0.9em;
+	color: $themedgrey;
+}
+
 .blogmainimg {
-	width: 98%;
-	padding-left: 1%;
-	overflow: hidden;
-	height: 300px;
-	
-	img {
-		width: 100%;
-	}
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 0 20px black;
+	width: 98%
 }
 
 .blogtextimg {
