@@ -2,6 +2,11 @@ $themeblue:		#20a3db;
 $themegrey:		#e7e7e7;
 $themedgrey:	#888;
 
+$progback:		#fff0dd;
+$progborder:	#f6e4cc;
+$resultback:	#dadada;
+$resultborder:	#979797;
+
 $mediatablet: 	"only screen and (min-width: 768px) and (max-width: 959px)";
 $mediaphone: 	"only screen and (max-width: 767px)";
 
@@ -11,3 +16,4 @@ $mediaphone: 	"only screen and (max-width: 767px)";
 @import 'slider';
 @import 'custom';
 @import 'education';
+@import 'code';
