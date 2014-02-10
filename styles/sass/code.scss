@@ -1,11 +1,45 @@
+code {
+	background-color: $themegrey;
+}
+
 .shell {
-	width: 100%;
+	width: 95%;
 	padding-left: 10px;
+	background-color: $themegrey;
+	border: 1px solid $themedgrey;
+	word-wrap: break-word;
+	border-radius: 5px;
+	font-size: 1.2em;
+}
+
+.code {
+	width: 60%;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
 	background-color: $progback;
 	border: 1px solid $progborder;
 	word-wrap: break-word;
 	border-radius: 5px;
 	font-size: 1.2em;
+	
+	code { background-color: transparent; }
 }
+
+.results {
+	width: 35%;
+	margin-left: 2%;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: $resultback;
+	border: 1px solid $resultborder;
+	word-wrap: normal;
+	border-radius: 5px;
+	font-size: 1.3em;
+	
+	code { background-color: transparent; }
+}
+
 
 

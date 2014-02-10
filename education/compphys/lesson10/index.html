@@ -33,6 +33,8 @@
     	<a href="https://alpha.app.net/bathompso" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://alpha.app.net']);" class='adn-button' rel='me' data-type='follow' data-width='220' data-height='38' data-user-id='@bathompso'>Follow me on App.net</a>
     </div>
     <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 	<div class="header">
@@ -71,7 +73,106 @@
 
 	
 	<div class="pagecontent">
-    	
+    	<h1>Lesson 10: Parallel Computing</h1>
+
+<h2>10.1 Introduction to Parallel Computing</h2>
+
+<h3>Moore&#39;s Law</h3>
+
+<p>Named after Intel co-founder Gordon Moore, Moore&#39;s law states that number of transistors on integrated circuits will double every 2 years. It should be noted that Moore&#39;s law is an empirical observation, not a law of physics or nature. It has been estimated that, by 2015 growth will have slowed enough that transistor count will only double every 3 years.</p>
+
+<p>For programmers, Moore&#39;s law was great. If you program ran too slow on your current hardware, all you had to do was wait two years, and it should run twice as fast on the newest chips.</p>
+
+<p>Around 2004, Moore&#39;s law began to break down due to overheating within the chips. Packing a large amount of transistors onto small chips left little room for heat dissipation, causing increased failures. To keep up with the Moore&#39;s law pace, chip makers expanded into multi-core architecture. By only slightly increasing the number of transistors per core, the overall chip could still keep pace.</p>
+
+<p>Unfortunately for programmers, it was no longer the case that you could wait 2 years and expect a double in performance. Now, you had to write your program to take advantage of the multiple cores that were provided by the hardware. Programming to take advantage of parallel computing requires a different type of thinking than everything that has been done previously in this class.</p>
+
+<h3>Parallel Computing Algorithms</h3>
+
+<p>Not all programs can be written to utilize parallel capabilities. Programs that are best suited are those that require many <strong>independent</strong> iterations of a <code>for</code> loop. These types of programs are good because individual iterations can be assigned to each of the different processing cores, unlike normal procedural codes where one operation depends on the results of a previous one. A few examples of easily parallelized programs are listed below:</p>
+
+<h4>Vector Addition</h4>
+
+<p><img src="/generated/vadd-300x214-16fd8b.png" class="lessontextimg" ></p>
+
+<p>When adding vectors, you are essentially looping over the vector and adding each component together. When writing a regular program, each of these element additions would happen in order, but there is no reason for that. When writing this as a parallel program, each element is assigned to a core, and completed in sequential order.</p>
+
+<p>The figure to the right illustrates how the parallel vector addition algorithm works. In this scenario, we are using a quad-core processor. The addition of elements 1-4 are assigned to each of the four cores. The first core to complete the addition is the assigned the 5th element, and so on until everything is complete.</p>
+
+<h4>Matrix Multiplication</h4>
+
+<p><img src="/generated/mmult-300x214-4f4c10.png" class="lessontextimg" ></p>
+
+<p>Another easily parallelizable problem is matrix multiplication. Each element of the resulting array is a multiplication of a single row and column of the input arrays. Each element’s value is independent of the others, and often this multiplication requires many iterations of a loop.</p>
+
+<p>The figure to the right shows how this problem would look in a parallel scenario. Where vector addition was a 1D loop, matrix multiplication is 2D. In the example, we are computing a \( 3\times N \) matrix product on a quad-core processor. The multiplication proceeds left-to-right and top-to-bottom, with element 2,1 being assigned to the 4th core. As multiplications are completed, the next element of the array is assigned to that core.</p>
+
+<h4>Algorithms</h4>
+
+<p>When writing programs to take full advantage of parallel computing resources, there are several things to consider:</p>
+
+<ul>
+<li><em>Make sure loop iterations are independent.</em> Because iterations are not necessary completed in order, you cannot expect that shared variables will be dealt with in an understandable way. There are methods that will allow for the &quot;locking&quot; of shared variables in parallel computation, but those will not be covered here.</li>
+<li><em>Know what problem space you are dealing with.</em> In the two examples above, each had different dimensions of loops. Vector addition requires only one dimension of looping, while matrix multiplication requires 2D. This will be an important factor in designing some parallel programs.</li>
+<li><em>Make sure the program at hand is best suited for parallelization.</em> It takes a decent bit longer to write and debug a parallelized code than it does a serial one. If your program includes a loop which is only run a few times (or can use other fast ways of handling in serial form), it may not be the best use of your time to write a parallel code. Often problems in physics will involve hundreds or thousands (sometimes hundreds of thousands) or iterations of a loop: these are programs that will benefit greatly from parallelization. In each of the following sections, we will time various parallel programs to see what (if any) speed improvements are made.</li>
+</ul>
+
+<h2>10.2 ParallelPython</h2>
+
+<p>One of the first transistions into the parallel computing age was the introduction of multi-core and multi-thread CPUs. Originally, CPUs could only compute a single task at a time, but with the addition of multiple cores they could handle several at once. In this section we will explore how to write Python programs that can use all available CPU cores / threads on your machine.</p>
+
+<h3>Installation</h3>
+
+<p>Stock Python (including the modules used so far) do not allow Python to take advantage of multi-core architecture. Instead, we must download and install another module, called (imaginatively) ParallelPython. First, go to the <a href="http://www.parallelpython.com/content/view/18/32/">ParallelPython download page</a> and download the latest stable release. Unpack it and <code>cd</code> inside. To install, simply run</p>
+
+<div class="highlight"><pre class="shell"><code class="bash">python setup.py install
+</code></pre></div>
+
+<p>After successful installation, you should be able to access all ParallelPython routines by importing the module via</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="kn">import</span> <span class="nn">pp</span>
+</code></pre></div>
+
+<h3>Running Parallel Tasks With ParallelPython</h3>
+
+<h4>The JobServer</h4>
+
+<p>Everything in ParallelPythonn is run through the JobServer. The JobServer reads the tasks that are passed to it and doles them out to idle cores on the machine. Before we can run anything in parallel, we must initialize the JobServer. You can do this via the line:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">job_server</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">Server</span><span class="p">()</span>
+</code></pre></div>
+
+<div style="clear:both"></div>
+
+<p>There are several optional keywords that can be specified for the ParallelPython job server:</p>
+
+<p><strong># of Cores</strong>: by default, ParallelPython will use all available cores in your machines. In all the examples here, I am using a MacBook Pro with a quad-core i7 processor which implements Hyper-Threading, meaning that each core can process 2 threads simultaneously. With 4 cores and 2 threads per core, ParallelPython can use a maximum of 8 simultaneous computations. If you wish to use less than the maximum, you can enter that value into the <code>Server</code> command.</p>
+
+<p><strong>Networked Machines</strong>: ParallelPython is not only meant for doing parallel computations on your local machines, but distributing itself across an entire network of machines to handle massive computations. If you have other machines with ParallelPython installed that you want to network to to help with computations, enter their IP addresses as the keyword <code>ppservers</code> in the <code>Server</code> command.</p>
+
+<p>With both options enabled, the JobServer initialization command will look like:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">job_server</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">Server</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">ppservers</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="s">&quot;10.0.0.2&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<h4>Submitting Jobs</h4>
+
+<p>Now that the JobServer is created, we can begin passing tasks to it using the <code>submit</code> function. A ParallelPython <code>submit</code> call will look like:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">result</span> <span class="o">=</span> <span class="n">job_server</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">subroutine</span><span class="p">,</span> <span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">),</span> <span class="p">(</span><span class="n">func2</span><span class="p">,</span> <span class="n">func3</span><span class="p">),</span> <span class="p">(</span><span class="s">&quot;modname&quot;</span><span class="p">,))</span>
+</code></pre></div>
+
+<div style="clear:both"></div>
+
+<p>There are several parts to this call:</p>
+
+<ul>
+<li><code>subroutine</code>: The first variable of the <code>submit</code> function is the name of the subroutine function that is being iterated multiple times.</li>
+<li><code>var1, var2</code>: The second variable of the <code>submit</code> function is a list of the variables that are necessary for function <code>subroutine</code>.</li>
+<li><code>func2, func3</code>: The third variable of the <code>submit</code> function is a list of the functions (if any) on which the subroutine depends.</li>
+<li><code>modname</code>: The last variable fo the <code>submit</code> function is a list of module names necessary for the subroutine function. If the subroutine uses any modules, you will not be able to specify a shortname. So if your subroutine depends on <code>numpy</code>, make sure to write functions as <code>numpy.cos</code> instead of the regular <code>np.cos</code>.</li>
+</ul>
+
 	</div>
 	
 	
