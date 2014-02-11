@@ -73,7 +73,123 @@
 
 	
 	<div class="pagecontent">
-    	
+    	<h1>Lesson 2: Basic Python Programming</h1>
+
+<p>The easiest way to learn programming is by doing. The second easiest way is to watch somebody else doing it. Neither of those can be easily conveyed in a textbook, nor on a webpage. The next section, 2.1, will throw lots of syntax at you, some of which you may not immediately understand. The section following it, 2.2, will show you some basic programs, and you can use those as a template to understand much of section 2.1. In section 2.3, you will be able to write you own solutions to some simple word problems, and check your answers.</p>
+
+<p>This will be the most important part of the class, as understanding <strong>how</strong> to program is much more important than the syntax. Take your time here, and the rest of the class will come much easier.</p>
+
+<h2>2.1 Basic Python Syntax</h2>
+
+<h3>Comments</h3>
+
+<p>When reading basic codes, it is easy to follow along with the logic the programmer is using (don&#39;t worry, it will be easy), but often it gets more complicated for longer codes. To guide others who might read your code (collaborator, teacher, users...), you can add comments into the code. Comments will not affect any of the running of the code, but when a person opens your program, they will be able to read some helpful notes from you. You can do this by starting the line with the &#39;#&#39; symbol.</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="c"># This is the program PYTHONTEST.PY</span>
+<span class="c"># It contains example problems from the text</span>
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<h3>Basic Operators</h3>
+
+<h4>Variables</h4>
+
+<p>As in any programming language, you will be dealing with variables to hold important values. To assign a value to a variable, simply use an equal sign:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>This assigns the variable <code>x</code> a value of 1. You can then use this variable name in future computations. There are several rules when specifying variables: </p>
+
+<ul>
+<li><strong>Variable assignments must always have the variable name on the left-hand side.</strong> The code: <code>1 = x</code> will result in a syntax error. <em>The value on the left-hand side will always be overwritten by the value of the right-hand side.</em> Since <code>1</code> isn&#39;t a variable, it cannot be overwritten by the value of <code>x</code>.</li>
+<li><strong>Variable names cannot start with a number, contain special characters, or spaces.</strong> An underscore character, &#39;_&#39; , is allowed, however. <code>_long_variable_name</code> and <code>wood_2x4</code> are allowed variable names, while <code>4corners</code> and <code>black&amp;white</code> are not allowed.</li>
+<li><strong>Variable names are case sensitive.</strong> The variables <code>name</code> and <code>Name</code> are distinct variables and can have different values. Take note of what capitalization you use when declaring your variable and make sure to keep it consistent throughout your code. Considering the variety of variable names available, it is ill-advised to have two variables within a code that vary only by capitalization.</li>
+</ul>
+
+<p>You may run into a situation where you want to assign values to multiple variables at the same time. This can be accomplished easily in python by separating each variable and value by a comma:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">pi</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mf">3.14159265</span><span class="p">,</span> <span class="mf">2.71828182</span><span class="p">,</span> <span class="mf">8.3144621</span>
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>Similar to an individual variable assignment, variables go on the left and values go on the right.</p>
+
+<h4>Basic Math Operations</h4>
+
+<p>Basic arithmetic operations in python are accomplished via an obvious syntax:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>      <span class="c"># Addition</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>        <span class="c"># Subtraction</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>        <span class="c"># Multiplication</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>        <span class="c"># Division</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>     <span class="c"># Exponentiation</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">//</span><span class="n">y</span>     <span class="c"># Integer Division</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">%</span> <span class="n">y</span>        <span class="c"># Modulus</span>
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>Most of these operations are obvious, and you learned years ago. The last two, however, may not be familiar. <em>Integer Division</em>, <code>x//y</code>, gives the integer part of a division. For example, <code>5//2</code> is 2. Any decimal part of the answer is removed. <em>Modulus</em> you may remember from long division: it returns the remainder. <code>5%2</code> returns 1, because 5/2 is 2 with a remainder of 1. Both of these operators are not as widely used, but can come in handy for certain situations.</p>
+
+<h4>Basic Input and Output</h4>
+
+<p>Now that we have learned to assign values to variables, and can do math with those variables, we want to be able to print values to the screen to inform the user what is happening within the program. It also may be useful to ask the user for input, so as to not have the code produce a static output every time.</p>
+
+<p>Printing to the screen can be accomplished via the <code>print</code> command:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="n">x</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash">1
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>You can print out any variable, as well as do arithmetic within the <code>print</code> command itself:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span>
+<span class="k">print</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="k">print</span> <span class="n">y</span><span class="o">**</span><span class="n">x</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash">12
+81
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>Each <code>print</code> statement will end the line with a carriage return. If you want to print out multiple values on a single line, use a single <code>print</code> statement with each argument separated with a comma:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span>
+<span class="k">print</span> <span class="s">&#39;Multiplication:&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="s">&#39;Exponential:&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">**</span><span class="n">x</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash">Multiplication: 12 Exponential: 81
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>By default, each argument in the <code>print</code> statement is separated by a single space. You can much more fancy formatting, however, by specifying a <a href="http://www.cprogramming.com/tutorial/printf-format-strings.html">C-like format string</a>. If you have not used these types of string (usually in C or C++ programming, the &#39;awk&#39; UNIX command), you may want to familiarize yourself with them. In the example below, we print out some basic physical constants to 4 decimal places:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">pi</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mf">3.14159265</span><span class="p">,</span> <span class="mf">2.71828182</span><span class="p">,</span> <span class="mf">8.3144621</span>
+<span class="k">print</span> <span class="s">&quot;pi = </span><span class="si">%6.4f</span><span class="s">      exponential e = </span><span class="si">%6.4f</span><span class="se">\n</span><span class="s">\Ideal Gas Constant = </span><span class="si">%6.4f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash"><span class="nv">pi</span> <span class="o">=</span> 3.1416      exponential <span class="nv">e</span> <span class="o">=</span> 2.7182
+
+Ideal Gas <span class="nv">Constant</span> <span class="o">=</span> 8.3145
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>In this formatted <code>print</code> statement, you specify your formatting string first (which can contain escape characters like &#39;\n&#39; and &#39;\t&#39;), then a &#39;%&#39; sign, followed by a list of variables in parentheses. These types of <code>print</code> statements are quite useful, either for creating lists of variables that align, or taming floating-point variables. If a format is not specified, Python will often print out floating-point variables to their maximum precision: 8 decimal places! To make better sense of your data, format it to a reasonable precision.</p>
+
 	</div>
 	
 	
