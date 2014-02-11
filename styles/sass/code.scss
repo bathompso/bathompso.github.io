@@ -15,30 +15,41 @@ code {
 .code {
 	width: 60%;
 	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 10px;
 	background-color: $progback;
 	border: 1px solid $progborder;
-	word-wrap: break-word;
+	white-space: pre-wrap;
 	border-radius: 5px;
 	font-size: 1.2em;
+	line-height: 1.1em;
+	word-wrap: break-word;
 	
 	code { background-color: transparent; }
+	
+	@media #{$mediaphone} {
+		width: 90%;
+		float: none;
+	}
 }
 
 .results {
-	width: 35%;
-	margin-left: 2%;
+	width: 32%;
+	margin-left: 1%;
 	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 10px;
 	background-color: $resultback;
 	border: 1px solid $resultborder;
-	word-wrap: normal;
+	white-space: pre-wrap;
 	border-radius: 5px;
-	font-size: 1.3em;
+	font-size: 1.2em;
+	line-height: 1.1em;
 	
 	code { background-color: transparent; }
+	
+	@media #{$mediaphone} {
+		width: 90%;
+		float: none;
+	}
 }
 
 
