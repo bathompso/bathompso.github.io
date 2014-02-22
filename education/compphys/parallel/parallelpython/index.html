@@ -2,12 +2,15 @@
 <html><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Lesson 10: Parallel Computing</title>
+    <title>10.2: ParallelPython</title>
     <meta name="viewport" content="width=device-width">
     <!-- syntax highlighting CSS -->
     <link rel="stylesheet" href="/styles/css/syntax.css">
-    <!-- RoyalSlider CSS -->
+    <!-- Necessary JavaScript -->
+    <script src='/js/jquery.collapse.js"'></script>
     <script type='text/javascript' src='/js/jquery.js?ver=1.10.2'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <!-- RoyalSlider CSS -->
 	<link rel='stylesheet' id='new-royalslider-core-css-css'  href='/js/new-royalslider/lib/royalslider/royalslider.css?ver=3.1.7' type='text/css' media='all' />
 	<link rel='stylesheet' id='rsMinW-css-css'  href='/js/new-royalslider/lib/royalslider/skins/minimal-white/rs-minimal-white.css?ver=3.1.7' type='text/css' media='all' />
     <!-- Custom CSS -->
@@ -67,90 +70,46 @@
 			
 		</div>
 		<div class="breadcrumbs">
-			<a href="/">Home</a> &#187; <a href="/education/">Education</a> &#187; <a href="/education/compphys/">Computational Physics</a> &#187; Lesson 10: Parallel Computing
+			<a href="/">Home</a> &#187; <a href="/education/">Education</a> &#187; <a href="/education/compphys/">Computational Physics</a> &#187; <a href="/education/compphys/parallel/">Lesson 10: Parallel Computing</a> &#187; 10.2: ParallelPython
 		</div>
 	</div>
 
 	
 	<div class="pagecontent">
-    	<h1>Lesson 10: Parallel Computing</h1>
-
-<h2>10.1 Introduction to Parallel Computing</h2>
-
-<h3>Moore&#39;s Law</h3>
-
-<p>Named after Intel co-founder Gordon Moore, Moore&#39;s law states that number of transistors on integrated circuits will double every 2 years. It should be noted that Moore&#39;s law is an empirical observation, not a law of physics or nature. It has been estimated that, by 2015 growth will have slowed enough that transistor count will only double every 3 years.</p>
-
-<p>For programmers, Moore&#39;s law was great. If you program ran too slow on your current hardware, all you had to do was wait two years, and it should run twice as fast on the newest chips.</p>
-
-<p>Around 2004, Moore&#39;s law began to break down due to overheating within the chips. Packing a large amount of transistors onto small chips left little room for heat dissipation, causing increased failures. To keep up with the Moore&#39;s law pace, chip makers expanded into multi-core architecture. By only slightly increasing the number of transistors per core, the overall chip could still keep pace.</p>
-
-<p>Unfortunately for programmers, it was no longer the case that you could wait 2 years and expect a double in performance. Now, you had to write your program to take advantage of the multiple cores that were provided by the hardware. Programming to take advantage of parallel computing requires a different type of thinking than everything that has been done previously in this class.</p>
-
-<h3>Parallel Computing Algorithms</h3>
-
-<p>Not all programs can be written to utilize parallel capabilities. Programs that are best suited are those that require many <strong>independent</strong> iterations of a <code>for</code> loop. These types of programs are good because individual iterations can be assigned to each of the different processing cores, unlike normal procedural codes where one operation depends on the results of a previous one. A few examples of easily parallelized programs are listed below:</p>
-
-<h4>Vector Addition</h4>
-
-<p><img src="/generated/vadd-300x214-16fd8b.png" class="lessontextimg" ></p>
-
-<p>When adding vectors, you are essentially looping over the vector and adding each component together. When writing a regular program, each of these element additions would happen in order, but there is no reason for that. When writing this as a parallel program, each element is assigned to a core, and completed in sequential order.</p>
-
-<p>The figure to the right illustrates how the parallel vector addition algorithm works. In this scenario, we are using a quad-core processor. The addition of elements 1-4 are assigned to each of the four cores. The first core to complete the addition is the assigned the 5th element, and so on until everything is complete.</p>
-
-<h4>Matrix Multiplication</h4>
-
-<p><img src="/generated/mmult-300x214-4f4c10.png" class="lessontextimg" ></p>
-
-<p>Another easily parallelizable problem is matrix multiplication. Each element of the resulting array is a multiplication of a single row and column of the input arrays. Each element’s value is independent of the others, and often this multiplication requires many iterations of a loop.</p>
-
-<p>The figure to the right shows how this problem would look in a parallel scenario. Where vector addition was a 1D loop, matrix multiplication is 2D. In the example, we are computing a \( 3\times N \) matrix product on a quad-core processor. The multiplication proceeds left-to-right and top-to-bottom, with element 2,1 being assigned to the 4th core. As multiplications are completed, the next element of the array is assigned to that core.</p>
-
-<h4>Algorithms</h4>
-
-<p>When writing programs to take full advantage of parallel computing resources, there are several things to consider:</p>
-
-<ul>
-<li><em>Make sure loop iterations are independent.</em> Because iterations are not necessary completed in order, you cannot expect that shared variables will be dealt with in an understandable way. There are methods that will allow for the &quot;locking&quot; of shared variables in parallel computation, but those will not be covered here.</li>
-<li><em>Know what problem space you are dealing with.</em> In the two examples above, each had different dimensions of loops. Vector addition requires only one dimension of looping, while matrix multiplication requires 2D. This will be an important factor in designing some parallel programs.</li>
-<li><em>Make sure the program at hand is best suited for parallelization.</em> It takes a decent bit longer to write and debug a parallelized code than it does a serial one. If your program includes a loop which is only run a few times (or can use other fast ways of handling in serial form), it may not be the best use of your time to write a parallel code. Often problems in physics will involve hundreds or thousands (sometimes hundreds of thousands) or iterations of a loop: these are programs that will benefit greatly from parallelization. In each of the following sections, we will time various parallel programs to see what (if any) speed improvements are made.</li>
-</ul>
-
-<h2>10.2 ParallelPython</h2>
+    	<h1>10.2 ParallelPython</h1>
 
 <p>One of the first transistions into the parallel computing age was the introduction of multi-core and multi-thread CPUs. Originally, CPUs could only compute a single task at a time, but with the addition of multiple cores they could handle several at once. In this section we will explore how to write Python programs that can use all available CPU cores / threads on your machine.</p>
 
-<h3>10.2.1 Installation</h3>
+<h2>10.2.1 Installation</h2>
 
 <p>Stock Python (including the modules used so far) do not allow Python to take advantage of multi-core architecture. Instead, we must download and install another module, called (imaginatively) ParallelPython. First, go to the <a href="http://www.parallelpython.com/content/view/18/32/">ParallelPython download page</a> and download the latest stable release. Unpack it and <code>cd</code> inside. To install, simply run</p>
 
 <div class="highlight"><pre class="shell"><code class="bash">python setup.py install
 </code></pre></div>
 
-<p>After successful installation, you should be able to access all ParallelPython routines by importing the module via</p>
+<p>After successful installation, you should be able to access all ParallelPython (PP) routines by importing the module via</p>
 
 <div class="highlight"><pre class="code"><code class="python"><span class="kn">import</span> <span class="nn">pp</span>
 </code></pre></div>
 
 <div style='clear:both'></div>
 
-<h3>10.2.2 Running Parallel Tasks With ParallelPython</h3>
+<h2>10.2.2 Running Parallel Tasks With ParallelPython</h2>
 
-<h4>The JobServer</h4>
+<h3>The JobServer</h3>
 
-<p>Everything in ParallelPythonn is run through the JobServer. The JobServer reads the tasks that are passed to it and doles them out to idle cores on the machine. Before we can run anything in parallel, we must initialize the JobServer. You can do this via the line:</p>
+<p>Everything in PP is run through the JobServer. The JobServer reads the tasks that are passed to it and doles them out to idle cores on the machine. Before we can run anything in parallel, we must initialize the JobServer. You can do this via the line:</p>
 
 <div class="highlight"><pre class="code"><code class="python"><span class="n">job_server</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">Server</span><span class="p">()</span>
 </code></pre></div>
 
 <div style='clear:both'></div>
 
-<p>There are several optional keywords that can be specified for the ParallelPython job server:</p>
+<p>There are several optional keywords that can be specified for the PP job server:</p>
 
-<p><strong># of Cores</strong>: by default, ParallelPython will use all available cores in your machines. In all the examples here, I am using a MacBook Pro with a quad-core i7 processor which implements Hyper-Threading, meaning that each core can process 2 threads simultaneously. With 4 cores and 2 threads per core, ParallelPython can use a maximum of 8 simultaneous computations. If you wish to use less than the maximum, you can enter that value into the <code>Server</code> command.</p>
+<p><strong># of Cores</strong>: by default, PP will use all available cores in your machines. In all the examples here, I am using a MacBook Pro with a quad-core i7 processor which implements Hyper-Threading, meaning that each core can process 2 threads simultaneously. With 4 cores and 2 threads per core, PP can use a maximum of 8 simultaneous computations. If you wish to use less than the maximum, you can enter that value into the <code>Server</code> command.</p>
 
-<p><strong>Networked Machines</strong>: ParallelPython is not only meant for doing parallel computations on your local machines, but distributing itself across an entire network of machines to handle massive computations. If you have other machines with ParallelPython installed that you want to network to to help with computations, enter their IP addresses as the keyword <code>ppservers</code> in the <code>Server</code> command.</p>
+<p><strong>Networked Machines</strong>: PP is not only meant for doing parallel computations on your local machines, but distributing itself across an entire network of machines to handle massive computations. If you have other machines with PP installed that you want to network to to help with computations, enter their IP addresses as the keyword <code>ppservers</code> in the <code>Server</code> command.</p>
 
 <p>With both options enabled, the JobServer initialization command will look like:</p>
 
@@ -159,9 +118,9 @@
 
 <div style='clear:both'></div>
 
-<h4>Submitting Jobs</h4>
+<h3>Submitting Jobs</h3>
 
-<p>Now that the JobServer is created, we can begin passing tasks to it using the <code>.submit()</code> function. A ParallelPython <code>.submit()</code> call will look like:</p>
+<p>Now that the JobServer is created, we can begin passing tasks to it using the <code>.submit()</code> function. A PP <code>.submit()</code> call will look like:</p>
 
 <div class="highlight"><pre class="code"><code class="python"><span class="n">result</span> <span class="o">=</span> <span class="n">job_server</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">subroutine</span><span class="p">,</span> <span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">),</span> <span class="p">(</span><span class="n">func2</span><span class="p">,</span> <span class="n">func3</span><span class="p">),</span> <span class="p">(</span><span class="s">&quot;modname&quot;</span><span class="p">,))</span>
 </code></pre></div>
@@ -177,9 +136,9 @@
 <li><code>modname</code>: The last variable fo the <code>.submit()</code> function is a list of module names necessary for the subroutine function. If the subroutine uses any modules, you will not be able to specify a shortname. So if your subroutine depends on <code>numpy</code>, make sure to write functions as <code>numpy.cos</code> instead of the regular shorthand, <code>np.cos</code>.</li>
 </ul>
 
-<p><strong>Why does <code>.submit()</code> require these inputs?</strong> The answer is in what exactly ParallelPython does. For each submitted job, ParallelPython essentially <em>writes a new Python code</em> which runs the specified function. all the variables necessary (variables, dependent functions and modules) are necessary for creating a standalone program to execute. ParallelPython then runs this function on the next available idle core. The result returned from this function will be stored in the result variable you specify.</p>
+<p><strong>Why does <code>.submit()</code> require these inputs?</strong> The answer is in what exactly ParallelPython does. For each submitted job, PP essentially <em>writes a new Python code</em> which runs the specified function. all the variables necessary (variables, dependent functions and modules) are necessary for creating a standalone program to execute. PP then runs this function on the next available idle core. The result returned from this function will be stored in the result variable you specify.</p>
 
-<h4>Multiple Jobs</h4>
+<h3>Multiple Jobs</h3>
 
 <p>The code above will submit a single job and return a single value, but that isn&#39;t the point of parallel computing, and is an egregious waste of computer resources. Instead, we want to submit multiple instances of the subroutine function, then analyze the multiple results coming back. To do this, we simply wrap the previous <code>submit()</code> command in a for loop.</p>
 
@@ -191,7 +150,7 @@
 
 <p>Here, <code>results</code> will be a 5-element list with the results of the <code>subroutine</code> function for each of the input values.</p>
 
-<p>Unlike normal Python, which waits for the previous command to finish before moving on, a <code>.submit()</code> call spawn a new process, send it to an idle core (if available) and immediately moves on. This will only stop when the program needs to access the results. As a consequence, ParallelPython routines can produce unexpected results. If you ran, for example:</p>
+<p>Unlike normal Python, which waits for the previous command to finish before moving on, a <code>.submit()</code> call spawn a new process, send it to an idle core (if available) and immediately moves on. This will only stop when the program needs to access the results. As a consequence, PP routines can produce unexpected results. If you ran, for example:</p>
 
 <div class="highlight"><pre class="code"><code class="python"><span class="n">inputvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">job_server</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">subroutine</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,),</span> <span class="p">(),</span> <span class="p">(</span><span class="s">&quot;math&quot;</span><span class="p">,))</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">inputvals</span><span class="p">]</span>
@@ -213,7 +172,7 @@
 
 <div style='clear:both'></div>
 
-<p>This loop adds little overhead to the entire program, but makes sure that all parallel runs have returned results before moving on to printing statements or other analysis steps that <em>may</em> be affected by the non-serialized completion. To access the results of a ParallelPython run, all variables must have an empty parentheses pair, as seen in the above two examples.</p>
+<p>This loop adds little overhead to the entire program, but makes sure that all parallel runs have returned results before moving on to printing statements or other analysis steps that <em>may</em> be affected by the non-serialized completion. To access the results of a PP run, all variables must have an empty parentheses pair, as seen in the above two examples.</p>
 
 <h2>10.2.3 Example: Finding Primes in Parallel</h2>
 
