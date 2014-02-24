@@ -256,7 +256,74 @@
 <li><strong>Copying results</strong>: Once the kernel is complete, the results vector still resides on the computing device. To copy it back, we use the <code>cl.enqueue_copy</code> command to move the device&#39;s results (<code>d_c</code>) back to the Python program&#39;s vector (<code>h_c</code>).</li>
 </ul>
 
-<p>After copying back the results from the kernel, your Python program can continue as normal.</p>
+<p>After copying back the results from the kernel, your Python program can continue as normal. To help you get a further grip on writing OpenCL programs, let us also look over the matrix multiplication example we saw in 10.3.3:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="c"># Import modules</span>
+<span class="kn">import</span> <span class="nn">pyopencl</span> <span class="kn">as</span> <span class="nn">cl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c"># Specify kernel</span>
+<span class="n">kernelsource</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">__kernel void mmul(</span>
+<span class="s">    const int Mdim,</span>
+<span class="s">    const int Ndim,</span>
+<span class="s">    const int Pdim,</span>
+<span class="s">    __global float* A,</span>
+<span class="s">    __global float* B,</span>
+<span class="s">    __global float* C)</span>
+<span class="s">{</span>
+<span class="s">    int k;</span>
+<span class="s">    int i = get_global_id(0);</span>
+<span class="s">    int j = get_global_id(1);</span>
+<span class="s">    float tmp;</span>
+<span class="s">    if ((i &lt; Ndim) &amp;&amp; (j &lt; Mdim))</span>
+<span class="s">    {</span>
+<span class="s">        tmp = 0.0;</span>
+<span class="s">        for (k = 0; k &lt; Pdim; k++)</span>
+<span class="s">            tmp += A[i*Ndim+k] * B[k*Pdim+j];</span>
+<span class="s">        C[i*Ndim+j] = tmp;</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="c"># Set-Up OpenCL environment</span>
+<span class="n">context</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">create_some_context</span><span class="p">()</span>    <span class="c"># Choose Device</span>
+<span class="n">queue</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">CommandQueue</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>    <span class="c"># Create Command Queue</span>
+<span class="n">program</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">kernelsource</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>  <span class="c"># Build Kernel</span>
+<span class="n">mmul</span> <span class="o">=</span> <span class="n">program</span><span class="o">.</span><span class="n">mmul</span>                  <span class="c"># Build Program</span>
+<span class="n">mmul</span><span class="o">.</span><span class="n">set_scalar_arg_dtypes</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">])</span>  <span class="c"># Set program variable types</span>
+
+<span class="c"># Set up matrix sizes</span>
+<span class="n">Ndim</span><span class="p">,</span> <span class="n">Pdim</span><span class="p">,</span> <span class="n">Mdim</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">700</span>
+<span class="n">sizeA</span> <span class="o">=</span> <span class="n">Ndim</span> <span class="o">*</span> <span class="n">Pdim</span>
+<span class="n">sizeB</span> <span class="o">=</span> <span class="n">Pdim</span> <span class="o">*</span> <span class="n">Mdim</span>
+<span class="n">sizeC</span> <span class="o">=</span> <span class="n">Ndim</span> <span class="o">*</span> <span class="n">Mdim</span>
+
+<span class="c"># Create input matrices</span>
+<span class="n">h_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">sizeA</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">h_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">sizeB</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="c"># Copy input matrices to device</span>
+<span class="n">d_a</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">cl</span><span class="o">.</span><span class="n">mem_flags</span><span class="o">.</span><span class="n">READ_ONLY</span> <span class="o">|</span> <span class="n">cl</span><span class="o">.</span><span class="n">mem_flags</span><span class="o">.</span><span class="n">COPY_HOST_PTR</span><span class="p">,</span> <span class="n">hostbuf</span><span class="o">=</span><span class="n">h_a</span><span class="p">)</span>
+<span class="n">d_b</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">cl</span><span class="o">.</span><span class="n">mem_flags</span><span class="o">.</span><span class="n">READ_ONLY</span> <span class="o">|</span> <span class="n">cl</span><span class="o">.</span><span class="n">mem_flags</span><span class="o">.</span><span class="n">COPY_HOST_PTR</span><span class="p">,</span> <span class="n">hostbuf</span><span class="o">=</span><span class="n">h_b</span><span class="p">)</span>
+
+<span class="c"># Create output matrix</span>
+<span class="n">h_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sizeC</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="c"># Copy output matrix to device</span>
+<span class="n">d_c</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">cl</span><span class="o">.</span><span class="n">mem_flags</span><span class="o">.</span><span class="n">WRITE_ONLY</span><span class="p">,</span> <span class="n">h_c</span><span class="o">.</span><span class="n">nbytes</span><span class="p">)</span>
+
+<span class="c"># Execute kernel</span>
+<span class="n">loopshape</span> <span class="o">=</span> <span class="p">(</span><span class="n">Ndim</span><span class="p">,</span> <span class="n">Mdim</span><span class="p">)</span>
+<span class="n">mmul</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">loopshape</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">Mdim</span><span class="p">,</span> <span class="n">Ndim</span><span class="p">,</span> <span class="n">Pdim</span><span class="p">,</span> <span class="n">d_a</span><span class="p">,</span> <span class="n">d_b</span><span class="p">,</span> <span class="n">d_c</span><span class="p">)</span>
+
+<span class="c"># Read back results from the compute device</span>
+<span class="n">cl</span><span class="o">.</span><span class="n">enqueue_copy</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">h_c</span><span class="p">,</span> <span class="n">d_c</span><span class="p">)</span>
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>Almost everything here is the same as in the vector addition example, with the only difference being the <code>loopshape</code> variable. In this example we have a 2D loop (over every element in array <code>h_c</code>), with the &quot;shape&quot; defined by <code>loopshape</code>. In general you can make the shape of the loop any dimension by specifying more elements in the <code>loopshape</code> list. You will also notice that our &quot;matrices&quot; are actually arrays with the same number of elements. Matrix <code>h_a</code> should have a size of \( 500 \times 600 \), but instead is a 300,000 element vector. This is due to the fact that OpenCL can only handle 1D vectors instead of 2D matrices.</p>
+
+<p>These two examples cover much of what you need to know about how to write OpenCL programs. The clever part is figuring out which parts of the code can be parallelized, and how you can manipulate your algorithms to fit within the confines of the OpenCL limitations (no <code>math.h</code> header, no matrices, etc.).</p>
 
 	</div>
 	
