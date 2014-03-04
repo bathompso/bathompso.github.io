@@ -76,7 +76,7 @@
 
 	
 	<div class="pagecontent">
-    	<h1>10.3 OpenCL</h1>
+    	<h1>10.3: OpenCL</h1>
 
 <p>Recently, there has been another revolution in computing power: the use of graphical processing units (GPUs) in general computation. For quite a while, GPUs have been used for heavy computation: rendering and drawing the complex shapes that appear on your monitor. As computer graphics became more sophisticated (animations, transitions, gaming), GPUs became more and more powerful. To handle the enourmous amount of computation involved in rendering a computer game (drawing millions of tiny polygons), GPUs began to add more and more processing units. While each processing unit ran at a small fraction of the speed of a CPU, many advanced GPUs included hundreds (or thousands!) of these units, giving GPUs (generally) more overall processing power than a CPU.</p>
 
@@ -324,6 +324,7 @@
 <p>Almost everything here is the same as in the vector addition example, with the only difference being the <code>loopshape</code> variable. In this example we have a 2D loop (over every element in array <code>h_c</code>), with the &quot;shape&quot; defined by <code>loopshape</code>. In general you can make the shape of the loop any dimension by specifying more elements in the <code>loopshape</code> list. You will also notice that our &quot;matrices&quot; are actually arrays with the same number of elements. Matrix <code>h_a</code> should have a size of \( 500 \times 600 \), but instead is a 300,000 element vector. This is due to the fact that OpenCL can only handle 1D vectors instead of 2D matrices.</p>
 
 <p>These two examples cover much of what you need to know about how to write OpenCL programs. The clever part is figuring out which parts of the code can be parallelized, and how you can manipulate your algorithms to fit within the confines of the OpenCL limitations (no <code>math.h</code> header, no matrices, etc.).</p>
+
 
 	</div>
 	

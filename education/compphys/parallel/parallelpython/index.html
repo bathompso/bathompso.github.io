@@ -76,7 +76,7 @@
 
 	
 	<div class="pagecontent">
-    	<h1>10.2 ParallelPython</h1>
+    	<h1>10.2: ParallelPython</h1>
 
 <p>One of the first transistions into the parallel computing age was the introduction of multi-core and multi-thread CPUs. Originally, CPUs could only compute a single task at a time, but with the addition of multiple cores they could handle several at once. In this section we will explore how to write Python programs that can use all available CPU cores / threads on your machine.</p>
 
@@ -292,6 +292,7 @@ PARALLEL Time elapsed: 13.3912439346
 <div style='clear:both'></div>
 
 <p>If you run this program, you will notice that the results are printed out as they are finished. You can also see that the parallel version of this code takes just as long as the serial case for <code>findprimes(1000000)</code>, with all the other results coming essentially for free! For this and the example before, you can begin to understand the best uses for PP. Because the process-spawning sequence incurs a decent overhead, it is best to parallelize routines that require a fairly large amount of computation. That way the overhead becomes a very small percentage of each process&#39; run time, and you gain much more when running multiple at once.</p>
+
 
 	</div>
 	
