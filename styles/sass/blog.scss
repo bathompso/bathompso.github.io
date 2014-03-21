@@ -165,5 +165,12 @@
 	float: left;
 }
 
+blockquote {
+	border-left: 1px solid $themedgrey;
+	padding-left: 10px;
+	font-size: 0.9em;
+	color: $themedgrey;
+}
+
 
 
