@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>daophot</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/styles/css/syntax.css">
+    <!-- Necessary JavaScript -->
+    <script src='/js/jquery.collapse.js"'></script>
+    <script type='text/javascript' src='/js/jquery.js?ver=1.10.2'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <!-- RoyalSlider CSS -->
+	<link rel='stylesheet' id='new-royalslider-core-css-css'  href='/js/new-royalslider/lib/royalslider/royalslider.css?ver=3.1.7' type='text/css' media='all' />
+	<link rel='stylesheet' id='rsMinW-css-css'  href='/js/new-royalslider/lib/royalslider/skins/minimal-white/rs-minimal-white.css?ver=3.1.7' type='text/css' media='all' />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/styles/css/theme.css">
+    <!-- Custom Google Font -->
+    <link rel='stylesheet' id='googlefonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin' type='text/css' media='all' />
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+    	var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-43423604-1']);
+		_gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- App.net Verification -->
+    <div style="display: none">
+    	<a href="https://alpha.app.net/bathompso" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://alpha.app.net']);" class='adn-button' rel='me' data-type='follow' data-width='220' data-height='38' data-user-id='@bathompso'>Follow me on App.net</a>
+    </div>
+    <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="sitetitle"><a href="/">BATHOMPSO.COM</a></div>
+		<div class="mainnav">
+			
+				
+			
+				
+					
+						<div class="naventry"><a href="/blog/">Blog</a></div>
+					
+				
+			
+				
+			
+				
+					
+						<div class="naventry"><a href="/education/">Education</a></div>
+					
+				
+			
+				
+					
+						<div class="naventry"><a href="/research/">Research</a></div>
+					
+				
+			
+				
+			
+		</div>
+		<div class="breadcrumbs">
+			<a href="/">Home</a> &#187; <a href="/education/">Education</a> &#187; daophot
+		</div>
+	</div>
+
+	
+	<div class="pagecontent">
+    	<h1>daophot</h1>
+
+<p>daophot is a powerful photometry program, written by Peter Stetson. Below will guide you through the steps necessary to obtain magnitudes from your reduced images using daophot and allstar. This guide is essentially a paraphrased version of the full <a href="http://www.star.bris.ac.uk/%7Embt/daophot/mud9.ps">user manual</a>, which you should also take a look at to learn the full capabilities of the program.</p>
+
+<h2>Step 0: daophot.opt</h2>
+
+<p>Daophot requires manual entry of several observing parameters before it can make measurements. If you start up daophot from a new terminal window, you will immediately notice a &quot;value unacceptable&quot; error, requiring you to at least enter your instrument&#39;s read noise and gain before showing you a command prompt. To get around this annoying pop-up, we will define our daophot options in a file. By default, daophot looks for a <code>daophot.opt</code> file in the <strong>current working directory</strong>. This means that you can specify individual <code>daophot.opt</code> files for each of your folders, and perhaps vary your parameters between each folder. As we will see later, this may be necessary. </p>
+
+<p>Everything in daophot is specified by the first two letters of it names. Miraculously (or perhaps by clever planning), every command or option setting is uniquely determined by the two character string. So, in your option file you may write out the full name of the parameter, or simply specify the first two letters. The format of your <code>daophot.opt</code> file should be <code>option name = value</code>.</p>
+
+<p>Fire up you favorite text editor and make a file called <code>daophot.opt</code> in the directory you want to run daophot from. Below we will go through the necessary entries to make (at least before running anything in daophot).</p>
+
+<h4>READ NOISE [RE] and GAIN [GA]</h4>
+
+<p>The read noise and gain of your instrument are the first two things you should enter into your <code>daophot.opt</code> file. You will have to look up these values online (or in any reference material you have on your detector). The read noise should be in ADU (sometimes it is specified in electrons, and will have to be converted by dividing by the gain).</p>
+
+<h4>HIGH GOOD DATUM [HI]</h4>
+
+<p>This value specifies the highest pixel count that is considered &quot;good&quot;. Look in your detector reference material (you just had it open, right?) for this value. In most cases, the detector has a very high limit (when the counts begin to overrun, etc.), but becomes <em>non-linear</em> at much smaller counts. It is up to you to decide at what level the non-linearity will become a problem, but you most likely want to set your high good datum value to the point where your detector becomes &gt; 5% non-linear. This makes sure that your stars will always be accurately measured.</p>
+
+<h4>FWHM [FW]</h4>
+
+<p><img src="/generated/daophot/imexam-600x375-f12c0a.png" style="float: right" ></p>
+
+<p>The full-width at half maximum (FWHM) is the next important parameter to set, however getting it will require a bit of work. Open up IRAF and DS9. Then, using <code>imexam</code>, open up your image. Hovering over a few <strong>semi-bright</strong> (not really faint, but also not saturated), <strong>isolated</strong> (not overlapping or very close to any other sources) stars and pressing the <code>a</code> key will determine their FWHM. In the IRAF output, you will be looking at the <code>MOFFAT</code> column (see image to the right for what it should look like).</p>
+
+<p>After running the examination on several stars, press the <code>q</code> key to quit. Then, take the average of all the values in the <code>MOFFAT</code> column: this will be your FWHM. The example image to the right, I would set the FWHM to 2.2.</p>
+
+<p>Other daophot parameters are directly tied to the FWHM, and we can specify them as well after making this measurement. The <strong>FITTING RADIUS [FI]</strong> should be equal to \( 0.9 \times FWHM \), and the <strong>PSF RADIUS [PS]</strong> should be equal to \( 4 \times FWHM \).</p>
+
+<h4>VARIABLE PSF [VA]</h4>
+
+<p>By default, daophot assumes that the PSF computed for a certain spot on the frame will be valid everywhere. However, due to variations in efficiency across the chip, this is hardly ever the case. The variable PSF parameter tells daophot what order polynomial can be used to vary the PSF over the frame. I usually, by default, set this to <code>2</code>, allowing for quadratic variation over the entire chip.</p>
+
+<h4>EXTRA PSF CLEANING PASSES [EX]</h4>
+
+<p>This parameter allows for multiple iterations of PSF fitting, fine-tuning the fit to get a better result. I have not noticed any increase in computing time, and therefore default to setting it to <code>5</code>.</p>
+
+<h4>You&#39;re finally done.</h4>
+
+<p>After setting all these parameters, you&#39;re ready to start daophot for real. Once you&#39;ve started the program, you can edit any of these paramters by typing <code>OP</code>, hitting enter twice (to accept KEYBOARD INPUT) and then typing in parameter options. These changes will only live for the current instance of daophot. To change parameters for every run, simply edit your <code>daophot.opt</code> file.</p>
+
+<h2>Step 1: ATTACH</h2>
+
+<p><img src="/generated/daophot/start-300x100-65d267.png" style="float: right" ></p>
+
+<p>Now that your option file is done, start daophot. After opening and displaying your options, daophot will present you with a command prompt. Before daophot can compute anything, you need to tell it <em>what image to look at!</em> You do this by running the <code>attach</code> command. daophot will then ask for the image filename (or you can specify it on the same line). Make sure to include the <code>.fits</code> extension, or daophot may throw an error.</p>
+
+<p>Another nuance of daophot is that there is a maximum length limit. If you are recieving an error when trying to attach a file (and you&#39;ve made sure to add the <code>.fits</code> extension), it may be because your file path is too long. This can be solved by either (a) starting daophot from a lower directory (if you&#39;re passing through multiple folders), or (b) renaming the image to a smaller file name.</p>
+
+<p>After attaching the image successfully, daophot will print the image dimensions.</p>
+
+<h2>Step 2: FIND</h2>
+
+<p><img src="/generated/daophot/find-300x167-b14726.png" style="float: right" ></p>
+
+<p>After attaching the image, we will task daophot to detect all the stars in the frame. We do this by running the <code>find</code> command. Before running, daophot will ask for the number of frames &#39;averaged, summed&#39;. If this is a single image, then your input should be <code>1,1</code>. If you averaged a number of frames to create the image you are working on, enter that value as the first number in the list (say, <code>5,1</code>, etc.). If you <em>median-combined</em> frames into the image you are working on (what I always do), then enter 2/3<sup>rds</sup> the number of combined frames as the first number in the list (e.g. <code>3.3,1</code> if you median combined 5 images).</p>
+
+<p>Hit enter to confirm the default filename for the <code>find</code> output (a .coo file). daophot will then spit out a bunch of output, followed by a prompt asking whether you are happy with it (see the picture to the right). Just enter <code>y</code> for now, we will re-run this command in a bit. One of the parameters we did not set in Step 0 is the THRESHOLD, which specifies the lowest count source that will detected as a star, in sigmas above the mean. Using the newly generated .coo file, we will determine the best THRESHOLD level.</p>
+
+<p>First, re-open your image file and look for the faintest star you can find. Determine the number of counts in the center of this star. Using the parameter table in the top 2 lines of your .coo file, look at the THRESH value used by FIND. The THRESH value, which is in ADU, scales nearly linearly with the THRESHOLD option, in sigma. The default value of THRESHOLD is 4. Add the adjusted value of the THRESHOLD value to your option file, exit daophot and start it again. Run the same steps as above (ATTACH, FIND) and re-inspect the .coo file. Keep iterating until the THRSHOLD value you&#39;ve specified gives you the expected THRESH value in the .coo file.</p>
+
+<h2>Step 3: PHOT</h2>
+
+<p><img src="/generated/daophot/phot-300x185-58d0f8.png" style="float: right" ></p>
+
+<p>After detecting every possible star in the frame, we get rough magnitudes for each star using aperture photometry. Before running the aperture photometry command, <code>phot</code>, we need to make another option file. This aperture photometry option file <code>photo.opt</code> uses the same format as <code>daophot.opt</code>: <code>parameter = value</code>. Although there is lots you can do with this file, right now we only need 3 lines: the aperture and the sky annulus. The aperture, called <code>A1</code>, should have a value the same as your FWHM. This aperture will allow in the most light from the star, while also removing a large amount of sky noise. The other two lines in your <code>photo.opt</code> file, which denote your sky annulus, are called <code>IS</code> and <code>OS</code> (the inner and outer sky radius). I usually just choose <code>IS = 10</code> and <code>OS = 20</code>. As aperture photometry for daophot is simply a reference value, and not the final results, we don&#39;t care too much about these sky radius values.</p>
+
+<p>After creating your <code>photo.opt</code> file, run the <code>phot</code> command. It should read in your option file and populate <code>A1</code>, <code>IS</code>, and <code>OS</code> values. To run, simply press enter. Use the default file paths, specifying the input as your .coo file, and make a .ap aperture photometry file. After printing out a bunch more output, the <code>phot</code> command will estimate your limiting magnitude.</p>
+
+<h2>Step 4: PICK</h2>
+
+<p>After doing aperture photometry on everything, we move onto PSF photometry. As you know, PSF photometry fits a mathematical profile to some model stars, then uses that profile to estimate stellar magnitudes by fitting that model to all sources. Before we can get the magnitudes, we first need to pick the model stars which will create our PSF shape.</p>
+
+<p>To generate this list, run the <code>pick</code> command in daophot, feeding it the .ap file we generated in the previous step. <code>pick</code> will then ask you for the desired number of stars, as well as a limiting magnitude. As a rule of thumb, every frame should never start with less than approximately 100 PSF stars. As your frame gets bigger (\( 0.25^\circ \) or above), the number of PSF stars should increase. A rule of thumb is 1000 PSF stars per square degree. Scale up or down as necessary, keeping in mind that 100 should be the minimum.</p>
+
+<p>Your limiting magnitude should be approximately 1-2 magnitudes above the limiting magnitude specified by <code>phot</code>. If your limiting magnitude is too low, <code>pick</code> will not be able to find enough stars, and you should run <code>pick</code> again with a higher limiting magnitude until you&#39;re able to get the desired number of stars.</p>
+
+<p><code>pick</code> will generate a .lst file containing infomation on all the model PSF stars. Open this file and take a look at it. You will need to keep it open for the next step.</p>
+
+<h2>Step 5: PSF</h2>
+
+<p><img src="/generated/daophot/badpsf-close-300x212-715773.png" style="float: right" ></p>
+
+<p>Now that we have a list of model PSF stars, we need to compute it. This is done by running the <code>psf</code> command. Feed <code>psf</code> your .ap and .lst files, and save your new PSF to a .psf file.</p>
+
+<p>After entering all your file choices, daophot will begin showing you ASCII pictures of all of the model PSF stars. It will be up to you to determine whether each of the stars is a suitable choice. Remember, PSF model stars should not be:</p>
+
+<ul>
+<li><strong>Saturated</strong>: your high good datum option should take care of this, but if daophot gives you a warning about the star containing a high pixel, make sure to not choose it.</li>
+<li><strong>Around bad pixels</strong>: if daophot gives you a warning about bad pixels (or high pixels, or low pixels), do not choose it.</li>
+<li><strong>Is too close to another star</strong>: if, in the ASCII image, you see more than one star, do not choose it. A close-by second star will contaminate the PSF fit, because it will attempt to fit both as if they were a single source. The image to the right shows a model star which is too close to other stars in the frame. Make sure to reject these.</li>
+<li><strong>Is generally wonky</strong>: if there&#39;s something else wrong with the image you see (there isn&#39;t a star there, the star is stretched out, etc.), be on the safe side and remove it. While 100 is the minimum for the <em>starting</em> number of PSF model stars, the minimum number of <em>actual</em> PSF model stars is lower, probably about 50. As long as you have more than that, your fit should be fine.</li>
+</ul>
+
+<p>As you are going through these star pictures, keep your .lst file open. Whenever you reject a star, find the associated line in the .lst file. The first number in the array underneath the picture is the star ID. Use this ID to find the star in the .lst file, and delete the line. This is generally a good practice, as subsequent runs of PSF will go much faster.</p>
+
+<h2>Step 6: PSF (again)</h2>
+
+<p>After completing the tedious task of accepting or rejecting all the stars in your .lst file, you&#39;ll be presented with a computation of the final statistics. In the resulting table, you&#39;ll see a list of stars and their associated profile errors, with some marked as <code>?</code> or <code>*</code>. These marked stars are those that are 1 or 2+ standard deviations above the mean, and should be rejected as being outliers. Find these star lines in the .lst file and delete them as well.</p>
+
+<p>Now it&#39;s time to run <code>psf</code> again. No, this time you won&#39;t have to tediously mark everything as good (although you can if you really want). Before running the <code>psf</code> command, edit your options again (type <code>opt</code>, then enter). Change the WATCH STATUS parameter to -1. WATCH PROGRESS is an indicator of the amount of output you wish to recieve. Anything less than 0 means to output the least output possible, sometimes almost nothing. When <code>psf</code> is run with a negative WATCH PROGRESS parameter, everything in the .lst file is marked as accepted without any further input. This is fine, because we&#39;ve already ensured that everything in the file is good.</p>
+
+<p>After changing your options, run <code>psf</code> again. Do <strong>not</strong> use the default file options, but instead use what we did before: the .ap file. After entering all the file names (or just using the default .lst and .psf options), all the statistics will be shown again. If there are still stars with <code>?</code> or <code>*</code>, remove them from the .lst file and run PSF again. Keep iterating like this until no more stars show these symbols.</p>
+
+<p>After everything is complete, look back at your .lst file. Make sure that, at minimum it has more than half of the number of PSF model stars you started with. If it doesn&#39;t, go back to Step 4 (the <code>pick</code> command, with WATCH PROGRESS = 1). Keep choosing more stars until you have half of the target number of PSF stars. This &quot;half number&quot; is chosen from your original guess: if you start with 100 stars, but end with 40 and pick 200 instead, you only need to have 50 at the end, not 100. If you make the half value a moving target, you may never get there!</p>
+
+<h2>Step 7: allstar</h2>
+
+<p>Now that we have computed our PSF fit, we need to apply that model to all the stars in our frame and determine magnitudes. This <em>can</em> be done in daophot, but it is actually a more easily implemented task of the companion program allstar.</p>
+
+<p>Before you run allstar, you need to make an option file (everything in the daophot suite needs one), <code>allstar.opt</code>. This option file will only need 4 values, though:</p>
+
+<ul>
+<li><strong>FIT RADIUS [FI]</strong> Set the fit radius parameter to the same value you have in your <code>daophot.opt</code> file: \( 0.9 \times FWHM \).</li>
+<li><strong>WATCH PROGRESS [WA]</strong> Set this parameter to 0. We don&#39;t need any of the output, since our input PSF has already been tested.</li>
+<li><strong>IS / OS</strong> Set the inner and outer sky radius to the ssame values in <code>photo.opt</code>: as a default, I set them to 10 and 20, respectively.</li>
+</ul>
+
+<p>Once you save this option file, run allstar. It will ask for the image name, and the default options for input file (.ap), PSF file (.psf) and output (.als) are acceptable. allstar will show a progress message as it computes PSF magnitudes, and may take a while to run. Wait for all the star to converge or be tossed out, and you will have your final PSF photometry magnitudes.</p>
+
+
+	</div>
+	
+	
+</body>
+</html>
