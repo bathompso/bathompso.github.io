@@ -33,6 +33,17 @@ a:hover {
 	}
 }
 
+.sitelogo {
+	float: left;
+	padding-right: 0px;
+	margin-top: -10px;
+	margin-bottom: -70px;
+	
+	@media #{$mediaphone} {
+		display: none;
+	}
+}
+
 .sitetitle {
 	float: left;
 	width: 35%;
@@ -86,12 +97,14 @@ a:hover {
 	clear: both;
 	font-size: 0.9em;
 	padding: 2px 0px 2px 0px;
+	margin-left: 105px;
 	border-top: 1px solid $themegrey;
 	border-bottom: 1px solid $themegrey;
 	
 	@media #{$mediaphone} {
 		width: 100%;
 		padding: 0px 0px 0px 0px;
+		margin-left: 0px;
 	}
 }
 
