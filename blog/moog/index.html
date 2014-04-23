@@ -116,7 +116,7 @@
 <li><p>On your Snow Leopard machine, install XCode. This can be done by either running the XCode installer from the install DVD, or downloading an XCode installer from <a href="http://developer.apple.com/downloads">developer.apple.com/downloads</a>, logging in with your AppleID, and searching for Snow Leopard XCode downloads.</p></li>
 <li><p>Next you&#39;ll need to download g77, a GNU FORTRAN-77 compiler, which you can find at <a href="http://hpc.sourceforge.net">hpc.sourceforge.net</a>. Make sure to download the intel version, which will extract to <code>g77-intel-bin.tar</code>. Install the binaries by running <code>sudo tar -xvf g77-intel-bin.tar -C /</code></p></li>
 <li><p>Next, you&#39;ll need to download and install <a href="http://scisoftosx.dyndns.org">scisoft</a>. While scisoft itself is definitely a &quot;software-rot&quot; offender, it&#39;s also the only way to get a (free) version of SuperMongo installed, which is required for MOOG. It&#39;s a monster of a package, and will install a ton of things, but if you&#39;re astronomer you&#39;ll probably want them installed anyway (IRAF and scientific Python installations are also included).</p></li>
-<li><p>Lastly, you&#39;ll need to download a <em>modified</em> version of the MOOG 1-click installer from <a href="https://github.com/andycasey/moog">github</a>.</p></li>
+<li><p>Lastly, you&#39;ll need to download the MOOG 1-click installer from <a href="https://github.com/andycasey/moog">github</a>.</p></li>
 <li><p>Now you just need to install MOOG. Within the newly-downloaded moog-master, run <code>sudo python setup.py install</code>. The build <em>should</em> run with no errors. The newly-built <code>MOOG</code> and <code>MOOGSILENT</code> binares will be located in <code>/usr/local/bin/</code>.</p></li>
 </ol>
 
@@ -126,9 +126,9 @@
 
 <ol>
 <li><p>Again, download and install <a href="http://scisoftosx.dyndns.org">scisoft</a> (using a Mavericks version this time). MOOG depends on SuperMongo, and therefore these libraries must exist.</p></li>
-<li><p>Copy <code>AquaTerm.framework</code> from the github source to <code>/Library/Frameworks/</code>.</p></li>
 <li><p>Make sure X11 is installed. Because Apple no longer maintains their X11 application, you&#39;ll have to download and install <a href="http://xquartz.macosforge.org/landing/">XQuartz</a> instead.</p></li>
 <li><p>When MOOG starts, it writes some data files to a specific directory. In the current install, this directory is located at <code>/.moog</code>. You will have to create this directory manually and make sure that all users can read and write to it.</p></li>
+<li><p>Lastly, you&#39;ll have to download a <em>modified</em> version of the 1-click installer from <a href="https://github.com/bathompso/moog">my github</a>, which contains an additional library, <code>libg2c.0.dylib</code>. Copy this library to <code>/usr/local/lib</code>.</p></li>
 <li><p>After all the prerequisites are satisfied, copy over the compiled binaries to somewhere within your path. I chose <code>/usr/local/bin</code>, as that&#39;s where they were installed on the original Snow Leopard machine.</p></li>
 </ol>
 
