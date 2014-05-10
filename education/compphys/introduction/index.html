@@ -105,11 +105,13 @@
 
 <h2>1.1 Installation</h2>
 
-<p>Before we can attempt to write Python programs, we first must install the software. Along with the Python compilers, we must also install additional modules. Modules are software packages that add functionality to Python, such as advanced plotting and mathematical functions. Below are instructions for installing python and the necessary modules for whatever operating system you are using.</p>
+<p>Before we can attempt to write Python programs, we first must install the software. Along with the Python compilers, we must also install additional modules. Modules are software packages that add functionality to Python, such as advanced plotting and mathematical functions. Below are instructions for installing python and the necessary modules regardless of what operating system you are using.</p>
 
-<h3>Mac Installation Routine</h3>
+<p>These install instructions were tested on OS X 10.9, Window 8.1 and Ubuntu 13.04, but should work in general for any related operating system.</p>
 
-<p>As I am building this course while running on a Mac, this will be the most complete walkthrough, and therefore (possibly) the most complicated. First, we need to download and install the XCode copilers, located in the command line tools package.</p>
+<h3>Mac Installation Pre-Step</h3>
+
+<p>If you are installing things on a Mac, there is an additional first-step that must be undertaken before installing Python: we need to download and install the XCode copilers, located in the command line tools package.</p>
 
 <ol>
 <li>Go to <a href="http://developer.apple.com/downloads">developer.apple.com/downloads</a></li>
@@ -120,74 +122,17 @@
 
 <p>After the command line tools package is installed, you may notice that you already have Python installed. Installing packages and running programs through this version of Python is not recommended however, as it is the system&#39;s base location. If something goes wrong in the future (package versions get out of sync, something gets deleted, etc.) there is no easy way to <em>nuke</em> the Python installation and start over. It is best to install a new, second version of Python that is easily removable if something goes haywire.</p>
 
-<p>To get this version of python, we first install the best Mac package manager: homebrew. You do this by loading up a bash shell (the default if you&#39;ve never changed it, or by running <code>/bin/bash</code> from another shell), then envoking the command:</p>
+<h3>Anaconda Install</h3>
 
-<div class="highlight"><pre class="shell"><code class="bash">ruby -e <span class="s2">&quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;</span>
-</code></pre></div>
+<p>Continuum Analytics provides an all-in-one installer of Python and <a href="http://docs.continuum.io/anaconda/pkgs.html">whole array of modules</a>, called Anaconda. </p>
 
-<p>Once it is installed, make sure to run <code>brew doctor</code> to make sure there are no outstanding issues with your install that need to be addressed. On a clean install of Mac OS X (or one where you never messed with any command-line stuff), you shouldn&#39;t have any issues.</p>
+<ol>
+<li>Go to <a href="http://continuum.io/downloads">continuum.io/downloads</a> and download the Anaconda installer for your operating system. If you&#39;re using a Mac, I recommend downloading the <em>bash</em> installer, not the GUI.</li>
+<li>If on Windows, simply double-click the downloaded .exe to get started. For Mac and Linux, you&#39;ll have to open a Terminal window, and run the downloaded script: <code>sudo ./Anaconda____.sh</code> on Mac, or <code>sudo Anaconda____.sh</code> on Linux. </li>
+<li>If you are running on a Mac or Linux machine, make sure to add the path to your Anaconda installation to your <code>PATH</code> environment variable by placing it in your <code>.bashrc</code> or <code>.tcshrc</code> file.</li>
+</ol>
 
-<p>After making sure everything with the homebrew install is fine, you can install Python via the command:</p>
-
-<div class="highlight"><pre class="shell"><code class="bash">brew install python
-</code></pre></div>
-
-<p>Once that install completes, close and re-open your Terminal window, and then check which version of Python you are running by typing <code>which python</code>. The answer should be <code>/usr/local/bin/python</code>. If it isn&#39;t, you may have to update your PATH environment variable by editing your login <code>.tcshrc</code> or <code>.bashrc</code> file to make sure <code>/usr/local/bin</code> comes before <code>/usr/bin</code>.</p>
-
-<p>Now that the main Python language is installed, we need to get the modules that will allow us to do more advanced things. We do this by using the <code>pip</code> command. <code>pip</code> should already be installed with the Python distribution you installed (you can confirm by simply typing <code>pip</code> into a command line), but if not, you can get <code>pip</code> via the terminal command:</p>
-
-<div class="highlight"><pre class="shell"><code class="bash">sudo easy_install pip
-</code></pre></div>
-
-<p>After you run this command, close and re-open your terminal window so that the paths can be updated. Once <code>pip</code> is installed, you can install the necessary modules:</p>
-
-<div class="highlight"><pre class="shell"><code class="bash">sudo pip install numpy
-sudo pip install scipy
-sudo pip install matplotlib
-sudo pip install six
-sudo pip install mako
-sudo pip install pyopencl
-</code></pre></div>
-
-<p><code>numpy</code> is a python module that adds lots of advanced math functionality to Python: Multi-dimensional arrays, matrix math and advanced calculus routines are found here. <code>scipy</code> contains many scientifically useful routines. <code>matplotlib</code> is a graphics module that mimics much of the graphing functionality of matlab. <code>six</code> and <code>mako</code> are helper modules necessary for the final package, <code>pyopencl</code>, which allows for parallel GPU computing in Python.</p>
-
-<p>&nbsp;</p>
-
-<h3>Linux Installation Routine</h3>
-
-<p>This method was tested on a Virtual Machine running Ubuntu 13.04, but should work in general for any type of Linux distribution.</p>
-
-<p>By default, Python should already be installed. In Ubuntu, there is no way to install a 2nd version of Python, so we&#39;ll use the default location. First, you&#39;ll have to install the Python package installer, <code>pip</code>, via:</p>
-
-<div class="highlight"><pre class="shell"><code class="bash">sudo apt-get install python-pip
-</code></pre></div>
-
-<p>Next, in order to build some of the necessary packages, install the python developer libraries:</p>
-
-<div class="highlight"><pre class="shell"><code class="bash">sudo apt-get install python-dev
-</code></pre></div>
-
-<p>After you run this, close and re-open your teminal so that the paths can be updated. Once <code>pip</code>and <code>python-dev</code> are installed, you can install the necessary modules:</p>
-
-<div class="highlight"><pre class="shell"><code class="bash">sudo pip install numpy
-sudo pip install scipy
-sudo pip install matplotlib
-sudo pip install six
-sudo pip install mako
-sudo pip install pyopencl
-</code></pre></div>
-
-<p><code>numpy</code> is a python module that adds lots of advanced math functionality to Python: Multi-dimensional arrays, matrix math and advanced calculus routines are found here. <code>scipy</code> contains many scientifically useful routines. <code>matplotlib</code> is a graphics module that mimics much of the graphing functionality of matlab. <code>six</code> and <code>mako</code> are helper modules necessary for the final package, <code>pyopencl</code>, which allows for parallel GPU computing in Python.</p>
-
-<p>&nbsp;</p>
-
-<h3>Windows Installation Routine</h3>
-
-<p>I do not use Windows on a regular (or even infrequent) basis. This method was tested on a Virtual Machine running Windows 8.1, and should work for all other versions of windows.</p>
-
-<p>Because there is no UNIX underpinning for Windows, a manual install of Python and the supporting packages is near impossible. Instead, there is an all-in-one installer that will handle everything for us. Head to <a href="http://continuum.io/downloads">continuum.io/downloads</a> and download the latest Anaconda Windows installer for your system (either 32 or 64 bit). Run the installer, and everything should be ready for you. You can run your Python programs in almost the exact same was as your UNIX counterparts: open Command Prompt, <code>cd</code> to the right directory, then run <code>python [name of program]</code> to run.</p>
-
-<p>Other packages can be installed via <code>pip</code>, which is also installed by Anaconda, however I have not been able to test this on a package that will install.</p>
+<p>Now you should have a working Python install through Anaconda. Opening a new Terminal window (on Mac or Linux), or a Command Prompt window (Windows) will give you access to the new Anaconda installation by typing <code>python</code>.</p>
 
 
 	</div>
