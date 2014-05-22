@@ -2,7 +2,7 @@
 <html><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Lesson 2: Basic Python Programming</title>
+    <title>Lesson 2.1: Basic Programming</title>
     <meta name="viewport" content="width=device-width">
     <!-- syntax highlighting CSS -->
     <link rel="stylesheet" href="/styles/css/syntax.css">
@@ -39,8 +39,8 @@
     <!-- MathJax -->
     <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <!-- OpenGraph Tags -->
-	<meta property="og:title" content="Lesson 2: Basic Python Programming">
-	<meta property="og:url" content="http://bathompso.com/education/compphys/basicpython/">
+	<meta property="og:title" content="Lesson 2.1: Basic Programming">
+	<meta property="og:url" content="http://bathompso.com/education/compphys/basicpython/basicprogramming/">
 	<meta property="og:type" content="website">
 	<meta property="og:locale" content="en_US">
 	<meta property="og:site_name" content="">
@@ -85,19 +85,15 @@
 			
 		</div>
 		<div class="breadcrumbs">
-			<a href="/">Home</a> &#187; <a href="/education/">Education</a> &#187; <a href="/education/compphys/">Computational Physics</a> &#187; Lesson 2: Basic Python Programming
+			<a href="/">Home</a> &#187; <a href="/education/">Education</a> &#187; <a href="/education/compphys/">Computational Physics</a> &#187; <a href="/education/compphys/basicpython/">Lesson 2: Basic Python Programming</a> &#187; Lesson 2.1: Basic Programming
 		</div>
 	</div>
 
 	
 	<div class="pagecontent">
-    	<h1>Lesson 2: Basic Python Programming</h1>
+    	<h1>Lesson 2.1: Basic Programming</h1>
 
-<p>The <a href="http://www-personal.umich.edu/%7Emejn/computational-physics/">associated textbook</a> is a very thorough and complete way of learning how to code in Python, and I will not reproduce it here. If you have not done any programming before, I suggest reading through <a href="http://www-personal.umich.edu/%7Emejn/cp/chapters/programming.pdf">Chapter 2 of the textbook</a> before attempting this page.</p>
-
-<p>Below is a somewhat-complete, but brief, overview of Python syntax and structure. If you&#39;ve already done some programming in another language and want a handy guide on Python syntax, this page will do the trick.</p>
-
-<h2>2.1 Comments</h2>
+<h2>2.1.1 Comments</h2>
 
 <p>You can specify comments by starting the line with the &#39;#&#39; symbol.</p>
 
@@ -109,7 +105,7 @@
 
 <hr>
 
-<h2>2.2 Basic Operators</h2>
+<h2>2.1.2 Basic Operators</h2>
 
 <h3>Variables</h3>
 
@@ -160,7 +156,7 @@
 
 <hr>
 
-<h2>2.3 Data Types</h2>
+<h2>2.1.3 Data Types</h2>
 
 <p>There are usually only 3 main types of variables you&#39;ll encounter in a Python program: string, integers and floats. Note that Python does not have a <code>double</code> class, like C++, as all floats are already 64-bit.</p>
 
@@ -182,7 +178,7 @@
 
 <hr>
 
-<h2>2.4 Modules</h2>
+<h2>2.1.4 Modules</h2>
 
 <h3>Importing Modules</h3>
 
@@ -267,7 +263,7 @@
 
 <hr>
 
-<h2>2.5 Input and Output</h2>
+<h2>2.1.5 Input and Output</h2>
 
 <h3>Printing to Screen</h3>
 
@@ -335,34 +331,6 @@ Ideal Gas <span class="nv">Constant</span> <span class="o">=</span> 8.3145
 
 <p>In this formatted <code>print</code> statement, you specify your formatting string first (which can contain escape characters like &#39;\n&#39; and &#39;\t&#39;), then a &#39;%&#39; sign, followed by a list of variables in parentheses. These types of <code>print</code> statements are quite useful, either for creating lists of variables that align, or taming floating-point variables. If a format is not specified, Python will often print out floating-point variables to their maximum precision: 8 decimal places! To make better sense of your data, format it to a reasonable precision.</p>
 
-<h3>Printing to File</h3>
-
-<p>It is often useful to save your data to a file, as opposed to printing it to the screen. This can be accomplished using the <code>print</code> function, but there are a setup steps before then. First, you must open the file, and give the &quot;file stream&quot; a variable name:</p>
-
-<div class="highlight"><pre class="code"><code class="python"><span class="n">filestream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-</code></pre></div>
-
-<div style='clear:both'></div>
-
-<p>The first argument in <code>open()</code> is the name of the file you want to print to. The second argument is a one character string specifying the operation: &#39;w&#39; means open the file for writing (&#39;r&#39; means open the file for reading, but we&#39;ll get to that in a second). Now that the file is open, we can write to it by passing an argument to the print statement.</p>
-
-<div class="highlight"><pre class="code"><code class="python"><span class="n">filestream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">filestream</span><span class="p">)</span>
-</code></pre></div>
-
-<div style='clear:both'></div>
-
-<p>By specifying a <code>file=</code> flag in the print statement, it knows to send the output to the opened file, not to the screen. Once we are done with printing, we will close the file so that other programs can access it, and we can make sure all the data has been flushed.</p>
-
-<div class="highlight"><pre class="code"><code class="python"><span class="n">filestream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">filestream</span><span class="p">)</span>
-<span class="n">filetream</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</code></pre></div>
-
-<div style='clear:both'></div>
-
-<p>Wasn&#39;t that simple?</p>
-
 <h3>Reading in Values From the User</h3>
 
 <p>There are many times when a program will need User input. Entries from the command line can be processed using the <code>input()</code> function:</p>
@@ -380,21 +348,6 @@ Ideal Gas <span class="nv">Constant</span> <span class="o">=</span> 8.3145
 <div style='clear:both'></div>
 
 <p>Here we have converted the user input to a <code>float</code> value, for later use. Keep in mind that your program will fail and give an error if the user does not enter a valid number.</p>
-
-<h3>Reading in Values from File</h3>
-
-<p>There are lots of complex and quick ways to read in values from files, but many rely on the expectation of a particular file format. I prefer a simple 3 lines of code to pull data from a file.</p>
-
-<div class="highlight"><pre class="code"><code class="python"><span class="n">inputfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;filename.txt&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">inputlines</span> <span class="o">=</span> <span class="n">inputfile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-<span class="n">inputfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</code></pre></div>
-
-<div style='clear:both'></div>
-
-<p>The first line of this code snippet opens the file stream for reading (the same as we saw for writing to a file). The second line reads the input file into a string with the <code>read()</code> function, and then breaks the file into separate lines (instead of a giant string with &#39;\n&#39; characters), using <code>splitlines()</code>. The last line of the code snippet then closes the file so that other programs can use it.</p>
-
-<p>The variable <code>inputlines</code> is a <em>list</em> of strings containing the lines of the file we just read in (I know, we haven&#39;t covered lists yet). After we talk about lists and loops, we&#39;ll discuss how to manipulate all of this file&#39;s data.</p>
 
 
 	</div>
