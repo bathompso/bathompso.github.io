@@ -93,17 +93,15 @@
 	<div class="pagecontent">
     	<h1>Lesson 10: Parallel Computing</h1>
 
-<h2>10.1 Introduction to Parallel Computing</h2>
-
-<h3>Moore&#39;s Law</h3>
-
-<p>Named after Intel co-founder Gordon Moore, Moore&#39;s law states that number of transistors on integrated circuits will double every 2 years. It should be noted that Moore&#39;s law is an empirical observation, not a law of physics or nature. It has been estimated that, by 2015 growth will have slowed enough that transistor count will only double every 3 years.</p>
+<p>Named after Intel co-founder Gordon Moore, <a href="http://en.wikipedia.org/wiki/Moore%27s_law">Moore&#39;s law</a> states that number of transistors on integrated circuits will double every 2 years. It should be noted that Moore&#39;s law is an empirical observation, not a law of physics or nature. It has been estimated that, by 2015 growth will have slowed enough that transistor count will only double every 3 years.</p>
 
 <p>For programmers, Moore&#39;s law was great. If your program ran too slow on your current hardware, all you had to do was wait two years, and it should run twice as fast on the newest chips.</p>
 
 <p>Around 2004, Moore&#39;s law began to break down due to overheating within the chips. Packing a large amount of transistors onto small chips left little room for heat dissipation, causing increased failures. To keep up with the Moore&#39;s law pace, chip makers expanded into multi-core architecture. By only slightly increasing the number of transistors per core, the overall chip could still keep pace.</p>
 
 <p>Unfortunately for programmers, it was no longer the case that you could wait 2 years and expect a double in performance. Now, you had to write your program to take advantage of the multiple cores that were provided by the hardware. Programming to take advantage of parallel computing requires a different type of thinking than everything that has been done previously in this class.</p>
+
+<h2>10.1 Introduction to Parallel Computing</h2>
 
 <h3>Parallel Computing Algorithms</h3>
 
@@ -137,13 +135,13 @@
 
 <h2><a href="parallelpython/">10.2 ParallelPython</a></h2>
 
-<p>One of the first transistions into the parallel computing age was the introduction of multi-core and multi-thread CPUs. Originally, CPUs could only compute a single task at a time, but with the addition of multiple cores they could handle several at once. In this section we will explore how to write Python programs that can use all available CPU cores / threads on your machine. <a href="parallelpython/">Read More...</a></p>
+<p>One of the first transistions into the parallel computing age was the introduction of multi-core and multi-thread CPUs. Originally, CPUs could only compute a single task at a time, but with the addition of multiple cores they could handle several at once. In this section we will explore how to write Python programs that can use all available CPU cores / threads on your machine.</p>
 
 <h2><a href="opencl/">10.3 OpenCL</a></h2>
 
 <p>Recently, there has been another revolution in computing power: the use of graphical processing units (GPUs) in general computation. For quite a while, GPUs have been used for heavy computation: rendering and drawing the complex shapes that appear on your monitor. As computer graphics became more sophisticated (animations, transitions, gaming), GPUs became more and more powerful. To handle the enourmous amount of computation involved in rendering a computer game (drawing millions of tiny polygons), GPUs began to add more and more processing units. While each processing unit ran at a small fraction of the speed of a CPU, many advanced GPUs included hundreds (or thousands!) of these units, giving GPUs (generally) more overall processing power than a CPU.</p>
 
-<p>In this section we will learn how to harness the massively-parallel architecture of your GPU for use in your Python programs. <a href="opencl/">Read More...</a></p>
+<p>In this section we will learn how to harness the massively-parallel architecture of your GPU for use in your Python programs.</p>
 
 
 	</div>

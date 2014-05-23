@@ -97,9 +97,9 @@
 
 <h2>10.2.1 Installation</h2>
 
-<p>Stock Python (including the modules used so far) do not allow Python to take advantage of multi-core architecture. Instead, we must download and install another module, called (imaginatively) ParallelPython. First, go to the <a href="http://www.parallelpython.com/content/view/18/32/">ParallelPython download page</a> and download the latest stable release. Unpack it and <code>cd</code> inside. To install, simply run</p>
+<p>Stock Python (including the modules used so far) do not allow Python to take advantage of multi-core architecture. Instead, we must download and install another module, called (imaginatively) ParallelPython. This can be done via the built-in <code>pip</code> installer, with some nudging. ParallelPython is not hosted on the same repository <code>pip</code> usually downloads from, so you&#39;ll have to allow for using external and unverified sources to find it.</p>
 
-<div class="highlight"><pre class="shell"><code class="bash">python setup.py install
+<div class="highlight"><pre class="shell"><code class="bash">sudo pip install pp --allow-external pp --allow-unverified pp
 </code></pre></div>
 
 <p>After successful installation, you should be able to access all ParallelPython (PP) routines by importing the module via</p>
