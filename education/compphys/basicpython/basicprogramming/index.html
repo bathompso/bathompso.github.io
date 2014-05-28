@@ -349,6 +349,25 @@ Ideal Gas <span class="nv">Constant</span> <span class="o">=</span> 8.3145
 
 <p>Here we have converted the user input to a <code>float</code> value, for later use. Keep in mind that your program will fail and give an error if the user does not enter a valid number.</p>
 
+<h2>2.1.6 Timing</h2>
+
+<p>There are many times when you want to determine how efficient your program is. One way to do this is by timing how long it takes to accomplish tasks, which can be done via the <code>time.time()</code> command.</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+<span class="o">...</span>    <span class="c"># Program Steps Here</span>
+
+<span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Program took </span><span class="si">%.1f</span><span class="s">s to complete&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p><em>Note: because of the name redundancy of the <code>time()</code> function and <code>time</code> module, this is the only time I ever advocate using the <code>from ____ import ____</code> syntax</em>. The <code>time()</code> function returns a counter in units of seconds, so the subtraction is the elapsed time the program takes.</p>
+
+<p>When we get near the end of the course, we will take a look at writing parallel programs, which should significantly speed up processing times. We will make heavy use of the <code>time()</code> function to quantify the speed increase when running a parallel as opposed to a serial program.</p>
+
 
 	</div>
 	

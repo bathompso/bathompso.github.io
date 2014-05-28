@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Lesson 2 Exercises</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/styles/css/syntax.css">
+    <!-- Necessary JavaScript -->
+    <script src='/js/jquery.collapse.js"'></script>
+    <script type='text/javascript' src='/js/jquery.js?ver=1.10.2'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <!-- RoyalSlider CSS -->
+	<link rel='stylesheet' id='new-royalslider-core-css-css'  href='/js/new-royalslider/lib/royalslider/royalslider.css?ver=3.1.7' type='text/css' media='all' />
+	<link rel='stylesheet' id='rsMinW-css-css'  href='/js/new-royalslider/lib/royalslider/skins/minimal-white/rs-minimal-white.css?ver=3.1.7' type='text/css' media='all' />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/styles/css/theme.css">
+    <!-- Custom Google Font -->
+    <link rel='stylesheet' id='googlefonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin' type='text/css' media='all' />
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+    	var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-43423604-1']);
+		_gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- App.net Verification -->
+    <div style="display: none">
+    	<a href="https://alpha.app.net/bathompso" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://alpha.app.net']);" class='adn-button' rel='me' data-type='follow' data-width='220' data-height='38' data-user-id='@bathompso'>Follow me on App.net</a>
+    </div>
+    <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- OpenGraph Tags -->
+	<meta property="og:title" content="Lesson 2 Exercises">
+	<meta property="og:url" content="http://bathompso.com/education/compphys/basicpython/exercises/">
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:site_name" content="">
+	
+	
+</head>
+<body>
+	<div class="header">
+		<img class="sitelogo" src="/media/fullsize/logo.png" height="100px" />
+		<div class="sitetitle"><a href="/">BATHOMPSO.COM</a></div>
+		<div class="mainnav">
+			
+				
+			
+				
+					
+						<div class="naventry"><a href="/blog/">Blog</a></div>
+					
+				
+			
+				
+			
+				
+					
+						<div class="naventry"><a href="/education/">Education</a></div>
+					
+				
+			
+				
+					
+						<div class="naventry"><a href="/research/">Research</a></div>
+					
+				
+			
+				
+					
+						<div class="naventry"><a href="/resume/">Resumé</a></div>
+					
+				
+			
+				
+			
+		</div>
+		<div class="breadcrumbs">
+			<a href="/">Home</a> &#187; <a href="/education/">Education</a> &#187; <a href="/education/compphys/">Computational Physics</a> &#187; <a href="/education/compphys/basicpython/">Lesson 2: Basic Python Programming</a> &#187; Lesson 2 Exercises
+		</div>
+	</div>
+
+	
+	<div class="pagecontent">
+    	<h1>Lesson 2 Exercises</h1>
+
+<h2>2.1 Exercises (Basic Programming)</h2>
+
+<p><strong>Example 2.1</strong> - <em>A Ball Dropped From A Tower</em> [Solution to Exercise 2.1 in the text]</p>
+
+<blockquote>
+<p>A ball is dropped from a tower of height h with initial velocity zero. Write a program that asks the user to enter the height in meters of the tower and then calculates and prints the time the ball takes until it hits the ground, ignoring air resistance. Use your program to calculate the time for a ball dropped from a 100 m high tower.</p>
+</blockquote>
+
+<p>We know from Physics 101 that the position of an object under the control of (only) gravity is: \( x = x_0 + v_0 t + 0.5gt^2 \). The initial height, \( x_0 \), will be input from the user, and \( v_0 \) is given to be zero. We also want to determine the time when \( x = 0 \), as that is when the ball hits the ground.</p>
+
+<p>Using all of this information, we can solve the quadratic equation: \( t = \sqrt(-2x_0 / g) \). Using this simple equation, we can write our program.</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>    <span class="c"># sqrt() is not built-in</span>
+<span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.8</span>     <span class="c"># gravity in m/s</span>
+
+<span class="c"># Get user input</span>
+<span class="n">h</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">&quot;Enter height of tower (m): &quot;</span><span class="p">))</span>
+
+<span class="c"># Calculate Time</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">g</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;It takes </span><span class="si">%.1f</span><span class="s"> seconds for the ball to fall from a </span><span class="si">%d</span><span class="s">m tower&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash">Enter height of tower <span class="o">(</span>m<span class="o">)</span>: 100
+It takes 4.5 seconds <span class="k">for </span>the ball to fall from a 100m tower
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<hr>
+
+<p><strong>Exercise 2.2</strong> - <em>Altitude of a Satellite</em></p>
+
+<p>Work through exercise 2.2 in the book.</p>
+
+
+	</div>
+	
+	
+<div style="clear: both; padding-top: 15px;">&nbsp;</div>
+<div class="footercontainer">
+	<div class="footercontent">
+		<img src="/generated/bioface-200x200-353493.png" class="footerbiopic" >
+		<div class="footertext">
+			<h2>Ben Thompson</h2>
+			<p>Master of all things bathompso. Lifelong astrophysicist looking for a new experience in data science. Technology enthusiast and evangelist of all things Apple.</p>
+			<div class="footerlink" style="margin-left: 90px;"><a href="/resume/">Resumé</a></div>
+			<div class="footerlink"><a href="/research/">Research</a></div>
+			<div class="footerlink" style="border: 0"><a href="https://github.com/bathompso/">Code</a></div>
+		</div>
+		<div class="attributions">bathompso.com is powered by <a href="http://jekyllrb.com">Jekyll</a>, hosted by <a href="http://github.com">GitHub</a>. <img src="/generated/github-icon-footer-20x20-e3d2c4.png" ></div>
+	</div>
+</div>
+
+</body>
+</html>

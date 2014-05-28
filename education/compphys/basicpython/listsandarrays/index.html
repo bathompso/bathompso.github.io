@@ -244,6 +244,50 @@ The ninth finonacci number is 34
 
 <p>Nested lists are good for making a &quot;matrix&quot; with mixed datatypes. We will go over a better way of creating matrices, when all data is numerical, in a section below.</p>
 
+<h3>Sorting</h3>
+
+<p>There are many times when you want to sort a list. In many computer science textbooks, this section would involve several pages of <em>sorting theory</em>: bubble sorts vs insertion sort vs bucket sort, etc. Because we want to use code as a tool, we don&#39;t need to understand all the nuances, but instead just know <em>how to do it</em>. This will be a common theme throughout the course. </p>
+
+<p>Sorting of a list is accomplished via the <code>.sort()</code> function. While this is mostly applied to numerical data, you can sort a mixed-data list just as easily.</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">]</span>
+<span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash"><span class="o">[</span>-3, 5, 10.0, <span class="s1">&#39;hello&#39;</span><span class="o">]</span>
+</code></pre></div>
+
+<p>The most important thing to note about the <code>.sort()</code> function is that it operates <em>in-place</em>. The <code>t</code> vector is replaced by a sorted version of itself, as opposed to having it assigned to another variable. If you do not want this to happen; you want a sorted vector, but have to keep the original intact, you can instead using the <code>sorted()</code> function:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">]</span>
+<span class="n">st</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash"><span class="o">[</span>5, 10.0, -3, <span class="s1">&#39;hello&#39;</span><span class="o">]</span>
+<span class="o">[</span>-3, 5, 10.0, <span class="s1">&#39;hello&#39;</span><span class="o">]</span>
+</code></pre></div>
+
+<p>Here, <code>t</code> is left unchanged, while <code>st</code> holds the new sorted list. In both methods, strings are given a higher &quot;value&quot; than numbers, and are therefore placed last in the sorted list.</p>
+
+<p>This is all good, but what if this list is in a specific order? Lets say you have a person&#39;s name in one list, and their age in another. If you sort the age list with <code>.sort()</code> you suddenly have no idea what name each one corresponds to. In this situation it would be preferrable to return a list of sorted <em>indices</em> instead of a completely sorted vector. You should make use of the <code>numpy.argsort()</code> function here instead.</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash">5 -4
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p><code>numpy.argsort()</code> returns a list (actually a vector, but we&#39;re not there yet), of indexes in sorted order. In this example, the first element of the sorted list is index 5, corresponding to the value -4. Because the original list is left untouched, we can easily correspond these sorted indexes to other lists the program may be looking at.</p>
+
 <h2>2.2.2 Vectors</h2>
 
 <p>You can create a vector using the <code>numpy.zeros()</code> command.</p>
@@ -283,7 +327,7 @@ The ninth finonacci number is 34
 
 <div style='clear:both'></div>
 
-<p>List functions also operate on vectors: <code>len()</code> and <code>sum()</code> produce the same results as those from regular lists. Slicing vectors works exactly the same as for lists, as well.</p>
+<p>List functions also operate on vectors: <code>len()</code> and <code>sum()</code> produce the same results as those from regular lists. Slicing and sorting vectors work exactly the same as for lists, as well.</p>
 
 <h2>2.2.3 Matrices</h2>
 
@@ -334,6 +378,40 @@ The ninth finonacci number is 34
 </code></pre></div>
 
 <div style='clear:both'></div>
+
+<h2>2.2.4 Dictionaries</h2>
+
+<p>Lists, vectors, and matrices are great for storing numerical data, but they give almost no information on <em>what</em> is stored in those values. For data that has specific meaning, it may be better served to store in a dictionary: a list of key/value pairs.</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">mystats</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;height&#39;</span><span class="p">:</span> <span class="mf">72.0</span><span class="p">,</span> <span class="s">&#39;weight&#39;</span><span class="p">:</span> <span class="mf">145.5</span><span class="p">,</span> <span class="s">&#39;eyes&#39;</span><span class="p">:</span> <span class="s">&quot;hazel&quot;</span><span class="p">,</span> <span class="s">&#39;hand&#39;</span><span class="p">:</span> <span class="s">&quot;left&quot;</span><span class="p">}</span>
+<span class="n">mybmi</span> <span class="o">=</span> <span class="mi">703</span> <span class="o">*</span> <span class="n">mystats</span><span class="p">[</span><span class="s">&#39;weight&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">mystats</span><span class="p">[</span><span class="s">&#39;height&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">mybmi</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash">19.7312
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>You&#39;ll notice that indexes for dictionaries are different than for lists or vectors. You use the <em>key</em> to reference the associated value in a dictionary.</p>
+
+<p>Like a list, dictionaries can contain any type of data you want: numbers, strings, a list, another dictionary, etc. Dictionaries are also mutable. You can easily create an empty dictionary using an empty curly brace set <code>{}</code> and add values to it over time.</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="n">movie_ratings</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">movie_ratings</span><span class="p">[</span><span class="s">&#39;Star Wars&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">movie_ratings</span><span class="p">[</span><span class="s">&#39;Titanic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">movie_ratings</span><span class="p">[</span><span class="s">&#39;Mulan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="k">print</span><span class="p">(</span><span class="n">movie_ratings</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre class="results"><code class="bash"><span class="o">{</span><span class="s1">&#39;Star Wars&#39;</span>: 10, <span class="s1">&#39;Titanic&#39;</span>: 3, <span class="s1">&#39;Mulan&#39;</span>: 8<span class="o">}</span>
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>There are not special functions or commands necessary to add a key to a dictionary, you can simply assign a value to it like a regular variable and the key entry will be automatically generated.</p>
+
+<p>Creating a list of dictionaries is an excellent way of creating tabular data whose context is easily discernible when reading through the code. This makes them (sometimes) a better way of storing data than matrices, due to the fact that you reference a column using the key, not an amibguous digit.</p>
 
 
 	</div>

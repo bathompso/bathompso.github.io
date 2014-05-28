@@ -93,15 +93,9 @@
 	<div class="pagecontent">
     	<h1>Lesson 1: Introduction and Installation</h1>
 
-<p>Modern science is more and more dealing with large datasets and simulation, both of which require being able to write computer programs. Being an astronomer, much of my observational data is coming from sky surveys that output vast datasets for me to comb through. Without programs to sort, combine, and analyze my data, <strong>I wouldn&#39;t get anything done!</strong> Outside of astronomy, many other scientific disciplines are beginning to understand physical phenomena using advanced computer modelling. Bio-sciences are chief among them in using computer models to study things which cannot always be directly observed. Building and understanding these models will also require programming knowledge. Now you see why this class is so important! </p>
+<p>Modern science is more and more dealing with large datasets and simulation, both of which require being able to write computer programs. Being an astronomer, much of my observational data is coming from sky surveys that output vast datasets for me to comb through. Without programs to sort, combine, and analyze my data, <strong>I wouldn&#39;t get anything done!</strong> Outside of astronomy, many other scientific disciplines are beginning to understand physical phenomena using advanced computer modelling. Bio-sciences are chief among them in using computer models to study things which cannot always be directly observed. Building and understanding these models will also require programming knowledge. The theme of this class (at least in my mind), should be: <strong>if you are to be relevant in science in the future, you must be able to write computer programs</strong>.</p>
 
-<p>The theme of this class (at least in my mind), should be: <strong>if you are to be relevant in science in the future, you must be able to write computer programs</strong>.</p>
-
-<p>Before you (and I) get started in this class, I want to lay out some of the basic ideas behind my teaching method. The most important thing that you must remember throughout the entire experience is <strong>I am not a computer scientist</strong>. Things that many computer scientists may see as fairly important will not be discussed here: efficient use of memory, error handling, race conditions, security issues, etc. This is because those projects that we will work on in this class, as well as most of the programs you will write for physics research, will not suffer from any of these issues. If you end up going on into another discipline (more aligned with computer science), please do look up these best practices, as they will be of the utmost importance.</p>
-
-<p>My experience with programming has been mostly self-taught, and as such I have picked up my own programming style, which may not always align with programming best practices. Most of my methods are brute-force, often memory-intensive, ways of doing things, simply because they are the easiest to write and none of my programs so far have run into issues being written this way. As you progress in the class (or read outside sources), you may notice that my way of doing something is not the &quot;best&quot; way, and you may begin to code programs differently. <strong>This is a good thing</strong>. It means that (1) you are now competent enough in Python that you are beginning to create your own style of programming, and (2) you are a more considerate programmer than I am!</p>
-
-<p>I hope that by the end of the course you understand the basics of computer programming (and maybe a bit more). Let&#39;s get started!</p>
+<p>Many classes on computational physics is taught in the same vein as a computer science or mathematics class, spending a majority of the focus on the mathematical concepts behind the program instead of the code itself. Where a normal computational physics class may spend hours on various numerical integration techniques, their strengths, weaknesses, and subtleties, this class will not. A simple paragraph of math explanation and a few lines of code will provide the same level of necessary knowledge, and will also allow you to <em>understand by doing, instead of reading</em>. I hope that this type of approach allows you to more fully grasp the programming concepts than other books.</p>
 
 <h2>1.1 Installation</h2>
 
@@ -133,6 +127,33 @@
 </ol>
 
 <p>Now you should have a working Python install through Anaconda. Opening a new Terminal window (on Mac or Linux), or a Command Prompt window (Windows) will give you access to the new Anaconda installation by typing <code>python</code>.</p>
+
+<p><em>Caveat for Windows Machines: External modules are notoriously hard to install on Python, but Anaconda makes this easy. Some of the later lessons of this class will require additional modules to be installed, which may fail on a Windows machine. To complete these lessons</em>.</p>
+
+<h2>1.2 Running Python Programs</h2>
+
+<p>When you type <code>python</code> into your terminal, you will get a Python prompt, where you can type single-lined commands into the prompt as they are displayed in the text. To run more complicated programs, however, you&#39;ll have to run those programs from a file. You can run this file in two different ways.</p>
+
+<p>The first, and easiest, way is to run the command:</p>
+
+<div class="highlight"><pre class="shell"><code class="bash">python file.py
+</code></pre></div>
+
+<p>Where <code>file.py</code> is the name of the program file.</p>
+
+<p>A second way to run python programs is by adding a <em>hashbang</em> line to beginning of your program:</p>
+
+<div class="highlight"><pre class="code"><code class="python"><span class="c">#! /usr/bin/env python</span>
+</code></pre></div>
+
+<div style='clear:both'></div>
+
+<p>This lines tells the interpreter what executable to use when running the program. In this case, we&#39;re pointing to <code>/usr/bin/env python</code>, which redirects to the preferred python installation on your cmputer (as determined by your <code>PATH</code> environment variable). If you add this line to the beginning of the file, you can run the command just like any other executable:</p>
+
+<div class="highlight"><pre class="shell"><code class="bash">./file.py
+</code></pre></div>
+
+<p>In order to do this, you may have to adjust the permissions of the program file to be executable. Adding this line is preferred by some people because it explicitly states that <strong>this is a Python program</strong>. The first option is easier, however, as it does not require the adjustment of any file permissions.</p>
 
 
 	</div>
