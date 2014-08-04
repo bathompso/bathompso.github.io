@@ -83,6 +83,10 @@
 	font-size: 0.9em;
 	color: #aaa;
 	
+	a { color: #aaa; }
+	a:visited { color: #aaa; }
+	a:hover { color: #aaa; text-decoration: underline; }
+	
 	@media #{$mediatablet} {
 		width: 320px;
 	}
@@ -155,6 +159,10 @@
 	padding-bottom: 20px;
 	font-size: 0.9em;
 	color: $themedgrey;
+	
+	a { color: $themedgrey; }
+	a:visited { color: $themedgrey; }
+	a:hover { color: $themedgrey; text-decoration: underline; }
 }
 
 .blogmainimg {
