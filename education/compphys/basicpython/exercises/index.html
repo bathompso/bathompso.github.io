@@ -54,8 +54,6 @@
 		<div class="mainnav">
 			
 				
-			
-				
 					
 						<div class="naventry"><a href="/blog/">Blog</a></div>
 					
@@ -67,6 +65,8 @@
 					
 						<div class="naventry"><a href="/education/">Education</a></div>
 					
+				
+			
 				
 			
 				
@@ -119,7 +119,7 @@
 
 <p>Using all of this information, we can solve the quadratic equation: \( t = \sqrt(-2x_0 / g) \). Using this simple equation, we can write our program.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>    <span class="c"># sqrt() is not built-in</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>    <span class="c"># sqrt() is not built-in</span>
 <span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.8</span>     <span class="c"># gravity in m/s</span>
 
 <span class="c"># Get user input</span>
@@ -127,12 +127,10 @@
 
 <span class="c"># Calculate Time</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">g</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;It takes </span><span class="si">%.1f</span><span class="s"> seconds for the ball to fall from a </span><span class="si">%d</span><span class="s">m tower&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
-</code></pre></div>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;It takes </span><span class="si">%.1f</span><span class="s"> seconds for the ball to fall from a </span><span class="si">%d</span><span class="s">m tower&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span></code></pre></div>
 
-<div class="highlight"><pre class="results"><code class="bash">Enter height of tower <span class="o">(</span>m<span class="o">)</span>: 100
-It takes 4.5 seconds <span class="k">for </span>the ball to fall from a 100m tower
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">Enter height of tower <span class="o">(</span>m<span class="o">)</span>: 100
+It takes 4.5 seconds <span class="k">for</span> the ball to fall from a 100m tower</code></pre></div>
 
 <div style='clear:both'></div>
 

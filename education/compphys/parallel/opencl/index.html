@@ -54,8 +54,6 @@
 		<div class="mainnav">
 			
 				
-			
-				
 					
 						<div class="naventry"><a href="/blog/">Blog</a></div>
 					
@@ -67,6 +65,8 @@
 					
 						<div class="naventry"><a href="/education/">Education</a></div>
 					
+				
+			
 				
 			
 				
@@ -155,13 +155,12 @@
 
 <p><strong>Kernel Example 1: Vector Addition:</strong> The kernel below takes in two vectors and adds them together.</p>
 
-<div class="highlight"><pre class="code"><code class="c++"><span class="n">__kernel</span> <span class="kt">void</span> <span class="nf">vadd</span><span class="p">(</span><span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">c</span><span class="p">,</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">count</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">__kernel</span> <span class="kt">void</span> <span class="nf">vadd</span><span class="p">(</span><span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">c</span><span class="p">,</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">count</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">get_global_id</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">)</span>
         <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -176,7 +175,7 @@
 
 <p><strong>Kernel Example 2: Matrix Multiplication:</strong> The kernel below takes in two matrices and multiplies them together.</p>
 
-<div class="highlight"><pre class="code"><code class="c++"><span class="n">__kernel</span> <span class="kt">void</span> <span class="nf">mmul</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">Mdim</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">Ndim</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">Pdim</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">B</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">C</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">__kernel</span> <span class="kt">void</span> <span class="nf">mmul</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">Mdim</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">Ndim</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">Pdim</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">B</span><span class="p">,</span> <span class="n">__global</span> <span class="kt">float</span><span class="o">*</span> <span class="n">C</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">get_global_id</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
@@ -189,8 +188,7 @@
             <span class="n">tmp</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">Ndim</span><span class="o">+</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="o">*</span><span class="n">Pdim</span><span class="o">+</span><span class="n">j</span><span class="p">];</span>
         <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">Ndim</span><span class="o">+</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -202,7 +200,7 @@
 
 <p>Now that we know how to write our OpenCL kernels, we need to merge them into our Python programs. There are lots of parts to this, so the easiest thing to do is look at an example. Let&#39;s look at the full Python routine for the vector addition example:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="c"># Import modules</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Import modules</span>
 <span class="kn">import</span> <span class="nn">pyopencl</span> <span class="kn">as</span> <span class="nn">cl</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
@@ -243,8 +241,7 @@
 <span class="n">vadd</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">h_a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">d_a</span><span class="p">,</span> <span class="n">d_b</span><span class="p">,</span> <span class="n">d_c</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
 <span class="c"># Read back results from the compute device</span>
-<span class="n">cl</span><span class="o">.</span><span class="n">enqueue_copy</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">h_c</span><span class="p">,</span> <span class="n">d_c</span><span class="p">)</span>
-</code></pre></div>
+<span class="n">cl</span><span class="o">.</span><span class="n">enqueue_copy</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">h_c</span><span class="p">,</span> <span class="n">d_c</span><span class="p">)</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -287,7 +284,7 @@
 
 <p>After copying back the results from the kernel, your Python program can continue as normal. To help you get a further grip on writing OpenCL programs, let us also look over the matrix multiplication example we saw in 10.3.3:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="c"># Import modules</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Import modules</span>
 <span class="kn">import</span> <span class="nn">pyopencl</span> <span class="kn">as</span> <span class="nn">cl</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
@@ -345,8 +342,7 @@
 <span class="n">mmul</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">loopshape</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">Mdim</span><span class="p">,</span> <span class="n">Ndim</span><span class="p">,</span> <span class="n">Pdim</span><span class="p">,</span> <span class="n">d_a</span><span class="p">,</span> <span class="n">d_b</span><span class="p">,</span> <span class="n">d_c</span><span class="p">)</span>
 
 <span class="c"># Read back results from the compute device</span>
-<span class="n">cl</span><span class="o">.</span><span class="n">enqueue_copy</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">h_c</span><span class="p">,</span> <span class="n">d_c</span><span class="p">)</span>
-</code></pre></div>
+<span class="n">cl</span><span class="o">.</span><span class="n">enqueue_copy</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">h_c</span><span class="p">,</span> <span class="n">d_c</span><span class="p">)</span></code></pre></div>
 
 <div style='clear:both'></div>
 

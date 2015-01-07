@@ -54,8 +54,6 @@
 		<div class="mainnav">
 			
 				
-			
-				
 					
 						<div class="naventry"><a href="/blog/">Blog</a></div>
 					
@@ -67,6 +65,8 @@
 					
 						<div class="naventry"><a href="/education/">Education</a></div>
 					
+				
+			
 				
 			
 				
@@ -150,22 +150,19 @@
 
 <p>The first, and easiest, way is to run the command:</p>
 
-<div class="highlight"><pre class="shell"><code class="bash">python file.py
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">python file.py</code></pre></div>
 
 <p>Where <code>file.py</code> is the name of the program file.</p>
 
 <p>A second way to run python programs is by adding a <em>hashbang</em> line to beginning of your program:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="c">#! /usr/bin/env python</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#! /usr/bin/env python</span></code></pre></div>
 
 <div style='clear:both'></div>
 
 <p>This lines tells the interpreter what executable to use when running the program. In this case, we&#39;re pointing to <code>/usr/bin/env python</code>, which redirects to the preferred python installation on your cmputer (as determined by your <code>PATH</code> environment variable). If you add this line to the beginning of the file, you can run the command just like any other executable:</p>
 
-<div class="highlight"><pre class="shell"><code class="bash">./file.py
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">./file.py</code></pre></div>
 
 <p>In order to do this, you may have to adjust the permissions of the program file to be executable. Adding this line is preferred by some people because it explicitly states that <strong>this is a Python program</strong>. The first option is easier, however, as it does not require the adjustment of any file permissions.</p>
 

@@ -54,8 +54,6 @@
 		<div class="mainnav">
 			
 				
-			
-				
 					
 						<div class="naventry"><a href="/blog/">Blog</a></div>
 					
@@ -67,6 +65,8 @@
 					
 						<div class="naventry"><a href="/education/">Education</a></div>
 					
+				
+			
 				
 			
 				
@@ -113,13 +113,11 @@
 
 <p>Stock Python (including the modules used so far) do not allow Python to take advantage of multi-core architecture. Instead, we must download and install another module, called (imaginatively) ParallelPython. This can be done via the built-in <code>pip</code> installer, with some nudging. ParallelPython is not hosted on the same repository <code>pip</code> usually downloads from, so you&#39;ll have to allow for using external and unverified sources to find it.</p>
 
-<div class="highlight"><pre class="shell"><code class="bash">sudo pip install pp --allow-external pp --allow-unverified pp
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo pip install pp --allow-external pp --allow-unverified pp</code></pre></div>
 
 <p>After successful installation, you should be able to access all ParallelPython (PP) routines by importing the module via</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="kn">import</span> <span class="nn">pp</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pp</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -129,8 +127,7 @@
 
 <p>Everything in PP is run through the JobServer. The JobServer reads the tasks that are passed to it and doles them out to idle cores on the machine. Before we can run anything in parallel, we must initialize the JobServer. You can do this via the line:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">job_server</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">Server</span><span class="p">()</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">job_server</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">Server</span><span class="p">()</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -142,8 +139,7 @@
 
 <p>With both options enabled, the JobServer initialization command will look like:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">job_server</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">Server</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">ppservers</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="s">&quot;10.0.0.2&quot;</span><span class="p">))</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">job_server</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">Server</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">ppservers</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="s">&quot;10.0.0.2&quot;</span><span class="p">))</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -151,8 +147,7 @@
 
 <p>Now that the JobServer is created, we can begin passing tasks to it using the <code>.submit()</code> function. A PP <code>.submit()</code> call will look like:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">result</span> <span class="o">=</span> <span class="n">job_server</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">subroutine</span><span class="p">,</span> <span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">),</span> <span class="p">(</span><span class="n">func2</span><span class="p">,</span> <span class="n">func3</span><span class="p">),</span> <span class="p">(</span><span class="s">&quot;modname&quot;</span><span class="p">,))</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">result</span> <span class="o">=</span> <span class="n">job_server</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">subroutine</span><span class="p">,</span> <span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">),</span> <span class="p">(</span><span class="n">func2</span><span class="p">,</span> <span class="n">func3</span><span class="p">),</span> <span class="p">(</span><span class="s">&quot;modname&quot;</span><span class="p">,))</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -171,9 +166,8 @@
 
 <p>The code above will submit a single job and return a single value, but that isn&#39;t the point of parallel computing, and is an egregious waste of computer resources. Instead, we want to submit multiple instances of the subroutine function, then analyze the multiple results coming back. To do this, we simply wrap the previous <code>submit()</code> command in a for loop.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">inputvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">job_server</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">subroutine</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,),</span> <span class="p">(),</span> <span class="p">(</span><span class="s">&quot;math&quot;</span><span class="p">,))</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">inputvals</span><span class="p">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">inputvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">job_server</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">subroutine</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,),</span> <span class="p">(),</span> <span class="p">(</span><span class="s">&quot;math&quot;</span><span class="p">,))</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">inputvals</span><span class="p">]</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -181,23 +175,20 @@
 
 <p>Unlike normal Python, which waits for the previous command to finish before moving on, a <code>.submit()</code> call spawn a new process, send it to an idle core (if available) and immediately moves on. This will only stop when the program needs to access the results. As a consequence, PP routines can produce unexpected results. If you ran, for example:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">inputvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">inputvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">job_server</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">subroutine</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,),</span> <span class="p">(),</span> <span class="p">(</span><span class="s">&quot;math&quot;</span><span class="p">,))</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">inputvals</span><span class="p">]</span>
 <span class="k">print</span><span class="p">,</span> <span class="s">&quot;PARALLEL RESULTS:&quot;</span>
 <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;!!!  &quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">()</span>
-</code></pre></div>
+    <span class="k">print</span> <span class="s">&quot;!!!  &quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">()</span></code></pre></div>
 
-<div class="highlight"><pre class="results"><code class="bash">PARALLEL RESULTS:
-!!!  
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">PARALLEL RESULTS:
+!!!</code></pre></div>
 
 <div style='clear:both'></div>
 
 <p>The output in the above example would appear immediately after running the program, with a long wait to finish computing all the results before finishing the print statement loop. While this isn&#39;t a logic or arithmetic error, it does produce strange-looking results for the user of your program. If you wish to &quot;pretty up&quot; the output, you can simply add a non-printing loop after the submit function to make sure all results are complete:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">r</span><span class="p">()</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">r</span><span class="p">()</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -207,7 +198,7 @@
 
 <p>Earlier in the course, we discussed how to easily (and in a brute-force manner) determine if a number was prime or not. Now, imagine that we want to determine the number of primes less than a certain value (say 10,000). This is easy to do. First, we start with our (already-written) prime-determining function.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="k">def</span> <span class="nf">isprime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">isprime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">False</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -222,16 +213,14 @@
         <span class="c"># This number is not a factor, move to the next one</span>
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="c"># We found no factors &lt;= sqrt(n), this is a prime.</span>
-    <span class="k">return</span> <span class="bp">True</span>
-</code></pre></div>
+    <span class="k">return</span> <span class="bp">True</span></code></pre></div>
 
 <div style='clear:both'></div>
 
 <p>Using this function, we can write a new function, <code>findprimes</code>, which will call isprime for all numbers less than the specified value.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="k">def</span> <span class="nf">findprimes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">isprime</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">findprimes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">isprime</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -241,7 +230,7 @@
 
 <p>Instead of running this loop normally, we instead will run it in parallel and see what benefit we gain. Below is the code that will compute the same results as <code>findprimes</code>, but will do it with all available cores.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">pp</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">pp</span>
 
 <span class="c"># [[ Function isprime definition ]]</span>
 
@@ -263,15 +252,13 @@
 <span class="n">nprimes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">x</span><span class="p">()</span> <span class="o">==</span> <span class="bp">True</span><span class="p">]</span>
 <span class="k">print</span> <span class="s">&quot;PARALLEL: There are&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">nprimes</span><span class="p">),</span><span class="s">&quot;primes below&quot;</span><span class="p">,</span><span class="n">maxval</span>
 <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&quot;PARALLEL Time elapsed:&quot;</span><span class="p">,</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span>
-</code></pre></div>
+<span class="k">print</span> <span class="s">&quot;PARALLEL Time elapsed:&quot;</span><span class="p">,</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span></code></pre></div>
 
-<div class="highlight"><pre class="results"><code class="bash">SINGLE: There are 1229 primes below 10000
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">SINGLE: There are <span class="m">1229</span> primes below 10000
 SINGLE Time elapsed: 0.0364170074463
-Running with 8 processes.
-PARALLEL: There are 1229 primes below 10000
-PARALLEL Time elapsed: 4.32518792152
-</code></pre></div>
+Running with <span class="m">8</span> processes.
+PARALLEL: There are <span class="m">1229</span> primes below 10000
+PARALLEL Time elapsed: 4.32518792152</code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -283,7 +270,7 @@ PARALLEL Time elapsed: 4.32518792152
 
 <p>Using the two custom functions, <code>isprime</code> and <code>findprimes</code>, we can write a simple, parallelized function that will compute primes of various numbers. Keep in mind that the function findprimes itself will not be parallelized, but we can run multiple instances of findprimes at once to speed up alternate calculations. Because we need to run multiple instances of <code>findprimes</code> for the parallelization to make sense, pretend we want to find how the number of primes less than a certain number grows. Here is our python program, excluding the two custom functions written out previously.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">pp</span><span class="o">,</span> <span class="nn">time</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">pp</span><span class="o">,</span> <span class="nn">time</span>
 
 <span class="c"># [[ Function isprime and findprimes definitions ]]</span>
 
@@ -304,19 +291,17 @@ PARALLEL Time elapsed: 4.32518792152
     <span class="n">tmp</span> <span class="o">=</span> <span class="n">result</span><span class="p">()</span>
     <span class="k">print</span> <span class="s">&quot;There are&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">()),</span><span class="s">&quot;primes below&quot;</span><span class="p">,</span><span class="nb">input</span>
 <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&quot;PARALLEL Time elapsed:&quot;</span><span class="p">,</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span>
-</code></pre></div>
+<span class="k">print</span> <span class="s">&quot;PARALLEL Time elapsed:&quot;</span><span class="p">,</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span></code></pre></div>
 
-<div class="highlight"><pre class="results"><code class="bash">SINGLE: There are 78498 primes below 1000000
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">SINGLE: There are <span class="m">78498</span> primes below 1000000
 SINGLE Time elapsed: 13.4798531532
-Running with 8 processes.
-There are 25 primes below 100
-There are 168 primes below 1000
-There are 1229 primes below 10000
-There are 9592 primes below 100000
-There are 78498 primes below 1000000
-PARALLEL Time elapsed: 13.3912439346
-</code></pre></div>
+Running with <span class="m">8</span> processes.
+There are <span class="m">25</span> primes below 100
+There are <span class="m">168</span> primes below 1000
+There are <span class="m">1229</span> primes below 10000
+There are <span class="m">9592</span> primes below 100000
+There are <span class="m">78498</span> primes below 1000000
+PARALLEL Time elapsed: 13.3912439346</code></pre></div>
 
 <div style='clear:both'></div>
 

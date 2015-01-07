@@ -54,8 +54,6 @@
 		<div class="mainnav">
 			
 				
-			
-				
 					
 						<div class="naventry"><a href="/blog/">Blog</a></div>
 					
@@ -67,6 +65,8 @@
 					
 						<div class="naventry"><a href="/education/">Education</a></div>
 					
+				
+			
 				
 			
 				
@@ -113,15 +113,13 @@
 
 <p><code>if</code>/<code>else</code> statements are useful for doing optional commands when a condition is met. Commands within an <code>if</code> block are <em>only</em> run if a condition is met. An <code>else</code> block is only run if the condition fails.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
 <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;x is positive&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;x is negative&quot;</span><span class="p">)</span>
-</code></pre></div>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;x is negative&quot;</span><span class="p">)</span></code></pre></div>
 
-<div class="highlight"><pre class="results"><code class="bash">x is negative
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">x is negative</code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -131,13 +129,12 @@
 
 <p>In an <code>if</code> command, you can use several numerical comparison operators:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span>     <span class="c"># Equality (double equal signs)</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span>     <span class="c"># Equality (double equal signs)</span>
 <span class="n">x</span> <span class="o">!=</span> <span class="mi">1</span>     <span class="c"># Not equal to</span>
 <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span>      <span class="c"># Greater than</span>
 <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span>      <span class="c"># Less than</span>
 <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">1</span>     <span class="c"># Greater than or equal to</span>
-<span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span>     <span class="c"># Less than or equal to</span>
-</code></pre></div>
+<span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span>     <span class="c"># Less than or equal to</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -145,10 +142,9 @@
 
 <p>You can &quot;reverse&quot; an <code>if</code> / <code>else</code> block using a <code>not</code> statement:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">thislist</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;hello&#39;</span><span class="p">,</span> <span class="s">&#39;world&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">thislist</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;hello&#39;</span><span class="p">,</span> <span class="s">&#39;world&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">this_list</span> <span class="n">contains</span> <span class="s">&#39;hello&#39;</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;This list does not say &#39;hello&#39;&quot;</span><span class="p">)</span>
-</code></pre></div>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;This list does not say &#39;hello&#39;&quot;</span><span class="p">)</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -158,17 +154,16 @@
 
 <p>You can string together multiple conditions using <code>and</code> or <code>or</code> statements.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">5</span><span class="p">:</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">5</span><span class="p">:</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="mi">10</span>
 <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
-    <span class="n">y</span> <span class="o">*=</span> <span class="mi">5</span>
-</code></pre></div>
+    <span class="n">y</span> <span class="o">*=</span> <span class="mi">5</span></code></pre></div>
 
 <div style='clear:both'></div>
 
 <p>In some cases you may have multiple conditions you want to test. You can string together multiple <code>if</code> statements using the <code>elif</code> syntax. This means that if the above condition is not met, test another condition:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="k">if</span> <span class="n">pH</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">pH</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Really Basic&quot;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">pH</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Slightly Basic&quot;</span><span class="p">)</span>
@@ -177,8 +172,7 @@
 <span class="k">elif</span> <span class="n">pH</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Slightly Acidic&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Really Acidic&quot;</span><span class="p">)</span>
-</code></pre></div>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Really Acidic&quot;</span><span class="p">)</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -186,12 +180,11 @@
 
 <p>A <code>while</code> block contains logic that is run <em>an indefinite amount of times</em>.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;Enter a positive number: &#39;</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;You entered a negative number, try again.&quot;</span><span class="p">)</span>
-</code></pre></div>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;You entered a negative number, try again.&quot;</span><span class="p">)</span></code></pre></div>
  
 
 <div style='clear:both'></div>
@@ -204,10 +197,9 @@
 
 <p><code>while</code> loops can often cause problems though:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></div>
+    <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -217,27 +209,25 @@
 
 <p>While within a loop, there may be times when you want to break out of that structure. The <code>break</code> and <code>continue</code> statement will help you do just that.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">myname</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&quot;What&#39;s my name: &quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">myname</span> <span class="o">==</span> <span class="s">&quot;Ben&quot;</span><span class="p">:</span>
         <span class="k">break</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Wrong.&quot;</span><span class="p">)</span>
-</code></pre></div>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Wrong.&quot;</span><span class="p">)</span></code></pre></div>
 
 <div style='clear:both'></div>
 
 <p>Here, the program will continue to ask for my name until you guess right. When you do, the loop will exit. Notice that the condition <code>i &lt; 0</code> is always true (we don&#39;t adjust <code>i</code> within the loop logic), but we escape from looping through the use of the <code>break</code> command.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Enter 10 positive numbers&quot;</span><span class="p">)</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
     <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">&quot;Enter a number: &quot;</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;That number is negative.&quot;</span><span class="p">)</span>
         <span class="k">continue</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></div>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -247,16 +237,14 @@
 
 <p>A <code>for</code> loop is similar to a <code>while</code> loop, except that the <code>for</code> loop logic is run a <em>set number of times</em>. Unlike <code>for</code> loops in other languages (C, C++, FORTRAN, etc.), Python <code>for</code> loops do not run on indexes, but items within a list or vector.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">k</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mf">17.6</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">k</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mf">17.6</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">k</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-</code></pre></div>
+    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></code></pre></div>
 
-<div class="highlight"><pre class="results"><code class="bash">10
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">10
 15
 17.6
-<span class="s1">&#39;hello&#39;</span>
-</code></pre></div>
+<span class="s1">&#39;hello&#39;</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -264,26 +252,23 @@
 
 <p>However, you may find yourself needing a C-like <code>for</code> loop, which you can create using the <code>range()</code> function. </p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</code></pre></div>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></div>
 
-<div class="highlight"><pre class="results"><code class="bash"><span class="o">[</span>0, 1, 2, 3, 4, 5<span class="o">]</span>
-<span class="o">[</span>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14<span class="o">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>0, 1, 2, 3, 4, 5<span class="o">]</span>
+<span class="o">[</span>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14<span class="o">]</span></code></pre></div>
 
 <div style='clear:both'></div>
 
 <p><code>range()</code> returns a list where every element&#39;s value is equal to its index. By looping over every element of this list, you get a sequence of indexes which can be used for other arrays. The <code>range()</code> function is especially useful when paired with the <code>len()</code> function on lists or arrays.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">34</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">34</span><span class="p">]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
 <span class="n">dotprod</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
-    <span class="n">dotprod</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</code></pre></div>
+    <span class="n">dotprod</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code></pre></div>
 
 <div style='clear:both'></div>
 
@@ -295,48 +280,42 @@
 
 <p>There are lots of small computations that require for loops: doing math operations of every element of a list, finding the location of values within a list, etc. These small computations can either be written as a few lines of code in a normal <code>for</code> loop, or they can be simplified in a single command. Lets go through some examples.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">i</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">i</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">j</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
-    <span class="n">j</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">e</span><span class="p">)</span>
-</code></pre></div>
+    <span class="n">j</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">e</span><span class="p">)</span></code></pre></div>
 
 <div style='clear:both'></div>
 
 <p>Here, we are simply transforming vector <code>i</code> using simple math and copying it to <code>j</code>. In this form, the logic takes 3 lines of code. We can instead using an in-line <code>for</code> loop to do the exact same thing in one line:</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">i</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">j</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">*</span> <span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">i</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">j</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">*</span> <span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span></code></pre></div>
 
 <p>The second line here contains all the logic of the three lines above. It creates a new list, where each element is equal to 10 times every element of <code>i</code>. Now you might think that this is all that powerful or useful, but it vastly simplifies code writing in many scenarios.</p>
 
 <p>Let&#39;s look at another example: say you send out a survey to people about what they majored in. Using all the responses, you want to find all the physics and math double majors.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">physics</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">physics</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">]</span>
 <span class="n">math</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">]</span>
 <span class="n">physmath</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">physics</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">physics</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span> <span class="ow">and</span> <span class="n">math</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span><span class="p">:</span>
         <span class="n">physmath</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">physmath</span><span class="p">)</span>
-</code></pre></div>
+<span class="k">print</span><span class="p">(</span><span class="n">physmath</span><span class="p">)</span></code></pre></div>
 
-<div class="highlight"><pre class="results"><code class="bash"><span class="o">[</span>6<span class="o">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>6<span class="o">]</span></code></pre></div>
 
 <div style='clear:both'></div>
 
 <p>Using these 4 lines of code, we will produce a list <code>physmath</code> which will tell us which people (as an index) are physics and math double majors. We can see from the output that only one person is: person #7 (index 6). Using the same format as above, we can write this <code>for</code>/<code>if</code> loop as a single-lined statement.</p>
 
-<div class="highlight"><pre class="code"><code class="python"><span class="n">physics</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">physics</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">]</span>
 <span class="n">math</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">]</span>
 <span class="n">physmath</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">physics</span><span class="p">))</span> <span class="k">if</span> <span class="n">physics</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span> <span class="ow">and</span> <span class="n">math</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">physmath</span><span class="p">)</span>
-</code></pre></div>
+<span class="k">print</span><span class="p">(</span><span class="n">physmath</span><span class="p">)</span></code></pre></div>
 
-<div class="highlight"><pre class="results"><code class="bash"><span class="o">[</span>6<span class="o">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>6<span class="o">]</span></code></pre></div>
 
 <div style='clear:both'></div>
 
