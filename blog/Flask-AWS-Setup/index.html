@@ -170,7 +170,7 @@
 <p>These commands get even more unwieldy when you try to copy files with <code>scp</code> or create port tunnels (more on that later). To simplify all future steps, we will create an SSH alias.</p>
 
 <ol>
-<li>Within your home folder is a hidden directory, <code>.ssh</code>. Within this directory are all the configuration files for SSH connections. As a first step, copy your downloaded <code>*.pem</code> file to the <code>~/.ssh</code> directory. <em>Note: on a Mac, the key is sometimes downloaded as a `</em>.pem.txt<code>file. Remove the</code>.txt` extension before copying.</li>
+<li>Within your home folder is a hidden directory, <code>.ssh</code>. Within this directory are all the configuration files for SSH connections. As a first step, copy your downloaded <code>*.pem</code> file to the <code>~/.ssh</code> directory. *Note: on a Mac, the key is sometimes downloaded as a <code>.pem.txt</code> file. Remove the <code>.txt</code> extension before copying.</li>
 <li><p>We will also need to change the permissions of the downloaded <code>*.pem</code> file. The key must be unreadable by other users in order to be considered; if it is readable by others it may pose a security risk. To alter the permissions, use the <code>chmod</code> function: 
 <div class="shell"><pre><code class="language-bash" data-lang="bash">chmod <span class="m">600</span> ~/.ssh/keyfile.pem</code></pre></div></p></li>
 <li><p>Now that the key file is in the right location, and with the right permissions, we can create our alias. to do this, we want to edit the <code>~/.ssh/config</code> file, which may or may not already exist on your system. Simply run <code>emacs ~/.ssh/config</code> (or another editor of your choice) to create / edit the file. Add the following entry, substituting the IP address of your instance, and the exact name of your key file:
@@ -252,7 +252,7 @@ mkdir dummyapp/app/templates</code></pre></div>
 <div class="pyfile"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></code></pre></div>
 
-<p>Once all the files are in place, you should be able to run the app with <code>python run.py</code> from the main <code>~/dummyapp/</code> folder. However, the default port 5000 is blocked, so you won&#39;t be able to see it from the outside. To do this, logout of the virtual machine and create a port tunnel:</p>
+<p>Once all the files are in place, you should be able to run the app with <code>python run.py</code> from the main <code>~/dummyapp/</code> folder. However, the default port 5000 is blocked, so you won&#39;t be able to see it from the outside. To do this, logout of the virtual machine and create a port tunnel <em>from your local machine</em>:</p>
 
 <div class="shell"><pre><code class="language-bash" data-lang="bash">ssh -L 5000:localhost:5000 aws</code></pre></div>
 
@@ -272,7 +272,7 @@ mkdir dummyapp/app/templates</code></pre></div>
 
 <p><img src="/generated/aws_flask/http_rule-873x408-a11671.png" class="blogtextimg" ></p>
 
-<p>Once the port has been opened, navigate your browser to your machine&#39;s IP address, and you should be greeted by an Nginx welcome message. This message means that the webserver is working, and is ready to be hooked into your Flask app.</p>
+<p>Once the port has been opened, navigate your browser to your instance&#39;s IP address, and you should be greeted by an Nginx welcome message. This message means that the webserver is working, and is ready to be hooked into your Flask app.</p>
 
 <h2>Configuring uWSGI</h2>
 
@@ -306,7 +306,7 @@ wsgi-file <span class="o">=</span> %<span class="o">(</span>home<span class="o">
 
 <p>Once the uWSGI configuration file is finished, we will have to configure nginx to accept traffic from uWSGI. The configuration file for nginx is located at <code>/etc/nginx/nginx.conf</code>. First, we need to break nginx&#39;s hold on port 80 (the welcome message you see), and allow uWSGI and Flask to use it. To do this, comment out lines 71 and 72, which should be the first two uncommented lines after a giant commented block.</p>
 
-<p>Next, we need to tell nginx where to look when it gets traffic from outside sources. Below the lines you just commented out, add the following block:</p>
+<p>Next, we need to tell nginx where to look when it gets traffic from outside sources. Below the lines you just commented out, and still within the <code>html</code> block, add the following:</p>
 
 <div class="shell"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
     listen 80<span class="p">;</span>
