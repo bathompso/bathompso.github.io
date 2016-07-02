@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<article id="page">
+<header style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
+               background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
+               background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
+               background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
+               background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.9))), url('/images/{{ page.image }}');
+               background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
+               background-size: contain;
+               background-position: 50% 0;">
+    <h2>{{ page.title }}</h2>
+    <p>{{ page.subtitle }}</p>
+</header>
+
+<section class="wrapper style5" style="padding-top: 40px;">
+    <div class="inner">
+        <div class="row">
+            <h5 style="padding-bottom: 40px">
+                {{ page.date | date_to_string }} &middot; <i>by</i> bathompso &middot; <i>in</i>
+                <small>{% for tag in page.tags %}&nbsp;<a href="/blog/tag/{{ tag }}/">{{ tag }}</a>&nbsp;{% endfor %}</small>
+            </h5>
+            <div class="col-sm-9" style="font-size: 0.9em">{{ content }}</div>
+            <div class="col-sm-3">
+                <a class="twitter-timeline" data-width="300" data-height="1600" href="https://twitter.com/bathompso">Tweets by bathompso</a>
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+    </div>
+</section>
+
+</article>

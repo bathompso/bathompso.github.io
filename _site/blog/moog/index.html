@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--
+  Original Design: Spectral by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Jekyll build mod
+-->
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+  <title>Solving Astronomy Software-Rot</title>
+  <meta name="description" content="There is a problem in astronomy (probably in other sciences too, but I see it mainly in my field), which I will term “software-rot,” after the better known t...">
+  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="canonical" href="http://bathompso.com/blog/moog/">
+  <link rel="stylesheet" href="/css/bootstrap.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+  <link rel="alternate" type="application/rss+xml" title="bathompso.com" href="http://bathompso.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+<header id="header">
+    <h1 style="width: auto"><a href="/index.html">bathompso.com</a></h1>
+    <div id="breadcrumb">
+        
+        
+        
+        
+            &#187;
+            
+                
+                
+                <a href="/blog">blog</a> &#187;
+                
+            
+            Solving Astronomy Software-Rot
+        
+    </div>
+    <nav id="nav">
+        <ul>
+            <li class="special">
+                <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                <div id="menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        
+                            
+                                <li><a href="/blog/">Blog</a></li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+      <article id="page">
+<header style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/Mac-Snow-Leopard.jpg');
+               background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/Mac-Snow-Leopard.jpg');
+               background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/Mac-Snow-Leopard.jpg');
+               background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/Mac-Snow-Leopard.jpg');
+               background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.9))), url('/images/Mac-Snow-Leopard.jpg');
+               background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/Mac-Snow-Leopard.jpg');
+               background-size: contain;
+               background-position: 50% 0;">
+    <h2>Solving Astronomy Software-Rot</h2>
+    <p>Astronomy software is plagued by old setups and slow development. I succeed against this obstacle.</p>
+</header>
+
+<section class="wrapper style5" style="padding-top: 40px;">
+    <div class="inner">
+        <div class="row">
+            <h5 style="padding-bottom: 40px">
+                22 Apr 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
+                <small>&nbsp;<a href="/blog/tag/Research/">Research</a>&nbsp;</small>
+            </h5>
+            <div class="col-sm-9" style="font-size: 0.9em"><p>There is a problem in astronomy (probably in other sciences too, but I see it mainly in my field), which I will term “software-rot,” after the better known term <a href="http://en.wikipedia.org/wiki/Link_rot">link-rot</a>. There are several key packages of software that many astronomers rely on to do <strong>basic</strong> data reduction that are either no longer being developed, or the developer is working on such an old configuration it may as well not be.</p>
+
+<p>The main offender is most likely <a href="http://iraf.net">IRAF</a>, which every astronomer will tell you they hate, but still install and use it anyway. IRAF is old and clunky, with installation documentation which looks like it is from another decade. The problem was supposed to be fixed with <a href="http://www.stsci.edu/institute/software_hardware/pyraf">PyRAF</a>, but it seems like more of a rewrite of bad code in a new language (python) than an actual solution.</p>
+
+<p>While I do not work on spectroscopy, a vast majority of the TCU lab focuses on it. One of the main reduction programs in astronomical spectroscopy is <a href="http://www.as.utexas.edu/~chris/moog.html">Chris Sneden’s MOOG</a>. This program, one of the most used single software packages in astronomy, is written in FORTRAN-77 which, at 27 years old, is barely supported by the most recent gfortran compiler. A program that is so widely used by astronomy graduate students <strong>shouldn’t be older than the students themselves</strong>.</p>
+
+<p>With IT pushing old machines off the network, the TCU lab is in the process of upgrading every computer from Snow Leopard to Mavericks to future-proof the lab for several years. With this upgrade comes the task of re-compiling all the source code we use on a daily basis. MOOG is one of these programs. Even without the migration, MOOG has been almost impossible to install, and even more trouble comes with the removal of all 32-bit libraries in OS X versions 10.7+.</p>
+
+<p>Luckily, I found an awesome <a href="https://github.com/andycasey/moog">1-click installer for MOOG</a>, packaged as a Python program. Unfortunately, this program does not compile on Mavericks. So before we upgraded any of our machines, we needed to figure out a way to get MOOG running on 10.9. Fortunately, I discovered how. While the installer for MOOG does not work on Mavericks, it does work on Snow Leopard. And I’ve found that the pre-built binary from a Snow Leopard installation will work and run on a Mavericks computer.</p>
+
+<p>To get this working on your machines, follow the steps below.</p>
+
+<ol>
+  <li>
+    <p>First, you’ll need access to a OS X 10.6 Snow Leopard machine. This can be in the form of an actual Snow Leopard computer (which we still have around the lab), or a Virtual Machine running Snow Leopard. More recent version of OS X (10.7+) allow for virtualization of Snow Leopard Server (not the client version). If you have an install disk for 10.6 Server, hold onto it, as you can make a Virtual Machine in <a href="https://www.virtualbox.org">Virtualbox</a> or some other virtualization software.</p>
+  </li>
+  <li>
+    <p>On your Snow Leopard machine, install XCode. This can be done by either running the XCode installer from the install DVD, or downloading an XCode installer from <a href="http://developer.apple.com/downloads">developer.apple.com/downloads</a>, logging in with your AppleID, and searching for Snow Leopard XCode downloads.</p>
+  </li>
+  <li>
+    <p>Next you’ll need to download g77, a GNU FORTRAN-77 compiler, which you can find at <a href="http://hpc.sourceforge.net">hpc.sourceforge.net</a>. Make sure to download the intel version, which will extract to <code class="highlighter-rouge">g77-intel-bin.tar</code>. Install the binaries by running <code class="highlighter-rouge">sudo tar -xvf g77-intel-bin.tar -C /</code></p>
+  </li>
+  <li>
+    <p>Next, you’ll need to download and install <a href="http://scisoftosx.dyndns.org">scisoft</a>. While scisoft itself is definitely a “software-rot” offender, it’s also the only way to get a (free) version of SuperMongo installed, which is required for MOOG. It’s a monster of a package, and will install a ton of things, but if you’re astronomer you’ll probably want them installed anyway (IRAF and scientific Python installations are also included).</p>
+  </li>
+  <li>
+    <p>Lastly, you’ll need to download the MOOG 1-click installer from <a href="https://github.com/andycasey/moog">github</a>.</p>
+  </li>
+  <li>
+    <p>Now you just need to install MOOG. Within the newly-downloaded moog-master, run <code class="highlighter-rouge">sudo python setup.py install</code>. The build <em>should</em> run with no errors. The newly-built <code class="highlighter-rouge">MOOG</code> and <code class="highlighter-rouge">MOOGSILENT</code> binares will be located in <code class="highlighter-rouge">/usr/local/bin/</code>.</p>
+  </li>
+</ol>
+
+<p>The <code class="highlighter-rouge">MOOG</code> and <code class="highlighter-rouge">MOOGSILENT</code> binaries will work on a Mavericks installation. I believe there is a problem with the install on Mavericks because g77 and the other associated libraries contain only 32bit binaries, which Mavericks does not allow. However, Mavericks has no trouble <em>running</em> 32bit binaries once they are compiled, and therefore the Snow Leopard-built executables will function properly.</p>
+
+<p>Before you can run this executable on your Mavericks computer, you’ll have to install a few things. On the new computer you wish to install MOOG on, you’ll have to run a few more steps.</p>
+
+<ol>
+  <li>
+    <p>Again, download and install <a href="http://scisoftosx.dyndns.org">scisoft</a> (using a Mavericks version this time). MOOG depends on SuperMongo, and therefore these libraries must exist.</p>
+  </li>
+  <li>
+    <p>Make sure X11 is installed. Because Apple no longer maintains their X11 application, you’ll have to download and install <a href="http://xquartz.macosforge.org/landing/">XQuartz</a> instead.</p>
+  </li>
+  <li>
+    <p>When MOOG starts, it writes some data files to a specific directory. In the current install, this directory is located at <code class="highlighter-rouge">/.moog</code>. You will have to create this directory manually and make sure that all users can read and write to it.</p>
+  </li>
+  <li>
+    <p>Lastly, you’ll have to download a <em>modified</em> version of the 1-click installer from <a href="https://github.com/bathompso/moog">my github</a>, which contains an additional library, <code class="highlighter-rouge">libg2c.0.dylib</code>. Copy this library to <code class="highlighter-rouge">/usr/local/lib</code>.</p>
+  </li>
+  <li>
+    <p>After all the prerequisites are satisfied, copy over the compiled binaries to somewhere within your path. I chose <code class="highlighter-rouge">/usr/local/bin</code>, as that’s where they were installed on the original Snow Leopard machine.</p>
+  </li>
+</ol>
+
+<p>Now you should be able to run a fully-working MOOG program on your less-than-5-years-old OS. On the first run, it may take a <em>long time</em> for MOOG to initiate X11 (since I run everything through Terminal), or sometimes fail to intitate it at all. It helps to open X11 before initiating the program, as then it will pop up immediately.</p>
+
+<p>I <strong>strongly suggest</strong> backing up these executables once you confirm they’re working correctly. This method relies on programs which may no longer exist several years from now, and it’s better to have an archive of the compiled binaries than a walkthrough which sources links that no longer exist.</p>
+</div>
+            <div class="col-sm-3">
+                <a class="twitter-timeline" data-width="300" data-height="1600" href="https://twitter.com/bathompso">Tweets by bathompso</a>
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+    </div>
+</section>
+
+</article>
+
+
+      <!-- Footer -->
+<footer id="footer">
+  <ul class="icons">
+    
+    
+    
+    <li><a target="_blank" href="https://twitter.com/bathompso" class="icon fa-twitter"
+           ><span class="label">twitter</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://github.com/bathompso" class="icon fa-github"
+           ><span class="label">github</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://linkedin.com/in/bathompso" class="icon fa-linkedin-square"
+           ><span class="label">linkedin-square</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://facebook.com/bathompso" class="icon fa-facebook-official"
+           ><span class="label">facebook-official</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="mailto:bathompso@gmail.com" class="icon fa-envelope-o"
+           ><span class="label">E-mail</span></a></li>
+    
+    
+    
+  </ul>
+  <ul class="copyright">
+    <li>&copy; 
+    
+      
+      
+    
+    2016
+    Ben Thompson</li>
+    <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+    <li>Built with: <a href="http://jekyllrb.com" target="_blank">Jekyll</a></li>
+  </ul>
+</footer>
+
+
+      <!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+
+
+    </div>
+
+  </body>
+
+</html>

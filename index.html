@@ -1,202 +1,72 @@
-<!DOCTYPE html>
-<html><head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width">
-    <!-- syntax highlighting CSS -->
-    <link rel="stylesheet" href="/styles/css/syntax.css">
-    <!-- Necessary JavaScript -->
-    <script src='/js/jquery.collapse.js'></script>
-    <script type='text/javascript' src='/js/jquery.js?ver=1.10.2'></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-    <!-- RoyalSlider CSS -->
-	<link rel='stylesheet' id='new-royalslider-core-css-css'  href='/js/new-royalslider/lib/royalslider/royalslider.css?ver=3.1.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='rsMinW-css-css'  href='/js/new-royalslider/lib/royalslider/skins/minimal-white/rs-minimal-white.css?ver=3.1.7' type='text/css' media='all' />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/styles/css/theme.css">
-    <!-- Custom Google Font -->
-    <link rel='stylesheet' id='googlefonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin' type='text/css' media='all' />
-    <!-- Google Analytics -->
-    <script type="text/javascript">
-    	var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-43423604-1']);
-		_gaq.push(['_trackPageview']);
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- App.net Verification -->
-    <div style="display: none">
-    	<a href="https://alpha.app.net/bathompso" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://alpha.app.net']);" class='adn-button' rel='me' data-type='follow' data-width='220' data-height='38' data-user-id='@bathompso'>Follow me on App.net</a>
-    </div>
-    <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
-    <!-- MathJax -->
-    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- OpenGraph Tags -->
-	<meta name="og:title" content="Home">
-	<meta name="og:url" content="bathompso.com/index.html">
-	<meta name="og:type" content="website">
-	<meta name="og:locale" content="en_US">
-	<meta name="og:site_name" content="">
-	
-	
-</head>
-<body>
-	<div class="header">
-		<img class="sitelogo" src="/media/fullsize/logo.png" height="100px" />
-		<div class="sitetitle"><a href="/">BATHOMPSO.COM</a></div>
-		<div class="mainnav">
-			
-				
-					
-						<div class="naventry"><a href="/blog/">Blog</a></div>
-					
-				
-			
-				
-			
-				
-					
-						<div class="naventry"><a href="/education/">Education</a></div>
-					
-				
-			
-				
-			
-				
-					
-						<div class="naventry"><a href="/research/">Research</a></div>
-					
-				
-			
-				
-					
-						<div class="naventry"><a href="/resume/">Resumé</a></div>
-					
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-		</div>
-		<div class="breadcrumbs">
-			Home
-		</div>
+---
+layout: landing
+---
+<!-- Full-screen landing -->
+<section id="banner">
+	<div class="inner">
+		<h2>{{ site.title }}</h2>
+		<p>{{ site.description | markdownify }}</p>
 	</div>
+	<a href="#one" class="more scrolly">Learn More</a>
+</section>
 
-	
-	<div class="pagecontent">
-    	<div>&nbsp;</div>
-
-<div id="new-royalslider-1" class="royalSlider new-royalslider-1 rsMinW rs-default-template" style="width:100%;height:500px;">
-
-    <!-- ROYALSLIDER BOX 1 -->
-    <div class="rsContent">
-        <img src="/generated/welcome-739x393-7cb8a5.jpg" class="rsImg" >
-        <div class="abBlackBox rsABlock" style="width: 25%; height: 100%; left: auto; right: 0px; top: 0px; ">
-            <div class="slidertitle">Welcome</div>
-            <div class="slidertext">
-                <p>Swipe right to view recent content.</p>
-                <p>(Or click-and-drag if you don't have a fancy tablet device)</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- ROYALSLIDER BOX 2 -->
-    <div class="rsContent">
-        <img src="/generated/tesla-k20-940x500-4f6ffc.jpg" class="rsImg" >
-        <div class="abBlackBox rsABlock" style="width: 25%; height: 100%; left: auto; top: 0px; right: 0px; ">
-            <div class="slidertitle">Computational<br>Physics</div>
-            <div class="slidertext">
-                <p>Learn how to harness the massive parallel computing power of your computer's GPU.</p>
-                <div class="button" onclick="location.href='/education/compphys/parallel/opencl/';"><span>Learn More ›</span></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- ROYALSLIDER BOX 3 -->
-    <div class="rsContent">
-        <img src="/generated/Apple-vs-Android-Full-Wallpaper-940x500-c64ac2.jpg" class="rsImg" >
-        <div class="abBlackBox rsABlock" style="width: 25%; height: 100%; left: auto; top: 0px; right: 0px; ">
-            <div class="slidertitle">Blog</div>
-            <div class="slidertext">
-                <p>Check out my ramblings on anything that crosses my mind related to my research, my technology explorations, or life in general.</p>
-                <div class="button" onclick="location.href='/blog/"><span>Read More ›</span></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- ROYALSLIDER BOX 4 -->
-    <div class="rsContent">
-        <img src="/generated/hawaii-739x393-1d6944.jpg" class="rsImg" >
-        <div class="abBlackBox rsABlock" style="width: 25%; height: 100%; left: auto; top: 0px; right: 0px; ">
-            <div class="slidertitle">Contact Me</div>
-            <div class="slidertext">
-                <div class="contact" style="margin-top: 0px;">
-                    <a href="mailto:bathompso@gmail.com"><br />
-                    <img class="slidericon" src="/media/simple-icons/email/email-64.png">
-                    <div style="float:left">Email Me</div></a>
-                </div>
-                <div class="contact">
-                    <a href="http://www.linkedin.com/in/bathompso/"><br />
-                    <img class="slidericon" src="/media/simple-icons/linkedin/linkedin-64.png">
-                    <div style="float:left">Connect To Me</div></a>
-                </div>
-                <div class="contact">
-                    <a href="http://twitter.com/bathompso"><br />
-                    <img class="slidericon" src="/media/simple-icons/twitter/twitter-64.png">
-                    <div style="float:left">Follow Me</div></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script type='text/javascript' src='/js/new-royalslider/lib/royalslider/jquery.royalslider.min.js?ver=3.1.7'></script>
-
-<script id="new-royalslider-init-code" type="text/javascript">
-jQuery(document).ready(function($) { $('.new-royalslider-1').royalSlider({template:'default',image_generation:{imageWidth:'',imageHeight:'',thumbImageWidth:'',thumbImageHeight:''},thumbs:{thumbWidth:96,thumbHeight:72},block:{moveOffset:20,speed:400,delay:200},width:'100%',height:500,autoScaleSlider:!0,autoScaleSliderWidth:940,autoScaleSliderHeight:500,imageScaleMode:'fill',imageScalePadding:0,arrowsNav:!1,arrowsNavAutoHide:!1,arrowsNavHideOnTouch:!0,navigateByClick:!1});
-});
-</script>
-
+<!-- Large light-blue major banner -->
+<section id="one" class="wrapper style1 special">
+	<div class="inner">
+		<header class="major">
+			<h2>About Me</h2>
+			<p>Here's a little bit about me.</p>
+		</header>
+		<ul class="icons major">
+			<li><span class="icon fa-space-shuttle major style1"><span class="label">Lorem</span></span></li>
+			<li><span class="icon fa-code major style2"><span class="label">Dolor</span></span></li>
+			<li><span class="icon fa-bar-chart-o major style3"><span class="label">Dolor</span></span></li>
+		</ul>
 	</div>
-	
-	
-<div style="clear: both; padding-top: 15px;">&nbsp;</div>
-<div class="footercontainer">
-	<div class="footercontent">
-		<img src="/generated/bioface-200x200-353493.png" class="footerbiopic" >
-		<div class="footertext">
-			<h2>Ben Thompson</h2>
-			<p>Master of all things bathompso. Lifelong astrophysicist enjoying a new experience in data science. Technology enthusiast and evangelist of all things Apple.</p>
-			<div class="footerlink" style="margin-left: 90px;"><a href="/resume/">Resumé</a></div>
-			<div class="footerlink"><a href="/research/">Research</a></div>
-			<div class="footerlink" style="border: 0"><a href="https://github.com/bathompso/">Code</a></div>
-		</div>
-		<div class="attributions">bathompso.com is powered by <a href="http://jekyllrb.com">Jekyll</a>, hosted by <a href="http://github.com">GitHub</a>. <img src="/generated/github-icon-footer-20x20-e3d2c4.png" ></div>
-	</div>
-</div>
+</section>
 
-</body>
-</html>
+<!-- Individual blog post summaries -->
+<section id="two" class="wrapper alt style2">
+	{% for post in site.posts %}{% if post.categories contains 'blog' %}
+		{% capture newcount %}{{ blogcount | append: '-' }}{% endcapture %}{% assign blogcount = newcount %}
+		{% if blogcount.size <= 3 %}
+			<section class="spotlight">
+				<div class="image" style="height: 300px; width: 500px;"><img src="/images/{{ post.image }}" alt="" style="width: 100%; height: 100%; object-fit: cover" class="img-rounded" /></div>
+				<div class="content">
+					<header>
+						<div class="row">
+							{% if blogcount.size <= 1 %}<div style="font-size: 0.6em; padding-left: 2.5em;">Latest Blog Post</div>{% endif %}
+							<div><h3><a href="{{ post.url }}">{{ post.title }}</a></h3></div>
+						</div>
+						<p style="font-size: 0.8em; margin-bottom: 10px;">{{ post.subtitle }}</p>
+					</header>
+					<p style="font-size: 0.7em">{{ post.content | strip_html | truncatewords: 40 }}</p>
+				</div>
+			</section>
+		{% endif %}
+	{% endif %}{% endfor %}
+</section>
+
+<!-- Purple banner area with smaller box areas -->
+<section id="three" class="wrapper style3 special">
+	<div class="inner">
+		<ul class="features">
+			<li class="icon fa-code-fork">
+				<h3><a href="http://github.com/bathompso">Software Projects</a></h3>
+				<p>Check out my GitHub to see what software projects I'm working on.</p>
+			</li>
+			<li class="icon fa-rss">
+				<h3><a href="/blog">Blog</a></h3>
+				<p>Read my random musings on technology, science, my career, and anything else.</p>
+			</li>
+			<li class="icon fa-sticky-note-o">
+				<h3><a href="/resume">R&eacute;sum&eacute;</a></h3>
+				<p>Look at my previous work history, and connect with me on LinkedIn, Twitter, and everywhere else.</p>
+			</li>
+			<li class="icon fa-university">
+				<h3>Online Courses</h3>
+				<p>Check out some of the online course material I've put together on a variety of subjects, such as computational physics or astrophysics.</p>
+			</li>
+		</ul>
+	</div>
+</section>
