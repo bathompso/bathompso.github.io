@@ -6,8 +6,8 @@
 </description>
     <link>http://bathompso.com/</link>
     <atom:link href="http://bathompso.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 02 Jul 2016 12:16:04 -0700</pubDate>
-    <lastBuildDate>Sat, 02 Jul 2016 12:16:04 -0700</lastBuildDate>
+    <pubDate>Sat, 02 Jul 2016 18:16:46 -0700</pubDate>
+    <lastBuildDate>Sat, 02 Jul 2016 18:16:46 -0700</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -16,41 +16,41 @@
 
 &lt;p&gt;&lt;em&gt;The instructions below are an attempt to improve the instructions for getting a Flask webapp up and running on AWS. While I assume no prior knowledge of Flask, I do no go into any Flask basics here, but that may be a blog post for the future. I will try to go slowly through the steps, and offer plentiful code examples and screenshots. This guide will hopefully serve as a better reference for future Insight sessions.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;creating-an-aws-instance&quot;&gt;Creating an AWS Instance&lt;/h2&gt;
+&lt;h2&gt;Creating an AWS Instance&lt;/h2&gt;
 
 &lt;p&gt;First, we must create an AWS virtual machine to copy our files to, and serve our website. To get started, head to &lt;a href=&quot;http://aws.amazon.com&quot;&gt;aws.amazon.com&lt;/a&gt; and click the sign up button in the top right. Then, follow the steps to either sign into your existing Amazon.com account, or create a new one.&lt;/p&gt;
 
 &lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/images/aws_flask/start_page.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Unfortunately, I already went through the signup process, so I could not recreate some of the screens. I know you will have to enter your credit card information, but don’t worry, we will only be using the free AWS tier, so you will not be charged. I believe AWS will also ask you what region you want your servers to be in. For convenience, select one of the western US options (I chose Oregon).&lt;/p&gt;
+&lt;p&gt;Unfortunately, I already went through the signup process, so I could not recreate some of the screens. I know you will have to enter your credit card information, but don&amp;#39;t worry, we will only be using the free AWS tier, so you will not be charged. I believe AWS will also ask you what region you want your servers to be in. For convenience, select one of the western US options (I chose Oregon).&lt;/p&gt;
 
 &lt;p&gt;After completing signup, you will be presented with the AWS console screen, with all the products AWS has to offer. What we want to select is EC2, or Elastic Compute Cloud, the first option in the top left.&lt;/p&gt;
 
 &lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/images/aws_flask/console.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After selecting EC2, you will be presented with the EC2 console screen, which can also be overwhelming with the number of options to choose from. To get started, select the “Instances” tab on the left sidebar (under the Instances subheader), which will take you to the following screen:&lt;/p&gt;
+&lt;p&gt;After selecting EC2, you will be presented with the EC2 console screen, which can also be overwhelming with the number of options to choose from. To get started, select the &amp;quot;Instances&amp;quot; tab on the left sidebar (under the Instances subheader), which will take you to the following screen:&lt;/p&gt;
 
 &lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/images/aws_flask/instances.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;I already have an instance created for my project, but the list you will see will be empty. Press the blue “Launch Instance” button to set up a new virtual machine for your project. You will immediately be asked to select an operating system, and you should select the “Ubuntu Server” option. As of this writing, the current version is 14.04, but these instructions should still work on future versions.&lt;/p&gt;
+&lt;p&gt;I already have an instance created for my project, but the list you will see will be empty. Press the blue &amp;quot;Launch Instance&amp;quot; button to set up a new virtual machine for your project. You will immediately be asked to select an operating system, and you should select the &amp;quot;Ubuntu Server&amp;quot; option. As of this writing, the current version is 14.04, but these instructions should still work on future versions.&lt;/p&gt;
 
 &lt;p&gt;Next, you will select what type of instance you wish to create. For the free tier, there is only 1 option available, but there are many beefier virtual machines you could create if you wish to pay for the performance.&lt;/p&gt;
 
 &lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/images/aws_flask/instance_type.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Continue through the setup, just clicking the blue continue buttons, until you reach the review step. At this stage, AWS will ask you to create a “key pair,” that you will use to SSH into your instance.&lt;/p&gt;
+&lt;p&gt;Continue through the setup, just clicking the blue continue buttons, until you reach the review step. At this stage, AWS will ask you to create a &amp;quot;key pair,&amp;quot; that you will use to SSH into your instance.&lt;/p&gt;
 
 &lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/images/aws_flask/key_pair.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Give it any name you wish (“aws” might be a good name), and click the “Download Key Pair” button. This will download a text file which contains the SSH key necessary to access the instance. &lt;strong&gt;Make sure to back this key file up!&lt;/strong&gt; If you ever lose your key file, you will not be able to enter your instance. Your data will be recoverable, but it will be hassle, and should be avoided at all costs.&lt;/p&gt;
+&lt;p&gt;Give it any name you wish (&amp;quot;aws&amp;quot; might be a good name), and click the &amp;quot;Download Key Pair&amp;quot; button. This will download a text file which contains the SSH key necessary to access the instance. &lt;strong&gt;Make sure to back this key file up!&lt;/strong&gt; If you ever lose your key file, you will not be able to enter your instance. Your data will be recoverable, but it will be hassle, and should be avoided at all costs.&lt;/p&gt;
 
-&lt;p&gt;Once the key is downloaded, click the “Launch Instances” button, which should now be available.&lt;/p&gt;
+&lt;p&gt;Once the key is downloaded, click the &amp;quot;Launch Instances&amp;quot; button, which should now be available.&lt;/p&gt;
 
-&lt;h2 id=&quot;setting-up-ssh&quot;&gt;Setting Up SSH&lt;/h2&gt;
+&lt;h2&gt;Setting Up SSH&lt;/h2&gt;
 
 &lt;p&gt;Before we worry about setting our files up on the instance, we should make sure we have easy access to log into the machine.&lt;/p&gt;
 
-&lt;p&gt;First, we need to determine where our virtual machine is. To find your instance’s IP address, click back to the “Instances” tab, and select your instance. In the bottom right will list the IP address of the machine:&lt;/p&gt;
+&lt;p&gt;First, we need to determine where our virtual machine is. To find your instance&amp;#39;s IP address, click back to the &amp;quot;Instances&amp;quot; tab, and select your instance. In the bottom right will list the IP address of the machine:&lt;/p&gt;
 
 &lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/images/aws_flask/instance_ip.png&quot; /&gt;&lt;/p&gt;
 
@@ -58,41 +58,41 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -i ~/Downloads/keyfile.pem ubuntu@ip.address.here&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;These commands get even more unwieldy when you try to copy files with &lt;code class=&quot;highlighter-rouge&quot;&gt;scp&lt;/code&gt; or create port tunnels (more on that later). To simplify all future steps, we will create an SSH alias.&lt;/p&gt;
+&lt;p&gt;These commands get even more unwieldy when you try to copy files with &lt;code&gt;scp&lt;/code&gt; or create port tunnels (more on that later). To simplify all future steps, we will create an SSH alias.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Within your home folder is a hidden directory, &lt;code class=&quot;highlighter-rouge&quot;&gt;.ssh&lt;/code&gt;. Within this directory are all the configuration files for SSH connections. As a first step, copy your downloaded &lt;code class=&quot;highlighter-rouge&quot;&gt;*.pem&lt;/code&gt; file to the &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh&lt;/code&gt; directory. *Note: on a Mac, the key is sometimes downloaded as a &lt;code class=&quot;highlighter-rouge&quot;&gt;.pem.txt&lt;/code&gt; file. Remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;.txt&lt;/code&gt; extension before copying.&lt;/li&gt;
-  &lt;li&gt;We will also need to change the permissions of the downloaded &lt;code class=&quot;highlighter-rouge&quot;&gt;*.pem&lt;/code&gt; file. The key must be unreadable by other users in order to be considered; if it is readable by others it may pose a security risk. To alter the permissions, use the &lt;code class=&quot;highlighter-rouge&quot;&gt;chmod&lt;/code&gt; function: &lt;code class=&quot;highlighter-rouge&quot;&gt;chmod 600 ~/.ssh/keyfile.pem&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Now that the key file is in the right location, and with the right permissions, we can create our alias. to do this, we want to edit the &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/config&lt;/code&gt; file, which may or may not already exist on your system. Simply run &lt;code class=&quot;highlighter-rouge&quot;&gt;emacs ~/.ssh/config&lt;/code&gt; (or another editor of your choice) to create / edit the file. Add the following entry, substituting the IP address of your instance, and the exact name of your key file:&lt;/li&gt;
-&lt;/ol&gt;
+&lt;li&gt;Within your home folder is a hidden directory, &lt;code&gt;.ssh&lt;/code&gt;. Within this directory are all the configuration files for SSH connections. As a first step, copy your downloaded &lt;code&gt;*.pem&lt;/code&gt; file to the &lt;code&gt;~/.ssh&lt;/code&gt; directory. *Note: on a Mac, the key is sometimes downloaded as a &lt;code&gt;.pem.txt&lt;/code&gt; file. Remove the &lt;code&gt;.txt&lt;/code&gt; extension before copying.&lt;/li&gt;
+&lt;li&gt;We will also need to change the permissions of the downloaded &lt;code&gt;*.pem&lt;/code&gt; file. The key must be unreadable by other users in order to be considered; if it is readable by others it may pose a security risk. To alter the permissions, use the &lt;code&gt;chmod&lt;/code&gt; function: &lt;code&gt;chmod 600 ~/.ssh/keyfile.pem&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Now that the key file is in the right location, and with the right permissions, we can create our alias. to do this, we want to edit the &lt;code&gt;~/.ssh/config&lt;/code&gt; file, which may or may not already exist on your system. Simply run &lt;code&gt;emacs ~/.ssh/config&lt;/code&gt; (or another editor of your choice) to create / edit the file. Add the following entry, substituting the IP address of your instance, and the exact name of your key file:
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Host aws
-        HostName 52.11.150.208
-        User ubuntu
-        Port 22
-        IdentityFile ~/.ssh/aws.pem&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    HostName 52.11.150.208
+    User ubuntu
+    Port 22
+    IdentityFile ~/.ssh/aws.pem&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;Once the steps are complete, open a new terminal window, and you should be able to access your machine via the simple command: &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh aws&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Once the steps are complete, open a new terminal window, and you should be able to access your machine via the simple command: &lt;code&gt;ssh aws&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;If this command fails for any reason, double check you completed steps 1 and 2, or troubleshoot the given error (perhaps you entered the wrong name for your keyfile, etc.). Once you can log into your machine, we can proceed.&lt;/p&gt;
 
-&lt;h2 id=&quot;setting-up-the-instance&quot;&gt;Setting Up The Instance&lt;/h2&gt;
+&lt;h2&gt;Setting Up The Instance&lt;/h2&gt;
 
 &lt;p&gt;When you enter the instance, it is essentially a blank slate: only a bare-bones Python installation, no packages, and no Flask. We will install the basic components necessary to get a dummy Flask app running before copying over any completed project you may have working locally.&lt;/p&gt;
 
-&lt;p&gt;Python is already installed, but none of the add-on packages. We will want to speed up this process with &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;. It can be installed via:&lt;/p&gt;
+&lt;p&gt;Python is already installed, but none of the add-on packages. We will want to speed up this process with &lt;code&gt;pip&lt;/code&gt;. It can be installed via:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get update
 sudo apt-get install python-pip&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;These commands will do a &lt;em&gt;bunch&lt;/em&gt; of things, and exit with &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt; now installed for use. Next, we will install Flask to get our bare-bones dummy example working&lt;/p&gt;
+&lt;p&gt;These commands will do a &lt;em&gt;bunch&lt;/em&gt; of things, and exit with &lt;code&gt;pip&lt;/code&gt; now installed for use. Next, we will install Flask to get our bare-bones dummy example working&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo pip install flask&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;$PYTHONPATH&lt;/code&gt; variable seems to get unset randomly, and causes errors for later steps. To avoid this, add the following line to the top of your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt; file:&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;$PYTHONPATH&lt;/code&gt; variable seems to get unset randomly, and causes errors for later steps. To avoid this, add the following line to the top of your &lt;code&gt;~/.bashrc&lt;/code&gt; file:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PYTHONPATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/usr/lib/python2.7:/usr/lib/python2.7/plat-x86_64-linux-gnu:/usr/lib/python2.7/lib-tk:/usr/lib/python2.7/lib-old:/usr/lib/python2.7/lib-dynload:/usr/local/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages/PILcompat&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;creating-a-dummy-flask-app&quot;&gt;Creating a Dummy Flask App&lt;/h2&gt;
+&lt;h2&gt;Creating a Dummy Flask App&lt;/h2&gt;
 
 &lt;p&gt;To create a dummy Flask app, you will need to run the following commands to create the directory structure:&lt;/p&gt;
 
@@ -101,9 +101,9 @@ mkdir dummyapp/app
 mkdir dummyapp/app/static
 mkdir dummyapp/app/templates&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;This will create a folder, &lt;code class=&quot;highlighter-rouge&quot;&gt;dummyapp&lt;/code&gt;, which will contain all the pieces of our dummy Flask application. A similar process can be followed to put your project webapp into a single folder.&lt;/p&gt;
+&lt;p&gt;This will create a folder, &lt;code&gt;dummyapp&lt;/code&gt;, which will contain all the pieces of our dummy Flask application. A similar process can be followed to put your project webapp into a single folder.&lt;/p&gt;
 
-&lt;p&gt;Next, we will create the necessary python and HTML files for our skeleton app. Remember, to create any file, simply run &lt;code class=&quot;highlighter-rouge&quot;&gt;emacs [filename]&lt;/code&gt;, or any other command line text editor. The names of the following files will be the first line of the code, in a comment:&lt;/p&gt;
+&lt;p&gt;Next, we will create the necessary python and HTML files for our skeleton app. Remember, to create any file, simply run &lt;code&gt;emacs [filename]&lt;/code&gt;, or any other command line text editor. The names of the following files will be the first line of the code, in a comment:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;# dummyapp/app/__init__.py&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;
@@ -134,35 +134,35 @@ mkdir dummyapp/app/templates&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Once all the files are in place, you should be able to run the app with &lt;code class=&quot;highlighter-rouge&quot;&gt;python run.py&lt;/code&gt; from the main &lt;code class=&quot;highlighter-rouge&quot;&gt;~/dummyapp/&lt;/code&gt; folder. However, the default port 5000 is blocked, so you won’t be able to see it from the outside. To do this, logout of the virtual machine and create a port tunnel &lt;em&gt;from your local machine&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;Once all the files are in place, you should be able to run the app with &lt;code&gt;python run.py&lt;/code&gt; from the main &lt;code&gt;~/dummyapp/&lt;/code&gt; folder. However, the default port 5000 is blocked, so you won&amp;#39;t be able to see it from the outside. To do this, logout of the virtual machine and create a port tunnel &lt;em&gt;from your local machine&lt;/em&gt;:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -L 5000:localhost:5000 aws&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;This command takes port 5000 on your local machine, &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost&lt;/code&gt;, and binds it to port 5000 on &lt;code class=&quot;highlighter-rouge&quot;&gt;aws&lt;/code&gt;. It also SSH’s to &lt;code class=&quot;highlighter-rouge&quot;&gt;aws&lt;/code&gt; so that you can run the dummy Flask app from there. Running it this time, and navigating your browser to &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:5000&lt;/code&gt; should give you the “Hello [Name]” message, and you should see a line print in your terminal from a generic &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; command. Once you’ve verified the dummy app is working, we can move onto making it persistent.&lt;/p&gt;
+&lt;p&gt;This command takes port 5000 on your local machine, &lt;code&gt;localhost&lt;/code&gt;, and binds it to port 5000 on &lt;code&gt;aws&lt;/code&gt;. It also SSH&amp;#39;s to &lt;code&gt;aws&lt;/code&gt; so that you can run the dummy Flask app from there. Running it this time, and navigating your browser to &lt;code&gt;localhost:5000&lt;/code&gt; should give you the &amp;quot;Hello [Name]&amp;quot; message, and you should see a line print in your terminal from a generic &lt;code&gt;GET&lt;/code&gt; command. Once you&amp;#39;ve verified the dummy app is working, we can move onto making it persistent.&lt;/p&gt;
 
-&lt;h2 id=&quot;installing-nginx&quot;&gt;Installing Nginx&lt;/h2&gt;
+&lt;h2&gt;Installing Nginx&lt;/h2&gt;
 
 &lt;p&gt;To keep our Flask app running constantly and make sure it can serve a decent number of concurrent users, we will use Nginx, a webserver. It will handle passing traffic from your instance to the Flask web process. To install it, simply run:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install nginx&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Once installed, the webserver is automatically running. To check whether it’s working, we’ll have to open up the necessary ports to pass HTTP requests to the virtual machine. To do this, go back to the EC2 console and select the “Security Groups” option in the sidebar, select your instance, then click the “Inbound” tab at the bottom of the page.&lt;/p&gt;
+&lt;p&gt;Once installed, the webserver is automatically running. To check whether it&amp;#39;s working, we&amp;#39;ll have to open up the necessary ports to pass HTTP requests to the virtual machine. To do this, go back to the EC2 console and select the &amp;quot;Security Groups&amp;quot; option in the sidebar, select your instance, then click the &amp;quot;Inbound&amp;quot; tab at the bottom of the page.&lt;/p&gt;
 
 &lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/images/aws_flask/security_group.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Click the “Edit” button in the Inbound tab, then add a new rule. Select HTTP from the dropdown menu, and it will automatically open port 80 on your virtual machine.&lt;/p&gt;
+&lt;p&gt;Click the &amp;quot;Edit&amp;quot; button in the Inbound tab, then add a new rule. Select HTTP from the dropdown menu, and it will automatically open port 80 on your virtual machine.&lt;/p&gt;
 
 &lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/images/aws_flask/http_rule.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Once the port has been opened, navigate your browser to your instance’s IP address, and you should be greeted by an Nginx welcome message. This message means that the webserver is working, and is ready to be hooked into your Flask app.&lt;/p&gt;
+&lt;p&gt;Once the port has been opened, navigate your browser to your instance&amp;#39;s IP address, and you should be greeted by an Nginx welcome message. This message means that the webserver is working, and is ready to be hooked into your Flask app.&lt;/p&gt;
 
-&lt;h2 id=&quot;configuring-uwsgi&quot;&gt;Configuring uWSGI&lt;/h2&gt;
+&lt;h2&gt;Configuring uWSGI&lt;/h2&gt;
 
-&lt;p&gt;To hook flask into Nginx, we will be using the python package uWSGI. uWSGI is an alternate web process from the default one used by Flask that makes it easier to connect to Nginx. Unfortunately, the &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt; installation of this module always seems to fail, so we use &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; instead:&lt;/p&gt;
+&lt;p&gt;To hook flask into Nginx, we will be using the python package uWSGI. uWSGI is an alternate web process from the default one used by Flask that makes it easier to connect to Nginx. Unfortunately, the &lt;code&gt;pip&lt;/code&gt; installation of this module always seems to fail, so we use &lt;code&gt;apt-get&lt;/code&gt; instead:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install uwsgi-core uwsgi-plugin-python&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Next, we need to make a configuration file so that uWSGI knows the parameters of the Flask app it is serving. To do this, we create a parameter file, which usually has the &lt;code class=&quot;highlighter-rouge&quot;&gt;.ini&lt;/code&gt; suffix. For our example, we can create a &lt;code class=&quot;highlighter-rouge&quot;&gt;uwsgi.ini&lt;/code&gt; file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;dummyapp/&lt;/code&gt; folder, containing the following:&lt;/p&gt;
+&lt;p&gt;Next, we need to make a configuration file so that uWSGI knows the parameters of the Flask app it is serving. To do this, we create a parameter file, which usually has the &lt;code&gt;.ini&lt;/code&gt; suffix. For our example, we can create a &lt;code&gt;uwsgi.ini&lt;/code&gt; file in the &lt;code&gt;dummyapp/&lt;/code&gt; folder, containing the following:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;uwsgi]
 home &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /home/ubuntu/dummyapp
@@ -178,17 +178,17 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
 &lt;p&gt;Before moving on, I will explain some of the options above:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;home&lt;/code&gt; defines the home directory of the app. This becomes a variable in some of the other options.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wsgi-file&lt;/code&gt; defines the file that should be run to start the web process. This is, for almost everyone, &lt;code class=&quot;highlighter-rouge&quot;&gt;run.py&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;socket&lt;/code&gt; defines a port on the virtual machine that will pass information between uWSGI and nginx. The port number can be almost anything, as long as it is not used by another program. I recommend using ports 3301-3306, which should be unused by anything else.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;module&lt;/code&gt; defines the name of the folder containing views and templates, in most cases &lt;code class=&quot;highlighter-rouge&quot;&gt;app/&lt;/code&gt;. If you name your folder something else, change this entry to that name.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;daemonize&lt;/code&gt; defines the path to the log file for the Flask app. All lines printed to the console during a normal run of your app will be printed to this file instead. This will allow you to see any error messages or diagnostic print statements in your code.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pidfile&lt;/code&gt; defines the path to a file containing the process ID of the uWSGI process. This file will be used to stop the server when something needs to be changed.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;home&lt;/code&gt; defines the home directory of the app. This becomes a variable in some of the other options.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wsgi-file&lt;/code&gt; defines the file that should be run to start the web process. This is, for almost everyone, &lt;code&gt;run.py&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;socket&lt;/code&gt; defines a port on the virtual machine that will pass information between uWSGI and nginx. The port number can be almost anything, as long as it is not used by another program. I recommend using ports 3301-3306, which should be unused by anything else.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;module&lt;/code&gt; defines the name of the folder containing views and templates, in most cases &lt;code&gt;app/&lt;/code&gt;. If you name your folder something else, change this entry to that name.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;daemonize&lt;/code&gt; defines the path to the log file for the Flask app. All lines printed to the console during a normal run of your app will be printed to this file instead. This will allow you to see any error messages or diagnostic print statements in your code.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pidfile&lt;/code&gt; defines the path to a file containing the process ID of the uWSGI process. This file will be used to stop the server when something needs to be changed.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Once the uWSGI configuration file is finished, we will have to configure nginx to accept traffic from uWSGI. The configuration file for nginx is located at &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/nginx/nginx.conf&lt;/code&gt;. First, we need to break nginx’s hold on port 80 (the welcome message you see), and allow uWSGI and Flask to use it. To do this, comment out lines 71 and 72, which should be the first two uncommented lines after a giant commented block.&lt;/p&gt;
+&lt;p&gt;Once the uWSGI configuration file is finished, we will have to configure nginx to accept traffic from uWSGI. The configuration file for nginx is located at &lt;code&gt;/etc/nginx/nginx.conf&lt;/code&gt;. First, we need to break nginx&amp;#39;s hold on port 80 (the welcome message you see), and allow uWSGI and Flask to use it. To do this, comment out lines 71 and 72, which should be the first two uncommented lines after a giant commented block.&lt;/p&gt;
 
-&lt;p&gt;Next, we need to tell nginx where to look when it gets traffic from outside sources. Below the lines you just commented out, and still within the &lt;code class=&quot;highlighter-rouge&quot;&gt;html&lt;/code&gt; block, add the following:&lt;/p&gt;
+&lt;p&gt;Next, we need to tell nginx where to look when it gets traffic from outside sources. Below the lines you just commented out, and still within the &lt;code&gt;html&lt;/code&gt; block, add the following:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;server &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     listen 80;
@@ -198,31 +198,31 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;This tells nginx to “listen” on port 80 (the default HTTP port), and pass all that information to uWSGI on port 3033 (make sure to change this port to whatever you specified in the config file).&lt;/p&gt;
+&lt;p&gt;This tells nginx to &amp;quot;listen&amp;quot; on port 80 (the default HTTP port), and pass all that information to uWSGI on port 3033 (make sure to change this port to whatever you specified in the config file).&lt;/p&gt;
 
 &lt;p&gt;Now that we have updated nginx to use the correct parameters, we need to restart it so it re-reads the config file. Do this with:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo service nginx restart&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;You should see an &lt;code class=&quot;highlighter-rouge&quot;&gt;[OK]&lt;/code&gt; message, which means that nginx was restarted successfully. Now we need to start the uWSGI process to finish everything off. To do this, simply run:&lt;/p&gt;
+&lt;p&gt;You should see an &lt;code&gt;[OK]&lt;/code&gt; message, which means that nginx was restarted successfully. Now we need to start the uWSGI process to finish everything off. To do this, simply run:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;uwsgi ~/dummyapp/uwsgi.ini&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Now if you point your browser to the IP address of your instance, you should see the hello message from your dummy Flask app. If you do, &lt;strong&gt;congrats, you’re (almost) done!&lt;/strong&gt;. If not, check the log file (&lt;code class=&quot;highlighter-rouge&quot;&gt;~/dummyapp/dummyapp.log&lt;/code&gt;) to see what problems have arisen. Google those error messages to troubleshoot. To stop the uWSGI process, run:&lt;/p&gt;
+&lt;p&gt;Now if you point your browser to the IP address of your instance, you should see the hello message from your dummy Flask app. If you do, &lt;strong&gt;congrats, you&amp;#39;re (almost) done!&lt;/strong&gt;. If not, check the log file (&lt;code&gt;~/dummyapp/dummyapp.log&lt;/code&gt;) to see what problems have arisen. Google those error messages to troubleshoot. To stop the uWSGI process, run:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;uwsgi --stop ~/dummyapp/dummyapp.pid&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Now that you had a dummy app working, you can begin to copy over your completed app. Make sure to test it before starting into deployment. Run the app interactively first, by calling the &lt;code class=&quot;highlighter-rouge&quot;&gt;run.py&lt;/code&gt; file and checking to see if there are any errors. Most likely, you will have to install many supporting python packages, or recreate your database before the app will run, without complicating the process with uWSGI and nginx.&lt;/p&gt;
+&lt;p&gt;Now that you had a dummy app working, you can begin to copy over your completed app. Make sure to test it before starting into deployment. Run the app interactively first, by calling the &lt;code&gt;run.py&lt;/code&gt; file and checking to see if there are any errors. Most likely, you will have to install many supporting python packages, or recreate your database before the app will run, without complicating the process with uWSGI and nginx.&lt;/p&gt;
 
-&lt;p&gt;After the app is working locally, make sure to create a tunnel on port 5000 and play around with using it. Make sure the app behaves in a reasonable manner, as you will be able to see the error messages easily. Once you’ve confirmed that most functionality is working, recreate the uWSGI configuration file, and start the uWSGI process.&lt;/p&gt;
+&lt;p&gt;After the app is working locally, make sure to create a tunnel on port 5000 and play around with using it. Make sure the app behaves in a reasonable manner, as you will be able to see the error messages easily. Once you&amp;#39;ve confirmed that most functionality is working, recreate the uWSGI configuration file, and start the uWSGI process.&lt;/p&gt;
 
-&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;h2&gt;Notes&lt;/h2&gt;
 
-&lt;p&gt;One import note on uWSGI is that it does not reload upon changes to your Flask app. If you copy down a new version from github, or make edits to the code locally, you will have to stop and start the uWSGI process for the changes to become live. While this seems strange at first, it is helpful if you accidentally mess something up; your live app won’t see the issue, and you’ll have time to fix things, or roll back, if necessary.&lt;/p&gt;
+&lt;p&gt;One import note on uWSGI is that it does not reload upon changes to your Flask app. If you copy down a new version from github, or make edits to the code locally, you will have to stop and start the uWSGI process for the changes to become live. While this seems strange at first, it is helpful if you accidentally mess something up; your live app won&amp;#39;t see the issue, and you&amp;#39;ll have time to fix things, or roll back, if necessary.&lt;/p&gt;
 
-&lt;p&gt;Nginx allows you to do many advanced and nice things, such as subdomains. If your main site is running at &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt;, you would be able to create another flask app, pass it through a different port to nginx, and serve that app on &lt;code class=&quot;highlighter-rouge&quot;&gt;another.example.com&lt;/code&gt;. This allows you to use your single AWS instance for a whole host of side projects, which is not possible with other Flask web servers.&lt;/p&gt;
+&lt;p&gt;Nginx allows you to do many advanced and nice things, such as subdomains. If your main site is running at &lt;code&gt;example.com&lt;/code&gt;, you would be able to create another flask app, pass it through a different port to nginx, and serve that app on &lt;code&gt;another.example.com&lt;/code&gt;. This allows you to use your single AWS instance for a whole host of side projects, which is not possible with other Flask web servers.&lt;/p&gt;
 
-&lt;p&gt;Hopefully this walkthrough was easy to follow and understand, and you now have at least a dummy app, but your full project working on AWS. In the near future, I’ll be adding a few more Flask and AWS tricks to this blog, so stay tuned.&lt;/p&gt;
+&lt;p&gt;Hopefully this walkthrough was easy to follow and understand, and you now have at least a dummy app, but your full project working on AWS. In the near future, I&amp;#39;ll be adding a few more Flask and AWS tricks to this blog, so stay tuned.&lt;/p&gt;
 </description>
         <pubDate>Sat, 21 Mar 2015 00:00:00 -0700</pubDate>
         <link>http://bathompso.com/blog/flask-aws-setup/</link>
@@ -239,17 +239,17 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
     
       <item>
         <title>#AAS225 and What&#39;s Next</title>
-        <description>&lt;p&gt;For those of you who know me personally (or follow me on Twitter), you know that I am currently in Seattle for the American Astronomical Society (AAS) meeting. Tomorrow I’ll be doing a dissertation talk, distilling the entirety of my work at TCU over the past 4 years into a overly-short 15 minute presentation. After the conference, however, I will not be getting on a plane back to DFW, but will instead be headed just a bit down the west coast to San Francisco. I &lt;a href=&quot;/blog/transition-to-data-science/&quot;&gt;previously wrote&lt;/a&gt; about how academia was heading for a breakdown and many scientists were turning to industry for employment. Now I’m one of those scientists.&lt;/p&gt;
+        <description>&lt;p&gt;For those of you who know me personally (or follow me on Twitter), you know that I am currently in Seattle for the American Astronomical Society (AAS) meeting. Tomorrow I&amp;#39;ll be doing a dissertation talk, distilling the entirety of my work at TCU over the past 4 years into a overly-short 15 minute presentation. After the conference, however, I will not be getting on a plane back to DFW, but will instead be headed just a bit down the west coast to San Francisco. I &lt;a href=&quot;/blog/transition-to-data-science/&quot;&gt;previously wrote&lt;/a&gt; about how academia was heading for a breakdown and many scientists were turning to industry for employment. Now I&amp;#39;m one of those scientists.&lt;/p&gt;
 
-&lt;p&gt;Instead of heading back home, I will be living in Palo Alto, CA for 3 months while I attend the &lt;a href=&quot;http://insightdatascience.com&quot;&gt;Insight Data Science Program&lt;/a&gt;. Insight is a 3-month training program that looks for hard-science Ph.D. that wish to transition into the data science industry in Silicon Valley. From what I’ve heard from people at the AAS, it is a very exclusive club, and is extolled by those who know somebody who previously attended.&lt;/p&gt;
+&lt;p&gt;Instead of heading back home, I will be living in Palo Alto, CA for 3 months while I attend the &lt;a href=&quot;http://insightdatascience.com&quot;&gt;Insight Data Science Program&lt;/a&gt;. Insight is a 3-month training program that looks for hard-science Ph.D. that wish to transition into the data science industry in Silicon Valley. From what I&amp;#39;ve heard from people at the AAS, it is a very exclusive club, and is extolled by those who know somebody who previously attended.&lt;/p&gt;
 
 &lt;p&gt;The first six weeks of the program involves all of the necessary programming training for a job in the industry. I will pick a public data set and complete an analysis similar to one I would do in a data science job. For the second six weeks, I will interview at top tech companies who sponsor the program: companies like Facebook, LinkedIn, Microsoft, and Jawbone (you can see a full list of the awesome places I could end up on the &lt;a href=&quot;http://insightdatascience.com&quot;&gt;Insight home page&lt;/a&gt;).&lt;/p&gt;
 
-&lt;p&gt;Attending the conference this week has only solidified my choice to transition into data science. Reading posters on topics completely unrelated to my area of expertise got me excited simply due to the interesting results they achieved. It cemented the fact that I enjoy tackling new challenges and learning new things, regardless of the subject matter I’m working with. I am just as happy to study binary systems (my current area), as I am starspots, or galaxy simulations, or website user data. As long as I’m able to satisfy my curiosity to explore the world around me through data, I will be happy.&lt;/p&gt;
+&lt;p&gt;Attending the conference this week has only solidified my choice to transition into data science. Reading posters on topics completely unrelated to my area of expertise got me excited simply due to the interesting results they achieved. It cemented the fact that I enjoy tackling new challenges and learning new things, regardless of the subject matter I&amp;#39;m working with. I am just as happy to study binary systems (my current area), as I am starspots, or galaxy simulations, or website user data. As long as I&amp;#39;m able to satisfy my curiosity to explore the world around me through data, I will be happy.&lt;/p&gt;
 
-&lt;p&gt;While 2014 was an amazing year for me (I got married!), I believe 2015 will be the best yet. I’m extremely excited for the opportunity to be a part of this highly-regarded program, and thankful to have found a solid path forward after grad school. I will be back in DFW on April 1st, when I’ll defend my Ph.D., and then Chrissy and I will leave sometime in mid- to late May to head out for San Francisco full time.&lt;/p&gt;
+&lt;p&gt;While 2014 was an amazing year for me (I got married!), I believe 2015 will be the best yet. I&amp;#39;m extremely excited for the opportunity to be a part of this highly-regarded program, and thankful to have found a solid path forward after grad school. I will be back in DFW on April 1st, when I&amp;#39;ll defend my Ph.D., and then Chrissy and I will leave sometime in mid- to late May to head out for San Francisco full time.&lt;/p&gt;
 
-&lt;p&gt;Although I haven’t been using it much lately, this blog will be more active while I’m in the program. I’ll be sharing my experiences, as well as the new things I’ve learned, hoping that it might help the next lost astrophysicist (or biologist, or economist, etc.). Look for more good stuff in the coming weeks.&lt;/p&gt;
+&lt;p&gt;Although I haven&amp;#39;t been using it much lately, this blog will be more active while I&amp;#39;m in the program. I&amp;#39;ll be sharing my experiences, as well as the new things I&amp;#39;ve learned, hoping that it might help the next lost astrophysicist (or biologist, or economist, etc.). Look for more good stuff in the coming weeks.&lt;/p&gt;
 </description>
         <pubDate>Wed, 07 Jan 2015 00:00:00 -0800</pubDate>
         <link>http://bathompso.com/blog/aas225/</link>
@@ -266,53 +266,41 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
     
       <item>
         <title>From Astronomy to Data Science: One Size Fits All?</title>
-        <description>&lt;p&gt;Academia has been undergoing a crisis as of late. Many disciplines (even “hot ones,” such as &lt;a href=&quot;http://arstechnica.com/science/2014/04/is-us-biomedical-research-heading-for-a-breakdown/&quot;&gt;biomedical research&lt;/a&gt;) have been finding that they are producing too many short-term jobs (post-docs), and too few permanent positions to sustain the outflow of Ph.D.s.&lt;/p&gt;
+        <description>&lt;p&gt;Academia has been undergoing a crisis as of late. Many disciplines (even &amp;quot;hot ones,&amp;quot; such as &lt;a href=&quot;http://arstechnica.com/science/2014/04/is-us-biomedical-research-heading-for-a-breakdown/&quot;&gt;biomedical research&lt;/a&gt;) have been finding that they are producing too many short-term jobs (post-docs), and too few permanent positions to sustain the outflow of Ph.D.s.&lt;/p&gt;
 
-&lt;p&gt;Astronomy (my chosen field), is no exception. Heaped on top of this is the fact that as the U.S. government tightens it’s belt, “pure science” budgets, such as those for NASA and NSF’s astronomy grants, are those removed first. As grant money earned is often a metric to determine tenure, this makes it even harder to keep a tenure-track job, if you somehow manage to get one in the first place.&lt;/p&gt;
+&lt;p&gt;Astronomy (my chosen field), is no exception. Heaped on top of this is the fact that as the U.S. government tightens it&amp;#39;s belt, &amp;quot;pure science&amp;quot; budgets, such as those for NASA and NSF&amp;#39;s astronomy grants, are those removed first. As grant money earned is often a metric to determine tenure, this makes it even harder to keep a tenure-track job, if you somehow manage to get one in the first place.&lt;/p&gt;
 
-&lt;p&gt;As I’ve come to terms with this, I’ve begun to look into alternative fields for a career, and data science is one I have seen a lot. But looking into the several “&lt;a href=&quot;http://womeninastronomy.blogspot.com/2013/01/datascience.html&quot;&gt;astronomer to data scientist&lt;/a&gt;” transition &lt;a href=&quot;http://womeninastronomy.blogspot.com/2013/01/astroVdatascience.html&quot;&gt;guides&lt;/a&gt; on the &lt;a href=&quot;http://betterbayes.wordpress.com/2014/07/24/preperation-for-a-transition-to-data-science/&quot;&gt;web&lt;/a&gt;, all seem to tell me the same thing: “learn lots of programming languages, like Python, R or SAS.” “Learn &lt;a href=&quot;http://en.m.wikipedia.org/wiki/NoSQL&quot;&gt;NoSQL&lt;/a&gt;, &lt;a href=&quot;http://hadoop.apache.org&quot;&gt;Hadoop&lt;/a&gt;, and &lt;a href=&quot;http://en.m.wikipedia.org/wiki/Mapreduce&quot;&gt;MapReduce&lt;/a&gt;.” In short, these guides seem to think every data science job is the same: a “big data” scientist at a Silicon Valley startup or tech titan.&lt;/p&gt;
+&lt;p&gt;As I&amp;#39;ve come to terms with this, I&amp;#39;ve begun to look into alternative fields for a career, and data science is one I have seen a lot. But looking into the several &amp;quot;&lt;a href=&quot;http://womeninastronomy.blogspot.com/2013/01/datascience.html&quot;&gt;astronomer to data scientist&lt;/a&gt;&amp;quot; transition &lt;a href=&quot;http://womeninastronomy.blogspot.com/2013/01/astroVdatascience.html&quot;&gt;guides&lt;/a&gt; on the &lt;a href=&quot;http://betterbayes.wordpress.com/2014/07/24/preperation-for-a-transition-to-data-science/&quot;&gt;web&lt;/a&gt;, all seem to tell me the same thing: &amp;quot;learn lots of programming languages, like Python, R or SAS.&amp;quot; &amp;quot;Learn &lt;a href=&quot;http://en.m.wikipedia.org/wiki/NoSQL&quot;&gt;NoSQL&lt;/a&gt;, &lt;a href=&quot;http://hadoop.apache.org&quot;&gt;Hadoop&lt;/a&gt;, and &lt;a href=&quot;http://en.m.wikipedia.org/wiki/Mapreduce&quot;&gt;MapReduce&lt;/a&gt;.&amp;quot; In short, these guides seem to think every data science job is the same: a &amp;quot;big data&amp;quot; scientist at a Silicon Valley startup or tech titan.&lt;/p&gt;
 
-&lt;p&gt;If somebody was preparing for a career in physics and asked you what they should learn to prepare, you wouldn’t necessarily be able to answer. Interested in computational astrophysics? You’ll need to know C or FORTRAN to write highly parallelized codes that run on supercomputers. Interested in engineering? You probably don’t need to spend your time learning general relativity. “Physics” isn’t one thing, and therefore you can’t just prepare in a single way. Data science is exactly the same.&lt;/p&gt;
+&lt;p&gt;If somebody was preparing for a career in physics and asked you what they should learn to prepare, you wouldn&amp;#39;t necessarily be able to answer. Interested in computational astrophysics? You&amp;#39;ll need to know C or FORTRAN to write highly parallelized codes that run on supercomputers. Interested in engineering? You probably don&amp;#39;t need to spend your time learning general relativity. &amp;quot;Physics&amp;quot; isn&amp;#39;t one thing, and therefore you can&amp;#39;t just prepare in a single way. Data science is exactly the same.&lt;/p&gt;
 
-&lt;p&gt;Instead of prescribing preparation steps for a very specific job, below are some general tips I’ve found in my time exploring the data science market, that everyone should definitely do.&lt;/p&gt;
+&lt;p&gt;Instead of prescribing preparation steps for a very specific job, below are some general tips I&amp;#39;ve found in my time exploring the data science market, that everyone should definitely do.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Do some reading on general data science principles.&lt;/strong&gt; Regardless of what subsection of data science you want to go into, everyone should be well-versed in the “fundamental principles.” &lt;a href=&quot;http://www.amazon.com/Data-Science-Business-data-analytic-thinking/dp/1449361323/&quot;&gt;Data Science for Business&lt;/a&gt; is an excellent book on this topic, and I suggest everyone read through it. Not only will it give you an outline of many of the basic data science algorithms, but really hammers in the fact that data science &lt;em&gt;is part of business, not a hard science&lt;/em&gt;. Everything you do should be to further the business goals.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Decide whether data science is really what you want.&lt;/strong&gt; In the last bullet of her &lt;a href=&quot;http://womeninastronomy.blogspot.com/2013/01/astroVdatascience.html&quot;&gt;“Astronomy vs Data Science” post&lt;/a&gt;, Jessica Kirkpatrick states that you cannot dictate the subject matter in industry like you can in academia. As stated above, everything you do in data science should be to further the business goals. This can be an adjustment, as in academia you pick a subject largely unconstrained by others. Make sure this is a trade-off you’re okay with.&lt;br /&gt;
-    For me, I enjoy taking (often incomplete) data and telling a story with it. It doesn’t matter what I’m looking at: star brightnesses to determine masses or customer location history to detect fraud, I enjoy any time I am “learning” something. For others, this may not be the case. No matter the benefits of a data science career (salary, locations, job security), doing something you don’t enjoy isn’t the way to go.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Decide what section of data science you want to enhabit.&lt;/strong&gt; Does working for Google or Facebook tracking millions (or billions) of users’ behaviors online sound exciting? How about &lt;a href=&quot;http://ars.to/1zc3H6r&quot;&gt;data mining thousands of healthy people’s DNA to improve healthcare&lt;/a&gt;? Maybe you &lt;em&gt;should&lt;/em&gt; look into the “Silicon Valley Big Data” jobs. Maybe you’d like to track how people respond to coupon offers, in order to more fine-tune a company’s marketing strategy? There are many of these “data analyst” positions available as well, and they are usually in high demand all across the country. There are also all kinds of jobs inbetween.&lt;br /&gt;
-    Do some research on job sites, such as &lt;a href=&quot;http://jobsearch.monster.com/search/data-science_5&quot;&gt;monster&lt;/a&gt; or &lt;a href=&quot;http://www.indeed.com/jobs?q=data+science&amp;amp;l=&quot;&gt;indeed&lt;/a&gt;, to see what data science jobs are out there. Read the job descriptions and requirements to see what types of positions you’re interested in and/or qualified for.&lt;/p&gt;
-  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Do some reading on general data science principles.&lt;/strong&gt; Regardless of what subsection of data science you want to go into, everyone should be well-versed in the &amp;quot;fundamental principles.&amp;quot; &lt;a href=&quot;http://www.amazon.com/Data-Science-Business-data-analytic-thinking/dp/1449361323/&quot;&gt;Data Science for Business&lt;/a&gt; is an excellent book on this topic, and I suggest everyone read through it. Not only will it give you an outline of many of the basic data science algorithms, but really hammers in the fact that data science &lt;em&gt;is part of business, not a hard science&lt;/em&gt;. Everything you do should be to further the business goals.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Decide whether data science is really what you want.&lt;/strong&gt; In the last bullet of her &lt;a href=&quot;http://womeninastronomy.blogspot.com/2013/01/astroVdatascience.html&quot;&gt;&amp;quot;Astronomy vs Data Science&amp;quot; post&lt;/a&gt;, Jessica Kirkpatrick states that you cannot dictate the subject matter in industry like you can in academia. As stated above, everything you do in data science should be to further the business goals. This can be an adjustment, as in academia you pick a subject largely unconstrained by others. Make sure this is a trade-off you&amp;#39;re okay with.&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;For me, I enjoy taking (often incomplete) data and telling a story with it. It doesn&amp;#39;t matter what I&amp;#39;m looking at: star brightnesses to determine masses or customer location history to detect fraud, I enjoy any time I am &amp;quot;learning&amp;quot; something. For others, this may not be the case. No matter the benefits of a data science career (salary, locations, job security), doing something you don&amp;#39;t enjoy isn&amp;#39;t the way to go.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Decide what section of data science you want to enhabit.&lt;/strong&gt; Does working for Google or Facebook tracking millions (or billions) of users&amp;#39; behaviors online sound exciting? How about &lt;a href=&quot;http://ars.to/1zc3H6r&quot;&gt;data mining thousands of healthy people&amp;#39;s DNA to improve healthcare&lt;/a&gt;? Maybe you &lt;em&gt;should&lt;/em&gt; look into the &amp;quot;Silicon Valley Big Data&amp;quot; jobs. Maybe you&amp;#39;d like to track how people respond to coupon offers, in order to more fine-tune a company&amp;#39;s marketing strategy? There are many of these &amp;quot;data analyst&amp;quot; positions available as well, and they are usually in high demand all across the country. There are also all kinds of jobs inbetween.&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Do some research on job sites, such as &lt;a href=&quot;http://jobsearch.monster.com/search/data-science_5&quot;&gt;monster&lt;/a&gt; or &lt;a href=&quot;http://www.indeed.com/jobs?q=data+science&amp;amp;l=&quot;&gt;indeed&lt;/a&gt;, to see what data science jobs are out there. Read the job descriptions and requirements to see what types of positions you&amp;#39;re interested in and/or qualified for.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;After doing some background research on what jobs you might want, there are many diverging paths to take. Everyone’s individual preparation method will be different in several areas:&lt;/p&gt;
+&lt;p&gt;After doing some background research on what jobs you might want, there are many diverging paths to take. Everyone&amp;#39;s individual preparation method will be different in several areas:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;What programs you’ll need to learn.&lt;/strong&gt; Big Data jobs: definitely brush up on Hadoop, MapReduce, Pig, Hive, etc. Learn a legitimate programming language, like Python. Depending on the company, they may also want an even newer language, like &lt;a href=&quot;http://julialang.org&quot;&gt;Julia&lt;/a&gt;. Going for an analyst position? Make sure you know your SQL backwards and forwards, as many business databases are MySQL. Depending on the company, you may not even need to learn a programming language: all calculations are expected to be in Excel! This doesn’t mean it’s easier, however; learning how to make Excel do advanced things requires just as much time as Python. Maybe even longer!&lt;br /&gt;
-    Also be aware of how “stats-forward” your potential jobs may be. If you’re going into Big Data, or a data-science-heavy company, you may need to brush up on your statistics in order to understand and implement Bayesian methods. If you’re going into an analyst position, you might not need to know as much, because Bayesian models may hurt your cause, rather than help (see below).&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;What methods and algorithms you’ll need to employ.&lt;/strong&gt; Lots of data science is crunching numbers, but that’s not the only thing available. Some data science mines text, for example to detect plagiarism in student papers. If you find many job listingss where this might be a component, you should learn more about Natural Language Processing. Similarly, some data science focuses on images; perhaps automatically comparing signatures on checks or handwriting in documents to detect fraud. Look into image processing algorithms, which may be useful here.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;How you’ll need to communicate.&lt;/strong&gt; &lt;em&gt;All data science should further the business goals&lt;/em&gt; (pound that notion in). Regardless of where you’re working, or what you’re doing, you will &lt;em&gt;always&lt;/em&gt; have to be justifying your thoughts, approach, and implementation to others, higher up. If you cannot sell them on what you’re doing, do not expect to be able to move forward (see how this is different than hard science?). How you have to defend yourself, and what tools you’ll be “allowed” to use, however, will vary greatly from job to job.&lt;br /&gt;
-    At a company with a large focus on data science, you may be working with an entire team of data scientists. You may have managers (who themselves are data scientists), who will act as the intermediary between you and the business leaders. You need to sell the managers, who will then take it upon themselves to sell the executives. This is a somewhat easier setup: the people you are directly interfacing with understand data science. You can talk about Bayesian statistics, ensemble methods and specific python modules to bolster your case, and they will be able to speak the same language.&lt;br /&gt;
-    Going to an analyst position, or a company with a small data science team? You may be speaking directly to executives to sell them on your plan. While more advanced classification schemes, such as Bayes, may provide better results, they may hamper your efforts here, because nobody you’re talking to will understand them! You may be forced to fall back to simple Decision Tree Classifiers, which you can plot, and everyone can understand. Be prepared to “dumb down” your models, or be able to explain them creatively, so that everyone can get on board.&lt;br /&gt;
-    This is another area where data science (and business in general) is different than science. In science, you are judged by the quality of your work, and only slightly by how you present it. If you have an amazing find, but you stammer a bit in your talk, or your paper is a little disorganized, you still may be lauded in the scientific community. In business, it’s the opposite: it doesn’t matter whether you found an amazing classification model if you can’t explain it. If you stumble through a meeting with executives, your entire project may be killed, even if it would have saved the company millions of dollars. &lt;em&gt;Practice your public speaking!&lt;/em&gt;&lt;/p&gt;
-  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;What programs you&amp;#39;ll need to learn.&lt;/strong&gt; Big Data jobs: definitely brush up on Hadoop, MapReduce, Pig, Hive, etc. Learn a legitimate programming language, like Python. Depending on the company, they may also want an even newer language, like &lt;a href=&quot;http://julialang.org&quot;&gt;Julia&lt;/a&gt;. Going for an analyst position? Make sure you know your SQL backwards and forwards, as many business databases are MySQL. Depending on the company, you may not even need to learn a programming language: all calculations are expected to be in Excel! This doesn&amp;#39;t mean it&amp;#39;s easier, however; learning how to make Excel do advanced things requires just as much time as Python. Maybe even longer!&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Also be aware of how &amp;quot;stats-forward&amp;quot; your potential jobs may be. If you&amp;#39;re going into Big Data, or a data-science-heavy company, you may need to brush up on your statistics in order to understand and implement Bayesian methods. If you&amp;#39;re going into an analyst position, you might not need to know as much, because Bayesian models may hurt your cause, rather than help (see below).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;What methods and algorithms you&amp;#39;ll need to employ.&lt;/strong&gt; Lots of data science is crunching numbers, but that&amp;#39;s not the only thing available. Some data science mines text, for example to detect plagiarism in student papers. If you find many job listingss where this might be a component, you should learn more about Natural Language Processing. Similarly, some data science focuses on images; perhaps automatically comparing signatures on checks or handwriting in documents to detect fraud. Look into image processing algorithms, which may be useful here.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;How you&amp;#39;ll need to communicate.&lt;/strong&gt; &lt;em&gt;All data science should further the business goals&lt;/em&gt; (pound that notion in). Regardless of where you&amp;#39;re working, or what you&amp;#39;re doing, you will &lt;em&gt;always&lt;/em&gt; have to be justifying your thoughts, approach, and implementation to others, higher up. If you cannot sell them on what you&amp;#39;re doing, do not expect to be able to move forward (see how this is different than hard science?). How you have to defend yourself, and what tools you&amp;#39;ll be &amp;quot;allowed&amp;quot; to use, however, will vary greatly from job to job.&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;At a company with a large focus on data science, you may be working with an entire team of data scientists. You may have managers (who themselves are data scientists), who will act as the intermediary between you and the business leaders. You need to sell the managers, who will then take it upon themselves to sell the executives. This is a somewhat easier setup: the people you are directly interfacing with understand data science. You can talk about Bayesian statistics, ensemble methods and specific python modules to bolster your case, and they will be able to speak the same language.&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Going to an analyst position, or a company with a small data science team? You may be speaking directly to executives to sell them on your plan. While more advanced classification schemes, such as Bayes, may provide better results, they may hamper your efforts here, because nobody you&amp;#39;re talking to will understand them! You may be forced to fall back to simple Decision Tree Classifiers, which you can plot, and everyone can understand. Be prepared to &amp;quot;dumb down&amp;quot; your models, or be able to explain them creatively, so that everyone can get on board.&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;This is another area where data science (and business in general) is different than science. In science, you are judged by the quality of your work, and only slightly by how you present it. If you have an amazing find, but you stammer a bit in your talk, or your paper is a little disorganized, you still may be lauded in the scientific community. In business, it&amp;#39;s the opposite: it doesn&amp;#39;t matter whether you found an amazing classification model if you can&amp;#39;t explain it. If you stumble through a meeting with executives, your entire project may be killed, even if it would have saved the company millions of dollars. &lt;em&gt;Practice your public speaking!&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;So now that you’ve hammered out your list of things you need to learn, how will you do that? The best option is to look to free online courses, from places like Coursera, or Udacity. Another good option is just search the web for resources on the specific area you want to learn. Hadoop has an &lt;a href=&quot;http://lintool.github.io/Cloud9/&quot;&gt;excellent walkthrough&lt;/a&gt; online, and many of these other advanced tools do as well.&lt;/p&gt;
+&lt;p&gt;So now that you&amp;#39;ve hammered out your list of things you need to learn, how will you do that? The best option is to look to free online courses, from places like Coursera, or Udacity. Another good option is just search the web for resources on the specific area you want to learn. Hadoop has an &lt;a href=&quot;http://lintool.github.io/Cloud9/&quot;&gt;excellent walkthrough&lt;/a&gt; online, and many of these other advanced tools do as well.&lt;/p&gt;
 
-&lt;p&gt;Not only will you be learning relevant skills for your future job, but you’ll also be proving to a future employer that you &lt;em&gt;can&lt;/em&gt;. I’ve heard from many people in the industry that most of what companies care about are inherent traits, not skills. Sure, being able to check off the list of requirements is good, but they more want to see whether you are a deep quantitative thinker, whether you’re able to carry out independent projects in a timely manner, and whether you’re able to efficiently learn new skills that may be necessary for the job. Show them that you can.&lt;/p&gt;
+&lt;p&gt;Not only will you be learning relevant skills for your future job, but you&amp;#39;ll also be proving to a future employer that you &lt;em&gt;can&lt;/em&gt;. I&amp;#39;ve heard from many people in the industry that most of what companies care about are inherent traits, not skills. Sure, being able to check off the list of requirements is good, but they more want to see whether you are a deep quantitative thinker, whether you&amp;#39;re able to carry out independent projects in a timely manner, and whether you&amp;#39;re able to efficiently learn new skills that may be necessary for the job. Show them that you can.&lt;/p&gt;
 
-&lt;p&gt;Lastly, put those skills to use and practice! &lt;a href=&quot;http://www.kaggle.com&quot;&gt;Kaggle.com&lt;/a&gt; has many excellent challenges that give you chances to work on real datasets, and test your algorthims’ accuracy. They range in difficulty and approach, providing challenges for any realm of data science you wish to enter. Go check them out!&lt;/p&gt;
+&lt;p&gt;Lastly, put those skills to use and practice! &lt;a href=&quot;http://www.kaggle.com&quot;&gt;Kaggle.com&lt;/a&gt; has many excellent challenges that give you chances to work on real datasets, and test your algorthims&amp;#39; accuracy. They range in difficulty and approach, providing challenges for any realm of data science you wish to enter. Go check them out!&lt;/p&gt;
 </description>
         <pubDate>Tue, 29 Jul 2014 00:00:00 -0700</pubDate>
         <link>http://bathompso.com/blog/transition-to-data-science/</link>
@@ -327,64 +315,42 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
     
       <item>
         <title>Solving Astronomy Software-Rot</title>
-        <description>&lt;p&gt;There is a problem in astronomy (probably in other sciences too, but I see it mainly in my field), which I will term “software-rot,” after the better known term &lt;a href=&quot;http://en.wikipedia.org/wiki/Link_rot&quot;&gt;link-rot&lt;/a&gt;. There are several key packages of software that many astronomers rely on to do &lt;strong&gt;basic&lt;/strong&gt; data reduction that are either no longer being developed, or the developer is working on such an old configuration it may as well not be.&lt;/p&gt;
+        <description>&lt;p&gt;There is a problem in astronomy (probably in other sciences too, but I see it mainly in my field), which I will term &amp;quot;software-rot,&amp;quot; after the better known term &lt;a href=&quot;http://en.wikipedia.org/wiki/Link_rot&quot;&gt;link-rot&lt;/a&gt;. There are several key packages of software that many astronomers rely on to do &lt;strong&gt;basic&lt;/strong&gt; data reduction that are either no longer being developed, or the developer is working on such an old configuration it may as well not be.&lt;/p&gt;
 
 &lt;p&gt;The main offender is most likely &lt;a href=&quot;http://iraf.net&quot;&gt;IRAF&lt;/a&gt;, which every astronomer will tell you they hate, but still install and use it anyway. IRAF is old and clunky, with installation documentation which looks like it is from another decade. The problem was supposed to be fixed with &lt;a href=&quot;http://www.stsci.edu/institute/software_hardware/pyraf&quot;&gt;PyRAF&lt;/a&gt;, but it seems like more of a rewrite of bad code in a new language (python) than an actual solution.&lt;/p&gt;
 
-&lt;p&gt;While I do not work on spectroscopy, a vast majority of the TCU lab focuses on it. One of the main reduction programs in astronomical spectroscopy is &lt;a href=&quot;http://www.as.utexas.edu/~chris/moog.html&quot;&gt;Chris Sneden’s MOOG&lt;/a&gt;. This program, one of the most used single software packages in astronomy, is written in FORTRAN-77 which, at 27 years old, is barely supported by the most recent gfortran compiler. A program that is so widely used by astronomy graduate students &lt;strong&gt;shouldn’t be older than the students themselves&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;While I do not work on spectroscopy, a vast majority of the TCU lab focuses on it. One of the main reduction programs in astronomical spectroscopy is &lt;a href=&quot;http://www.as.utexas.edu/%7Echris/moog.html&quot;&gt;Chris Sneden&amp;#39;s MOOG&lt;/a&gt;. This program, one of the most used single software packages in astronomy, is written in FORTRAN-77 which, at 27 years old, is barely supported by the most recent gfortran compiler. A program that is so widely used by astronomy graduate students &lt;strong&gt;shouldn&amp;#39;t be older than the students themselves&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;With IT pushing old machines off the network, the TCU lab is in the process of upgrading every computer from Snow Leopard to Mavericks to future-proof the lab for several years. With this upgrade comes the task of re-compiling all the source code we use on a daily basis. MOOG is one of these programs. Even without the migration, MOOG has been almost impossible to install, and even more trouble comes with the removal of all 32-bit libraries in OS X versions 10.7+.&lt;/p&gt;
 
-&lt;p&gt;Luckily, I found an awesome &lt;a href=&quot;https://github.com/andycasey/moog&quot;&gt;1-click installer for MOOG&lt;/a&gt;, packaged as a Python program. Unfortunately, this program does not compile on Mavericks. So before we upgraded any of our machines, we needed to figure out a way to get MOOG running on 10.9. Fortunately, I discovered how. While the installer for MOOG does not work on Mavericks, it does work on Snow Leopard. And I’ve found that the pre-built binary from a Snow Leopard installation will work and run on a Mavericks computer.&lt;/p&gt;
+&lt;p&gt;Luckily, I found an awesome &lt;a href=&quot;https://github.com/andycasey/moog&quot;&gt;1-click installer for MOOG&lt;/a&gt;, packaged as a Python program. Unfortunately, this program does not compile on Mavericks. So before we upgraded any of our machines, we needed to figure out a way to get MOOG running on 10.9. Fortunately, I discovered how. While the installer for MOOG does not work on Mavericks, it does work on Snow Leopard. And I&amp;#39;ve found that the pre-built binary from a Snow Leopard installation will work and run on a Mavericks computer.&lt;/p&gt;
 
 &lt;p&gt;To get this working on your machines, follow the steps below.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;First, you’ll need access to a OS X 10.6 Snow Leopard machine. This can be in the form of an actual Snow Leopard computer (which we still have around the lab), or a Virtual Machine running Snow Leopard. More recent version of OS X (10.7+) allow for virtualization of Snow Leopard Server (not the client version). If you have an install disk for 10.6 Server, hold onto it, as you can make a Virtual Machine in &lt;a href=&quot;https://www.virtualbox.org&quot;&gt;Virtualbox&lt;/a&gt; or some other virtualization software.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On your Snow Leopard machine, install XCode. This can be done by either running the XCode installer from the install DVD, or downloading an XCode installer from &lt;a href=&quot;http://developer.apple.com/downloads&quot;&gt;developer.apple.com/downloads&lt;/a&gt;, logging in with your AppleID, and searching for Snow Leopard XCode downloads.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Next you’ll need to download g77, a GNU FORTRAN-77 compiler, which you can find at &lt;a href=&quot;http://hpc.sourceforge.net&quot;&gt;hpc.sourceforge.net&lt;/a&gt;. Make sure to download the intel version, which will extract to &lt;code class=&quot;highlighter-rouge&quot;&gt;g77-intel-bin.tar&lt;/code&gt;. Install the binaries by running &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo tar -xvf g77-intel-bin.tar -C /&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Next, you’ll need to download and install &lt;a href=&quot;http://scisoftosx.dyndns.org&quot;&gt;scisoft&lt;/a&gt;. While scisoft itself is definitely a “software-rot” offender, it’s also the only way to get a (free) version of SuperMongo installed, which is required for MOOG. It’s a monster of a package, and will install a ton of things, but if you’re astronomer you’ll probably want them installed anyway (IRAF and scientific Python installations are also included).&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Lastly, you’ll need to download the MOOG 1-click installer from &lt;a href=&quot;https://github.com/andycasey/moog&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Now you just need to install MOOG. Within the newly-downloaded moog-master, run &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo python setup.py install&lt;/code&gt;. The build &lt;em&gt;should&lt;/em&gt; run with no errors. The newly-built &lt;code class=&quot;highlighter-rouge&quot;&gt;MOOG&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;MOOGSILENT&lt;/code&gt; binares will be located in &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/bin/&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;First, you&amp;#39;ll need access to a OS X 10.6 Snow Leopard machine. This can be in the form of an actual Snow Leopard computer (which we still have around the lab), or a Virtual Machine running Snow Leopard. More recent version of OS X (10.7+) allow for virtualization of Snow Leopard Server (not the client version). If you have an install disk for 10.6 Server, hold onto it, as you can make a Virtual Machine in &lt;a href=&quot;https://www.virtualbox.org&quot;&gt;Virtualbox&lt;/a&gt; or some other virtualization software.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;On your Snow Leopard machine, install XCode. This can be done by either running the XCode installer from the install DVD, or downloading an XCode installer from &lt;a href=&quot;http://developer.apple.com/downloads&quot;&gt;developer.apple.com/downloads&lt;/a&gt;, logging in with your AppleID, and searching for Snow Leopard XCode downloads.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Next you&amp;#39;ll need to download g77, a GNU FORTRAN-77 compiler, which you can find at &lt;a href=&quot;http://hpc.sourceforge.net&quot;&gt;hpc.sourceforge.net&lt;/a&gt;. Make sure to download the intel version, which will extract to &lt;code&gt;g77-intel-bin.tar&lt;/code&gt;. Install the binaries by running &lt;code&gt;sudo tar -xvf g77-intel-bin.tar -C /&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Next, you&amp;#39;ll need to download and install &lt;a href=&quot;http://scisoftosx.dyndns.org&quot;&gt;scisoft&lt;/a&gt;. While scisoft itself is definitely a &amp;quot;software-rot&amp;quot; offender, it&amp;#39;s also the only way to get a (free) version of SuperMongo installed, which is required for MOOG. It&amp;#39;s a monster of a package, and will install a ton of things, but if you&amp;#39;re astronomer you&amp;#39;ll probably want them installed anyway (IRAF and scientific Python installations are also included).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Lastly, you&amp;#39;ll need to download the MOOG 1-click installer from &lt;a href=&quot;https://github.com/andycasey/moog&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now you just need to install MOOG. Within the newly-downloaded moog-master, run &lt;code&gt;sudo python setup.py install&lt;/code&gt;. The build &lt;em&gt;should&lt;/em&gt; run with no errors. The newly-built &lt;code&gt;MOOG&lt;/code&gt; and &lt;code&gt;MOOGSILENT&lt;/code&gt; binares will be located in &lt;code&gt;/usr/local/bin/&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;MOOG&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;MOOGSILENT&lt;/code&gt; binaries will work on a Mavericks installation. I believe there is a problem with the install on Mavericks because g77 and the other associated libraries contain only 32bit binaries, which Mavericks does not allow. However, Mavericks has no trouble &lt;em&gt;running&lt;/em&gt; 32bit binaries once they are compiled, and therefore the Snow Leopard-built executables will function properly.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;MOOG&lt;/code&gt; and &lt;code&gt;MOOGSILENT&lt;/code&gt; binaries will work on a Mavericks installation. I believe there is a problem with the install on Mavericks because g77 and the other associated libraries contain only 32bit binaries, which Mavericks does not allow. However, Mavericks has no trouble &lt;em&gt;running&lt;/em&gt; 32bit binaries once they are compiled, and therefore the Snow Leopard-built executables will function properly.&lt;/p&gt;
 
-&lt;p&gt;Before you can run this executable on your Mavericks computer, you’ll have to install a few things. On the new computer you wish to install MOOG on, you’ll have to run a few more steps.&lt;/p&gt;
+&lt;p&gt;Before you can run this executable on your Mavericks computer, you&amp;#39;ll have to install a few things. On the new computer you wish to install MOOG on, you&amp;#39;ll have to run a few more steps.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Again, download and install &lt;a href=&quot;http://scisoftosx.dyndns.org&quot;&gt;scisoft&lt;/a&gt; (using a Mavericks version this time). MOOG depends on SuperMongo, and therefore these libraries must exist.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Make sure X11 is installed. Because Apple no longer maintains their X11 application, you’ll have to download and install &lt;a href=&quot;http://xquartz.macosforge.org/landing/&quot;&gt;XQuartz&lt;/a&gt; instead.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;When MOOG starts, it writes some data files to a specific directory. In the current install, this directory is located at &lt;code class=&quot;highlighter-rouge&quot;&gt;/.moog&lt;/code&gt;. You will have to create this directory manually and make sure that all users can read and write to it.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Lastly, you’ll have to download a &lt;em&gt;modified&lt;/em&gt; version of the 1-click installer from &lt;a href=&quot;https://github.com/bathompso/moog&quot;&gt;my github&lt;/a&gt;, which contains an additional library, &lt;code class=&quot;highlighter-rouge&quot;&gt;libg2c.0.dylib&lt;/code&gt;. Copy this library to &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/lib&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;After all the prerequisites are satisfied, copy over the compiled binaries to somewhere within your path. I chose &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt;, as that’s where they were installed on the original Snow Leopard machine.&lt;/p&gt;
-  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Again, download and install &lt;a href=&quot;http://scisoftosx.dyndns.org&quot;&gt;scisoft&lt;/a&gt; (using a Mavericks version this time). MOOG depends on SuperMongo, and therefore these libraries must exist.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Make sure X11 is installed. Because Apple no longer maintains their X11 application, you&amp;#39;ll have to download and install &lt;a href=&quot;http://xquartz.macosforge.org/landing/&quot;&gt;XQuartz&lt;/a&gt; instead.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When MOOG starts, it writes some data files to a specific directory. In the current install, this directory is located at &lt;code&gt;/.moog&lt;/code&gt;. You will have to create this directory manually and make sure that all users can read and write to it.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Lastly, you&amp;#39;ll have to download a &lt;em&gt;modified&lt;/em&gt; version of the 1-click installer from &lt;a href=&quot;https://github.com/bathompso/moog&quot;&gt;my github&lt;/a&gt;, which contains an additional library, &lt;code&gt;libg2c.0.dylib&lt;/code&gt;. Copy this library to &lt;code&gt;/usr/local/lib&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;After all the prerequisites are satisfied, copy over the compiled binaries to somewhere within your path. I chose &lt;code&gt;/usr/local/bin&lt;/code&gt;, as that&amp;#39;s where they were installed on the original Snow Leopard machine.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Now you should be able to run a fully-working MOOG program on your less-than-5-years-old OS. On the first run, it may take a &lt;em&gt;long time&lt;/em&gt; for MOOG to initiate X11 (since I run everything through Terminal), or sometimes fail to intitate it at all. It helps to open X11 before initiating the program, as then it will pop up immediately.&lt;/p&gt;
 
-&lt;p&gt;I &lt;strong&gt;strongly suggest&lt;/strong&gt; backing up these executables once you confirm they’re working correctly. This method relies on programs which may no longer exist several years from now, and it’s better to have an archive of the compiled binaries than a walkthrough which sources links that no longer exist.&lt;/p&gt;
+&lt;p&gt;I &lt;strong&gt;strongly suggest&lt;/strong&gt; backing up these executables once you confirm they&amp;#39;re working correctly. This method relies on programs which may no longer exist several years from now, and it&amp;#39;s better to have an archive of the compiled binaries than a walkthrough which sources links that no longer exist.&lt;/p&gt;
 </description>
         <pubDate>Tue, 22 Apr 2014 00:00:00 -0700</pubDate>
         <link>http://bathompso.com/blog/moog/</link>
@@ -399,11 +365,11 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
     
       <item>
         <title>Big Bang breakthrough: astronomers report signs of the universe&#39;s creation</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.theverge.com/2014/3/17/5518346/first-evidence-gravitational-waves-supports-big-bang-inflation&quot;&gt;Astronomers, using a small telescope in the South Pole have made an amazing discovery&lt;/a&gt;. If this finding turns out to be real (via confirmation from another observatory), it may well be the most important astronomical breakthrough of this century. The detected signal not only would be, I believe, the first measurement of &lt;a href=&quot;http://en.wikipedia.org/wiki/Gravitational_wave&quot;&gt;gravitational waves&lt;/a&gt;, but also a confirmation of &lt;a href=&quot;http://en.wikipedia.org/wiki/Inflation_(cosmology\)&quot;&gt;cosmic Inflation&lt;/a&gt;.&lt;/p&gt;
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.theverge.com/2014/3/17/5518346/first-evidence-gravitational-waves-supports-big-bang-inflation&quot;&gt;Astronomers, using a small telescope in the South Pole have made an amazing discovery&lt;/a&gt;. If this finding turns out to be real (via confirmation from another observatory), it may well be the most important astronomical breakthrough of this century. The detected signal not only would be, I believe, the first measurement of &lt;a href=&quot;http://en.wikipedia.org/wiki/Gravitational_wave&quot;&gt;gravitational waves&lt;/a&gt;, but also a confirmation of [cosmic Inflation](http://en.wikipedia.org/wiki/Inflation_(cosmology)).&lt;/p&gt;
 
-&lt;p&gt;Inflation was mainly “invented” to solve several cosmological problems: the flatness of the Universe and the uniformity of the &lt;a href=&quot;http://en.wikipedia.org/wiki/Cosmic_microwave_background&quot;&gt;CMB&lt;/a&gt;. It completely explained those, but it still was essentially a “made up” fix. If this confirmation is true, it would finally cement Inflation as a certified Theory, instead of a “thought experiment” solution to our cosmological observations.&lt;/p&gt;
+&lt;p&gt;Inflation was mainly &amp;quot;invented&amp;quot; to solve several cosmological problems: the flatness of the Universe and the uniformity of the &lt;a href=&quot;http://en.wikipedia.org/wiki/Cosmic_microwave_background&quot;&gt;CMB&lt;/a&gt;. It completely explained those, but it still was essentially a &amp;quot;made up&amp;quot; fix. If this confirmation is true, it would finally cement Inflation as a certified Theory, instead of a &amp;quot;thought experiment&amp;quot; solution to our cosmological observations.&lt;/p&gt;
 
-&lt;p&gt;Now that Inflation has been (supposedly) confirmed true, I hope we can do the same with the two existing cosmological “fudge factors”: dark matter and dark energy. Now &lt;strong&gt;that&lt;/strong&gt; would actually be the most important cosmological breakthrough of this century.&lt;/p&gt;
+&lt;p&gt;Now that Inflation has been (supposedly) confirmed true, I hope we can do the same with the two existing cosmological &amp;quot;fudge factors&amp;quot;: dark matter and dark energy. Now &lt;strong&gt;that&lt;/strong&gt; would actually be the most important cosmological breakthrough of this century.&lt;/p&gt;
 </description>
         <pubDate>Fri, 21 Mar 2014 00:00:00 -0700</pubDate>
         <link>http://bathompso.com/blog/inflation/</link>
@@ -418,9 +384,9 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
     
       <item>
         <title>Google Moving Forward With Project Ara</title>
-        <description>&lt;p&gt;I was &lt;a href=&quot;http://bathompso.com/blog/project-ara/&quot;&gt;initially skeptical&lt;/a&gt; (and still am) of Project Ara’s viability, it looks like Google is &lt;a href=&quot;http://www.theverge.com/2014/2/27/5452770/project-ara-smartphone-release-date-price-google-estimate&quot;&gt;moving forward with the project&lt;/a&gt;, with some suggesting that devices might go on sale in the next year. This could be a huge shift in how mobile is done, and is at least an innovative product coming out of somebody in the smartphone space.&lt;/p&gt;
+        <description>&lt;p&gt;I was &lt;a href=&quot;http://bathompso.com/blog/project-ara/&quot;&gt;initially skeptical&lt;/a&gt; (and still am) of Project Ara&amp;#39;s viability, it looks like Google is &lt;a href=&quot;http://www.theverge.com/2014/2/27/5452770/project-ara-smartphone-release-date-price-google-estimate&quot;&gt;moving forward with the project&lt;/a&gt;, with some suggesting that devices might go on sale in the next year. This could be a huge shift in how mobile is done, and is at least an innovative product coming out of somebody in the smartphone space.&lt;/p&gt;
 
-&lt;p&gt;The biggest impact for me, and one of the coolest aspects of Project Ara, is that most (if not all) of the components will be 3D printed. You will customize your phone using an app, or a console on the Project Ara printer, then all modules will be printed and spit out for you to connect together into your phone. Similarly, individual modules can be chosen and printed for select upgrades. This is awesome for me as 3D Systems (of which I own some stock), is a partner of Google in this endeavour. If Google plans on shipping out 3D Systems’ printers across the globe for use in Project Ara, this could have a huge upside for them.&lt;/p&gt;
+&lt;p&gt;The biggest impact for me, and one of the coolest aspects of Project Ara, is that most (if not all) of the components will be 3D printed. You will customize your phone using an app, or a console on the Project Ara printer, then all modules will be printed and spit out for you to connect together into your phone. Similarly, individual modules can be chosen and printed for select upgrades. This is awesome for me as 3D Systems (of which I own some stock), is a partner of Google in this endeavour. If Google plans on shipping out 3D Systems&amp;#39; printers across the globe for use in Project Ara, this could have a huge upside for them.&lt;/p&gt;
 
 &lt;p&gt;Regardless of the financial gains for 3D Systems, I am interested to see if and how this project moves forward. And if they &lt;strong&gt;are&lt;/strong&gt; selling basic level phones for $50, I might go and pick one up. Perfect travel phone?&lt;/p&gt;
 </description>
@@ -439,19 +405,21 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
         <title>Why I Shifted from Wordpress.org to Jekyll</title>
         <description>&lt;p&gt;A personal website is useful in the current age, both as a marketing mechanism for me, and an outlet for things I want to share with everyone. Perhaps not many people read my blog posts, but my &lt;a href=&quot;http://github.com/bathompso&quot;&gt;research code&lt;/a&gt; and my &lt;a href=&quot;http://bathompso.com/education/&quot;&gt;class outlines&lt;/a&gt; will hopefully be used by others.&lt;/p&gt;
 
-&lt;h3 id=&quot;first-attempt&quot;&gt;First Attempt&lt;/h3&gt;
-&lt;p&gt;My first attempt at a website involved me coding the entire thing (HTML, CSS, JavaScript) from scratch. This not only made it so that I could make the site I wanted, but also as a learning experience for me. I’m proud to say my web skills are better than a novice due to me struggling through building an entire site from the ground up.&lt;/p&gt;
+&lt;h3&gt;First Attempt&lt;/h3&gt;
+
+&lt;p&gt;My first attempt at a website involved me coding the entire thing (HTML, CSS, JavaScript) from scratch. This not only made it so that I could make the site I wanted, but also as a learning experience for me. I&amp;#39;m proud to say my web skills are better than a novice due to me struggling through building an entire site from the ground up.&lt;/p&gt;
 
 &lt;p&gt;There were several problems with this approach:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;It takes &lt;em&gt;forever&lt;/em&gt; to code pages from scratch. Partly because I didn’t know a ton of HTML at the time, but also because I’m not a designer. I could never get things quite right, and it was hard settling on a design.&lt;/li&gt;
-  &lt;li&gt;When I wanted to change the design or some other element, it also took a ton of time to manually change every page. But, by coding everything by hand, there wasn’t a way to template anything.&lt;/li&gt;
+&lt;li&gt;It takes &lt;em&gt;forever&lt;/em&gt; to code pages from scratch. Partly because I didn&amp;#39;t know a ton of HTML at the time, but also because I&amp;#39;m not a designer. I could never get things quite right, and it was hard settling on a design.&lt;/li&gt;
+&lt;li&gt;When I wanted to change the design or some other element, it also took a ton of time to manually change every page. But, by coding everything by hand, there wasn&amp;#39;t a way to template anything.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;To avoid this massive time sink, I actually coded a manual template engine by making a Perl script which formatted plain text blog posts into web pages. The Perl script would convert each text file on-the-fly. It seems a bit ridiculous, but it was the only way I could figure out how to do it all on my own.&lt;/p&gt;
 
-&lt;h3 id=&quot;wordpress&quot;&gt;WordPress&lt;/h3&gt;
+&lt;h3&gt;WordPress&lt;/h3&gt;
+
 &lt;p&gt;After a whole of having a hand-coded site that I never really loved, I went completely the other direction: Wordpress.org&lt;/p&gt;
 
 &lt;p&gt;I self-hosted the wordpress-generated site on one of the many computers in my control, forwarding my domain to my home IP.&lt;/p&gt;
@@ -459,27 +427,28 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
 &lt;p&gt;Wordpress is awesome in the fact that it does &lt;strong&gt;everything&lt;/strong&gt; for you. There are thousands of themes, which make things look 1000x times better than what I could implement, and has hundreds of plugins that handle any other task you could think of. Collapsible text sections? Easy. Really fancy, touch-enabled jquery slider? Done. For a long time I appreciated this ease of use, but not everything was perfect.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;The internet connection to my house is less than stellar through &lt;a href=&quot;http://clear.com&quot;&gt;Clear&lt;/a&gt;, and I have no intention of paying money to put it on a external host. This meant that many of my hi-res images would take quite a while to load, regardless of the user’s Internet speed.&lt;/li&gt;
-  &lt;li&gt;All day I work on editing text files in full-screen BBEdit, which nicely aligns all my text, syntax highlights, and is easy to use. The wordpress web-interface has a full-screen mode, but it still leaves much to be desired. There are available apps to do editing, but all look like they haven’t been updated since Mac OS X Leopard.&lt;/li&gt;
+&lt;li&gt;The internet connection to my house is less than stellar through &lt;a href=&quot;http://clear.com&quot;&gt;Clear&lt;/a&gt;, and I have no intention of paying money to put it on a external host. This meant that many of my hi-res images would take quite a while to load, regardless of the user&amp;#39;s Internet speed.&lt;/li&gt;
+&lt;li&gt;All day I work on editing text files in full-screen BBEdit, which nicely aligns all my text, syntax highlights, and is easy to use. The wordpress web-interface has a full-screen mode, but it still leaves much to be desired. There are available apps to do editing, but all look like they haven&amp;#39;t been updated since Mac OS X Leopard.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;jekyll&quot;&gt;Jekyll&lt;/h3&gt;
+&lt;h3&gt;Jekyll&lt;/h3&gt;
+
 &lt;p&gt;My friend Brian recently put &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; on my radar by wanting to use it for a big project at work, and I began to play around with it. Jekyll is a blog-centric web creation tool. It allows you to make template HTML files, which have content fed to them from various &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;markdown&lt;/a&gt; files. It then converts all the templates, markdown, and other files into a site of static HTML images. No database queries like wordpress or others, which makes it naturally faster to load and less strenuous on any hosting system.&lt;/p&gt;
 
-&lt;p&gt;Because everything is a text file (HTML or markdown), I can edit it in anything I want. BBEdit on my Mac, and the awesome &lt;a href=&quot;http://bywordapp.com&quot;&gt;ByWord app&lt;/a&gt; on my iPhone and iPad (I’m using the iPhone app right now). Way better than the subpar Wordpress web editor and questionable iOS apps.&lt;/p&gt;
+&lt;p&gt;Because everything is a text file (HTML or markdown), I can edit it in anything I want. BBEdit on my Mac, and the awesome &lt;a href=&quot;http://bywordapp.com&quot;&gt;ByWord app&lt;/a&gt; on my iPhone and iPad (I&amp;#39;m using the iPhone app right now). Way better than the subpar Wordpress web editor and questionable iOS apps.&lt;/p&gt;
 
-&lt;p&gt;Another great plus of Jekyll is that it is in the good graces of the GitHub gods. GitHub launched a cool new initiative called GitHub pages, where GitHub will give you free hosting if you sign up (username.github.io). Of course, this would never work with Wordpress as it requires a database, but Jekyll sites, since they’re all static, will work perfectly fine. Additionally, github will host all your pre-compiled Jekyll files, so you don’t even have to run that compilation yourself.&lt;/p&gt;
+&lt;p&gt;Another great plus of Jekyll is that it is in the good graces of the GitHub gods. GitHub launched a cool new initiative called GitHub pages, where GitHub will give you free hosting if you sign up (username.github.io). Of course, this would never work with Wordpress as it requires a database, but Jekyll sites, since they&amp;#39;re all static, will work perfectly fine. Additionally, github will host all your pre-compiled Jekyll files, so you don&amp;#39;t even have to run that compilation yourself.&lt;/p&gt;
 
 &lt;p&gt;With my site now being hosted via GitHub instead of through my slow connection, large images will load almost instantly instead of several seconds.&lt;/p&gt;
 
 &lt;p&gt;There are lots of other considerations as well:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Security: no longer do I have to worry about security updates and vulnerabilities in my wordpress-hosting computer. Everything public-facing is on a separate server, not a tunnel into all my devices.&lt;/li&gt;
-  &lt;li&gt;Style Sheets: instead of giant, clunky CSS files, I can write all of my styles in &lt;a href=&quot;http://sass-lang.com&quot;&gt;SASS&lt;/a&gt; and have it compiled into a mini-fied CSS file through &lt;a href=&quot;http://incident57.com/codekit/&quot;&gt;Code Kit&lt;/a&gt;. Variables and nested styles!&lt;/li&gt;
+&lt;li&gt;Security: no longer do I have to worry about security updates and vulnerabilities in my wordpress-hosting computer. Everything public-facing is on a separate server, not a tunnel into all my devices.&lt;/li&gt;
+&lt;li&gt;Style Sheets: instead of giant, clunky CSS files, I can write all of my styles in &lt;a href=&quot;http://sass-lang.com&quot;&gt;SASS&lt;/a&gt; and have it compiled into a mini-fied CSS file through &lt;a href=&quot;http://incident57.com/codekit/&quot;&gt;Code Kit&lt;/a&gt;. Variables and nested styles!&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;While it took a while to transfer my &lt;a href=&quot;http://wordpress.org/themes/origin&quot;&gt;Wordpress Theme&lt;/a&gt; to Jekyll, now that it’s there it’s mostly smooth sailing. Still missing a few pages, but those will easily be converted over in the coming week or so. And future additions to my Education and Research sections will be a lot easier thanks to the markdown content.&lt;/p&gt;
+&lt;p&gt;While it took a while to transfer my &lt;a href=&quot;http://wordpress.org/themes/origin&quot;&gt;Wordpress Theme&lt;/a&gt; to Jekyll, now that it&amp;#39;s there it&amp;#39;s mostly smooth sailing. Still missing a few pages, but those will easily be converted over in the coming week or so. And future additions to my Education and Research sections will be a lot easier thanks to the markdown content.&lt;/p&gt;
 </description>
         <pubDate>Fri, 07 Feb 2014 00:00:00 -0800</pubDate>
         <link>http://bathompso.com/blog/migrating-to-jekyll/</link>
@@ -494,23 +463,23 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
     
       <item>
         <title>The Problem with New Methods</title>
-        <description>&lt;p&gt;My research involves detecting binary star systems in star clusters. Binary star systems are systems where two stars are orbiting each other. The most famous binary system is Tatooine from Star Wars, with its &lt;a href=&quot;http://thethoughtstash.files.wordpress.com/2011/01/sw_binary_sunset.jpg?w=500&amp;#038;h=281&quot;&gt;famous double sunset&lt;/a&gt;. The “closest star to the Sun,” Alpha Centauri, is actually a binary system as well (and even has a third star orbiting it further out!)&lt;/p&gt;
+        <description>&lt;p&gt;My research involves detecting binary star systems in star clusters. Binary star systems are systems where two stars are orbiting each other. The most famous binary system is Tatooine from Star Wars, with its &lt;a href=&quot;http://thethoughtstash.files.wordpress.com/2011/01/sw_binary_sunset.jpg?w=500&amp;amp;#038;h=281&quot;&gt;famous double sunset&lt;/a&gt;. The &amp;quot;closest star to the Sun,&amp;quot; Alpha Centauri, is actually a binary system as well (and even has a third star orbiting it further out!)&lt;/p&gt;
 
 &lt;p&gt;The number of binary systems in a cluster are very important for numerical simulations, as are the masses of the stars in the system. The results from this research have implications for simulations of galactic evolution, and will be fully explained on a devoted page here sometime soon.&lt;/p&gt;
 
-&lt;p&gt;My method of detecting binary systems involves imaging the star cluster using several different &lt;em&gt;filters&lt;/em&gt;. Filters only allow specific wavelengths of light through to the telescope (e.g. only Red light, only Green light, etc.). Using these images, we can determine not only which of the points of light we see that are binary systems instead of a single star, but also what the masses of each star is. The problem with new method is, however, that you can’t trust the results coming out of it until you compare it to known results from other methods. As I am planning to present my research at the upcoming &lt;a href=&quot;http://aas.org/meetings/223rd-aas-meeting-washington-dc&quot;&gt;Winter 2014 American Astronomical Society meeting&lt;/a&gt; in DC, I needed to find an older dataset to compare my results to.&lt;/p&gt;
+&lt;p&gt;My method of detecting binary systems involves imaging the star cluster using several different &lt;em&gt;filters&lt;/em&gt;. Filters only allow specific wavelengths of light through to the telescope (e.g. only Red light, only Green light, etc.). Using these images, we can determine not only which of the points of light we see that are binary systems instead of a single star, but also what the masses of each star is. The problem with new method is, however, that you can&amp;#8217;t trust the results coming out of it until you compare it to known results from other methods. As I am planning to present my research at the upcoming &lt;a href=&quot;http://aas.org/meetings/223rd-aas-meeting-washington-dc&quot;&gt;Winter 2014 American Astronomical Society meeting&lt;/a&gt; in DC, I needed to find an older dataset to compare my results to.&lt;/p&gt;
 
-&lt;p&gt;One of the clusters in my data, NGC 188 (pictured above), has other data on it using radial velocities (RVs), the established method of detecting binary systems. Here, astronomers measure the speed at which a star in the cluster is moving towards or away from us at various points in time. Single stars won’t change their speed, whereas binary systems will oscillate as they orbit each other. By taking enough measurements, one can determine the orbit of each star and determine stellar mass. &lt;strong&gt;[Note: It is more complicated than this is general. There will also be a page on this concept in the future]&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;One of the clusters in my data, NGC 188 (pictured above), has other data on it using radial velocities (RVs), the established method of detecting binary systems. Here, astronomers measure the speed at which a star in the cluster is moving towards or away from us at various points in time. Single stars won&amp;#8217;t change their speed, whereas binary systems will oscillate as they orbit each other. By taking enough measurements, one can determine the orbit of each star and determine stellar mass. &lt;strong&gt;[Note: It is more complicated than this is general. There will also be a page on this concept in the future]&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;The RV data used was from &lt;a href=&quot;http://adsabs.harvard.edu/abs/2009AJ....137.3743G&quot;&gt;Geller et al. (2009)&lt;/a&gt;. For reference, it contains RV measurements from December 1973 to August 2008. This dataset, which I am hoping to duplicate by comparing results &lt;em&gt;took 35 years to create.&lt;/em&gt; This is, in fact, the problem with RV studies: to characterize orbits and determine masses, you have to observe over a very long time. The input into my code was measurements from 12 images. If you could get observing time on the right instruments, gathering the data would only take 5 nights.&lt;/p&gt;
 
 &lt;p&gt;My method involves comparing observed stars to models, and I used three different ones to see how that affected the determined mass. I found that all three models did very well, as seen below. For clarification on the terminology, the &lt;em&gt;primary&lt;/em&gt; star is the larger star in the binary system, and the &lt;em&gt;secondary&lt;/em&gt; is the smaller.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/bincompare.png&quot; style=&quot;width: 100%;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/bincompare.png&quot; style=&quot;width: 100%;&quot;/&gt;&lt;/p&gt;
 
 &lt;p&gt;When I started out, I was hoping for 5-10% accuracy for the primary and 10-20% accuracy for the secondary. For these stars, it looks like we are within that range.&lt;/p&gt;
 
-&lt;p&gt;This comparison will enhance any results on future clusters, a few of which will also be presented at this year’s AAS.&lt;/p&gt;
+&lt;p&gt;This comparison will enhance any results on future clusters, a few of which will also be presented at this year&amp;#39;s AAS.&lt;/p&gt;
 </description>
         <pubDate>Tue, 17 Dec 2013 00:00:00 -0800</pubDate>
         <link>http://bathompso.com/blog/problem-with-new-methods/</link>
@@ -525,11 +494,11 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
     
       <item>
         <title>3D Systems to Manufacture Project Ara&amp;#8217;s Modular Smartphones</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.theverge.com/2013/11/22/5133522/motorola-signs-project-ara-manufacturing-partner&quot;&gt;Motorola is moving forward with their Project Ara modular cell phone initiative.&lt;/a&gt; While I don’t think the idea of a modular cell phone will ever take off, there are benefits in exploring the tech. Perhaps studying ways to modularize a cell phone will lead to improvements in antenna, battery or screen technology, which would benefit the smartphone market as a whole.&lt;/p&gt;
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.theverge.com/2013/11/22/5133522/motorola-signs-project-ara-manufacturing-partner&quot;&gt;Motorola is moving forward with their Project Ara modular cell phone initiative.&lt;/a&gt; While I don&amp;#8217;t think the idea of a modular cell phone will ever take off, there are benefits in exploring the tech. Perhaps studying ways to modularize a cell phone will lead to improvements in antenna, battery or screen technology, which would benefit the smartphone market as a whole.&lt;/p&gt;
 
-&lt;p&gt;As a stockholder of 3D Systems (DDD), I’m happy to see them chasing new markets as well. While they are one of the major players in the 3D printing industry, they could open up a large new revenue stream if Project Ara smartphones ever get off the ground.&lt;/p&gt;
+&lt;p&gt;As a stockholder of 3D Systems (DDD), I&amp;#8217;m happy to see them chasing new markets as well. While they are one of the major players in the 3D printing industry, they could open up a large new revenue stream if Project Ara smartphones ever get off the ground.&lt;/p&gt;
 
-&lt;p&gt;If they could also figure out a way to 3D print some of the components, that would be a future I’m interested in.&lt;/p&gt;
+&lt;p&gt;If they could also figure out a way to 3D print some of the components, that would be a future I&amp;#8217;m interested in.&lt;/p&gt;
 </description>
         <pubDate>Sat, 23 Nov 2013 00:00:00 -0800</pubDate>
         <link>http://bathompso.com/blog/project-ara/</link>
@@ -549,18 +518,18 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
         <description>&lt;p&gt;My research efficiency depends greatly on the amount of computer processing power I have access to. To detect binary systems, I compare observed stars to models of singles and binaries in a brute-force manner. Each observation is monte-carlo sampled within its errors many times, and the final results is the median of those fits. For an example cluster, there may be:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;3000+ stars&lt;/li&gt;
-  &lt;li&gt;4000+ models&lt;/li&gt;
-  &lt;li&gt;90+ resamples&lt;/li&gt;
+&lt;li&gt;  3000+ stars&lt;/li&gt;
+&lt;li&gt;  4000+ models&lt;/li&gt;
+&lt;li&gt;  90+ resamples&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;When I first wrote the analysis software needed for my research, I used the computing language I was most comfortable with: IDL. Version 1, which ran all resamples in order, often took 10+ hours to complete analysis on even a small cluster. To speed things up, I wrote a “dumb parallel” version of code. The main IDL routine would spawn many subroutines (for each resample necessary), and then run them in parallel via Unix’s &lt;em&gt;xargs&lt;/em&gt; command. This sped things up from the serial case, but still took 3-4 hours for a decent sized cluster.&lt;/p&gt;
+&lt;p&gt;When I first wrote the analysis software needed for my research, I used the computing language I was most comfortable with: IDL. Version 1, which ran all resamples in order, often took 10+ hours to complete analysis on even a small cluster. To speed things up, I wrote a &amp;#8220;dumb parallel&amp;#8221; version of code. The main IDL routine would spawn many subroutines (for each resample necessary), and then run them in parallel via Unix&amp;#8217;s &lt;em&gt;xargs&lt;/em&gt; command. This sped things up from the serial case, but still took 3-4 hours for a decent sized cluster.&lt;/p&gt;
 
-&lt;p&gt;Recently, I’ve begun to lose faith in IDL. While it performs amazingly for vector mathematics, it is proprietary (and I’m at the whim of whoever sets the yearly price), and it does not have access to some of the more modern functionality available in other programming languages. To wean myself off of my reliance on IDL, I decided to rewrite my binary detection code in Python.&lt;/p&gt;
+&lt;p&gt;Recently, I&amp;#8217;ve begun to lose faith in IDL. While it performs amazingly for vector mathematics, it is proprietary (and I&amp;#8217;m at the whim of whoever sets the yearly price), and it does not have access to some of the more modern functionality available in other programming languages. To wean myself off of my reliance on IDL, I decided to rewrite my binary detection code in Python.&lt;/p&gt;
 
 &lt;p&gt;During this rewrite, I also decided to try and speed up my analysis time again, this time by harnessing the massive parallel processing of OpenCL. OpenCL allows hundreds of simultaneous calculations to run on compatible CPUs and GPUs. The version 2 analysis code now parallelizes comparison of each star to all models via OpenCL. Running an analysis of 3000 stars, 4000 models and 90 resamples now takes &lt;em&gt;4 minutes instead of 4 hours&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;I’m currently writing educational material on computational physics using Python, and OpenCL will be one of the topics I touch on. The future of computing is in the parallel processing of today’s computers, and OpenCL will be a large part of it. If you do any research that involves large amounts of computing time, you may want to look at harnessing the parallel capabilities of the machine you’re already working on. &lt;a href=&quot;http://bathompso.com/education/compphys/&quot;&gt;Check out my Computational Physics page to learn more&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;m currently writing educational material on computational physics using Python, and OpenCL will be one of the topics I touch on. The future of computing is in the parallel processing of today&amp;#8217;s computers, and OpenCL will be a large part of it. If you do any research that involves large amounts of computing time, you may want to look at harnessing the parallel capabilities of the machine you&amp;#8217;re already working on. &lt;a href=&quot;http://bathompso.com/education/compphys/&quot;&gt;Check out my Computational Physics page to learn more&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Sat, 23 Nov 2013 00:00:00 -0800</pubDate>
         <link>http://bathompso.com/blog/programming-for-gpgpu/</link>

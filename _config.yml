@@ -52,7 +52,7 @@ social:
   #amazon:
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
 highlighter: rouge
 permalink: /:categories/:slug/
 exclude: ['styles/config.rb', 'styles/sass/']
@@ -61,3 +61,17 @@ relative_permalinks: false
 tag_title_prefix: ''
 tag_title_suffix: ' Blog Posts'
 tag_dir: 'blog/tag'
+
+image:
+    source: images
+    output: generated
+    markup: picture
+    presets:
+        default:
+            ppi: [1, 1.5]
+        blog_landing:
+            width: 555
+            height: 350
+        blog_thumbnail:
+            width: 150
+            height: 150

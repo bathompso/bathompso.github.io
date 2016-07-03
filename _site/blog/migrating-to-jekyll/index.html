@@ -70,6 +70,10 @@
                             
                         
                             
+                                <li><a href="/resume/">Resume</a></li>
+                            
+                        
+                            
                         
                             
                         
@@ -93,7 +97,16 @@
 </header>
 
 
-      <article id="page">
+      <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=148947288529876";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<article id="page">
 <header style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/jekyllrb.jpg');
                background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/jekyllrb.jpg');
                background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/jekyllrb.jpg');
@@ -113,21 +126,24 @@
                 07 Feb 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
                 <small>&nbsp;<a href="/blog/tag/Technology/">Technology</a>&nbsp;</small>
             </h5>
-            <div class="col-sm-9" style="font-size: 0.9em"><p>A personal website is useful in the current age, both as a marketing mechanism for me, and an outlet for things I want to share with everyone. Perhaps not many people read my blog posts, but my <a href="http://github.com/bathompso">research code</a> and my <a href="http://bathompso.com/education/">class outlines</a> will hopefully be used by others.</p>
+            <div class="col-sm-9" style="font-size: 0.9em">
+                <p>A personal website is useful in the current age, both as a marketing mechanism for me, and an outlet for things I want to share with everyone. Perhaps not many people read my blog posts, but my <a href="http://github.com/bathompso">research code</a> and my <a href="http://bathompso.com/education/">class outlines</a> will hopefully be used by others.</p>
 
-<h3 id="first-attempt">First Attempt</h3>
-<p>My first attempt at a website involved me coding the entire thing (HTML, CSS, JavaScript) from scratch. This not only made it so that I could make the site I wanted, but also as a learning experience for me. I’m proud to say my web skills are better than a novice due to me struggling through building an entire site from the ground up.</p>
+<h3>First Attempt</h3>
+
+<p>My first attempt at a website involved me coding the entire thing (HTML, CSS, JavaScript) from scratch. This not only made it so that I could make the site I wanted, but also as a learning experience for me. I&#39;m proud to say my web skills are better than a novice due to me struggling through building an entire site from the ground up.</p>
 
 <p>There were several problems with this approach:</p>
 
 <ul>
-  <li>It takes <em>forever</em> to code pages from scratch. Partly because I didn’t know a ton of HTML at the time, but also because I’m not a designer. I could never get things quite right, and it was hard settling on a design.</li>
-  <li>When I wanted to change the design or some other element, it also took a ton of time to manually change every page. But, by coding everything by hand, there wasn’t a way to template anything.</li>
+<li>It takes <em>forever</em> to code pages from scratch. Partly because I didn&#39;t know a ton of HTML at the time, but also because I&#39;m not a designer. I could never get things quite right, and it was hard settling on a design.</li>
+<li>When I wanted to change the design or some other element, it also took a ton of time to manually change every page. But, by coding everything by hand, there wasn&#39;t a way to template anything.</li>
 </ul>
 
 <p>To avoid this massive time sink, I actually coded a manual template engine by making a Perl script which formatted plain text blog posts into web pages. The Perl script would convert each text file on-the-fly. It seems a bit ridiculous, but it was the only way I could figure out how to do it all on my own.</p>
 
-<h3 id="wordpress">WordPress</h3>
+<h3>WordPress</h3>
+
 <p>After a whole of having a hand-coded site that I never really loved, I went completely the other direction: Wordpress.org</p>
 
 <p>I self-hosted the wordpress-generated site on one of the many computers in my control, forwarding my domain to my home IP.</p>
@@ -135,28 +151,41 @@
 <p>Wordpress is awesome in the fact that it does <strong>everything</strong> for you. There are thousands of themes, which make things look 1000x times better than what I could implement, and has hundreds of plugins that handle any other task you could think of. Collapsible text sections? Easy. Really fancy, touch-enabled jquery slider? Done. For a long time I appreciated this ease of use, but not everything was perfect.</p>
 
 <ul>
-  <li>The internet connection to my house is less than stellar through <a href="http://clear.com">Clear</a>, and I have no intention of paying money to put it on a external host. This meant that many of my hi-res images would take quite a while to load, regardless of the user’s Internet speed.</li>
-  <li>All day I work on editing text files in full-screen BBEdit, which nicely aligns all my text, syntax highlights, and is easy to use. The wordpress web-interface has a full-screen mode, but it still leaves much to be desired. There are available apps to do editing, but all look like they haven’t been updated since Mac OS X Leopard.</li>
+<li>The internet connection to my house is less than stellar through <a href="http://clear.com">Clear</a>, and I have no intention of paying money to put it on a external host. This meant that many of my hi-res images would take quite a while to load, regardless of the user&#39;s Internet speed.</li>
+<li>All day I work on editing text files in full-screen BBEdit, which nicely aligns all my text, syntax highlights, and is easy to use. The wordpress web-interface has a full-screen mode, but it still leaves much to be desired. There are available apps to do editing, but all look like they haven&#39;t been updated since Mac OS X Leopard.</li>
 </ul>
 
-<h3 id="jekyll">Jekyll</h3>
+<h3>Jekyll</h3>
+
 <p>My friend Brian recently put <a href="http://jekyllrb.com">Jekyll</a> on my radar by wanting to use it for a big project at work, and I began to play around with it. Jekyll is a blog-centric web creation tool. It allows you to make template HTML files, which have content fed to them from various <a href="http://daringfireball.net/projects/markdown/">markdown</a> files. It then converts all the templates, markdown, and other files into a site of static HTML images. No database queries like wordpress or others, which makes it naturally faster to load and less strenuous on any hosting system.</p>
 
-<p>Because everything is a text file (HTML or markdown), I can edit it in anything I want. BBEdit on my Mac, and the awesome <a href="http://bywordapp.com">ByWord app</a> on my iPhone and iPad (I’m using the iPhone app right now). Way better than the subpar Wordpress web editor and questionable iOS apps.</p>
+<p>Because everything is a text file (HTML or markdown), I can edit it in anything I want. BBEdit on my Mac, and the awesome <a href="http://bywordapp.com">ByWord app</a> on my iPhone and iPad (I&#39;m using the iPhone app right now). Way better than the subpar Wordpress web editor and questionable iOS apps.</p>
 
-<p>Another great plus of Jekyll is that it is in the good graces of the GitHub gods. GitHub launched a cool new initiative called GitHub pages, where GitHub will give you free hosting if you sign up (username.github.io). Of course, this would never work with Wordpress as it requires a database, but Jekyll sites, since they’re all static, will work perfectly fine. Additionally, github will host all your pre-compiled Jekyll files, so you don’t even have to run that compilation yourself.</p>
+<p>Another great plus of Jekyll is that it is in the good graces of the GitHub gods. GitHub launched a cool new initiative called GitHub pages, where GitHub will give you free hosting if you sign up (username.github.io). Of course, this would never work with Wordpress as it requires a database, but Jekyll sites, since they&#39;re all static, will work perfectly fine. Additionally, github will host all your pre-compiled Jekyll files, so you don&#39;t even have to run that compilation yourself.</p>
 
 <p>With my site now being hosted via GitHub instead of through my slow connection, large images will load almost instantly instead of several seconds.</p>
 
 <p>There are lots of other considerations as well:</p>
 
 <ul>
-  <li>Security: no longer do I have to worry about security updates and vulnerabilities in my wordpress-hosting computer. Everything public-facing is on a separate server, not a tunnel into all my devices.</li>
-  <li>Style Sheets: instead of giant, clunky CSS files, I can write all of my styles in <a href="http://sass-lang.com">SASS</a> and have it compiled into a mini-fied CSS file through <a href="http://incident57.com/codekit/">Code Kit</a>. Variables and nested styles!</li>
+<li>Security: no longer do I have to worry about security updates and vulnerabilities in my wordpress-hosting computer. Everything public-facing is on a separate server, not a tunnel into all my devices.</li>
+<li>Style Sheets: instead of giant, clunky CSS files, I can write all of my styles in <a href="http://sass-lang.com">SASS</a> and have it compiled into a mini-fied CSS file through <a href="http://incident57.com/codekit/">Code Kit</a>. Variables and nested styles!</li>
 </ul>
 
-<p>While it took a while to transfer my <a href="http://wordpress.org/themes/origin">Wordpress Theme</a> to Jekyll, now that it’s there it’s mostly smooth sailing. Still missing a few pages, but those will easily be converted over in the coming week or so. And future additions to my Education and Research sections will be a lot easier thanks to the markdown content.</p>
-</div>
+<p>While it took a while to transfer my <a href="http://wordpress.org/themes/origin">Wordpress Theme</a> to Jekyll, now that it&#39;s there it&#39;s mostly smooth sailing. Still missing a few pages, but those will easily be converted over in the coming week or so. And future additions to my Education and Research sections will be a lot easier thanks to the markdown content.</p>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="fb-like" data-href="http://bathompso.com/blog/migrating-to-jekyll/" data-layout="box_count" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
+                    </div>
+                    <div class="col-sm-2">
+                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Why I Shifted from Wordpress.org to Jekyll" data-size="large" data-via="bathompso">Tweet</a>
+                    </div>
+                    <a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+                    <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+                </div>
+                <div class="fb-comments" data-href="http://bathompso.com/blog/migrating-to-jekyll/" data-width="100%" data-numposts="10"></div>
+            </div>
             <div class="col-sm-3">
                 <a class="twitter-timeline" data-width="300" data-height="1600" href="https://twitter.com/bathompso">Tweets by bathompso</a>
                 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

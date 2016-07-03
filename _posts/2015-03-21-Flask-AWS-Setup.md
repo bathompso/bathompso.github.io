@@ -7,7 +7,7 @@ categories:
 tags:
   - Data Science
   - Insight
-image: flask.png
+image: flask-logo.png
 subtitle: Python web deployment, made easy.
 ---
 

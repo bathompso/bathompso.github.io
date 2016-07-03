@@ -14,6 +14,38 @@
     font-size: 0.7em;
 }
 
+.resume-section-header {
+    width: 100%;
+    border-bottom: 1px solid #aaa;
+    padding-top: 15px;
+}
+
+.resume-dates {
+    text-align: right;
+}
+
+.resume-list {
+    font-size: 0.8em;
+    margin-left: 25px;
+    line-height: 1.4em;
+}
+
+.resume-list li {
+    margin-top: 5px;
+}
+
+.resume-skill {
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.resume-degree {
+    line-height: 1.4em;
+    width: 100%;
+    font-size: 0.8em;
+    padding-bottom: 10px;
+}
+
 .highlight .hll { background-color: #ffffcc }
 .highlight  { background: #f8f8f8; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
