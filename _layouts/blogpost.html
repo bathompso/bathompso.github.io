@@ -17,9 +17,12 @@ layout: default
                background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
                background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.9))), url('/images/{{ page.image }}');
                background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
-               background-size: contain;
-               background-position: 50% 0;">
-    <h2>{{ page.title }}</h2>
+               background-size: 100%;
+               background-position: 50% 0;
+               padding-top: auto;
+               padding-bottom: auto;
+               height: 300px;">
+    <h2 style="width: 80%; margin-left: auto; margin-right: auto;">{{ page.title }}</h2>
     <p>{{ page.subtitle }}</p>
 </header>
 
@@ -27,22 +30,33 @@ layout: default
     <div class="inner">
         <div class="row">
             <h5 style="padding-bottom: 40px">
-                {{ page.date | date_to_string }} &middot; <i>by</i> bathompso &middot; <i>in</i>
+                {{ page.date | date_to_string }} &middot; <i>in</i>
                 <small>{% for tag in page.tags %}&nbsp;<a href="/blog/tag/{{ tag }}/">{{ tag }}</a>&nbsp;{% endfor %}</small>
             </h5>
             <div class="col-sm-9" style="font-size: 0.9em">
                 {{ content }}
+                <hr/>
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="fb-like" data-href="{{ site.url }}{{ page.url }}" data-layout="box_count" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
+                        <div class="fb-like" data-href="{{ site.url }}{{ page.url }}" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
                     </div>
+
                     <div class="col-sm-2">
                         <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ page.title | escape }}" data-size="large" data-via="bathompso">Tweet</a>
                     </div>
-                    <a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
-                    <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+
+                    <div class="col-sm-2">
+                        <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+                        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share"></script>
+                    </div>
                 </div>
-                <div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-width="100%" data-numposts="10"></div>
+                <div class="row"><div class="col-sm-12">
+                    <div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-width="100%" data-numposts="10"></div>
+                </div></div>
             </div>
             <div class="col-sm-3">
                 <a class="twitter-timeline" data-width="300" data-height="1600" href="https://twitter.com/bathompso">Tweets by bathompso</a>

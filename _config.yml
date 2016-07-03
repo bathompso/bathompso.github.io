@@ -75,3 +75,6 @@ image:
         blog_thumbnail:
             width: 150
             height: 150
+        blog_main:
+            width: 1400
+            height: 600

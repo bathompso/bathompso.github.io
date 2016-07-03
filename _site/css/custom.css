@@ -46,6 +46,18 @@
     padding-bottom: 10px;
 }
 
+.fb-like {
+    margin-bottom: 15px;
+}
+
+.twitter-share-button {
+    margin-bottom: 15px;
+}
+
+.pocket-btn {
+    margin-bottom: 15px;
+}
+
 .highlight .hll { background-color: #ffffcc }
 .highlight  { background: #f8f8f8; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
