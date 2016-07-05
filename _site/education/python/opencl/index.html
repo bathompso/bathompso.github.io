@@ -11,10 +11,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
-  <title>Programming for GPGPUs</title>
-  <meta name="description" content="My research efficiency depends greatly on the amount of computer processing power I have access to. To detect binary systems, I compare observed stars to mod...">
+  <title>OpenCL</title>
+  <meta name="description" content="    ">
   <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
-  <link rel="canonical" href="http://bathompso.com/blog/programming-for-gpgpu/">
+  <link rel="canonical" href="http://bathompso.com/education/python/opencl/">
   <link rel="stylesheet" href="/css/bootstrap.css" />
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="/css/custom.css" />
@@ -42,16 +42,97 @@
             
             
                 
+            
+                
                     
                     
                     &#187;
-                    <a href="/blog/">Blog</a>
+                    <a href="/education/">Education</a>
                 
             
                 
             
                 
             
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            
+            
+            
+            
+                
+            
+                
+            
+                
+            
+                
+                    
+                    
+                    &#187;
+                    <a href="/education/python/">Python</a>
                 
             
                 
@@ -162,30 +243,30 @@
                 
             
                 
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
                     
                     
                     &#187;
-                    Programming for GPGPUs
+                    OpenCL
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
                 
             
                 
@@ -258,85 +339,31 @@
 </header>
 
 
-      <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=148947288529876";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+      <article id="page">
 
-<article id="page">
-<header style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/gpgpu.jpg');
-               background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/gpgpu.jpg');
-               background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/gpgpu.jpg');
-               background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/gpgpu.jpg');
-               background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.9))), url('/images/gpgpu.jpg');
-               background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/gpgpu.jpg');
-               background-size: 100%;
-               background-position: 50% 0;
-               padding-top: auto;
-               padding-bottom: auto;
-               height: 300px;">
-    <h2 style="width: 80%; margin-left: auto; margin-right: auto;">Programming for GPGPUs</h2>
+  <header style="padding-top: 50px; padding-bottom: 50px;">
+    <h2>OpenCL</h2>
     <p></p>
-</header>
+  </header>
 
-<section class="wrapper style5" style="padding-top: 40px;">
+  <section class="wrapper style5">
     <div class="inner">
-        <div class="row">
-            <h5 style="padding-bottom: 40px">
-                23 Nov 2013 &middot; <i>in</i>
-                <small>&nbsp;<a href="/blog/tag/Research/">Research</a>&nbsp;</small>
-            </h5>
-            <div class="col-sm-9" style="font-size: 0.9em">
-                <p>My research efficiency depends greatly on the amount of computer processing power I have access to. To detect binary systems, I compare observed stars to models of singles and binaries in a brute-force manner. Each observation is monte-carlo sampled within its errors many times, and the final results is the median of those fits. For an example cluster, there may be:</p>
+      <div>
+    <iframe id="jupyter" src="/jupyter/OpenCL.html" style="width: 100%;"></iframe>
+</div>
 
-<ul>
-<li>  3000+ stars</li>
-<li>  4000+ models</li>
-<li>  90+ resamples</li>
-</ul>
+<script type="text/javascript">
+function setIframeHeight(iframe) {
+    if (iframe) {
+        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+        if (iframeWin.document.body) { iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight; }
+    }
+};
+window.onload = function () { setIframeHeight(document.getElementById('jupyter')); };
+</script>
 
-<p>When I first wrote the analysis software needed for my research, I used the computing language I was most comfortable with: IDL. Version 1, which ran all resamples in order, often took 10+ hours to complete analysis on even a small cluster. To speed things up, I wrote a &#8220;dumb parallel&#8221; version of code. The main IDL routine would spawn many subroutines (for each resample necessary), and then run them in parallel via Unix&#8217;s <em>xargs</em> command. This sped things up from the serial case, but still took 3-4 hours for a decent sized cluster.</p>
-
-<p>Recently, I&#8217;ve begun to lose faith in IDL. While it performs amazingly for vector mathematics, it is proprietary (and I&#8217;m at the whim of whoever sets the yearly price), and it does not have access to some of the more modern functionality available in other programming languages. To wean myself off of my reliance on IDL, I decided to rewrite my binary detection code in Python.</p>
-
-<p>During this rewrite, I also decided to try and speed up my analysis time again, this time by harnessing the massive parallel processing of OpenCL. OpenCL allows hundreds of simultaneous calculations to run on compatible CPUs and GPUs. The version 2 analysis code now parallelizes comparison of each star to all models via OpenCL. Running an analysis of 3000 stars, 4000 models and 90 resamples now takes <em>4 minutes instead of 4 hours</em>.</p>
-
-<p>I&#8217;m currently writing educational material on computational physics using Python, and OpenCL will be one of the topics I touch on. The future of computing is in the parallel processing of today&#8217;s computers, and OpenCL will be a large part of it. If you do any research that involves large amounts of computing time, you may want to look at harnessing the parallel capabilities of the machine you&#8217;re already working on. <a href="http://bathompso.com/education/physics/">Check out my Python page to learn more</a>.</p>
-
-                <hr/>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <div class="fb-like" data-href="http://bathompso.com/blog/programming-for-gpgpu/" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Programming for GPGPUs" data-size="large" data-via="bathompso">Tweet</a>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
-                        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share"></script>
-                    </div>
-                </div>
-                <div class="row"><div class="col-sm-12">
-                    <div class="fb-comments" data-href="http://bathompso.com/blog/programming-for-gpgpu/" data-width="100%" data-numposts="10"></div>
-                </div></div>
-            </div>
-            <div class="col-sm-3">
-                <a class="twitter-timeline" data-width="300" data-height="1600" href="https://twitter.com/bathompso">Tweets by bathompso</a>
-                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-        </div>
     </div>
-</section>
+  </section>
 
 </article>
 

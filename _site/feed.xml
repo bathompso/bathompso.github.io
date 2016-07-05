@@ -6,8 +6,8 @@
 </description>
     <link>http://bathompso.com/</link>
     <atom:link href="http://bathompso.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 03 Jul 2016 09:47:29 -0700</pubDate>
-    <lastBuildDate>Sun, 03 Jul 2016 09:47:29 -0700</lastBuildDate>
+    <pubDate>Mon, 04 Jul 2016 18:16:43 -0700</pubDate>
+    <lastBuildDate>Mon, 04 Jul 2016 18:16:43 -0700</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -234,6 +234,33 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
         
         
         <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>OpenCL</title>
+        <description>&lt;div&gt;
+    &lt;iframe id=&quot;jupyter&quot; src=&quot;/jupyter/OpenCL.html&quot; style=&quot;width: 100%;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+function setIframeHeight(iframe) {
+    if (iframe) {
+        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+        if (iframeWin.document.body) { iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight; }
+    }
+};
+window.onload = function () { setIframeHeight(document.getElementById(&#39;jupyter&#39;)); };
+&lt;/script&gt;
+</description>
+        <pubDate>Sat, 10 Jan 2015 00:00:00 -0800</pubDate>
+        <link>http://bathompso.com/education/python/opencl/</link>
+        <guid isPermaLink="true">http://bathompso.com/education/python/opencl/</guid>
+        
+        
+        <category>education</category>
+        
+        <category>python</category>
         
       </item>
     
@@ -618,27 +645,6 @@ pidfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o&q
         <guid isPermaLink="true">http://bathompso.com/blog/problem-with-new-methods/</guid>
         
         <category>Research</category>
-        
-        
-        <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title>3D Systems to Manufacture Project Ara&amp;#8217;s Modular Smartphones</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.theverge.com/2013/11/22/5133522/motorola-signs-project-ara-manufacturing-partner&quot;&gt;Motorola is moving forward with their Project Ara modular cell phone initiative.&lt;/a&gt; While I don&amp;#8217;t think the idea of a modular cell phone will ever take off, there are benefits in exploring the tech. Perhaps studying ways to modularize a cell phone will lead to improvements in antenna, battery or screen technology, which would benefit the smartphone market as a whole.&lt;/p&gt;
-
-&lt;p&gt;As a stockholder of 3D Systems (DDD), I&amp;#8217;m happy to see them chasing new markets as well. While they are one of the major players in the 3D printing industry, they could open up a large new revenue stream if Project Ara smartphones ever get off the ground.&lt;/p&gt;
-
-&lt;p&gt;If they could also figure out a way to 3D print some of the components, that would be a future I&amp;#8217;m interested in.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 23 Nov 2013 00:00:00 -0800</pubDate>
-        <link>http://bathompso.com/blog/project-ara/</link>
-        <guid isPermaLink="true">http://bathompso.com/blog/project-ara/</guid>
-        
-        <category>Article</category>
-        
-        <category>Technology</category>
         
         
         <category>blog</category>

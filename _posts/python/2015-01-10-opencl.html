@@ -1,0 +1,23 @@
+---
+title: OpenCL
+author: bathompso
+layout: page
+categories:
+  - education
+  - python
+summary: Recently, there has been a revolution in computing power - the use of graphical processing units (GPUs) for general computation. For a while, GPUs have only been used for the heavy computation of rendering and drawing the complex shapes that appear on your monitor. Instead of tasking these GPU units to draw shapes to the screen, we can instead harness them for general computation using OpenCL. This post will walk you through the basics of farming out parallel computation for GPU processing.
+---
+
+<div>
+    <iframe id="jupyter" src="/jupyter/OpenCL.html" style="width: 100%;"></iframe>
+</div>
+
+<script type="text/javascript">
+function setIframeHeight(iframe) {
+    if (iframe) {
+        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+        if (iframeWin.document.body) { iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight; }
+    }
+};
+window.onload = function () { setIframeHeight(document.getElementById('jupyter')); };
+</script>
