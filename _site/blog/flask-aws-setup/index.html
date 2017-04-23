@@ -1,297 +1,138 @@
 <!DOCTYPE html>
-<!--
-  Original Design: Spectral by HTML5 UP
-    html5up.net | @n33co
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-  Jekyll build mod
--->
-<html>
-
-  <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
-  <title>Setting Up Flask on AWS</title>
-  <meta name="description" content="I recently completed the Insight Data Science program, which involved the creation of a data science project from ideation through deployment (if interested,...">
-  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
-  <link rel="canonical" href="http://bathompso.com/blog/flask-aws-setup/">
-  <link rel="stylesheet" href="/css/bootstrap.css" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="/css/custom.css" />
-  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
-  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
-  <link rel="alternate" type="application/rss+xml" title="bathompso.com" href="http://bathompso.com/feed.xml">
-</head>
-
-
-  <body>
-
-    <!-- Page Wrapper -->
-    <div id="page-wrapper">
-
-      <!-- Header -->
-<header id="header">
-    <h1 style="width: auto"><a href="/index.html">bathompso.com</a></h1>
-    <div id="breadcrumb">
-        
-        
-        
-        
-            
-            
-            
-            
-                
-                    
-                    
-                    &#187;
-                    <a href="/blog/">Blog</a>
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-        
-            
-            
-            
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-            
-                
-                    
-                    
-                    &#187;
-                    Setting Up Flask on AWS
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-        
+<html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Setting Up Flask on AWS</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/styles/css/syntax.css">
+    <!-- Necessary JavaScript -->
+    <script src='/js/jquery.collapse.js'></script>
+    <script type='text/javascript' src='/js/jquery.js?ver=1.10.2'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <!-- RoyalSlider CSS -->
+	<link rel='stylesheet' id='new-royalslider-core-css-css'  href='/js/new-royalslider/lib/royalslider/royalslider.css?ver=3.1.7' type='text/css' media='all' />
+	<link rel='stylesheet' id='rsMinW-css-css'  href='/js/new-royalslider/lib/royalslider/skins/minimal-white/rs-minimal-white.css?ver=3.1.7' type='text/css' media='all' />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/styles/css/theme.css">
+    <!-- Custom Google Font -->
+    <link rel='stylesheet' id='googlefonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin' type='text/css' media='all' />
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+    	var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-43423604-1']);
+		_gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- App.net Verification -->
+    <div style="display: none">
+    	<a href="https://alpha.app.net/bathompso" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://alpha.app.net']);" class='adn-button' rel='me' data-type='follow' data-width='220' data-height='38' data-user-id='@bathompso'>Follow me on App.net</a>
     </div>
-    <nav id="nav">
-        <ul>
-            <li class="special">
-                <a href="#menu" class="menuToggle"><span>Menu</span></a>
-                <div id="menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        
-                            
-                                <li><a href="/blog/">Blog</a></li>
-                            
-                        
-                            
-                                <li><a href="/education/">Education</a></li>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <li><a href="/resume/">Resume</a></li>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </nav>
-</header>
+    <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- OpenGraph Tags -->
+	<meta name="og:title" content="Setting Up Flask on AWS">
+	<meta name="og:url" content="http://bathompso.com/blog/Flask-AWS-Setup/">
+	<meta name="og:type" content="website">
+	<meta name="og:locale" content="en_US">
+	<meta name="og:site_name" content="bathompso.com">
+    <meta property="fb:app_id" content="148947288529876">
+	<meta name="og:description" content="Python web deployment, made easy.">
+	<meta name="og:image" content="http://localhost:4000/media/fullsize/flask.png">
+    <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;appId=148947288529876&amp;version=v2.3"></script>
+</head>
+<body>
+	<div class="header">
+		<img class="sitelogo" src="/media/fullsize/logo.png" height="100px" />
+		<div class="sitetitle"><a href="/">BATHOMPSO.COM</a></div>
+		<div class="mainnav">
+			
+				
+					
+						<div class="naventry"><a href="/blog/">Blog</a></div>
+					
+				
+			
+				
+			
+				
+					
+						<div class="naventry"><a href="/education/">Education</a></div>
+					
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+					
+						<div class="naventry"><a href="/research/">Research</a></div>
+					
+				
+			
+				
+					
+						<div class="naventry"><a href="/resume/">Resumé</a></div>
+					
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+		</div>
+		<div class="breadcrumbs">
+			<a href="/">Home</a> &#187; <a href="/blog/">Blog</a> &#187; Setting Up Flask on AWS
+		</div>
+	</div>
 
+	
+	<div class="pagecontent">
+    	
+    	<div class="blogcontent">
+    		<div>&nbsp;</div>
 
-      <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=148947288529876";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+	<img src="/generated/flask-613x300-3aee85.png" class="blogmainimg" >
 
-<article id="page">
-<header style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/flask-logo.png');
-               background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/flask-logo.png');
-               background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/flask-logo.png');
-               background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/flask-logo.png');
-               background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.9))), url('/images/flask-logo.png');
-               background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/flask-logo.png');
-               background-size: 100%;
-               background-position: 50% 0;
-               padding-top: auto;
-               padding-bottom: auto;
-               height: 300px;">
-    <h2 style="width: 80%; margin-left: auto; margin-right: auto;">Setting Up Flask on AWS</h2>
-    <p>Python web deployment, made easy.</p>
-</header>
+<div class="blogentrytitle">Setting Up Flask on AWS</div>
+<div class="blogentrybyline">21 Mar 2015 &middot; <i>by</i> bathompso &middot; <i>in</i>
+	
+		&nbsp;<a href="/blog/tag/Data Science/">Data Science</a>&nbsp;
+	
+		&nbsp;<a href="/blog/tag/Insight/">Insight</a>&nbsp;
+	
+</div>
 
-<section class="wrapper style5" style="padding-top: 40px;">
-    <div class="inner">
-        <div class="row">
-            <h5 style="padding-bottom: 40px">
-                21 Mar 2015 &middot; <i>in</i>
-                <small>&nbsp;<a href="/blog/tag/Data Science/">Data Science</a>&nbsp;&nbsp;<a href="/blog/tag/Insight/">Insight</a>&nbsp;</small>
-            </h5>
-            <div class="col-sm-9" style="font-size: 0.9em">
-                <p><em>I recently completed the <a href="http://insightdatascience.com">Insight Data Science</a> program, which involved the creation of a data science project from ideation through deployment (if interested, you can see my Insight project <a href="http://respawninto.bathompso.com">here</a>). For deployment, a <a href="http://flask.pocoo.org">Flask webapp</a> was created, and Amazon Web Services (AWS) was used to host it. I found that getting this all set up was one of the hardest things for fellows to accomplish, and recognized a few areas in which it could be improved.</em></p>
+<p><em>I recently completed the <a href="http://insightdatascience.com">Insight Data Science</a> program, which involved the creation of a data science project from ideation through deployment (if interested, you can see my Insight project <a href="http://respawninto.com">here</a>). For deployment, a <a href="http://flask.pocoo.org">Flask webapp</a> was created, and Amazon Web Services (AWS) was used to host it. I found that getting this all set up was one of the hardest things for fellows to accomplish, and recognized a few areas in which it could be improved.</em></p>
 
 <p><em>The instructions below are an attempt to improve the instructions for getting a Flask webapp up and running on AWS. While I assume no prior knowledge of Flask, I do no go into any Flask basics here, but that may be a blog post for the future. I will try to go slowly through the steps, and offer plentiful code examples and screenshots. This guide will hopefully serve as a better reference for future Insight sessions.</em></p>
 
@@ -299,27 +140,27 @@
 
 <p>First, we must create an AWS virtual machine to copy our files to, and serve our website. To get started, head to <a href="http://aws.amazon.com">aws.amazon.com</a> and click the sign up button in the top right. Then, follow the steps to either sign into your existing Amazon.com account, or create a new one.</p>
 
-<p><img style="width: 100%" src="/images/aws_flask/start_page.png" /></p>
+<p><img src="/generated/aws_flask/start_page-940x408-5779e3.png" class="blogtextimg" ></p>
 
 <p>Unfortunately, I already went through the signup process, so I could not recreate some of the screens. I know you will have to enter your credit card information, but don&#39;t worry, we will only be using the free AWS tier, so you will not be charged. I believe AWS will also ask you what region you want your servers to be in. For convenience, select one of the western US options (I chose Oregon).</p>
 
 <p>After completing signup, you will be presented with the AWS console screen, with all the products AWS has to offer. What we want to select is EC2, or Elastic Compute Cloud, the first option in the top left.</p>
 
-<p><img style="width: 100%" src="/images/aws_flask/console.png" /></p>
+<p><img src="/generated/aws_flask/console-940x302-25fa0f.png" class="blogtextimg" ></p>
 
 <p>After selecting EC2, you will be presented with the EC2 console screen, which can also be overwhelming with the number of options to choose from. To get started, select the &quot;Instances&quot; tab on the left sidebar (under the Instances subheader), which will take you to the following screen:</p>
 
-<p><img style="width: 100%" src="/images/aws_flask/instances.png" /></p>
+<p><img src="/generated/aws_flask/instances-940x371-79618d.png" class="blogtextimg" ></p>
 
 <p>I already have an instance created for my project, but the list you will see will be empty. Press the blue &quot;Launch Instance&quot; button to set up a new virtual machine for your project. You will immediately be asked to select an operating system, and you should select the &quot;Ubuntu Server&quot; option. As of this writing, the current version is 14.04, but these instructions should still work on future versions.</p>
 
 <p>Next, you will select what type of instance you wish to create. For the free tier, there is only 1 option available, but there are many beefier virtual machines you could create if you wish to pay for the performance.</p>
 
-<p><img style="width: 100%" src="/images/aws_flask/instance_type.png" /></p>
+<p><img src="/generated/aws_flask/instance_type-940x422-3a4f4d.png" class="blogtextimg" ></p>
 
-<p>Continue through the setup, just clicking the blue continue buttons, until you reach the review step. At this stage, AWS will ask you to create a &quot;key pair,&quot; that you will use to SSH into your instance.</p>
+<p>Continue through the setup, just clicking the blue continue buttons, until you reach the review step. At this stage, AWS will ask you to create a &quot;key pair,&quot; that you will use to SSH into your instance. </p>
 
-<p><img style="width: 100%" src="/images/aws_flask/key_pair.png" /></p>
+<p><img src="/generated/aws_flask/key_pair-719x537-848b59.png" class="blogtextimg" ></p>
 
 <p>Give it any name you wish (&quot;aws&quot; might be a good name), and click the &quot;Download Key Pair&quot; button. This will download a text file which contains the SSH key necessary to access the instance. <strong>Make sure to back this key file up!</strong> If you ever lose your key file, you will not be able to enter your instance. Your data will be recoverable, but it will be hassle, and should be avoided at all costs.</p>
 
@@ -327,30 +168,33 @@
 
 <h2>Setting Up SSH</h2>
 
-<p>Before we worry about setting our files up on the instance, we should make sure we have easy access to log into the machine.</p>
+<p>Before we worry about setting our files up on the instance, we should make sure we have easy access to log into the machine. </p>
 
 <p>First, we need to determine where our virtual machine is. To find your instance&#39;s IP address, click back to the &quot;Instances&quot; tab, and select your instance. In the bottom right will list the IP address of the machine:</p>
 
-<p><img style="width: 100%" src="/images/aws_flask/instance_ip.png" /></p>
+<p><img src="/generated/aws_flask/instance_ip-940x735-e6bf36.png" class="blogtextimg" ></p>
 
-<p>We can now use this IP address to log in via SSH. Normally, the login requires a lengthy SSH command:</p>
+<p>We can now use this IP address to log in via SSH. Normally, the login requires a lengthy SSH command: </p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ssh -i ~/Downloads/keyfile.pem ubuntu@ip.address.here</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>ssh -i ~/Downloads/keyfile.pem ubuntu@ip.address.here</code></pre></figure>
 
 <p>These commands get even more unwieldy when you try to copy files with <code>scp</code> or create port tunnels (more on that later). To simplify all future steps, we will create an SSH alias.</p>
 
 <ol>
 <li>Within your home folder is a hidden directory, <code>.ssh</code>. Within this directory are all the configuration files for SSH connections. As a first step, copy your downloaded <code>*.pem</code> file to the <code>~/.ssh</code> directory. *Note: on a Mac, the key is sometimes downloaded as a <code>.pem.txt</code> file. Remove the <code>.txt</code> extension before copying.</li>
-<li>We will also need to change the permissions of the downloaded <code>*.pem</code> file. The key must be unreadable by other users in order to be considered; if it is readable by others it may pose a security risk. To alter the permissions, use the <code>chmod</code> function: <code>chmod 600 ~/.ssh/keyfile.pem</code></li>
-<li>Now that the key file is in the right location, and with the right permissions, we can create our alias. to do this, we want to edit the <code>~/.ssh/config</code> file, which may or may not already exist on your system. Simply run <code>emacs ~/.ssh/config</code> (or another editor of your choice) to create / edit the file. Add the following entry, substituting the IP address of your instance, and the exact name of your key file:
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Host aws
-    HostName 52.11.150.208
+<li><p>We will also need to change the permissions of the downloaded <code>*.pem</code> file. The key must be unreadable by other users in order to be considered; if it is readable by others it may pose a security risk. To alter the permissions, use the <code>chmod</code> function: 
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>chmod <span class="m">600</span> ~/.ssh/keyfile.pem</code></pre></figure></p></li>
+<li><p>Now that the key file is in the right location, and with the right permissions, we can create our alias. to do this, we want to edit the <code>~/.ssh/config</code> file, which may or may not already exist on your system. Simply run <code>emacs ~/.ssh/config</code> (or another editor of your choice) to create / edit the file. Add the following entry, substituting the IP address of your instance, and the exact name of your key file:
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>Host aws
+    HostName <span class="m">52</span>.11.150.208
     User ubuntu
-    Port 22
-    IdentityFile ~/.ssh/aws.pem</code></pre></figure></li>
+    Port <span class="m">22</span>
+    IdentityFile ~/.ssh/aws.pem</code></pre></figure></p></li>
 </ol>
 
-<p>Once the steps are complete, open a new terminal window, and you should be able to access your machine via the simple command: <code>ssh aws</code></p>
+<p>Once the steps are complete, open a new terminal window, and you should be able to access your machine via the simple command:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>ssh aws</code></pre></figure>
 
 <p>If this command fails for any reason, double check you completed steps 1 and 2, or troubleshoot the given error (perhaps you entered the wrong name for your keyfile, etc.). Once you can log into your machine, we can proceed.</p>
 
@@ -360,22 +204,22 @@
 
 <p>Python is already installed, but none of the add-on packages. We will want to speed up this process with <code>pip</code>. It can be installed via:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get update
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>sudo apt-get update
 sudo apt-get install python-pip</code></pre></figure>
 
 <p>These commands will do a <em>bunch</em> of things, and exit with <code>pip</code> now installed for use. Next, we will install Flask to get our bare-bones dummy example working</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo pip install flask</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>sudo pip install flask</code></pre></figure>
 
 <p>The <code>$PYTHONPATH</code> variable seems to get unset randomly, and causes errors for later steps. To avoid this, add the following line to the top of your <code>~/.bashrc</code> file:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s1">'/usr/lib/python2.7:/usr/lib/python2.7/plat-x86_64-linux-gnu:/usr/lib/python2.7/lib-tk:/usr/lib/python2.7/lib-old:/usr/lib/python2.7/lib-dynload:/usr/local/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages/PILcompat'</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s1">&#39;/usr/lib/python2.7:/usr/lib/python2.7/plat-x86_64-linux-gnu:/usr/lib/python2.7/lib-tk:/usr/lib/python2.7/lib-old:/usr/lib/python2.7/lib-dynload:/usr/local/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages/PILcompat&#39;</span></code></pre></figure>
 
 <h2>Creating a Dummy Flask App</h2>
 
 <p>To create a dummy Flask app, you will need to run the following commands to create the directory structure:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir dummyapp
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>mkdir dummyapp
 mkdir dummyapp/app
 mkdir dummyapp/app/static
 mkdir dummyapp/app/templates</code></pre></figure>
@@ -384,38 +228,44 @@ mkdir dummyapp/app/templates</code></pre></figure>
 
 <p>Next, we will create the necessary python and HTML files for our skeleton app. Remember, to create any file, simply run <code>emacs [filename]</code>, or any other command line text editor. The names of the following files will be the first line of the code, in a comment:</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># dummyapp/app/__init__.py</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><div class="pyfile"><pre><span></span><span class="c1"># dummyapp/app/__init__.py</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">views</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># dummyapp/app/views.py</span>
+<div>&nbsp;</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><div class="pyfile"><pre><span></span><span class="c1"># dummyapp/app/views.py</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
 <span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">'/'</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
         <span class="n">returnDict</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">returnDict</span><span class="p">[</span><span class="s">'user'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Ben'</span>    <span class="c"># Feel free to put your name here!</span>
-        <span class="n">returnDict</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Home'</span>
-        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">,</span> <span class="o">**</span><span class="n">returnDict</span><span class="p">)</span></code></pre></figure>
+        <span class="n">returnDict</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Ben&#39;</span>    <span class="c1"># Feel free to put your name here!</span>
+        <span class="n">returnDict</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Home&#39;</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">returnDict</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- dummyapp/app/templates/index.html --&gt;</span>
-<span class="nt">&lt;html&gt;</span>
- <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;title&gt;</span>{{ title }} - microblog<span class="nt">&lt;/title&gt;</span>
- <span class="nt">&lt;/head&gt;</span>
- <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>Hello, {{ user }}!<span class="nt">&lt;/h1&gt;</span>
- <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+<div>&nbsp;</div>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><div class="pyfile"><pre><span></span><span class="c">&lt;!-- dummyapp/app/templates/index.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ title }} - microblog<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, {{ user }}!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></figure>
+
+<div>&nbsp;</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><div class="pyfile"><pre><span></span><span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></code></pre></figure>
 
 <p>Once all the files are in place, you should be able to run the app with <code>python run.py</code> from the main <code>~/dummyapp/</code> folder. However, the default port 5000 is blocked, so you won&#39;t be able to see it from the outside. To do this, logout of the virtual machine and create a port tunnel <em>from your local machine</em>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ssh -L 5000:localhost:5000 aws</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>ssh -L <span class="m">5000</span>:localhost:5000 aws</code></pre></figure>
 
 <p>This command takes port 5000 on your local machine, <code>localhost</code>, and binds it to port 5000 on <code>aws</code>. It also SSH&#39;s to <code>aws</code> so that you can run the dummy Flask app from there. Running it this time, and navigating your browser to <code>localhost:5000</code> should give you the &quot;Hello [Name]&quot; message, and you should see a line print in your terminal from a generic <code>GET</code> command. Once you&#39;ve verified the dummy app is working, we can move onto making it persistent.</p>
 
@@ -423,15 +273,15 @@ mkdir dummyapp/app/templates</code></pre></figure>
 
 <p>To keep our Flask app running constantly and make sure it can serve a decent number of concurrent users, we will use Nginx, a webserver. It will handle passing traffic from your instance to the Flask web process. To install it, simply run:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install nginx</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>sudo apt-get install nginx</code></pre></figure>
 
 <p>Once installed, the webserver is automatically running. To check whether it&#39;s working, we&#39;ll have to open up the necessary ports to pass HTTP requests to the virtual machine. To do this, go back to the EC2 console and select the &quot;Security Groups&quot; option in the sidebar, select your instance, then click the &quot;Inbound&quot; tab at the bottom of the page.</p>
 
-<p><img style="width: 100%" src="/images/aws_flask/security_group.png" /></p>
+<p><img src="/generated/aws_flask/security_group-940x725-b8f19f.png" class="blogtextimg" ></p>
 
 <p>Click the &quot;Edit&quot; button in the Inbound tab, then add a new rule. Select HTTP from the dropdown menu, and it will automatically open port 80 on your virtual machine.</p>
 
-<p><img style="width: 100%" src="/images/aws_flask/http_rule.png" /></p>
+<p><img src="/generated/aws_flask/http_rule-873x408-a11671.png" class="blogtextimg" ></p>
 
 <p>Once the port has been opened, navigate your browser to your instance&#39;s IP address, and you should be greeted by an Nginx welcome message. This message means that the webserver is working, and is ready to be hooked into your Flask app.</p>
 
@@ -439,20 +289,20 @@ mkdir dummyapp/app/templates</code></pre></figure>
 
 <p>To hook flask into Nginx, we will be using the python package uWSGI. uWSGI is an alternate web process from the default one used by Flask that makes it easier to connect to Nginx. Unfortunately, the <code>pip</code> installation of this module always seems to fail, so we use <code>apt-get</code> instead:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install uwsgi-core uwsgi-plugin-python</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>sudo apt-get install uwsgi-core uwsgi-plugin-python</code></pre></figure>
 
 <p>Next, we need to make a configuration file so that uWSGI knows the parameters of the Flask app it is serving. To do this, we create a parameter file, which usually has the <code>.ini</code> suffix. For our example, we can create a <code>uwsgi.ini</code> file in the <code>dummyapp/</code> folder, containing the following:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>uwsgi]
-home <span class="o">=</span> /home/ubuntu/dummyapp
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span><span class="o">[</span>uwsgi<span class="o">]</span>
+<span class="nv">home</span> <span class="o">=</span> /home/ubuntu/dummyapp
 wsgi-file <span class="o">=</span> %<span class="o">(</span>home<span class="o">)</span>/run.py
-socket <span class="o">=</span> 127.0.0.1:3033
-callable <span class="o">=</span> app
-module <span class="o">=</span> app
-plugin <span class="o">=</span> python
-pythonpath <span class="o">=</span> %<span class="o">(</span>home<span class="o">)</span>
-daemonize <span class="o">=</span> %<span class="o">(</span>home<span class="o">)</span>/dummyapp.log
-pidfile <span class="o">=</span> %<span class="o">(</span>home<span class="o">)</span>/dummyapp.pid</code></pre></figure>
+<span class="nv">socket</span> <span class="o">=</span> <span class="m">127</span>.0.0.1:3033
+<span class="nv">callable</span> <span class="o">=</span> app
+<span class="nv">module</span> <span class="o">=</span> app
+<span class="nv">plugin</span> <span class="o">=</span> python
+<span class="nv">pythonpath</span> <span class="o">=</span> %<span class="o">(</span>home<span class="o">)</span>
+<span class="nv">daemonize</span> <span class="o">=</span> %<span class="o">(</span>home<span class="o">)</span>/dummyapp.log
+<span class="nv">pidfile</span> <span class="o">=</span> %<span class="o">(</span>home<span class="o">)</span>/dummyapp.pid</code></pre></figure>
 
 <p>Before moving on, I will explain some of the options above:</p>
 
@@ -469,11 +319,11 @@ pidfile <span class="o">=</span> %<span class="o">(</span>home<span class="o">)<
 
 <p>Next, we need to tell nginx where to look when it gets traffic from outside sources. Below the lines you just commented out, and still within the <code>html</code> block, add the following:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
-    listen 80;
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>server <span class="o">{</span>
+    listen <span class="m">80</span><span class="p">;</span>
     location / <span class="o">{</span>
-        include uwsgi_params;
-        uwsgi_pass 127.0.0.1:3033;
+        include uwsgi_params<span class="p">;</span>
+        uwsgi_pass <span class="m">127</span>.0.0.1:3033<span class="p">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
@@ -481,15 +331,15 @@ pidfile <span class="o">=</span> %<span class="o">(</span>home<span class="o">)<
 
 <p>Now that we have updated nginx to use the correct parameters, we need to restart it so it re-reads the config file. Do this with:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo service nginx restart</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>sudo service nginx restart</code></pre></figure>
 
 <p>You should see an <code>[OK]</code> message, which means that nginx was restarted successfully. Now we need to start the uWSGI process to finish everything off. To do this, simply run:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">uwsgi ~/dummyapp/uwsgi.ini</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>uwsgi ~/dummyapp/uwsgi.ini</code></pre></figure>
 
 <p>Now if you point your browser to the IP address of your instance, you should see the hello message from your dummy Flask app. If you do, <strong>congrats, you&#39;re (almost) done!</strong>. If not, check the log file (<code>~/dummyapp/dummyapp.log</code>) to see what problems have arisen. Google those error messages to troubleshoot. To stop the uWSGI process, run:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">uwsgi --stop ~/dummyapp/dummyapp.pid</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>uwsgi --stop ~/dummyapp/dummyapp.pid</code></pre></figure>
 
 <p>Now that you had a dummy app working, you can begin to copy over your completed app. Make sure to test it before starting into deployment. Run the app interactively first, by calling the <code>run.py</code> file and checking to see if there are any errors. Most likely, you will have to install many supporting python packages, or recreate your database before the app will run, without complicating the process with uWSGI and nginx.</p>
 
@@ -503,106 +353,86 @@ pidfile <span class="o">=</span> %<span class="o">(</span>home<span class="o">)<
 
 <p>Hopefully this walkthrough was easy to follow and understand, and you now have at least a dummy app, but your full project working on AWS. In the near future, I&#39;ll be adding a few more Flask and AWS tricks to this blog, so stay tuned.</p>
 
-                <hr/>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <div class="fb-like" data-href="http://bathompso.com/blog/flask-aws-setup/" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
-                    </div>
 
-                    <div class="col-sm-2">
-                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Setting Up Flask on AWS" data-size="large" data-via="bathompso">Tweet</a>
-                    </div>
+<!-- Social Share Buttons -->
+<!-- Facebook -->
+<div class="socialbutton">
+	<div class="fb-like" data-href="http://localhost:4000/blog/Flask-AWS-Setup/index.html" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
+</div>
+<!-- Twitter -->
+<div class="socialbutton">
+	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-via="bathompso" data-url="http://localhost:4000/blog/Flask-AWS-Setup/index.html" data-text="Setting Up Flask on AWS">Tweet</a>
+</div>
+<!-- Google+ -->
+<div class="socialbutton">
+	<div class="g-plusone" data-size="tall" data-href="http://localhost:4000/blog/Flask-AWS-Setup/index.html"></div>
+</div>
+<!-- LinkedIn -->
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US </script>
+<script type="in/share" data-url="http://localhost:4000/blog/Flask-AWS-Setup/index.html" data-counter="top"></script>
 
-                    <div class="col-sm-2">
-                        <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
-                        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share"></script>
-                    </div>
-                </div>
-                <div class="row"><div class="col-sm-12">
-                    <div class="fb-comments" data-href="http://bathompso.com/blog/flask-aws-setup/" data-width="100%" data-numposts="10"></div>
-                </div></div>
-            </div>
-            <div class="col-sm-3">
-                <a class="twitter-timeline" data-width="300" data-height="1600" href="https://twitter.com/bathompso">Tweets by bathompso</a>
-                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-        </div>
-    </div>
-</section>
-
-</article>
+<!-- Facebook Comments -->
+<h3 style="clear:both">Comments</h3>
+<div class="fb-comments" data-href="http://bathompso.com/blog/Flask-AWS-Setup/index.html" data-num-posts="10" data-width="600" data-colorscheme="light"></div>
 
 
-      <!-- Footer -->
-<footer id="footer">
-  <ul class="icons">
-    
-    
-    
-    <li><a target="_blank" href="https://twitter.com/bathompso" class="icon fa-twitter"
-           ><span class="label">twitter</span></a></li>
-    
-    
-    
-    
-    
-    <li><a target="_blank" href="https://github.com/bathompso" class="icon fa-github"
-           ><span class="label">github</span></a></li>
-    
-    
-    
-    
-    
-    <li><a target="_blank" href="https://linkedin.com/in/bathompso" class="icon fa-linkedin-square"
-           ><span class="label">linkedin-square</span></a></li>
-    
-    
-    
-    
-    
-    <li><a target="_blank" href="https://facebook.com/bathompso" class="icon fa-facebook-official"
-           ><span class="label">facebook-official</span></a></li>
-    
-    
-    
-    
-    
-    <li><a target="_blank" href="mailto:bathompso@gmail.com" class="icon fa-envelope-o"
-           ><span class="label">E-mail</span></a></li>
-    
-    
-    
-  </ul>
-  <ul class="copyright">
-    <li>&copy; 
-    
-      
-      
-    
-    2016
-    Ben Thompson</li>
-    <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
-    <li>Built with: <a href="http://jekyllrb.com" target="_blank">Jekyll</a></li>
-  </ul>
-</footer>
 
+<!-- Social Sharing Javascript -->
+<div id="fb-root"></div>
+<script>
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=148947288529876&version=v2.3";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
 
-      <!-- Scripts -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery.scrollex.min.js"></script>
-<script src="/js/jquery.scrolly.min.js"></script>
-<script src="/js/skel.min.js"></script>
-<script src="/js/util.js"></script>
-<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
-<script src="/js/main.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
 
-    </div>
+    	</div>
+    	
+    	<div class="blogside">
+    		<span style="color:#aaa;letter-spacing:1px;">LIKE WHAT YOU'RE READING?</span>
+    		<div><a href="https://twitter.com/bathompso">
+    			<img src="/media/simple-icons/twitter/twitter-64-black.png">
+    			<span style="padding-top:15px;float:left;">Follow Me on Twitter</span>
+    		</a></div>
+    		<div><a href="http://www.linkedin.com/in/bathompso/">
+    			<img src="/media/simple-icons/linkedin/linkedin-64-black.png">
+    			<span style="padding-top:15px;float:left">Connect With Me on LinkedIn</span>
+    		</a></div>
+    		<p style="clear:both">&nbsp;</p>
+    		<span style="color:#aaa;letter-spacing:1px;padding-top:30px;padding-bottom:-5px;">RECENT TWITTER STATUS<br />&nbsp;</span>
+    		<a class="twitter-timeline" href="https://twitter.com/bathompso" data-widget-id="329327309414858752">Tweets by @bathompso</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    	</div>
+	</div>
+	
+	
+<div style="clear: both; padding-top: 15px;">&nbsp;</div>
+<div class="footercontainer">
+	<div class="footercontent">
+		<img src="/generated/bioface-200x200-353493.png" class="footerbiopic" >
+		<div class="footertext">
+			<h2>Ben Thompson</h2>
+			<p>Master of all things bathompso. Lifelong astrophysicist enjoying a new experience in data science. Technology enthusiast and evangelist of all things Apple.</p>
+			<div class="footerlink" style="margin-left: 90px;"><a href="/resume/">Resumé</a></div>
+			<div class="footerlink"><a href="/research/">Research</a></div>
+			<div class="footerlink" style="border: 0"><a href="https://github.com/bathompso/">Code</a></div>
+		</div>
+		<div class="attributions">bathompso.com is powered by <a href="http://jekyllrb.com">Jekyll</a>, hosted by <a href="http://github.com">GitHub</a>. <img src="/generated/github-icon-footer-20x20-e3d2c4.png" ></div>
+	</div>
+</div>
 
-  </body>
-
+</body>
 </html>

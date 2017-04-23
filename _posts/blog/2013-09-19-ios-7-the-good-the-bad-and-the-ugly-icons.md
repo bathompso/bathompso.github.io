@@ -6,7 +6,7 @@ categories:
   - blog
 tags:
   - Technology
-image: ios7.jpg
+image: ios7-full.jpg
 ---
 After resisting the urge to upgrade to any iOS 7 beta, I finally installed it on my iPad yesterday, along with the rest of the world. Here are some first impressions of what Apple did right, and what needs to be changed in 7.1 and beyond.
 

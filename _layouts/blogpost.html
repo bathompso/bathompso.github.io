@@ -1,69 +1,61 @@
 ---
-layout: default
+layout: blog
 ---
+
+<div>&nbsp;</div>
+{% if page.image %}
+	{% image blogsumm {{ page.image }} class="blogmainimg" %}
+{% endif %}
+<div class="blogentrytitle">{{ page.title }}</div>
+<div class="blogentrybyline">{{ page.date | date_to_string }} &middot; <i>by</i> bathompso &middot; <i>in</i>
+	{% for tag in page.tags %}
+		&nbsp;<a href="/blog/tag/{{ tag }}/">{{ tag }}</a>&nbsp;
+	{% endfor %}
+</div>
+
+{{ content }}
+
+<!-- Social Share Buttons -->
+<!-- Facebook -->
+<div class="socialbutton">
+	<div class="fb-like" data-href="{{ site.url }}{{ page.url }}index.html" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
+</div>
+<!-- Twitter -->
+<div class="socialbutton">
+	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-via="bathompso" data-url="{{ site.url }}{{ page.url }}index.html" data-text="{{ page.title }}">Tweet</a>
+</div>
+<!-- Google+ -->
+<div class="socialbutton">
+	<div class="g-plusone" data-size="tall" data-href="{{ site.url }}{{ page.url }}index.html"></div>
+</div>
+<!-- LinkedIn -->
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US </script>
+<script type="in/share" data-url="{{ site.url }}{{ page.url }}index.html" data-counter="top"></script>
+
+<!-- Facebook Comments -->
+<h3 style="clear:both">Comments</h3>
+<div class="fb-comments" data-href="{{ site.fburl }}{{ page.url }}index.html" data-num-posts="{{ site.comments.facebook.num_posts }}" data-width="{{ site.comments.facebook.width }}" data-colorscheme="{{ site.comments.facebook.colorscheme }}"></div>
+
+
+
+<!-- Social Sharing Javascript -->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=148947288529876";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=148947288529876&version=v2.3";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
 
-<article id="page">
-<header style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
-               background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
-               background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
-               background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
-               background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.9))), url('/images/{{ page.image }}');
-               background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/images/{{ page.image }}');
-               background-size: 100%;
-               background-position: 50% 0;
-               padding-top: auto;
-               padding-bottom: auto;
-               height: 300px;">
-    <h2 style="width: 80%; margin-left: auto; margin-right: auto;">{{ page.title }}</h2>
-    <p>{{ page.subtitle }}</p>
-</header>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-<section class="wrapper style5" style="padding-top: 40px;">
-    <div class="inner">
-        <div class="row">
-            <h5 style="padding-bottom: 40px">
-                {{ page.date | date_to_string }} &middot; <i>in</i>
-                <small>{% for tag in page.tags %}&nbsp;<a href="/blog/tag/{{ tag }}/">{{ tag }}</a>&nbsp;{% endfor %}</small>
-            </h5>
-            <div class="col-sm-9" style="font-size: 0.9em">
-                {{ content }}
-                <hr/>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <div class="fb-like" data-href="{{ site.url }}{{ page.url }}" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ page.title | escape }}" data-size="large" data-via="bathompso">Tweet</a>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
-                        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share"></script>
-                    </div>
-                </div>
-                <div class="row"><div class="col-sm-12">
-                    <div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-width="100%" data-numposts="10"></div>
-                </div></div>
-            </div>
-            <div class="col-sm-3">
-                <a class="twitter-timeline" data-width="300" data-height="1600" href="https://twitter.com/bathompso">Tweets by bathompso</a>
-                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-        </div>
-    </div>
-</section>
-
-</article>
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>

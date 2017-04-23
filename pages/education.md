@@ -1,23 +1,15 @@
 ---
-layout: blank_page
 title: Education
+author: bathompso
+layout: default
+mainnav: 1
 permalink: /education/
-sidebar: 1
 ---
 
-## Educational Resources
+# Education
 
-As an academic, I like the pass on some of the knowledge I've accumulated over the years, as well share some supplemental knowledge from my time in industry. Below are some of the various topics I can talk intelligently about.
+I have an special interest in physics and astronomy education, and although I currently don't teach any classes, I still like to prepare. Below is a list of the current "courses" available on the site. Feel free to check them out and see if you learn anything!
 
-*As the new version of my site is built, I will add more to these topics, and flesh out concepts as much as possible. If you notice something wrong with any of the content, or have a suggestion for an addition, feel free to [contact me](mailto:bathompso@gmail.com).*
+## Current Courses Available:
 
----
-
-### Python for Physics and Data Science
-I used to have several lessons on advanced Python topics, such as parallel computing. These are being reworked into a new format for the new site, and I'll be adding some additional lessons on other useful Python things I learned during my time out of academia.
-
----
-
-### [Observational Astrophysics](obsastro)
-
----
+## [Computational Physics](/education/compphys/)

@@ -7,7 +7,7 @@ categories:
 tags:
   - Data Science
 image: datascience-cloud.jpg
-subtitle: The fledgling field of data science is a draw for many astronomers, but why do so many "transition guides" seem to think data science positions exist solely within Silicon Valley?
+description: The fledgling field of data science is a draw for many astronomers, but why do so many "transition guides" seem to think data science positions exist solely within Silicon Valley?
 ---
 
 Academia has been undergoing a crisis as of late. Many disciplines (even "hot ones," such as [biomedical research](http://arstechnica.com/science/2014/04/is-us-biomedical-research-heading-for-a-breakdown/)) have been finding that they are producing too many short-term jobs (post-docs), and too few permanent positions to sustain the outflow of Ph.D.s.
@@ -45,3 +45,5 @@ So now that you've hammered out your list of things you need to learn, how will 
 Not only will you be learning relevant skills for your future job, but you'll also be proving to a future employer that you *can*. I've heard from many people in the industry that most of what companies care about are inherent traits, not skills. Sure, being able to check off the list of requirements is good, but they more want to see whether you are a deep quantitative thinker, whether you're able to carry out independent projects in a timely manner, and whether you're able to efficiently learn new skills that may be necessary for the job. Show them that you can.
 
 Lastly, put those skills to use and practice! [Kaggle.com](http://www.kaggle.com) has many excellent challenges that give you chances to work on real datasets, and test your algorthims' accuracy. They range in difficulty and approach, providing challenges for any realm of data science you wish to enter. Go check them out!
+
+

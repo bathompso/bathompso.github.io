@@ -21,7 +21,7 @@ The RV data used was from [Geller et al. (2009)](http://adsabs.harvard.edu/abs/2
 
 My method involves comparing observed stars to models, and I used three different ones to see how that affected the determined mass. I found that all three models did very well, as seen below. For clarification on the terminology, the _primary_ star is the larger star in the binary system, and the _secondary_ is the smaller.
 
-<img src="/images/bincompare.png" style="width: 100%;"/>
+{% image fullblog bincompare.png %}
 
 When I started out, I was hoping for 5-10% accuracy for the primary and 10-20% accuracy for the secondary. For these stars, it looks like we are within that range.
 

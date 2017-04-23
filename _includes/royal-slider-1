@@ -1,0 +1,65 @@
+<div>&nbsp;</div>
+
+<div id="new-royalslider-1" class="royalSlider new-royalslider-1 rsMinW rs-default-template" style="width:100%;height:500px;">
+
+	<!-- ROYALSLIDER BOX 1 -->
+	<div class="rsContent">
+		{% image royalslider welcome.jpg %}
+		<div class="abBlackBox rsABlock" style="width: 25%; height: 100%; left: auto; right: 0px; top: 0px; ">
+			<div class="slidertitle">Welcome</div>
+			<div class="slidertext">
+				<p>Swipe right to view recent content.</p>
+				<p>(Or click-and-drag if you don't have a fancy tablet device)</p>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ROYALSLIDER BOX 2 -->
+	<div class="rsContent">
+		{% image royalslider tesla-k20.jpg %}
+		<div class="abBlackBox rsABlock" style="width: 25%; height: 100%; left: auto; top: 0px; right: 0px; ">
+			<div class="slidertitle">Computational<br>Physics</div>
+			<div class="slidertext">
+				<p>Learn how to harness the massive parallel computing power of your computer's GPU.</p>
+				<div class="button" onclick="location.href='/education/compphys/parallel/opencl/';"><span>Learn More ›</span></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ROYALSLIDER BOX 3 -->
+	<div class="rsContent">
+		{% image royalslider Apple-vs-Android-Full-Wallpaper.jpg %}
+		<div class="abBlackBox rsABlock" style="width: 25%; height: 100%; left: auto; top: 0px; right: 0px; ">
+			<div class="slidertitle">Blog</div>
+			<div class="slidertext">
+				<p>Check out my ramblings on anything that crosses my mind related to my research, my technology explorations, or life in general.</p>
+				<div class="button" onclick="location.href='/blog/"><span>Read More ›</span></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ROYALSLIDER BOX 4 -->
+	<div class="rsContent">
+		{% image royalslider hawaii.jpg %}
+		<div class="abBlackBox rsABlock" style="width: 25%; height: 100%; left: auto; top: 0px; right: 0px; ">
+			<div class="slidertitle">Contact Me</div>
+			<div class="slidertext">
+				<div class="contact" style="margin-top: 0px;">
+					<a href="mailto:bathompso@gmail.com"><br />
+					<img class="slidericon" src="/media/simple-icons/email/email-64.png">
+					<div style="float:left">Email Me</div></a>
+				</div>
+				<div class="contact">
+					<a href="http://www.linkedin.com/in/bathompso/"><br />
+	 				<img class="slidericon" src="/media/simple-icons/linkedin/linkedin-64.png">
+	 				<div style="float:left">Connect To Me</div></a>
+	 			</div>
+				<div class="contact">
+					<a href="http://twitter.com/bathompso"><br />
+					<img class="slidericon" src="/media/simple-icons/twitter/twitter-64.png">
+					<div style="float:left">Follow Me</div></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -6,7 +6,7 @@ categories:
   - blog
 tags:
   - Research
-image: gpgpu.jpg
+image: gpgpu-full.jpg
 ---
 My research efficiency depends greatly on the amount of computer processing power I have access to. To detect binary systems, I compare observed stars to models of singles and binaries in a brute-force manner. Each observation is monte-carlo sampled within its errors many times, and the final results is the median of those fits. For an example cluster, there may be:
 
@@ -20,4 +20,6 @@ Recently, I&#8217;ve begun to lose faith in IDL. While it performs amazingly for
 
 During this rewrite, I also decided to try and speed up my analysis time again, this time by harnessing the massive parallel processing of OpenCL. OpenCL allows hundreds of simultaneous calculations to run on compatible CPUs and GPUs. The version 2 analysis code now parallelizes comparison of each star to all models via OpenCL. Running an analysis of 3000 stars, 4000 models and 90 resamples now takes *4 minutes instead of 4 hours*.
 
-I&#8217;m currently writing educational material on computational physics using Python, and OpenCL will be one of the topics I touch on. The future of computing is in the parallel processing of today&#8217;s computers, and OpenCL will be a large part of it. If you do any research that involves large amounts of computing time, you may want to look at harnessing the parallel capabilities of the machine you&#8217;re already working on. [Check out my Python page to learn more](http://bathompso.com/education/physics/).
+I&#8217;m currently writing educational material on computational physics using Python, and OpenCL will be one of the topics I touch on. The future of computing is in the parallel processing of today&#8217;s computers, and OpenCL will be a large part of it. If you do any research that involves large amounts of computing time, you may want to look at harnessing the parallel capabilities of the machine you&#8217;re already working on. [Check out my Computational Physics page to learn more][1].
+
+ [1]: http://bathompso.com/education/compphys/ "Computational Physics"

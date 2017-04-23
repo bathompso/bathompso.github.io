@@ -89,25 +89,14 @@ module Jekyll
 
       # Generate resized images
       generated_src = generate_image(instance, site.source, site.dest, settings['source'], settings['output'])
-      unless generated_src
-        return
-      end
 
-      generated_src = File.join(site.baseurl, generated_src) unless site.baseurl.empty?
       # Return the markup!
       "<img src=\"#{generated_src}\" #{html_attr_string}>"
     end
 
     def generate_image(instance, site_source, site_dest, image_source, image_dest)
 
-      image_source_path = File.join(site_source, image_source, instance[:src])
-      unless File.exists?image_source_path
-        puts "Missing: #{image_source_path}"
-        return false
-      end
-
-      image = MiniMagick::Image.open(image_source_path)
-      image.coalesce
+      image = MiniMagick::Image.open(File.join(site_source, image_source, instance[:src]))
       digest = Digest::MD5.hexdigest(image.to_blob).slice!(0..5)
 
       image_dir = File.dirname(instance[:src])
@@ -141,7 +130,7 @@ module Jekyll
         gen_height = if orig_ratio > gen_ratio then orig_height else orig_width/gen_ratio end
       end
 
-      gen_name = "#{basename}-#{gen_width.round}x#{gen_height.round}#{ext}"
+      gen_name = "#{basename}-#{gen_width.round}x#{gen_height.round}-#{digest}#{ext}"
       gen_dest_dir = File.join(site_dest, image_dest, image_dir)
       gen_dest_file = File.join(gen_dest_dir, gen_name)
 
@@ -161,7 +150,6 @@ module Jekyll
           i.resize "#{gen_width}x#{gen_height}^"
           i.gravity "center"
           i.crop "#{gen_width}x#{gen_height}+0+0"
-          #i.layers "Optimize"
         end
 
         image.write gen_dest_file

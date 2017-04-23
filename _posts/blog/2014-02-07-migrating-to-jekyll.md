@@ -15,7 +15,6 @@ A personal website is useful in the current age, both as a marketing mechanism f
 My first attempt at a website involved me coding the entire thing (HTML, CSS, JavaScript) from scratch. This not only made it so that I could make the site I wanted, but also as a learning experience for me. I'm proud to say my web skills are better than a novice due to me struggling through building an entire site from the ground up.
 
 There were several problems with this approach:
-
 * It takes *forever* to code pages from scratch. Partly because I didn't know a ton of HTML at the time, but also because I'm not a designer. I could never get things quite right, and it was hard settling on a design.
 * When I wanted to change the design or some other element, it also took a ton of time to manually change every page. But, by coding everything by hand, there wasn't a way to template anything.
 
@@ -34,7 +33,7 @@ Wordpress is awesome in the fact that it does **everything** for you. There are 
 ### Jekyll
 My friend Brian recently put [Jekyll](http://jekyllrb.com) on my radar by wanting to use it for a big project at work, and I began to play around with it. Jekyll is a blog-centric web creation tool. It allows you to make template HTML files, which have content fed to them from various [markdown](http://daringfireball.net/projects/markdown/) files. It then converts all the templates, markdown, and other files into a site of static HTML images. No database queries like wordpress or others, which makes it naturally faster to load and less strenuous on any hosting system.
 
-Because everything is a text file (HTML or markdown), I can edit it in anything I want. BBEdit on my Mac, and the awesome [ByWord app](http://bywordapp.com) on my iPhone and iPad (I'm using the iPhone app right now). Way better than the subpar Wordpress web editor and questionable iOS apps.
+Because everything is a text file (HTML or markdown), I can edit it in anything I want. BBEdit on my Mac, and the awesome [ByWord app](http://bywordapp.com) on my iPhone and iPad (I'm using the iPhone app right now). Way better than the subpar Wordpress web editor and questionable iOS apps. 
 
 Another great plus of Jekyll is that it is in the good graces of the GitHub gods. GitHub launched a cool new initiative called GitHub pages, where GitHub will give you free hosting if you sign up (username.github.io). Of course, this would never work with Wordpress as it requires a database, but Jekyll sites, since they're all static, will work perfectly fine. Additionally, github will host all your pre-compiled Jekyll files, so you don't even have to run that compilation yourself.
 
