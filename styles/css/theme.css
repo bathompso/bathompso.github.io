@@ -8,12 +8,27 @@ body {
       font: 1.1em / 2.0em 'PT Sans', Georgia, 'Times New Roman', Times, serif; } }
 
 a, a:visited {
-  color: #20a3db;
-  text-decoration: none; }
+    color: #20a3db;
+    text-decoration: none;
+}
 
 a:hover {
-  color: black;
-  text-decoration: none; }
+    color: black;
+    text-decoration: none;
+}
+
+.awesome-icon {
+    float: left;
+    padding-left: 15px;
+}
+
+.awesome-icon a {
+    color: #555;
+}
+
+.awesome-icon a:hover {
+    color: #000;
+}
 
 .header {
   width: 940px;
