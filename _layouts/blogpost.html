@@ -18,7 +18,7 @@ layout: blog
 <!-- Social Share Buttons -->
 <!-- Facebook -->
 <div class="socialbutton">
-	<div class="fb-like" data-href="{{ site.fburl }}{{ page.url }}index.html" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
+	<div class="fb-like" data-href="{{ site.fburl }}{{ page.url }}index.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
 </div>
 <!-- Twitter -->
 <div class="socialbutton">
@@ -26,29 +26,27 @@ layout: blog
 </div>
 <!-- Google+ -->
 <div class="socialbutton">
-	<div class="g-plusone" data-size="tall" data-href="{{ site.fburl }}{{ page.url }}index.html"></div>
+	<div class="g-plusone" data-href="{{ site.fburl }}{{ page.url }}index.html"></div>
 </div>
 <!-- LinkedIn -->
 <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US </script>
-<script type="in/share" data-url="{{ site.fburl }}{{ page.url }}index.html" data-counter="top"></script>
+<script type="in/share" data-url="{{ site.fburl }}{{ page.url }}index.html" data-counter="right"></script>
 
 <!-- Facebook Comments -->
-<h3 style="clear:both">Comments</h3>
+<h3 style="clear:both">&nbsp;</h3>
 <div class="fb-comments" data-href="{{ site.fburl }}{{ page.url }}index.html" data-num-posts="{{ site.comments.facebook.num_posts }}" data-width="{{ site.comments.facebook.width }}" data-colorscheme="{{ site.comments.facebook.colorscheme }}"></div>
 
 
 
 <!-- Social Sharing Javascript -->
 <div id="fb-root"></div>
-<script>
-	(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=148947288529876&version=v2.3";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=234685989915759";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
