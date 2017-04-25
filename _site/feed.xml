@@ -3,10 +3,10 @@
   <channel>
     <title>bathompso.com</title>
     <description></description>
-    <link>http://www.bathompso.com/</link>
-    <atom:link href="http://www.bathompso.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Apr 2017 01:12:54 -0700</pubDate>
-    <lastBuildDate>Tue, 25 Apr 2017 01:12:54 -0700</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 25 Apr 2017 01:15:34 -0700</pubDate>
+    <lastBuildDate>Tue, 25 Apr 2017 01:15:34 -0700</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -68,8 +68,8 @@
 &lt;p&gt;Any other &amp;quot;hidden&amp;quot; tips you&amp;#39;d want to share with other academics looking to transition? Let me know in the comments.&lt;/p&gt;
 </description>
         <pubDate>Mon, 24 Apr 2017 00:00:00 -0700</pubDate>
-        <link>http://www.bathompso.com/blog/Transition-Tips/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/blog/Transition-Tips/</guid>
+        <link>http://localhost:4000/blog/Transition-Tips/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/Transition-Tips/</guid>
         
         <category>Data Science</category>
         
@@ -302,8 +302,8 @@ wsgi-file &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o
 &lt;p&gt;Hopefully this walkthrough was easy to follow and understand, and you now have at least a dummy app, but your full project working on AWS. In the near future, I&amp;#39;ll be adding a few more Flask and AWS tricks to this blog, so stay tuned.&lt;/p&gt;
 </description>
         <pubDate>Sat, 21 Mar 2015 00:00:00 -0700</pubDate>
-        <link>http://www.bathompso.com/blog/Flask-AWS-Setup/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/blog/Flask-AWS-Setup/</guid>
+        <link>http://localhost:4000/blog/Flask-AWS-Setup/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/Flask-AWS-Setup/</guid>
         
         <category>Data Science</category>
         
@@ -365,8 +365,8 @@ wsgi-file &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o
 &lt;div style=&quot;clear:both&quot;&gt;&amp;nbsp;&lt;/div&gt;
 </description>
         <pubDate>Fri, 06 Mar 2015 00:00:00 -0800</pubDate>
-        <link>http://www.bathompso.com/notblog/destiny/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/notblog/destiny/</guid>
+        <link>http://localhost:4000/notblog/destiny/</link>
+        <guid isPermaLink="true">http://localhost:4000/notblog/destiny/</guid>
         
         <category>Data Science</category>
         
@@ -390,8 +390,8 @@ wsgi-file &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o
 &lt;p&gt;Although I haven&amp;#39;t been using it much lately, this blog will be more active while I&amp;#39;m in the program. I&amp;#39;ll be sharing my experiences, as well as the new things I&amp;#39;ve learned, hoping that it might help the next lost astrophysicist (or biologist, or economist, etc.). Look for more good stuff in the coming weeks.&lt;/p&gt;
 </description>
         <pubDate>Wed, 07 Jan 2015 00:00:00 -0800</pubDate>
-        <link>http://www.bathompso.com/blog/AAS225/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/blog/AAS225/</guid>
+        <link>http://localhost:4000/blog/AAS225/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/AAS225/</guid>
         
         <category>Research</category>
         
@@ -648,8 +648,8 @@ wsgi-file &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o
 &lt;p&gt;These two examples cover much of what you need to know about how to write OpenCL programs. The clever part is figuring out which parts of the code can be parallelized, and how you can manipulate your algorithms to fit within the confines of the OpenCL limitations (no &lt;code&gt;math.h&lt;/code&gt; header, no matrices, etc.).&lt;/p&gt;
 </description>
         <pubDate>Fri, 03 Oct 2014 00:00:00 -0700</pubDate>
-        <link>http://www.bathompso.com/education/compphys/parallel/opencl/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/education/compphys/parallel/opencl/</guid>
+        <link>http://localhost:4000/education/compphys/parallel/opencl/</link>
+        <guid isPermaLink="true">http://localhost:4000/education/compphys/parallel/opencl/</guid>
         
         
         <category>education</category>
@@ -863,8 +863,8 @@ PARALLEL Time elapsed: &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;.391243934
 &lt;p&gt;If you run this program, you will notice that the results are printed out as they are finished. You can also see that the parallel version of this code takes just as long as the serial case for &lt;code&gt;findprimes(1000000)&lt;/code&gt;, with all the other results coming essentially for free! For this and the example before, you can begin to understand the best uses for PP. Because the process-spawning sequence incurs a decent overhead, it is best to parallelize routines that require a fairly large amount of computation. That way the overhead becomes a very small percentage of each process&amp;#39; run time, and you gain much more when running multiple at once.&lt;/p&gt;
 </description>
         <pubDate>Thu, 02 Oct 2014 00:00:00 -0700</pubDate>
-        <link>http://www.bathompso.com/education/compphys/parallel/parallelpython/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/education/compphys/parallel/parallelpython/</guid>
+        <link>http://localhost:4000/education/compphys/parallel/parallelpython/</link>
+        <guid isPermaLink="true">http://localhost:4000/education/compphys/parallel/parallelpython/</guid>
         
         
         <category>education</category>
@@ -928,8 +928,8 @@ PARALLEL Time elapsed: &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;.391243934
 &lt;p&gt;In this section we will learn how to harness the massively-parallel architecture of your GPU for use in your Python programs.&lt;/p&gt;
 </description>
         <pubDate>Wed, 01 Oct 2014 00:00:00 -0700</pubDate>
-        <link>http://www.bathompso.com/education/compphys/parallel/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/education/compphys/parallel/</guid>
+        <link>http://localhost:4000/education/compphys/parallel/</link>
+        <guid isPermaLink="true">http://localhost:4000/education/compphys/parallel/</guid>
         
         
         <category>education</category>
@@ -942,8 +942,8 @@ PARALLEL Time elapsed: &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;.391243934
         <title>Lesson 9: Database Systems</title>
         <description></description>
         <pubDate>Mon, 01 Sep 2014 00:00:00 -0700</pubDate>
-        <link>http://www.bathompso.com/education/compphys/databases/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/education/compphys/databases/</guid>
+        <link>http://localhost:4000/education/compphys/databases/</link>
+        <guid isPermaLink="true">http://localhost:4000/education/compphys/databases/</guid>
         
         
         <category>education</category>
@@ -956,8 +956,8 @@ PARALLEL Time elapsed: &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;.391243934
         <title>Lesson 8: Monte Carlo Methods</title>
         <description></description>
         <pubDate>Fri, 01 Aug 2014 00:00:00 -0700</pubDate>
-        <link>http://www.bathompso.com/education/compphys/random/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/education/compphys/random/</guid>
+        <link>http://localhost:4000/education/compphys/random/</link>
+        <guid isPermaLink="true">http://localhost:4000/education/compphys/random/</guid>
         
         
         <category>education</category>
@@ -1005,8 +1005,8 @@ PARALLEL Time elapsed: &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;.391243934
 &lt;p&gt;Lastly, put those skills to use and practice! &lt;a href=&quot;http://www.kaggle.com&quot;&gt;Kaggle.com&lt;/a&gt; has many excellent challenges that give you chances to work on real datasets, and test your algorthims&amp;#39; accuracy. They range in difficulty and approach, providing challenges for any realm of data science you wish to enter. Go check them out!&lt;/p&gt;
 </description>
         <pubDate>Tue, 29 Jul 2014 00:00:00 -0700</pubDate>
-        <link>http://www.bathompso.com/blog/transition-to-data-science/</link>
-        <guid isPermaLink="true">http://www.bathompso.com/blog/transition-to-data-science/</guid>
+        <link>http://localhost:4000/blog/transition-to-data-science/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/transition-to-data-science/</guid>
         
         <category>Data Science</category>
         
