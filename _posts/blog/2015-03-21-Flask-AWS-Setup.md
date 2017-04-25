@@ -11,7 +11,7 @@ image: flask.png
 description: Python web deployment, made easy.
 ---
 
-*I recently completed the [Insight Data Science](http://insightdatascience.com) program, which involved the creation of a data science project from ideation through deployment (if interested, you can see my Insight project [here](http://respawninto.com)). For deployment, a [Flask webapp](http://flask.pocoo.org) was created, and Amazon Web Services (AWS) was used to host it. I found that getting this all set up was one of the hardest things for fellows to accomplish, and recognized a few areas in which it could be improved.*
+*I recently completed the [Insight Data Science](http://insightdatascience.com) program, which involved the creation of a data science project from ideation through deployment (if interested, you can see my Insight project [here](http://respawninto.bathompso.com)). For deployment, a [Flask webapp](http://flask.pocoo.org) was created, and Amazon Web Services (AWS) was used to host it. I found that getting this all set up was one of the hardest things for fellows to accomplish, and recognized a few areas in which it could be improved.*
 
 *The instructions below are an attempt to improve the instructions for getting a Flask webapp up and running on AWS. While I assume no prior knowledge of Flask, I do no go into any Flask basics here, but that may be a blog post for the future. I will try to go slowly through the steps, and offer plentiful code examples and screenshots. This guide will hopefully serve as a better reference for future Insight sessions.*
 
@@ -37,7 +37,7 @@ Next, you will select what type of instance you wish to create. For the free tie
 
 {% image fullblog aws_flask/instance_type.png %}
 
-Continue through the setup, just clicking the blue continue buttons, until you reach the review step. At this stage, AWS will ask you to create a "key pair," that you will use to SSH into your instance. 
+Continue through the setup, just clicking the blue continue buttons, until you reach the review step. At this stage, AWS will ask you to create a "key pair," that you will use to SSH into your instance.
 
 {% image fullblog aws_flask/key_pair.png %}
 
@@ -47,13 +47,13 @@ Once the key is downloaded, click the "Launch Instances" button, which should no
 
 ## Setting Up SSH
 
-Before we worry about setting our files up on the instance, we should make sure we have easy access to log into the machine. 
+Before we worry about setting our files up on the instance, we should make sure we have easy access to log into the machine.
 
 First, we need to determine where our virtual machine is. To find your instance's IP address, click back to the "Instances" tab, and select your instance. In the bottom right will list the IP address of the machine:
 
 {% image fullblog aws_flask/instance_ip.png %}
 
-We can now use this IP address to log in via SSH. Normally, the login requires a lengthy SSH command: 
+We can now use this IP address to log in via SSH. Normally, the login requires a lengthy SSH command:
 
 {% highlight bash cssclass=shell %}ssh -i ~/Downloads/keyfile.pem ubuntu@ip.address.here{% endhighlight %}
 
@@ -229,6 +229,3 @@ One import note on uWSGI is that it does not reload upon changes to your Flask a
 Nginx allows you to do many advanced and nice things, such as subdomains. If your main site is running at `example.com`, you would be able to create another flask app, pass it through a different port to nginx, and serve that app on `another.example.com`. This allows you to use your single AWS instance for a whole host of side projects, which is not possible with other Flask web servers.
 
 Hopefully this walkthrough was easy to follow and understand, and you now have at least a dummy app, but your full project working on AWS. In the near future, I'll be adding a few more Flask and AWS tricks to this blog, so stay tuned.
-
-
-

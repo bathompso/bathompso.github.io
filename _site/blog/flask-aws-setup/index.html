@@ -47,7 +47,7 @@
 	<meta name="og:site_name" content="bathompso.com">
     <meta property="fb:app_id" content="148947288529876">
 	<meta name="og:description" content="Python web deployment, made easy.">
-	<meta name="og:image" content="http://localhost:4000/media/fullsize/flask.png">
+	<meta name="og:image" content="http://www.bathompso.com/media/fullsize/flask.png">
     <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;appId=148947288529876&amp;version=v2.3"></script>
 </head>
 <body>
@@ -133,7 +133,7 @@
 	
 </div>
 
-<p><em>I recently completed the <a href="http://insightdatascience.com">Insight Data Science</a> program, which involved the creation of a data science project from ideation through deployment (if interested, you can see my Insight project <a href="http://respawninto.com">here</a>). For deployment, a <a href="http://flask.pocoo.org">Flask webapp</a> was created, and Amazon Web Services (AWS) was used to host it. I found that getting this all set up was one of the hardest things for fellows to accomplish, and recognized a few areas in which it could be improved.</em></p>
+<p><em>I recently completed the <a href="http://insightdatascience.com">Insight Data Science</a> program, which involved the creation of a data science project from ideation through deployment (if interested, you can see my Insight project <a href="http://respawninto.bathompso.com">here</a>). For deployment, a <a href="http://flask.pocoo.org">Flask webapp</a> was created, and Amazon Web Services (AWS) was used to host it. I found that getting this all set up was one of the hardest things for fellows to accomplish, and recognized a few areas in which it could be improved.</em></p>
 
 <p><em>The instructions below are an attempt to improve the instructions for getting a Flask webapp up and running on AWS. While I assume no prior knowledge of Flask, I do no go into any Flask basics here, but that may be a blog post for the future. I will try to go slowly through the steps, and offer plentiful code examples and screenshots. This guide will hopefully serve as a better reference for future Insight sessions.</em></p>
 
@@ -159,7 +159,7 @@
 
 <p><img src="/generated/aws_flask/instance_type-940x422-3a4f4d.png" class="blogtextimg" ></p>
 
-<p>Continue through the setup, just clicking the blue continue buttons, until you reach the review step. At this stage, AWS will ask you to create a &quot;key pair,&quot; that you will use to SSH into your instance. </p>
+<p>Continue through the setup, just clicking the blue continue buttons, until you reach the review step. At this stage, AWS will ask you to create a &quot;key pair,&quot; that you will use to SSH into your instance.</p>
 
 <p><img src="/generated/aws_flask/key_pair-719x537-848b59.png" class="blogtextimg" ></p>
 
@@ -169,13 +169,13 @@
 
 <h2>Setting Up SSH</h2>
 
-<p>Before we worry about setting our files up on the instance, we should make sure we have easy access to log into the machine. </p>
+<p>Before we worry about setting our files up on the instance, we should make sure we have easy access to log into the machine.</p>
 
 <p>First, we need to determine where our virtual machine is. To find your instance&#39;s IP address, click back to the &quot;Instances&quot; tab, and select your instance. In the bottom right will list the IP address of the machine:</p>
 
 <p><img src="/generated/aws_flask/instance_ip-940x735-e6bf36.png" class="blogtextimg" ></p>
 
-<p>We can now use this IP address to log in via SSH. Normally, the login requires a lengthy SSH command: </p>
+<p>We can now use this IP address to log in via SSH. Normally, the login requires a lengthy SSH command:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>ssh -i ~/Downloads/keyfile.pem ubuntu@ip.address.here</code></pre></figure>
 
