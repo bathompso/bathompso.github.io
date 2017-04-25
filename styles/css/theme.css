@@ -899,7 +899,7 @@ span.il {
 
 .classlist {
   display: none;
-  margin-top: -10px;
+  padding-top: 10px;
   padding-left: 10px; }
   .classlist i {
     color: #888;
