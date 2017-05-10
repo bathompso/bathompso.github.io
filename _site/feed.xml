@@ -5,9 +5,36 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Apr 2017 01:35:36 -0700</pubDate>
-    <lastBuildDate>Tue, 25 Apr 2017 01:35:36 -0700</lastBuildDate>
+    <pubDate>Tue, 09 May 2017 19:15:16 -0700</pubDate>
+    <lastBuildDate>Tue, 09 May 2017 19:15:16 -0700</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Unlimited Coding Practice Courtesy of FiveThirtyEight</title>
+        <description>&lt;p&gt;One of the hardest things about learning coding is the fact that there isn&amp;#39;t a large base of fairly easy coding questions that let you learn a ton by doing, instead of reading enough books and other materials to tackle more challenging word problems. When asked by several friends to recommend methods of getting into Data Science, I always recommend learning how to code by &lt;em&gt;doing&lt;/em&gt; rather than reading, however that&amp;#39;s a difficult thing to do without any stand-out resources.&lt;/p&gt;
+
+&lt;p&gt;Well fret no more, as I&amp;#39;ve found a solid source of word problems that will get you rolling with even just a minimal amount of code knowledge: &lt;a href=&quot;https://fivethirtyeight.com/tag/the-riddler/&quot;&gt;FiveThirtyEight&amp;#39;s &amp;quot;The Riddler&amp;quot; puzzles&lt;/a&gt;. FiveThirtyEight is all about math and stats, so they have a weekly post that challenges people to solve some complex word problems with math. Take this example problem:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Imagine that it’s the beginning of time, and the Supreme Court’s nine seats are empty. Assume further that seats on the bench are filled only if the same party controls both the presidency and the Senate. Every election, each of the two parties has a 50 percent chance of gaining control of the executive or legislative branch. Outcomes of the elections are independent, and the length of time for which a justice serves is uniformly distributed between zero and 40 years. What is the expected number of vacancies on the bench in the long run?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is a fairly complex problem to solve flat-out with math, especially for me who, although a math major in undergrad, has let a lot of that knowledge get pushed out of my brain. Instead of slogging through the math to try and come up with a solution, this is a pretty straightforward problem to solve via simulation. It actually requires very little advanced coding knowledge, yet should be challenging enough to a new coder to force you to learn some new techniques and increase your familiarity with coding.&lt;/p&gt;
+
+&lt;p&gt;Below is my walkthrough of the latest &amp;quot;The Riddler&amp;quot; Classic puzzle via simulation, just to show how I approach simulation of one of these types of questions. This type of approach isn&amp;#39;t something that will get you mentioned on the blog, but it does give you many beginner-level coding problems that will help you to advance your skills and challenge some of the harder word problems you normally see in &amp;quot;learn to code&amp;quot; classes elsewhere.&lt;/p&gt;
+
+&lt;iframe id=&quot;jupyter&quot; src=&quot;/jupyter/riddler_2017_05_09.html&quot; width=&quot;100%&quot;  frameborder=&quot;0&quot; scrolling=&quot;no&quot; onload=&quot;$('#jupyter').contents().find('.prompt').hide(); resizeIframe(this)&quot;&gt;&lt;/iframe&gt;
+</description>
+        <pubDate>Tue, 09 May 2017 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/blog/riddler-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/riddler-1/</guid>
+        
+        <category>Data Science</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Hidden Tips For Transitioning From Academia To Data Science</title>
@@ -963,55 +990,6 @@ PARALLEL Time elapsed: &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;.391243934
         <category>education</category>
         
         <category>compphys</category>
-        
-      </item>
-    
-      <item>
-        <title>From Astronomy to Data Science: One Size Fits All?</title>
-        <description>&lt;p&gt;Academia has been undergoing a crisis as of late. Many disciplines (even &amp;quot;hot ones,&amp;quot; such as &lt;a href=&quot;http://arstechnica.com/science/2014/04/is-us-biomedical-research-heading-for-a-breakdown/&quot;&gt;biomedical research&lt;/a&gt;) have been finding that they are producing too many short-term jobs (post-docs), and too few permanent positions to sustain the outflow of Ph.D.s.&lt;/p&gt;
-
-&lt;p&gt;Astronomy (my chosen field), is no exception. Heaped on top of this is the fact that as the U.S. government tightens it&amp;#39;s belt, &amp;quot;pure science&amp;quot; budgets, such as those for NASA and NSF&amp;#39;s astronomy grants, are those removed first. As grant money earned is often a metric to determine tenure, this makes it even harder to keep a tenure-track job, if you somehow manage to get one in the first place.&lt;/p&gt;
-
-&lt;p&gt;As I&amp;#39;ve come to terms with this, I&amp;#39;ve begun to look into alternative fields for a career, and data science is one I have seen a lot. But looking into the several &amp;quot;&lt;a href=&quot;http://womeninastronomy.blogspot.com/2013/01/datascience.html&quot;&gt;astronomer to data scientist&lt;/a&gt;&amp;quot; transition &lt;a href=&quot;http://womeninastronomy.blogspot.com/2013/01/astroVdatascience.html&quot;&gt;guides&lt;/a&gt; on the &lt;a href=&quot;http://betterbayes.wordpress.com/2014/07/24/preperation-for-a-transition-to-data-science/&quot;&gt;web&lt;/a&gt;, all seem to tell me the same thing: &amp;quot;learn lots of programming languages, like Python, R or SAS.&amp;quot; &amp;quot;Learn &lt;a href=&quot;http://en.m.wikipedia.org/wiki/NoSQL&quot;&gt;NoSQL&lt;/a&gt;, &lt;a href=&quot;http://hadoop.apache.org&quot;&gt;Hadoop&lt;/a&gt;, and &lt;a href=&quot;http://en.m.wikipedia.org/wiki/Mapreduce&quot;&gt;MapReduce&lt;/a&gt;.&amp;quot; In short, these guides seem to think every data science job is the same: a &amp;quot;big data&amp;quot; scientist at a Silicon Valley startup or tech titan.&lt;/p&gt;
-
-&lt;p&gt;If somebody was preparing for a career in physics and asked you what they should learn to prepare, you wouldn&amp;#39;t necessarily be able to answer. Interested in computational astrophysics? You&amp;#39;ll need to know C or FORTRAN to write highly parallelized codes that run on supercomputers. Interested in engineering? You probably don&amp;#39;t need to spend your time learning general relativity. &amp;quot;Physics&amp;quot; isn&amp;#39;t one thing, and therefore you can&amp;#39;t just prepare in a single way. Data science is exactly the same.&lt;/p&gt;
-
-&lt;p&gt;Instead of prescribing preparation steps for a very specific job, below are some general tips I&amp;#39;ve found in my time exploring the data science market, that everyone should definitely do.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Do some reading on general data science principles.&lt;/strong&gt; Regardless of what subsection of data science you want to go into, everyone should be well-versed in the &amp;quot;fundamental principles.&amp;quot; &lt;a href=&quot;http://www.amazon.com/Data-Science-Business-data-analytic-thinking/dp/1449361323/&quot;&gt;Data Science for Business&lt;/a&gt; is an excellent book on this topic, and I suggest everyone read through it. Not only will it give you an outline of many of the basic data science algorithms, but really hammers in the fact that data science &lt;em&gt;is part of business, not a hard science&lt;/em&gt;. Everything you do should be to further the business goals.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Decide whether data science is really what you want.&lt;/strong&gt; In the last bullet of her &lt;a href=&quot;http://womeninastronomy.blogspot.com/2013/01/astroVdatascience.html&quot;&gt;&amp;quot;Astronomy vs Data Science&amp;quot; post&lt;/a&gt;, Jessica Kirkpatrick states that you cannot dictate the subject matter in industry like you can in academia. As stated above, everything you do in data science should be to further the business goals. This can be an adjustment, as in academia you pick a subject largely unconstrained by others. Make sure this is a trade-off you&amp;#39;re okay with.&lt;br&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;For me, I enjoy taking (often incomplete) data and telling a story with it. It doesn&amp;#39;t matter what I&amp;#39;m looking at: star brightnesses to determine masses or customer location history to detect fraud, I enjoy any time I am &amp;quot;learning&amp;quot; something. For others, this may not be the case. No matter the benefits of a data science career (salary, locations, job security), doing something you don&amp;#39;t enjoy isn&amp;#39;t the way to go.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Decide what section of data science you want to enhabit.&lt;/strong&gt; Does working for Google or Facebook tracking millions (or billions) of users&amp;#39; behaviors online sound exciting? How about &lt;a href=&quot;http://ars.to/1zc3H6r&quot;&gt;data mining thousands of healthy people&amp;#39;s DNA to improve healthcare&lt;/a&gt;? Maybe you &lt;em&gt;should&lt;/em&gt; look into the &amp;quot;Silicon Valley Big Data&amp;quot; jobs. Maybe you&amp;#39;d like to track how people respond to coupon offers, in order to more fine-tune a company&amp;#39;s marketing strategy? There are many of these &amp;quot;data analyst&amp;quot; positions available as well, and they are usually in high demand all across the country. There are also all kinds of jobs inbetween.&lt;br&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Do some research on job sites, such as &lt;a href=&quot;http://jobsearch.monster.com/search/data-science_5&quot;&gt;monster&lt;/a&gt; or &lt;a href=&quot;http://www.indeed.com/jobs?q=data+science&amp;l=&quot;&gt;indeed&lt;/a&gt;, to see what data science jobs are out there. Read the job descriptions and requirements to see what types of positions you&amp;#39;re interested in and/or qualified for.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;After doing some background research on what jobs you might want, there are many diverging paths to take. Everyone&amp;#39;s individual preparation method will be different in several areas:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;What programs you&amp;#39;ll need to learn.&lt;/strong&gt; Big Data jobs: definitely brush up on Hadoop, MapReduce, Pig, Hive, etc. Learn a legitimate programming language, like Python. Depending on the company, they may also want an even newer language, like &lt;a href=&quot;http://julialang.org&quot;&gt;Julia&lt;/a&gt;. Going for an analyst position? Make sure you know your SQL backwards and forwards, as many business databases are MySQL. Depending on the company, you may not even need to learn a programming language: all calculations are expected to be in Excel! This doesn&amp;#39;t mean it&amp;#39;s easier, however; learning how to make Excel do advanced things requires just as much time as Python. Maybe even longer!&lt;br&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Also be aware of how &amp;quot;stats-forward&amp;quot; your potential jobs may be. If you&amp;#39;re going into Big Data, or a data-science-heavy company, you may need to brush up on your statistics in order to understand and implement Bayesian methods. If you&amp;#39;re going into an analyst position, you might not need to know as much, because Bayesian models may hurt your cause, rather than help (see below).&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;What methods and algorithms you&amp;#39;ll need to employ.&lt;/strong&gt; Lots of data science is crunching numbers, but that&amp;#39;s not the only thing available. Some data science mines text, for example to detect plagiarism in student papers. If you find many job listingss where this might be a component, you should learn more about Natural Language Processing. Similarly, some data science focuses on images; perhaps automatically comparing signatures on checks or handwriting in documents to detect fraud. Look into image processing algorithms, which may be useful here.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;How you&amp;#39;ll need to communicate.&lt;/strong&gt; &lt;em&gt;All data science should further the business goals&lt;/em&gt; (pound that notion in). Regardless of where you&amp;#39;re working, or what you&amp;#39;re doing, you will &lt;em&gt;always&lt;/em&gt; have to be justifying your thoughts, approach, and implementation to others, higher up. If you cannot sell them on what you&amp;#39;re doing, do not expect to be able to move forward (see how this is different than hard science?). How you have to defend yourself, and what tools you&amp;#39;ll be &amp;quot;allowed&amp;quot; to use, however, will vary greatly from job to job.&lt;br&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;At a company with a large focus on data science, you may be working with an entire team of data scientists. You may have managers (who themselves are data scientists), who will act as the intermediary between you and the business leaders. You need to sell the managers, who will then take it upon themselves to sell the executives. This is a somewhat easier setup: the people you are directly interfacing with understand data science. You can talk about Bayesian statistics, ensemble methods and specific python modules to bolster your case, and they will be able to speak the same language.&lt;br&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Going to an analyst position, or a company with a small data science team? You may be speaking directly to executives to sell them on your plan. While more advanced classification schemes, such as Bayes, may provide better results, they may hamper your efforts here, because nobody you&amp;#39;re talking to will understand them! You may be forced to fall back to simple Decision Tree Classifiers, which you can plot, and everyone can understand. Be prepared to &amp;quot;dumb down&amp;quot; your models, or be able to explain them creatively, so that everyone can get on board.&lt;br&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;This is another area where data science (and business in general) is different than science. In science, you are judged by the quality of your work, and only slightly by how you present it. If you have an amazing find, but you stammer a bit in your talk, or your paper is a little disorganized, you still may be lauded in the scientific community. In business, it&amp;#39;s the opposite: it doesn&amp;#39;t matter whether you found an amazing classification model if you can&amp;#39;t explain it. If you stumble through a meeting with executives, your entire project may be killed, even if it would have saved the company millions of dollars. &lt;em&gt;Practice your public speaking!&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So now that you&amp;#39;ve hammered out your list of things you need to learn, how will you do that? The best option is to look to free online courses, from places like Coursera, or Udacity. Another good option is just search the web for resources on the specific area you want to learn. Hadoop has an &lt;a href=&quot;http://lintool.github.io/Cloud9/&quot;&gt;excellent walkthrough&lt;/a&gt; online, and many of these other advanced tools do as well.&lt;/p&gt;
-
-&lt;p&gt;Not only will you be learning relevant skills for your future job, but you&amp;#39;ll also be proving to a future employer that you &lt;em&gt;can&lt;/em&gt;. I&amp;#39;ve heard from many people in the industry that most of what companies care about are inherent traits, not skills. Sure, being able to check off the list of requirements is good, but they more want to see whether you are a deep quantitative thinker, whether you&amp;#39;re able to carry out independent projects in a timely manner, and whether you&amp;#39;re able to efficiently learn new skills that may be necessary for the job. Show them that you can.&lt;/p&gt;
-
-&lt;p&gt;Lastly, put those skills to use and practice! &lt;a href=&quot;http://www.kaggle.com&quot;&gt;Kaggle.com&lt;/a&gt; has many excellent challenges that give you chances to work on real datasets, and test your algorthims&amp;#39; accuracy. They range in difficulty and approach, providing challenges for any realm of data science you wish to enter. Go check them out!&lt;/p&gt;
-</description>
-        <pubDate>Tue, 29 Jul 2014 00:00:00 -0700</pubDate>
-        <link>http://localhost:4000/blog/transition-to-data-science/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/transition-to-data-science/</guid>
-        
-        <category>Data Science</category>
-        
-        
-        <category>blog</category>
         
       </item>
     

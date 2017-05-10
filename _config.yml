@@ -4,6 +4,9 @@ markdown: redcarpet
 highlighter: pygments
 permalink: /:categories/:title/
 
+gems:
+  - jekyll-jupyter-notebook
+
 url: http://www.bathompso.com
 fburl: http://bathompso.com
 

@@ -2,7 +2,7 @@
 <html><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>The Problem with New Methods</title>
+    <title>Unlimited Coding Practice Courtesy of FiveThirtyEight</title>
     <meta name="viewport" content="width=device-width">
     <!-- syntax highlighting CSS -->
     <link rel="stylesheet" href="/styles/css/syntax.css">
@@ -40,14 +40,14 @@
     <!-- MathJax -->
     <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <!-- OpenGraph Tags -->
-	<meta name="og:title" content="The Problem with New Methods">
-	<meta name="og:url" content="http://bathompso.com/blog/problem-with-new-methods/">
+	<meta name="og:title" content="Unlimited Coding Practice Courtesy of FiveThirtyEight">
+	<meta name="og:url" content="http://bathompso.com/blog/riddler-1/">
 	<meta name="og:type" content="website">
 	<meta name="og:locale" content="en_US">
 	<meta name="og:site_name" content="bathompso.com">
     <meta property="fb:app_id" content="148947288529876">
-	
-	<meta name="og:image" content="http://bathompso.com/media/fullsize/NGC188.jpg">
+	<meta name="og:description" content="The coding practice guide I've always wanted.">
+	<meta name="og:image" content="http://bathompso.com/media/fullsize/538.png">
     <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;appId=148947288529876&amp;version=v2.3"></script>
     <!-- Custom JavaScript for site-wide functionality -->
     <script>
@@ -118,7 +118,7 @@
 			
 		</div>
 		<div class="breadcrumbs">
-			<a href="/">Home</a> &#187; <a href="/blog/">Blog</a> &#187; The Problem with New Methods
+			<a href="/">Home</a> &#187; <a href="/blog/">Blog</a> &#187; Unlimited Coding Practice Courtesy of FiveThirtyEight
 		</div>
 	</div>
 
@@ -128,54 +128,50 @@
     	<div class="blogcontent">
     		<div>&nbsp;</div>
 
-	<img src="/generated/NGC188-613x300-81a990.jpg" class="blogmainimg" >
+	<img src="/generated/538-613x300-1069db.png" class="blogmainimg" >
 
-<div class="blogentrytitle">The Problem with New Methods</div>
-<div class="blogentrybyline">17 Dec 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
+<div class="blogentrytitle">Unlimited Coding Practice Courtesy of FiveThirtyEight</div>
+<div class="blogentrybyline">09 May 2017 &middot; <i>by</i> bathompso &middot; <i>in</i>
 	
-		&nbsp;<a href="/blog/tag/Research/">Research</a>&nbsp;
+		&nbsp;<a href="/blog/tag/Data Science/">Data Science</a>&nbsp;
 	
 </div>
 
-<p>My research involves detecting binary star systems in star clusters. Binary star systems are systems where two stars are orbiting each other. The most famous binary system is Tatooine from Star Wars, with its <a href="http://thethoughtstash.files.wordpress.com/2011/01/sw_binary_sunset.jpg?w=500&#038;h=281">famous double sunset</a>. The &quot;closest star to the Sun,&quot; Alpha Centauri, is actually a binary system as well (and even has a third star orbiting it further out!)</p>
+<p>One of the hardest things about learning coding is the fact that there isn&#39;t a large base of fairly easy coding questions that let you learn a ton by doing, instead of reading enough books and other materials to tackle more challenging word problems. When asked by several friends to recommend methods of getting into Data Science, I always recommend learning how to code by <em>doing</em> rather than reading, however that&#39;s a difficult thing to do without any stand-out resources.</p>
 
-<p>The number of binary systems in a cluster are very important for numerical simulations, as are the masses of the stars in the system. The results from this research have implications for simulations of galactic evolution, and will be fully explained on a devoted page here sometime soon.</p>
+<p>Well fret no more, as I&#39;ve found a solid source of word problems that will get you rolling with even just a minimal amount of code knowledge: <a href="https://fivethirtyeight.com/tag/the-riddler/">FiveThirtyEight&#39;s &quot;The Riddler&quot; puzzles</a>. FiveThirtyEight is all about math and stats, so they have a weekly post that challenges people to solve some complex word problems with math. Take this example problem:</p>
 
-<p>My method of detecting binary systems involves imaging the star cluster using several different <em>filters</em>. Filters only allow specific wavelengths of light through to the telescope (e.g. only Red light, only Green light, etc.). Using these images, we can determine not only which of the points of light we see that are binary systems instead of a single star, but also what the masses of each star is. The problem with new method is, however, that you can&#8217;t trust the results coming out of it until you compare it to known results from other methods. As I am planning to present my research at the upcoming <a href="http://aas.org/meetings/223rd-aas-meeting-washington-dc">Winter 2014 American Astronomical Society meeting</a> in DC, I needed to find an older dataset to compare my results to.</p>
+<blockquote>
+<p>Imagine that it’s the beginning of time, and the Supreme Court’s nine seats are empty. Assume further that seats on the bench are filled only if the same party controls both the presidency and the Senate. Every election, each of the two parties has a 50 percent chance of gaining control of the executive or legislative branch. Outcomes of the elections are independent, and the length of time for which a justice serves is uniformly distributed between zero and 40 years. What is the expected number of vacancies on the bench in the long run?</p>
+</blockquote>
 
-<p>One of the clusters in my data, NGC 188 (pictured above), has other data on it using radial velocities (RVs), the established method of detecting binary systems. Here, astronomers measure the speed at which a star in the cluster is moving towards or away from us at various points in time. Single stars won&#8217;t change their speed, whereas binary systems will oscillate as they orbit each other. By taking enough measurements, one can determine the orbit of each star and determine stellar mass. <strong>[Note: It is more complicated than this is general. There will also be a page on this concept in the future]</strong></p>
+<p>This is a fairly complex problem to solve flat-out with math, especially for me who, although a math major in undergrad, has let a lot of that knowledge get pushed out of my brain. Instead of slogging through the math to try and come up with a solution, this is a pretty straightforward problem to solve via simulation. It actually requires very little advanced coding knowledge, yet should be challenging enough to a new coder to force you to learn some new techniques and increase your familiarity with coding.</p>
 
-<p>The RV data used was from <a href="http://adsabs.harvard.edu/abs/2009AJ....137.3743G">Geller et al. (2009)</a>. For reference, it contains RV measurements from December 1973 to August 2008. This dataset, which I am hoping to duplicate by comparing results <em>took 35 years to create.</em> This is, in fact, the problem with RV studies: to characterize orbits and determine masses, you have to observe over a very long time. The input into my code was measurements from 12 images. If you could get observing time on the right instruments, gathering the data would only take 5 nights.</p>
+<p>Below is my walkthrough of the latest &quot;The Riddler&quot; Classic puzzle via simulation, just to show how I approach simulation of one of these types of questions. This type of approach isn&#39;t something that will get you mentioned on the blog, but it does give you many beginner-level coding problems that will help you to advance your skills and challenge some of the harder word problems you normally see in &quot;learn to code&quot; classes elsewhere.</p>
 
-<p>My method involves comparing observed stars to models, and I used three different ones to see how that affected the determined mass. I found that all three models did very well, as seen below. For clarification on the terminology, the <em>primary</em> star is the larger star in the binary system, and the <em>secondary</em> is the smaller.</p>
-
-<p><img src="/generated/bincompare-940x518-cb9c48.png" class="blogtextimg" ></p>
-
-<p>When I started out, I was hoping for 5-10% accuracy for the primary and 10-20% accuracy for the secondary. For these stars, it looks like we are within that range.</p>
-
-<p>This comparison will enhance any results on future clusters, a few of which will also be presented at this year&#39;s AAS.</p>
+<iframe id="jupyter" src="/jupyter/riddler_2017_05_09.html" width="100%"  frameborder="0" scrolling="no" onload="$('#jupyter').contents().find('.prompt').hide(); resizeIframe(this)"></iframe>
 
 
 <!-- Social Share Buttons -->
 <!-- Facebook -->
 <div class="socialbutton">
-	<div class="fb-like" data-href="http://bathompso.com/blog/problem-with-new-methods/index.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+	<div class="fb-like" data-href="http://bathompso.com/blog/riddler-1/index.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
 </div>
 <!-- Twitter -->
 <div class="socialbutton">
-	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-via="bathompso" data-url="http://bathompso.com/blog/problem-with-new-methods/index.html" data-text="The Problem with New Methods">Tweet</a>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-via="bathompso" data-url="http://bathompso.com/blog/riddler-1/index.html" data-text="Unlimited Coding Practice Courtesy of FiveThirtyEight">Tweet</a>
 </div>
 <!-- Google+ -->
 <div class="socialbutton">
-	<div class="g-plusone" data-href="http://bathompso.com/blog/problem-with-new-methods/index.html"></div>
+	<div class="g-plusone" data-href="http://bathompso.com/blog/riddler-1/index.html"></div>
 </div>
 <!-- LinkedIn -->
 <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US </script>
-<script type="in/share" data-url="http://bathompso.com/blog/problem-with-new-methods/index.html" data-counter="right"></script>
+<script type="in/share" data-url="http://bathompso.com/blog/riddler-1/index.html" data-counter="right"></script>
 
 <!-- Facebook Comments -->
 <h3 style="clear:both">&nbsp;</h3>
-<div class="fb-comments" data-href="http://bathompso.com/blog/problem-with-new-methods/index.html" data-num-posts="10" data-width="600" data-colorscheme="light"></div>
+<div class="fb-comments" data-href="http://bathompso.com/blog/riddler-1/index.html" data-num-posts="10" data-width="600" data-colorscheme="light"></div>
 
 
 
