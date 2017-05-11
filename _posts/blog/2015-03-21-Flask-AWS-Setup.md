@@ -19,23 +19,23 @@ description: Python web deployment, made easy.
 
 First, we must create an AWS virtual machine to copy our files to, and serve our website. To get started, head to [aws.amazon.com](http://aws.amazon.com) and click the sign up button in the top right. Then, follow the steps to either sign into your existing Amazon.com account, or create a new one.
 
-{% image fullblog aws_flask/start_page.png %}
+{% image fullblog aws_flask/start_page.png width="100%" %}
 
 Unfortunately, I already went through the signup process, so I could not recreate some of the screens. I know you will have to enter your credit card information, but don't worry, we will only be using the free AWS tier, so you will not be charged. I believe AWS will also ask you what region you want your servers to be in. For convenience, select one of the western US options (I chose Oregon).
 
 After completing signup, you will be presented with the AWS console screen, with all the products AWS has to offer. What we want to select is EC2, or Elastic Compute Cloud, the first option in the top left.
 
-{% image fullblog aws_flask/console.png %}
+{% image fullblog aws_flask/console.png width="100%" %}
 
 After selecting EC2, you will be presented with the EC2 console screen, which can also be overwhelming with the number of options to choose from. To get started, select the "Instances" tab on the left sidebar (under the Instances subheader), which will take you to the following screen:
 
-{% image fullblog aws_flask/instances.png %}
+{% image fullblog aws_flask/instances.png width="100%" %}
 
 I already have an instance created for my project, but the list you will see will be empty. Press the blue "Launch Instance" button to set up a new virtual machine for your project. You will immediately be asked to select an operating system, and you should select the "Ubuntu Server" option. As of this writing, the current version is 14.04, but these instructions should still work on future versions.
 
 Next, you will select what type of instance you wish to create. For the free tier, there is only 1 option available, but there are many beefier virtual machines you could create if you wish to pay for the performance.
 
-{% image fullblog aws_flask/instance_type.png %}
+{% image fullblog aws_flask/instance_type.png width="100%" %}
 
 Continue through the setup, just clicking the blue continue buttons, until you reach the review step. At this stage, AWS will ask you to create a "key pair," that you will use to SSH into your instance.
 
@@ -51,7 +51,7 @@ Before we worry about setting our files up on the instance, we should make sure 
 
 First, we need to determine where our virtual machine is. To find your instance's IP address, click back to the "Instances" tab, and select your instance. In the bottom right will list the IP address of the machine:
 
-{% image fullblog aws_flask/instance_ip.png %}
+{% image fullblog aws_flask/instance_ip.png width="100%" %}
 
 We can now use this IP address to log in via SSH. Normally, the login requires a lengthy SSH command:
 
@@ -59,7 +59,7 @@ We can now use this IP address to log in via SSH. Normally, the login requires a
 
 These commands get even more unwieldy when you try to copy files with `scp` or create port tunnels (more on that later). To simplify all future steps, we will create an SSH alias.
 
-1. Within your home folder is a hidden directory, `.ssh`. Within this directory are all the configuration files for SSH connections. As a first step, copy your downloaded `*.pem` file to the `~/.ssh` directory. *Note: on a Mac, the key is sometimes downloaded as a `.pem.txt` file. Remove the `.txt` extension before copying.
+1. Within your home folder is a hidden directory, `.ssh`. Within this directory are all the configuration files for SSH connections. As a first step, copy your downloaded `*.pem` file to the `~/.ssh` directory. *Note: on a Mac, the key is sometimes downloaded as a `.pem.txt` file. Remove the `.txt` extension before copying.*
 2. We will also need to change the permissions of the downloaded `*.pem` file. The key must be unreadable by other users in order to be considered; if it is readable by others it may pose a security risk. To alter the permissions, use the `chmod` function: {% highlight bash cssclass=shell %}chmod 600 ~/.ssh/keyfile.pem{% endhighlight %}
 3. Now that the key file is in the right location, and with the right permissions, we can create our alias. to do this, we want to edit the `~/.ssh/config` file, which may or may not already exist on your system. Simply run `emacs ~/.ssh/config` (or another editor of your choice) to create / edit the file. Add the following entry, substituting the IP address of your instance, and the exact name of your key file:{% highlight bash cssclass=shell %}Host aws
         HostName 52.11.150.208
@@ -108,7 +108,6 @@ from flask import Flask
 app = Flask(__name__)
 from app import views
 {% endhighlight %}
-<div>&nbsp;</div>
 
 {% highlight python cssclass=pyfile %}
 # dummyapp/app/views.py
@@ -122,7 +121,6 @@ def index():
         returnDict['title'] = 'Home'
         return render_template("index.html", **returnDict)
 {% endhighlight %}
-<div>&nbsp;</div>
 
 {% highlight html cssclass=pyfile %}{% raw %}
 <!-- dummyapp/app/templates/index.html -->
@@ -135,7 +133,6 @@ def index():
  </body>
 </html>
 {% endraw %}{% endhighlight %}
-<div>&nbsp;</div>
 
 {% highlight python cssclass=pyfile %}
 from app import app
@@ -154,11 +151,11 @@ To keep our Flask app running constantly and make sure it can serve a decent num
 
 Once installed, the webserver is automatically running. To check whether it's working, we'll have to open up the necessary ports to pass HTTP requests to the virtual machine. To do this, go back to the EC2 console and select the "Security Groups" option in the sidebar, select your instance, then click the "Inbound" tab at the bottom of the page.
 
-{% image fullblog aws_flask/security_group.png %}
+{% image fullblog aws_flask/security_group.png width="100%" %}
 
 Click the "Edit" button in the Inbound tab, then add a new rule. Select HTTP from the dropdown menu, and it will automatically open port 80 on your virtual machine.
 
-{% image fullblog aws_flask/http_rule.png %}
+{% image fullblog aws_flask/http_rule.png width="100%" %}
 
 Once the port has been opened, navigate your browser to your instance's IP address, and you should be greeted by an Nginx welcome message. This message means that the webserver is working, and is ready to be hooked into your Flask app.
 

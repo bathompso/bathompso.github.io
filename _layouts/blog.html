@@ -1,26 +1,22 @@
 {% include header %}
 
-	<div class="pagecontent">
-
-    	<div class="blogcontent">
-    		{{ content }}
-    	</div>
-
-    	<div class="blogside">
-    		<span style="color:#aaa;letter-spacing:1px;">CONNECT WITH ME</span>
-    		<div class="row" style="padding-left: 7px; padding-top: 7px;">
-				<div class="awesome-icon"><a href="http://facebook.com/bathompso"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="http://twitter.com/bathompso"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="https://www.instagram.com/bathompso/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="https://www.linkedin.com/in/bathompso/"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="https://github.com/bathompso/"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="https://www.twitch.tv/bathompso/"><i class="fa fa-twitch fa-2x" aria-hidden="true"></i></a></div>
-			</div>
-    		<p style="clear:both">&nbsp;</p>
-    		<span style="color:#aaa;letter-spacing:1px;padding-top:30px;padding-bottom:-5px;">RECENT TWITTER STATUS<br />&nbsp;</span>
-    		<a class="twitter-timeline" data-height="1000" data-link-color="#20a3db" href="https://twitter.com/bathompso">Tweets by bathompso</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    	</div>
-	</div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">{{ content }}</div>
+        <div class="col-sm-3">
+            <h5 class="text-muted">Connect With Me</h5>
+            <div class="row" style="padding-left: 7px; padding-top: 7px; font-size: 1.6em;">
+                <div class="awesome-icon"><a href="http://facebook.com/bathompso"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="http://twitter.com/bathompso"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="https://www.instagram.com/bathompso/"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="https://www.linkedin.com/in/bathompso/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="https://github.com/bathompso/"><i class="fa fa-github" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="https://www.twitch.tv/bathompso/"><i class="fa fa-twitch" aria-hidden="true"></i></a></div>
+            </div>
+            <h5 style="padding-top:50px; padding-bottom:-5px;" class="text-muted">Recent Twitter Status</h5>
+            <a class="twitter-timeline" data-height="1000" data-link-color="#20a3db" href="https://twitter.com/bathompso">Tweets by bathompso</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+</div>
 
 {% include footer %}

@@ -3,9 +3,5 @@ layout: default
 title: Home
 ---
 
-{% include royal-slider-1 %}
-
-
-{% include royal-slider-footer %}
-
-
+# Bootstrap starter template
+Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.

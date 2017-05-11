@@ -5,12 +5,12 @@ layout: blogpost
 categories:
   - blog
 tags:
-  - Articles
+  - Article
   - Science
 ---
-Mark Schneider of The Atlantic believes that [the S in STEM is overrated](http://www.theatlantic.com/business/archive/2013/09/why-the-s-in-stem-is-overrated/279931/): 
+Mark Schneider of The Atlantic believes that [the S in STEM is overrated](http://www.theatlantic.com/business/archive/2013/09/why-the-s-in-stem-is-overrated/279931/):
 > It’s rote that we need more STEM students – more science, technology, engineering and math grads – sprinting off American campuses into the labor force. But according to the data, employers don’t like paying science grads quite as much as we like talking about them.
-> 
+>
 > Is STEM one letter too long?
 
 Sadly, Mark falls into the same trap that most people do when they think about science: basic research is **not** profitable. Scientific research (at least the fundamental kind) cannot be operated by a business.

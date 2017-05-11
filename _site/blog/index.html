@@ -1,532 +1,510 @@
-<!DOCTYPE html>
-<html><head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Blog</title>
-    <meta name="viewport" content="width=device-width">
-    <!-- syntax highlighting CSS -->
-    <link rel="stylesheet" href="/styles/css/syntax.css">
-    <!-- Necessary JavaScript -->
-    <script src='/js/jquery.collapse.js'></script>
-    <script type='text/javascript' src='/js/jquery.js?ver=1.10.2'></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-    <!-- RoyalSlider CSS -->
-	<link rel='stylesheet' id='new-royalslider-core-css-css'  href='/js/new-royalslider/lib/royalslider/royalslider.css?ver=3.1.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='rsMinW-css-css'  href='/js/new-royalslider/lib/royalslider/skins/minimal-white/rs-minimal-white.css?ver=3.1.7' type='text/css' media='all' />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/styles/css/theme.css">
-    <link rel="stylesheet" href="/styles/css/font-awesome.min.css">
-    <!-- Custom Google Font -->
-    <link rel='stylesheet' id='googlefonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin' type='text/css' media='all' />
-    <!-- Google Analytics -->
-    <script type="text/javascript">
-    	var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-43423604-1']);
-		_gaq.push(['_trackPageview']);
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- App.net Verification -->
-    <div style="display: none">
-    	<a href="https://alpha.app.net/bathompso" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://alpha.app.net']);" class='adn-button' rel='me' data-type='follow' data-width='220' data-height='38' data-user-id='@bathompso'>Follow me on App.net</a>
-    </div>
-    <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
-    <!-- MathJax -->
-    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- OpenGraph Tags -->
-	<meta name="og:title" content="Blog">
-	<meta name="og:url" content="http://bathompso.com/blog/">
-	<meta name="og:type" content="website">
-	<meta name="og:locale" content="en_US">
-	<meta name="og:site_name" content="bathompso.com">
-    <meta property="fb:app_id" content="148947288529876">
-	
-	
-    <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;appId=148947288529876&amp;version=v2.3"></script>
-    <!-- Custom JavaScript for site-wide functionality -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>bathompso.com | Blog</title>
+
+    <!-- core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <!-- Core JS -->
+    <script src="/js/jquery.js"></script>
     <script>
-      function resizeIframe(obj) {
-        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-      }
+        function resizeIframe(obj) { obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px'; }
     </script>
 </head>
-<body>
-	<div class="header">
-		<img class="sitelogo" src="/media/fullsize/logo.png" height="100px" />
-		<div class="sitetitle"><a href="/">BATHOMPSO.COM</a></div>
-		<div class="mainnav">
-			
-				
-					
-						<div class="naventry">Blog</div>
-					
-				
-			
-				
-			
-				
-					
-						<div class="naventry"><a href="/education/">Education</a></div>
-					
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-					
-						<div class="naventry"><a href="/research/">Research</a></div>
-					
-				
-			
-				
-					
-						<div class="naventry"><a href="/resume/">Resumé</a></div>
-					
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-				
-			
-		</div>
-		<div class="breadcrumbs">
-			<a href="/">Home</a> &#187; Blog
-		</div>
-	</div>
 
+<body style="font-family: 'PT Sans', sans-serif;">
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbarExpander" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" style="margin-right: 5px;" href="/">bathompso.com</a>
 
-	<div class="pagecontent">
-
-    	<div class="blogcontent">
-    		<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/riddler-1/"><img src="/generated/538-613x300-1069db.png" ></a>
+        <div class="collapse navbar-collapse" id="mainNavbarExpander">
+            <span id="breadcrumb" class="navbar-text mr-auto" style="font-size: 0.89m; padding-top: 9px; padding-bottom: 0px;">
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                        
+                            
+                            
+                            &#187;
+                            Blog
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                
+            </span>
+            <ul class="nav navbar-nav">
+                
+    				
+    					<li class="nav-item active"><a class="nav-link" href="/blog/"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a></li>
+    				
+    			
+    				
+    			
+    				
+    					<li class="nav-item "><a class="nav-link" href="/education/"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Education</a></li>
+    				
+    			
+    				
+    			
+    				
+    			
+    				
+    					<li class="nav-item "><a class="nav-link" href="/research/"><i class="fa fa-flask" aria-hidden="true"></i> Research</a></li>
+    				
+    			
+    				
+    					<li class="nav-item "><a class="nav-link" href="/resume/"><i class="fa fa-file-text-o" aria-hidden="true"></i> Resumé</a></li>
+    				
+    			
+    				
+    			
+    				
+    			
+    				
+    			
+    				
+    			
+    				
+    			
+    				
+    			
+    				
+    			
+            </ul>
         </div>
-    
-    <div class="blogsummtitle"><a href="/blog/riddler-1/">Unlimited Coding Practice Courtesy of FiveThirtyEight</a></div>
-    <div class="blogsummbyline">09 May 2017 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Data Science/">Data Science</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">One of the hardest things about learning coding is the fact that there isn&#39;t a large base of fairly easy coding questions that let you learn a ton by doing, instead of reading enough books and other materials to tackle...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/hidden-transition-tips/"><img src="/generated/uber_sf-613x300-d81818.png" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/hidden-transition-tips/">Hidden Tips For Transitioning From Academia To Data Science</a></div>
-    <div class="blogsummbyline">24 Apr 2017 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Data Science/">Data Science</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">I&#39;m hardly alone in my path from academia into the world of data science, which means there exist a multitude of guides and blog posts explaining the steps you need to take to also make the transition. Most focus on...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/Flask-AWS-Setup/"><img src="/generated/flask-613x300-3aee85.png" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/Flask-AWS-Setup/">Setting Up Flask on AWS</a></div>
-    <div class="blogsummbyline">21 Mar 2015 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Data Science/">Data Science</a>&nbsp;
-        
-            &nbsp;<a href="/blog/tag/Insight/">Insight</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">I recently completed the Insight Data Science program, which involved the creation of a data science project from ideation through deployment (if interested, you can see my Insight project here). For deployment, a Flask webapp was created, and Amazon Web...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/aas225/"><img src="/generated/aas225-468x229-ce7c18.png" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/aas225/">#AAS225 and What's Next</a></div>
-    <div class="blogsummbyline">07 Jan 2015 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Research/">Research</a>&nbsp;
-        
-            &nbsp;<a href="/blog/tag/Data Science/">Data Science</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">For those of you who know me personally (or follow me on Twitter), you know that I am currently in Seattle for the American Astronomical Society (AAS) meeting. Tomorrow I&#39;ll be doing a dissertation talk, distilling the entirety of my...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/transition-to-data-science/"><img src="/generated/datascience-cloud-613x300-0aafb5.jpg" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/transition-to-data-science/">From Astronomy to Data Science: One Size Fits All?</a></div>
-    <div class="blogsummbyline">29 Jul 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Data Science/">Data Science</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">Academia has been undergoing a crisis as of late. Many disciplines (even &quot;hot ones,&quot; such as biomedical research) have been finding that they are producing too many short-term jobs (post-docs), and too few permanent positions to sustain the outflow of...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/moog/"><img src="/generated/Mac-Snow-Leopard-613x300-7a6f9c.jpg" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/moog/">Solving Astronomy Software-Rot</a></div>
-    <div class="blogsummbyline">22 Apr 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Research/">Research</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">There is a problem in astronomy (probably in other sciences too, but I see it mainly in my field), which I will term &quot;software-rot,&quot; after the better known term link-rot. There are several key packages of software that many astronomers...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/Inflation/"><img src="/generated/wssiy97zkeunodbtzvfa-613x300-411566.jpg" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/Inflation/">Big Bang breakthrough: astronomers report signs of the universe's creation</a></div>
-    <div class="blogsummbyline">21 Mar 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Science/">Science</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">Astronomers, using a small telescope in the South Pole have made an amazing discovery. If this finding turns out to be real (via confirmation from another observatory), it may well be the most important astronomical breakthrough of this century. The...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/project-ara-2/"><img src="/generated/projectara-lineup-613x300-7c450e.png" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/project-ara-2/">Google Moving Forward With Project Ara</a></div>
-    <div class="blogsummbyline">27 Feb 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Technology/">Technology</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">I was initially skeptical (and still am) of Project Ara&#39;s viability, it looks like Google is moving forward with the project, with some suggesting that devices might go on sale in the next year. This could be a huge shift...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/migrating-to-jekyll/"><img src="/generated/jekyllrb-613x300-393b69.jpg" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/migrating-to-jekyll/">Why I Shifted from Wordpress.org to Jekyll</a></div>
-    <div class="blogsummbyline">07 Feb 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Technology/">Technology</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">A personal website is useful in the current age, both as a marketing mechanism for me, and an outlet for things I want to share with everyone. Perhaps not many people read my blog posts, but my research code and...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/problem-with-new-methods/"><img src="/generated/NGC188-613x300-81a990.jpg" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/problem-with-new-methods/">The Problem with New Methods</a></div>
-    <div class="blogsummbyline">17 Dec 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
-        
-            &nbsp;<a href="/blog/tag/Research/">Research</a>&nbsp;
-        
-    </div>
-    <div class="blogsummtext">My research involves detecting binary star systems in star clusters. Binary star systems are systems where two stars are orbiting each other. The most famous binary system is Tatooine from Star Wars, with its famous double sunset. The &quot;closest star...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogarchive" id="showarchive" onclick="$('#blogarchive').show('fast'); $('#showarchive').hide('fast')">
-    &#8675; Click Here to View the Archive &#8675;
-</div>
-
-<div style="display: none;" id="blogarchive">
+    </nav>
+    <div style="height: 20px;"></div>
 
 
-    
-        
-        
-        
-    
-
-    
-        
-        
-        
-    
-
-    
-        
-        
-        
-    
-
-    
-
-    
-        
-        
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-        
-        
-    
-
-    
-
-    
-
-    
-
-    
-        
-        
-        
-    
-
-    
-
-    
-        
-        
-        
-    
-
-    
-
-    
-        
-        
-        
-    
-
-    
-        
-        
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-        
-        
-    
-
-    
-        
-        
-        
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/project-ara/"><img src="/generated/projectara-full-613x300-03dce8.png" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/project-ara/">3D Systems to Manufacture Project Ara&#8217;s Modular Smartphones</a></div>
-    <div class="blogsummbyline">23 Nov 2013 &middot; <i>by</i> bathompso &middot; <i>in</i> Article, Technology</div>
-    <div class="blogsummtext">Motorola is moving forward with their Project Ara modular cell phone initiative. While I don&#8217;t think the idea of a modular cell phone will ever take off, there are benefits in exploring the tech. Perhaps studying ways to modularize a...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/programming-for-gpgpu/"><img src="/generated/gpgpu-full-575x281-661379.jpg" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/programming-for-gpgpu/">Programming for GPGPUs</a></div>
-    <div class="blogsummbyline">23 Nov 2013 &middot; <i>by</i> bathompso &middot; <i>in</i> Research</div>
-    <div class="blogsummtext">My research efficiency depends greatly on the amount of computer processing power I have access to. To detect binary systems, I compare observed stars to models of singles and binaries in a brute-force manner. Each observation is monte-carlo sampled within...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogemptyimg"></div>
-    
-    <div class="blogsummtitle"><a href="/blog/why-s-is-under-appreciated/">Why the S in STEM is under-appreciated</a></div>
-    <div class="blogsummbyline">28 Sep 2013 &middot; <i>by</i> bathompso &middot; <i>in</i> Articles, Science</div>
-    <div class="blogsummtext">Mark Schneider of The Atlantic believes that the S in STEM is overrated: It’s rote that we need more STEM students – more science, technology, engineering and math grads – sprinting off American campuses into the labor force. But according...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogemptyimg"></div>
-    
-    <div class="blogsummtitle"><a href="/blog/popular-science-shutting-off-comments/">Popular Science shutting off comments</a></div>
-    <div class="blogsummbyline">28 Sep 2013 &middot; <i>by</i> bathompso &middot; <i>in</i> Science</div>
-    <div class="blogsummtext">I for one completely support this tactic. As they put it eloquently in their post on the decision: A politically motivated, decades-long war on expertise has eroded the popular consensus on a wide variety of scientifically validated topics. Everything, from...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/ios-7-the-good-the-bad-and-the-ugly-icons/"><img src="/generated/ios7-full-613x300-15cef6.jpg" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/ios-7-the-good-the-bad-and-the-ugly-icons/">iOS 7: The Good, The Bad, and the Ugly (Icons)</a></div>
-    <div class="blogsummbyline">19 Sep 2013 &middot; <i>by</i> bathompso &middot; <i>in</i> Technology</div>
-    <div class="blogsummtext">After resisting the urge to upgrade to any iOS 7 beta, I finally installed it on my iPad yesterday, along with the rest of the world. Here are some first impressions of what Apple did right, and what needs to...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/new-furniture/"><img src="/generated/standingdesk-full-613x300-1ad064.jpg" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/new-furniture/">New Furniture</a></div>
-    <div class="blogsummbyline">24 Aug 2013 &middot; <i>by</i> bathompso &middot; <i>in</i> Uncategorized</div>
-    <div class="blogsummtext">For a long time, Chrissy has nagged me to live healthier. &#8220;Go for a run,&#8221; and &#8220;what fruit did you eat today?&#8221; were some of the many (legitimate) comments I heard from her. The problem is: (a) I&#8217;m lazy, (b)...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<div class="blogsumm">
-    
-        <div class="blogsummimg">
-            <a href="/blog/the-universe-is-still-weird-and-interesting/"><img src="/generated/CMB-full-613x300-bcad6c.png" ></a>
-        </div>
-    
-    <div class="blogsummtitle"><a href="/blog/the-universe-is-still-weird-and-interesting/">The Universe is still weird and interesting</a></div>
-    <div class="blogsummbyline">25 Mar 2013 &middot; <i>by</i> bathompso &middot; <i>in</i> Science</div>
-    <div class="blogsummtext">The first results from the Cosmic Microwave Background-mapping Planck space telescope have been released. What&#8217;s new? There is more dark matter in the Universe than previously thought, and less dark energy. Regular matter (everything we can see and touch), still...</div>
-    <div style="clear:both">&nbsp;</div>
-</div>
-        
-
-<p></div></p>
-
-    	</div>
-
-    	<div class="blogside">
-    		<span style="color:#aaa;letter-spacing:1px;">CONNECT WITH ME</span>
-    		<div class="row" style="padding-left: 7px; padding-top: 7px;">
-				<div class="awesome-icon"><a href="http://facebook.com/bathompso"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="http://twitter.com/bathompso"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="https://www.instagram.com/bathompso/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="https://www.linkedin.com/in/bathompso/"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="https://github.com/bathompso/"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></div>
-				<div class="awesome-icon"><a href="https://www.twitch.tv/bathompso/"><i class="fa fa-twitch fa-2x" aria-hidden="true"></i></a></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/riddler-1/"><img src="/generated/538-400x400-1069db.png" width="100%" class="rounded img-thumbnail" ></a>
+				
 			</div>
-    		<p style="clear:both">&nbsp;</p>
-    		<span style="color:#aaa;letter-spacing:1px;padding-top:30px;padding-bottom:-5px;">RECENT TWITTER STATUS<br />&nbsp;</span>
-    		<a class="twitter-timeline" data-height="1000" data-link-color="#20a3db" href="https://twitter.com/bathompso">Tweets by bathompso</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    	</div>
-	</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/riddler-1/">Unlimited Coding Practice Courtesy of FiveThirtyEight</a></h5>
+				<h6 class="text-muted">09 May 2017 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Data Science/">Data Science</a>&nbsp;
+					
+				</h6>
+				<p>One of the hardest things about learning coding is the fact that there isn&#39;t a large base of fairly easy coding questions that let you learn a ton by doing, instead of reading enough books and other materials to tackle more challenging word problems. When asked by several friends to...</p>
+			</div>
+		</div><hr/>
+	
 
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/hidden-transition-tips/"><img src="/generated/uber_sf-400x400-d81818.png" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/hidden-transition-tips/">Hidden Tips For Transitioning From Academia To Data Science</a></h5>
+				<h6 class="text-muted">24 Apr 2017 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Data Science/">Data Science</a>&nbsp;
+					
+				</h6>
+				<p>I&#39;m hardly alone in my path from academia into the world of data science, which means there exist a multitude of guides and blog posts explaining the steps you need to take to also make the transition. Most focus on how to transition skills gained via a Ph.D. into those...</p>
+			</div>
+		</div><hr/>
+	
 
-<div style="clear: both; padding-top: 15px;">&nbsp;</div>
-<div class="footercontainer">
-	<div class="footercontent">
-		<img src="/generated/bioface-200x200-353493.png" class="footerbiopic" >
-		<div class="footertext">
-			<h2>Ben Thompson</h2>
-			<p>Master of all things bathompso. Lifelong astrophysicist enjoying a new experience in data science. Technology enthusiast and evangelist of all things Apple.</p>
-			<div class="footerlink" style="margin-left: 90px;"><a href="/resume/">Resumé</a></div>
-			<div class="footerlink"><a href="/research/">Research</a></div>
-			<div class="footerlink" style="border: 0"><a href="https://github.com/bathompso/">Code</a></div>
-		</div>
-		<div class="attributions">bathompso.com is powered by <a href="http://jekyllrb.com">Jekyll</a>, hosted by AWS</div>
-	</div>
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/Flask-AWS-Setup/"><img src="/generated/flask-400x400-3aee85.png" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/Flask-AWS-Setup/">Setting Up Flask on AWS</a></h5>
+				<h6 class="text-muted">21 Mar 2015 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Data Science/">Data Science</a>&nbsp;
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Insight/">Insight</a>&nbsp;
+					
+				</h6>
+				<p>I recently completed the Insight Data Science program, which involved the creation of a data science project from ideation through deployment (if interested, you can see my Insight project here). For deployment, a Flask webapp was created, and Amazon Web Services (AWS) was used to host it. I found that...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/aas225/"><img src="/generated/aas225-229x229-ce7c18.png" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/aas225/">#AAS225 and What's Next</a></h5>
+				<h6 class="text-muted">07 Jan 2015 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Research/">Research</a>&nbsp;
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Data Science/">Data Science</a>&nbsp;
+					
+				</h6>
+				<p>For those of you who know me personally (or follow me on Twitter), you know that I am currently in Seattle for the American Astronomical Society (AAS) meeting. Tomorrow I&#39;ll be doing a dissertation talk, distilling the entirety of my work at TCU over the past 4 years into a...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/transition-to-data-science/"><img src="/generated/datascience-cloud-400x400-0aafb5.jpg" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/transition-to-data-science/">From Astronomy to Data Science: One Size Fits All?</a></h5>
+				<h6 class="text-muted">29 Jul 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Data Science/">Data Science</a>&nbsp;
+					
+				</h6>
+				<p>Academia has been undergoing a crisis as of late. Many disciplines (even &quot;hot ones,&quot; such as biomedical research) have been finding that they are producing too many short-term jobs (post-docs), and too few permanent positions to sustain the outflow of Ph.D.s. Astronomy (my chosen field), is no exception. Heaped on...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/moog/"><img src="/generated/Mac-Snow-Leopard-400x400-7a6f9c.jpg" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/moog/">Solving Astronomy Software-Rot</a></h5>
+				<h6 class="text-muted">22 Apr 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Research/">Research</a>&nbsp;
+					
+				</h6>
+				<p>There is a problem in astronomy (probably in other sciences too, but I see it mainly in my field), which I will term &quot;software-rot,&quot; after the better known term link-rot. There are several key packages of software that many astronomers rely on to do basic data reduction that are either...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/Inflation/"><img src="/generated/wssiy97zkeunodbtzvfa-400x400-411566.jpg" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/Inflation/">Big Bang breakthrough: astronomers report signs of the universe's creation</a></h5>
+				<h6 class="text-muted">21 Mar 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Science/">Science</a>&nbsp;
+					
+				</h6>
+				<p>Astronomers, using a small telescope in the South Pole have made an amazing discovery. If this finding turns out to be real (via confirmation from another observatory), it may well be the most important astronomical breakthrough of this century. The detected signal not only would be, I believe, the first...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/project-ara-2/"><img src="/generated/projectara-lineup-400x400-7c450e.png" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/project-ara-2/">Google Moving Forward With Project Ara</a></h5>
+				<h6 class="text-muted">27 Feb 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Technology/">Technology</a>&nbsp;
+					
+				</h6>
+				<p>I was initially skeptical (and still am) of Project Ara&#39;s viability, it looks like Google is moving forward with the project, with some suggesting that devices might go on sale in the next year. This could be a huge shift in how mobile is done, and is at least an...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/migrating-to-jekyll/"><img src="/generated/jekyllrb-300x300-393b69.jpg" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/migrating-to-jekyll/">Why I Shifted from Wordpress.org to Jekyll</a></h5>
+				<h6 class="text-muted">07 Feb 2014 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Technology/">Technology</a>&nbsp;
+					
+				</h6>
+				<p>A personal website is useful in the current age, both as a marketing mechanism for me, and an outlet for things I want to share with everyone. Perhaps not many people read my blog posts, but my research code and my class outlines will hopefully be used by others. First...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/problem-with-new-methods/"><img src="/generated/NGC188-400x400-81a990.jpg" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/problem-with-new-methods/">The Problem with New Methods</a></h5>
+				<h6 class="text-muted">17 Dec 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Research/">Research</a>&nbsp;
+					
+				</h6>
+				<p>My research involves detecting binary star systems in star clusters. Binary star systems are systems where two stars are orbiting each other. The most famous binary system is Tatooine from Star Wars, with its famous double sunset. The &quot;closest star to the Sun,&quot; Alpha Centauri, is actually a binary system...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/project-ara/"><img src="/generated/projectara-full-400x400-03dce8.png" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/project-ara/">3D Systems to Manufacture Project Ara&#8217;s Modular Smartphones</a></h5>
+				<h6 class="text-muted">23 Nov 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Article/">Article</a>&nbsp;
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Technology/">Technology</a>&nbsp;
+					
+				</h6>
+				<p>Motorola is moving forward with their Project Ara modular cell phone initiative. While I don&#8217;t think the idea of a modular cell phone will ever take off, there are benefits in exploring the tech. Perhaps studying ways to modularize a cell phone will lead to improvements in antenna, battery or...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/programming-for-gpgpu/"><img src="/generated/gpgpu-full-288x288-661379.jpg" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/programming-for-gpgpu/">Programming for GPGPUs</a></h5>
+				<h6 class="text-muted">23 Nov 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Research/">Research</a>&nbsp;
+					
+				</h6>
+				<p>My research efficiency depends greatly on the amount of computer processing power I have access to. To detect binary systems, I compare observed stars to models of singles and binaries in a brute-force manner. Each observation is monte-carlo sampled within its errors many times, and the final results is the...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/why-s-is-under-appreciated/">Why the S in STEM is under-appreciated</a></h5>
+				<h6 class="text-muted">28 Sep 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Article/">Article</a>&nbsp;
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Science/">Science</a>&nbsp;
+					
+				</h6>
+				<p>Mark Schneider of The Atlantic believes that the S in STEM is overrated: It’s rote that we need more STEM students – more science, technology, engineering and math grads – sprinting off American campuses into the labor force. But according to the data, employers don’t like paying science grads quite...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/popular-science-shutting-off-comments/">Popular Science shutting off comments</a></h5>
+				<h6 class="text-muted">28 Sep 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Science/">Science</a>&nbsp;
+					
+				</h6>
+				<p>I for one completely support this tactic. As they put it eloquently in their post on the decision: A politically motivated, decades-long war on expertise has eroded the popular consensus on a wide variety of scientifically validated topics. Everything, from evolution to the origins of climate change, is mistakenly up...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/ios-7-the-good-the-bad-and-the-ugly-icons/"><img src="/generated/ios7-full-400x400-15cef6.jpg" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/ios-7-the-good-the-bad-and-the-ugly-icons/">iOS 7: The Good, The Bad, and the Ugly (Icons)</a></h5>
+				<h6 class="text-muted">19 Sep 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Technology/">Technology</a>&nbsp;
+					
+				</h6>
+				<p>After resisting the urge to upgrade to any iOS 7 beta, I finally installed it on my iPad yesterday, along with the rest of the world. Here are some first impressions of what Apple did right, and what needs to be changed in 7.1 and beyond. The Good iOS 7...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/new-furniture/"><img src="/generated/standingdesk-full-400x400-1ad064.jpg" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/new-furniture/">New Furniture</a></h5>
+				<h6 class="text-muted">24 Aug 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Uncategorized/">Uncategorized</a>&nbsp;
+					
+				</h6>
+				<p>For a long time, Chrissy has nagged me to live healthier. &#8220;Go for a run,&#8221; and &#8220;what fruit did you eat today?&#8221; were some of the many (legitimate) comments I heard from her. The problem is: (a) I&#8217;m lazy, (b) the Texas summer is too dang hot to run in,...</p>
+			</div>
+		</div><hr/>
+	
+
+	
+		<div class="row">
+			<div class="col-sm-3">
+				
+				<a href="/blog/the-universe-is-still-weird-and-interesting/"><img src="/generated/CMB-full-323x323-bcad6c.png" width="100%" class="rounded img-thumbnail" ></a>
+				
+			</div>
+			<div class="col-sm-9" style="padding-top: 15px;">
+				<h5><a href="/blog/the-universe-is-still-weird-and-interesting/">The Universe is still weird and interesting</a></h5>
+				<h6 class="text-muted">25 Mar 2013 &middot; <i>by</i> bathompso &middot; <i>in</i>
+					
+					&nbsp;<a class="greylink" href="/blog/tag/Science/">Science</a>&nbsp;
+					
+				</h6>
+				<p>The first results from the Cosmic Microwave Background-mapping Planck space telescope have been released. What&#8217;s new? There is more dark matter in the Universe than previously thought, and less dark energy. Regular matter (everything we can see and touch), still makes up a paltry 5% of all energy in the...</p>
+			</div>
+		</div><hr/>
+	
+
 </div>
+        <div class="col-sm-3">
+            <h5 class="text-muted">Connect With Me</h5>
+            <div class="row" style="padding-left: 7px; padding-top: 7px; font-size: 1.6em;">
+                <div class="awesome-icon"><a href="http://facebook.com/bathompso"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="http://twitter.com/bathompso"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="https://www.instagram.com/bathompso/"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="https://www.linkedin.com/in/bathompso/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="https://github.com/bathompso/"><i class="fa fa-github" aria-hidden="true"></i></a></div>
+                <div class="awesome-icon"><a href="https://www.twitch.tv/bathompso/"><i class="fa fa-twitch" aria-hidden="true"></i></a></div>
+            </div>
+            <h5 style="padding-top:50px; padding-bottom:-5px;" class="text-muted">Recent Twitter Status</h5>
+            <a class="twitter-timeline" data-height="1000" data-link-color="#20a3db" href="https://twitter.com/bathompso">Tweets by bathompso</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
 </body>
 </html>

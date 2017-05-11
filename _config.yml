@@ -4,9 +4,6 @@ markdown: redcarpet
 highlighter: pygments
 permalink: /:categories/:title/
 
-gems:
-  - jekyll-jupyter-notebook
-
 url: http://www.bathompso.com
 fburl: http://bathompso.com
 
@@ -21,7 +18,7 @@ comments:
     facebook:
       appid: 148947288529876
       num_posts: 10
-      width: 600
+      width: 800
       colorscheme: light
 
 image:

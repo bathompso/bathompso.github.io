@@ -2,21 +2,22 @@
 layout: blog
 ---
 
-<div>&nbsp;</div>
 {% if page.image %}
-	{% image blogsumm {{ page.image }} class="blogmainimg" %}
+	{% image 1000x400 {{ page.image }} width="100%" class="img-fluid rounded" %}
 {% endif %}
-<div class="blogentrytitle">{{ page.title }}</div>
-<div class="blogentrybyline">{{ page.date | date_to_string }} &middot; <i>by</i> bathompso &middot; <i>in</i>
+
+<h1 style="padding-top: 15px;">{{ page.title }}</h1>
+<h5 class="text-muted" style="padding-bottom: 15px;">
+    {{ page.date | date_to_string }} &middot; <i>by</i> bathompso &middot; <i>in</i>
 	{% for tag in page.tags %}
-		&nbsp;<a href="/blog/tag/{{ tag }}/">{{ tag }}</a>&nbsp;
+		&nbsp;<a class="greylink" href="/blog/tag/{{ tag }}/">{{ tag }}</a>&nbsp;
 	{% endfor %}
-</div>
+</h5>
 
+<div>
 {{ content }}
+</div><hr style="margin-top: 30px;"/>
 
-<!-- Social Share Buttons -->
-<!-- Facebook -->
 <div class="socialbutton">
 	<div class="fb-like" data-href="{{ site.fburl }}{{ page.url }}index.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
 </div>
@@ -32,9 +33,10 @@ layout: blog
 <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US </script>
 <script type="in/share" data-url="{{ site.fburl }}{{ page.url }}index.html" data-counter="right"></script>
 
+<hr/>
+
 <!-- Facebook Comments -->
-<h3 style="clear:both">&nbsp;</h3>
-<div class="fb-comments" data-href="{{ site.fburl }}{{ page.url }}index.html" data-num-posts="{{ site.comments.facebook.num_posts }}" data-width="{{ site.comments.facebook.width }}" data-colorscheme="{{ site.comments.facebook.colorscheme }}"></div>
+<div class="row"><div class="fb-comments" data-href="{{ site.fburl }}{{ page.url }}index.html" data-num-posts="{{ site.comments.facebook.num_posts }}" data-width="{{ site.comments.facebook.width }}" data-colorscheme="{{ site.comments.facebook.colorscheme }}"></div></div>
 
 
 
