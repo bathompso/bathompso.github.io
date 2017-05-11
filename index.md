@@ -3,5 +3,5 @@ layout: default
 title: Home
 ---
 
-# Bootstrap starter template
-Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.
+# Welcome to Ben Thompson's website
+This redesign is still a work in progress, so ignore my dust while I get everything back in place. Most everything should be here, so don't be deterred!
