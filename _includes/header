@@ -22,14 +22,14 @@
 </head>
 
 <body style="font-family: 'PT Sans', sans-serif;">
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbarExpander" aria-expanded="false" aria-label="Toggle navigation">
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse mb-4">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" style="margin-right: 5px;" href="/">bathompso.com</a>
-
-        <div class="collapse navbar-collapse" id="mainNavbarExpander">
-            <span id="breadcrumb" class="navbar-text mr-auto" style="font-size: 0.89m; padding-top: 9px; padding-bottom: 0px;">
+        <a class="navbar-brand" href="/" style="margin-right: 5px;">bathompso.com</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <span id="breadcrumb" class="navbar-text mr-auto" style="margin-top: 1px; padding-bottom: 0px;">
                 {% capture page_url_without_index_html %}{{ page.url | remove: "/index.html" }}{% endcapture %}
                 {% assign splitted_url_parts = page_url_without_index_html | split: '/' %}
                 {% capture forLoopMaxInt %}{{ splitted_url_parts.size | minus:1 }}{% endcapture %}
@@ -57,11 +57,12 @@
             </span>
             <ul class="nav navbar-nav">
                 {% for p in site.pages %}
-    				{% if p.mainnav == 1 %}
-    					<li class="nav-item {% if p.url == page.url %}active{% endif %}"><a class="nav-link" href="{{ p.url | remove: 'index.html' }}"><i class="fa fa-{{ p.navicon }}" aria-hidden="true"></i> {{ p.title }}</a></li>
-    				{% endif %}
-    			{% endfor %}
+                    {% if p.mainnav == 1 %}
+                        <li class="nav-item {% if p.url == page.url %}active{% endif %}"><a class="nav-link" href="{{ p.url | remove: 'index.html' }}"><i class="fa fa-{{ p.navicon }}" aria-hidden="true"></i> {{ p.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </nav>
+
     <div style="height: 20px;"></div>
