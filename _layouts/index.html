@@ -1,0 +1,50 @@
+{% include header %}
+
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="mastfoot" style="height: 20%;">
+                <div class="inner">
+                    <h1 class="cover-heading">Ben Thompson</h1>
+                    <h3 style="color: #B0B0B0">Astrophysicist // Data Scientist</h3>
+                    <p>&nbsp;</p>
+                    <p class="lead"><i class="fa fa-chevron-down fa-3x" aria-hidden="true"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" style="margin-top: 5rem;">
+        <div class="col-sm-8">
+            <h2 class="featurette-heading">About Me</h2>
+            <p style="text-justify">After finishing up a Ph.D. in Astrophysics from TCU, I realized there were hardly any jobs in the field, and pivoted towards industry. I started work as a data scientist at a mobile game company in San Francisco, and then moved to Uber. You can see my full employment journey in my <a href="/resume">resumé</a>.</p>
+            <p style="text-justify">I'm passionate about education and sharing knowledge (no doubt from my years in academia), so you can check out learning materials on my <a href="/education">education page</a>. You can also read other tips and musings on technology, gaming (my other passion), or other random topics on my <a href="/blog">blog</a>.</p>
+            <p style="text-justify">See something incorrect on the site? Have a question about something in a blog post or education lesson? Have an idea about something I should cover next? Have a project you want some feedback or collaboration on? Want to entice me to leave my job and work somewhere else? You can find links to all my contact methods on my <a href="/resume">resumé page</a>.</p>
+        </div>
+        <div class="col-sm-4">{% image 400x400 headshot.jpg width="100%" class="rounded img-thumbnail" %}</div>
+    </div>
+    <hr class="featurette-divider"/>
+    <div class="row">
+        {% assign blogcount = '' %}
+        {% for post in site.posts %}{% if post.categories contains 'blog' %}
+        	{% capture newcount %}{{ blogcount | append: '-' }}{% endcapture %}
+            {% assign blogcount = newcount %}
+            {% if blogcount.size == 1 %}
+                <div class="col-sm-4">{% image 400x400 {{ post.image }} width="100%" class="rounded img-thumbnail" %}</div>
+                <div class="col-sm-8">
+                    <h2 class="featurette-heading" style="padding-top: 2rem; padding-bottom: 2rem;">Latest Blog Post</h2>
+                    <h3><b>{{ post.title }}</b></h3>
+                    <p style="text-justify">{{ post.content | strip_html | truncatewords: 70 }}</p>
+                    <a href="{{ post.url }}" class="btn btn-outline-primary" aria-disabled="true">Read Full Post <i class="fa fa-chevron-right" style="font-size: 0.7em;"></i></a>
+                </div>
+            {% endif %}
+        {% endif %}{% endfor %}
+    </div>
+    <hr class="featurette-divider"/>
+</div>
+
+<div></div>
+
+{% include footer %}

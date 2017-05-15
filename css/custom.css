@@ -32,8 +32,10 @@
 .socialbutton { width: 100px; float: left; }
 #breadcrumb a { color: rgba(255, 255, 255, 0.498039); text-decoration: underline; }
 #breadcrumb a:hover { color: #FFFFFF; text-decoration: none; }
+.card-columns { column-count: 2; }
 @media (max-width: 990px) {
     #breadcrumb { display: none; }
+    .card-columns { column-count: 1; }
 }
 .greylink { color: rgb(99, 108, 114); text-decoration: none; border-bottom: 1px rgb(99, 108, 114) dotted; }
 .greylink:hover { color: #000000; text-decoration: none; border-bottom: 0px; }
