@@ -187,20 +187,38 @@ Before moving on, I will explain some of the options above:
 - `daemonize` defines the path to the log file for the Flask app. All lines printed to the console during a normal run of your app will be printed to this file instead. This will allow you to see any error messages or diagnostic print statements in your code.
 - `pidfile` defines the path to a file containing the process ID of the uWSGI process. This file will be used to stop the server when something needs to be changed.
 
-Once the uWSGI configuration file is finished, we will have to configure nginx to accept traffic from uWSGI. The configuration file for nginx is located at `/etc/nginx/nginx.conf`. First, we need to break nginx's hold on port 80 (the welcome message you see), and allow uWSGI and Flask to use it. To do this, comment out lines 71 and 72, which should be the first two uncommented lines after a giant commented block.
+Once the uWSGI configuration file is finished, we will have to configure nginx to accept traffic from uWSGI. The configuration file for nginx is located at `/etc/nginx/nginx.conf`. The main block you'll want to edit is the `http` one, which you should modify to look something like this:
 
-Next, we need to tell nginx where to look when it gets traffic from outside sources. Below the lines you just commented out, and still within the `html` block, add the following:
 {% highlight bash cssclass=shell %}
-server {
-    listen 80;
-    location / {
-        include uwsgi_params;
-        uwsgi_pass 127.0.0.1:3033;
+http {
+    # Basic Settings                                                        
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 300;
+    types_hash_max_size 2048;
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    # Logging Settings                                                      
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    # Gzip Settings                                                         
+    gzip on;
+    gzip_disable "msie6";
+
+    # Virtual Host Configs                                                  
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        listen 80;
+        location / { include uwsgi_params; uwsgi_pass 127.0.0.1:3033; }
     }
 }
 {% endhighlight %}
 
-This tells nginx to "listen" on port 80 (the default HTTP port), and pass all that information to uWSGI on port 3033 (make sure to change this port to whatever you specified in the config file).
+Most of the settings at the top should not need to be changed from whatever they were for the default, but the important block is the `server` entry at the bottom. This tells nginx to "listen" on port 80 (the default HTTP port), and pass all that information to uWSGI on port 3033 (make sure to change this port to whatever you specified in the UWSGI config file).
 
 Now that we have updated nginx to use the correct parameters, we need to restart it so it re-reads the config file. Do this with:
 {% highlight bash cssclass=shell %}sudo service nginx restart{% endhighlight %}

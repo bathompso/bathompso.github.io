@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 26 Aug 2017 08:50:08 -0700</pubDate>
-    <lastBuildDate>Sat, 26 Aug 2017 08:50:08 -0700</lastBuildDate>
+    <pubDate>Sat, 26 Aug 2017 08:59:30 -0700</pubDate>
+    <lastBuildDate>Sat, 26 Aug 2017 08:59:30 -0700</lastBuildDate>
     <generator>Jekyll v3.5.0</generator>
     
       <item>
@@ -284,19 +284,36 @@ wsgi-file &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o
 &lt;li&gt;&lt;code&gt;pidfile&lt;/code&gt; defines the path to a file containing the process ID of the uWSGI process. This file will be used to stop the server when something needs to be changed.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Once the uWSGI configuration file is finished, we will have to configure nginx to accept traffic from uWSGI. The configuration file for nginx is located at &lt;code&gt;/etc/nginx/nginx.conf&lt;/code&gt;. First, we need to break nginx&amp;#39;s hold on port 80 (the welcome message you see), and allow uWSGI and Flask to use it. To do this, comment out lines 71 and 72, which should be the first two uncommented lines after a giant commented block.&lt;/p&gt;
+&lt;p&gt;Once the uWSGI configuration file is finished, we will have to configure nginx to accept traffic from uWSGI. The configuration file for nginx is located at &lt;code&gt;/etc/nginx/nginx.conf&lt;/code&gt;. The main block you&amp;#39;ll want to edit is the &lt;code&gt;http&lt;/code&gt; one, which you should modify to look something like this:&lt;/p&gt;
 
-&lt;p&gt;Next, we need to tell nginx where to look when it gets traffic from outside sources. Below the lines you just commented out, and still within the &lt;code&gt;html&lt;/code&gt; block, add the following:&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;div class=&quot;shell&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Basic Settings                                                        &lt;/span&gt;
+    sendfile on&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    tcp_nopush on&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    tcp_nodelay on&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    keepalive_timeout &lt;span class=&quot;m&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    types_hash_max_size &lt;span class=&quot;m&quot;&gt;2048&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    include /etc/nginx/mime.types&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    default_type application/octet-stream&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;div class=&quot;shell&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;server &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    listen &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    location / &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        include uwsgi_params&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        uwsgi_pass &lt;span class=&quot;m&quot;&gt;127&lt;/span&gt;.0.0.1:3033&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Logging Settings                                                      &lt;/span&gt;
+    access_log /var/log/nginx/access.log&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    error_log /var/log/nginx/error.log&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Gzip Settings                                                         &lt;/span&gt;
+    gzip on&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    gzip_disable &lt;span class=&quot;s2&quot;&gt;&amp;quot;msie6&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Virtual Host Configs                                                  &lt;/span&gt;
+    include /etc/nginx/conf.d/*.conf&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    server &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        listen &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        location / &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; include uwsgi_params&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; uwsgi_pass &lt;span class=&quot;m&quot;&gt;127&lt;/span&gt;.0.0.1:3033&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;This tells nginx to &amp;quot;listen&amp;quot; on port 80 (the default HTTP port), and pass all that information to uWSGI on port 3033 (make sure to change this port to whatever you specified in the config file).&lt;/p&gt;
+&lt;p&gt;Most of the settings at the top should not need to be changed from whatever they were for the default, but the important block is the &lt;code&gt;server&lt;/code&gt; entry at the bottom. This tells nginx to &amp;quot;listen&amp;quot; on port 80 (the default HTTP port), and pass all that information to uWSGI on port 3033 (make sure to change this port to whatever you specified in the UWSGI config file).&lt;/p&gt;
 
 &lt;p&gt;Now that we have updated nginx to use the correct parameters, we need to restart it so it re-reads the config file. Do this with:&lt;/p&gt;
 

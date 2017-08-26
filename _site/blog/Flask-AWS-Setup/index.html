@@ -420,19 +420,36 @@ wsgi-file <span class="o">=</span> %<span class="o">(</span>home<span class="o">
 <li><code>pidfile</code> defines the path to a file containing the process ID of the uWSGI process. This file will be used to stop the server when something needs to be changed.</li>
 </ul>
 
-<p>Once the uWSGI configuration file is finished, we will have to configure nginx to accept traffic from uWSGI. The configuration file for nginx is located at <code>/etc/nginx/nginx.conf</code>. First, we need to break nginx&#39;s hold on port 80 (the welcome message you see), and allow uWSGI and Flask to use it. To do this, comment out lines 71 and 72, which should be the first two uncommented lines after a giant commented block.</p>
+<p>Once the uWSGI configuration file is finished, we will have to configure nginx to accept traffic from uWSGI. The configuration file for nginx is located at <code>/etc/nginx/nginx.conf</code>. The main block you&#39;ll want to edit is the <code>http</code> one, which you should modify to look something like this:</p>
 
-<p>Next, we need to tell nginx where to look when it gets traffic from outside sources. Below the lines you just commented out, and still within the <code>html</code> block, add the following:</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>http <span class="o">{</span>
+    <span class="c1"># Basic Settings                                                        </span>
+    sendfile on<span class="p">;</span>
+    tcp_nopush on<span class="p">;</span>
+    tcp_nodelay on<span class="p">;</span>
+    keepalive_timeout <span class="m">300</span><span class="p">;</span>
+    types_hash_max_size <span class="m">2048</span><span class="p">;</span>
+    include /etc/nginx/mime.types<span class="p">;</span>
+    default_type application/octet-stream<span class="p">;</span>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><div class="shell"><pre><span></span>server <span class="o">{</span>
-    listen <span class="m">80</span><span class="p">;</span>
-    location / <span class="o">{</span>
-        include uwsgi_params<span class="p">;</span>
-        uwsgi_pass <span class="m">127</span>.0.0.1:3033<span class="p">;</span>
+    <span class="c1"># Logging Settings                                                      </span>
+    access_log /var/log/nginx/access.log<span class="p">;</span>
+    error_log /var/log/nginx/error.log<span class="p">;</span>
+
+    <span class="c1"># Gzip Settings                                                         </span>
+    gzip on<span class="p">;</span>
+    gzip_disable <span class="s2">&quot;msie6&quot;</span><span class="p">;</span>
+
+    <span class="c1"># Virtual Host Configs                                                  </span>
+    include /etc/nginx/conf.d/*.conf<span class="p">;</span>
+
+    server <span class="o">{</span>
+        listen <span class="m">80</span><span class="p">;</span>
+        location / <span class="o">{</span> include uwsgi_params<span class="p">;</span> uwsgi_pass <span class="m">127</span>.0.0.1:3033<span class="p">;</span> <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<p>This tells nginx to &quot;listen&quot; on port 80 (the default HTTP port), and pass all that information to uWSGI on port 3033 (make sure to change this port to whatever you specified in the config file).</p>
+<p>Most of the settings at the top should not need to be changed from whatever they were for the default, but the important block is the <code>server</code> entry at the bottom. This tells nginx to &quot;listen&quot; on port 80 (the default HTTP port), and pass all that information to uWSGI on port 3033 (make sure to change this port to whatever you specified in the UWSGI config file).</p>
 
 <p>Now that we have updated nginx to use the correct parameters, we need to restart it so it re-reads the config file. Do this with:</p>
 
