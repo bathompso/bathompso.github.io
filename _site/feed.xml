@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 26 Aug 2017 09:20:48 -0700</pubDate>
-    <lastBuildDate>Sat, 26 Aug 2017 09:20:48 -0700</lastBuildDate>
+    <pubDate>Sat, 04 Nov 2017 21:42:48 -0700</pubDate>
+    <lastBuildDate>Sat, 04 Nov 2017 21:42:48 -0700</lastBuildDate>
     <generator>Jekyll v3.5.0</generator>
     
       <item>
@@ -367,8 +367,8 @@ wsgi-file &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; %&lt;span class=&quot;o
 &lt;p&gt;Although I haven&amp;#39;t been using it much lately, this blog will be more active while I&amp;#39;m in the program. I&amp;#39;ll be sharing my experiences, as well as the new things I&amp;#39;ve learned, hoping that it might help the next lost astrophysicist (or biologist, or economist, etc.). Look for more good stuff in the coming weeks.&lt;/p&gt;
 </description>
         <pubDate>Wed, 07 Jan 2015 00:00:00 -0800</pubDate>
-        <link>http://localhost:4000/blog/AAS225/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/AAS225/</guid>
+        <link>http://localhost:4000/blog/aas225/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/aas225/</guid>
         
         <category>Research</category>
         
